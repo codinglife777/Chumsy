@@ -1,0 +1,5 @@
+{
+    "dart.buildRunnerAdditionalArgs": [
+        "--no-sound-null-safety"
+    ]
+}
