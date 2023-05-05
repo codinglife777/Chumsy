@@ -45,7 +45,7 @@ class _SplashScreenState extends State<SplashScreen> {
             Hero(
               tag: "SplashLogo",
               child: SizedBox(
-                width: windowWidth * 0.3,
+                width: 147,
                 child: Image.asset(
                   "assets/logo/logo.png",
                   fit: BoxFit.contain,
