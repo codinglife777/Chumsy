@@ -95,7 +95,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     height: 11,
                   ),
                   SizedBox(
-                    height: 51,
+                    height: 49,
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 15),
                       child: CupertinoTextField(
@@ -127,7 +127,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     height: 11,
                   ),
                   SizedBox(
-                    height: 51,
+                    height: 49,
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 15),
                       child: ElevatedButton(

@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../Functions/show_alert.dart';
-import '../../Constants/colors.dart';
-import '../../Constants/sizes.dart';
-import '../../Constants/spacing.dart';
+import '../../constants/colors.dart';
+import '../../constants/sizes.dart';
+import '../../constants/spacing.dart';
 import '../../Functions/show_tosts.dart';
 import '../../Widgets/chumsyerrordialog.dart';
 import 'mobile_screen.dart';
@@ -52,7 +52,7 @@ class _SignupScreenState extends State<SignupScreen> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.fromLTRB(48, screenHeight / 6, 48, 0),
+              padding: EdgeInsets.fromLTRB(40, screenHeight / 6, 40, 0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -60,13 +60,13 @@ class _SignupScreenState extends State<SignupScreen> {
                 children: [
                   SizedBox(
                     width: screenWidth / 4,
-                    child: Image.asset("assets/login/logo.png"),
+                    child: Image.asset("assets/login/logo.png",),
                   ),
                   const SizedBox(height: 20),
                   SizedBox(
-                    height: 51,
+                    height: mainButtonSize,
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 15),
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
                       child: CupertinoTextField(
                         controller: _emailCont,
                         decoration: BoxDecoration(
@@ -95,9 +95,9 @@ class _SignupScreenState extends State<SignupScreen> {
                     height: 11,
                   ),
                   SizedBox(
-                    height: 51,
+                    height: mainButtonSize,
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 15),
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
                       child: CupertinoTextField(
                         controller: _passwordCont,
                         decoration: BoxDecoration(
@@ -127,9 +127,9 @@ class _SignupScreenState extends State<SignupScreen> {
                     height: 11,
                   ),
                   SizedBox(
-                    height: 51,
+                    height: mainButtonSize,
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 15),
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
                             backgroundColor: blackColor,
