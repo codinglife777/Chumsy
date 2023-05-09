@@ -39,9 +39,9 @@ class _LoginScreenState extends State<LoginScreen> {
             spacingBoxExtended,
             Container(
               margin: const EdgeInsets.only(
-                top: 18,
+                top: 30,
               ),
-              height: screenHeight / 1.6,
+              height: screenHeight / 1.7,
               width: screenWidth,
               decoration: const BoxDecoration(
                 image: DecorationImage(
@@ -60,13 +60,15 @@ class _LoginScreenState extends State<LoginScreen> {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   SizedBox(
-                    width: screenWidth / 4,
-                    child: Image.asset("assets/login/logo.png"),
+                    width: 147,
+                    child: Image.asset(
+                      "assets/login/logo.png",
+                    ),
                   ),
                   SizedBox(
                     height: 51,
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 15),
+                      padding: const EdgeInsets.symmetric(horizontal: 0),
                       child: CupertinoTextField(
                         controller: _emailCont,
                         decoration: BoxDecoration(
@@ -95,9 +97,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     height: 11,
                   ),
                   SizedBox(
-                    height: 49,
+                    height: 51,
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 15),
+                      padding: const EdgeInsets.symmetric(horizontal: 0),
                       child: CupertinoTextField(
                         controller: _passwordCont,
                         decoration: BoxDecoration(
@@ -127,9 +129,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     height: 11,
                   ),
                   SizedBox(
-                    height: 49,
+                    height: 51,
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 15),
+                      padding: const EdgeInsets.symmetric(horizontal: 0),
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
                             backgroundColor: blackColor,
@@ -201,28 +203,21 @@ class _LoginScreenState extends State<LoginScreen> {
                         children: [
                           CupertinoButton(
                             onPressed: () => openDialog(context, "Google.com"),
-                            child: Image.asset(
-                              "assets/login/google.png",
-                              width: 40,
-                              height: 40,
-                            ),
+                            child: Image.asset("assets/login/google.png",
+                                width: 40, fit: BoxFit.contain),
                           ),
                           CupertinoButton(
                             onPressed: () =>
                                 openDialog(context, "Facebook.com"),
-                            child: Image.asset(
-                              "assets/login/facebook.png",
-                              width: 40,
-                              height: 40,
-                            ),
+                            child: Image.asset("assets/login/facebook.png",
+                                width: 40, fit: BoxFit.contain),
                           ),
                           CupertinoButton(
                             onPressed: () => openDialog(context, "Apple.com"),
                             child: Image.asset(
-                              "assets/login/apple_black@2x.png",
-                              width: 40,
-                              height: 40,
-                            ),
+                                "assets/login/apple_black@2x.png",
+                                width: 40,
+                                fit: BoxFit.contain),
                           ),
                         ],
                       ),

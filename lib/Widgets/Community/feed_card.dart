@@ -109,10 +109,10 @@ class CustomFeedCard extends StatelessWidget {
                       const SizedBox(
                         width: 6.7,
                       ),
-                      const Expanded(
+                      Expanded(
                         flex: 0,
                         child: Text(
-                          "Cheer",
+                          cheers.toString(),
                           style: smallStyle,
                         ),
                       ),
@@ -136,10 +136,10 @@ class CustomFeedCard extends StatelessWidget {
                       const SizedBox(
                         width: 6.7,
                       ),
-                      const Expanded(
+                      Expanded(
                         flex: 0,
                         child: Text(
-                          "Comment",
+                          comments.toString(),
                           style: smallStyle,
                         ),
                       ),
@@ -166,7 +166,7 @@ class CustomFeedCard extends StatelessWidget {
                       const Expanded(
                         flex: 0,
                         child: Text(
-                          "Comment",
+                          "Send",
                           style: smallStyle,
                         ),
                       ),

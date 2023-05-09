@@ -90,7 +90,7 @@ class _CreateProfile4State extends State<CreateProfile4> {
                   ),
                 ),
                 Container(
-                  width: screenWidth,
+                  width: screenWidth / 3,
                   height: 4,
                   decoration: const BoxDecoration(
                     color: neonColor2,
@@ -187,7 +187,7 @@ class _CreateProfile4State extends State<CreateProfile4> {
                   ),
                   const Center(
                     child: Text(
-                      "Poland, Warsaw",
+                      "Warsaw, Poland",
                       style: TextStyle(
                         color: textColor,
                         fontSize: 16,
@@ -215,6 +215,10 @@ class _CreateProfile4State extends State<CreateProfile4> {
                                   setState(() {
                                     needMaster = val;
                                   });
+                                  if (val) {
+                                    Get.to(() =>
+                                        const CreateProfileQualification());
+                                  }
                                 },
                               ),
                               const SizedBox(
@@ -238,7 +242,7 @@ class _CreateProfile4State extends State<CreateProfile4> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: const [
                                 Text(
-                                  "CREATE ACCOUNT",
+                                  "SAVE",
                                   style: regularStyleBold,
                                 ),
                               ],

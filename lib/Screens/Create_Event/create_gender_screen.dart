@@ -16,6 +16,8 @@ class CreateEventGender extends StatefulWidget {
 }
 
 class _CreateEventGenderState extends State<CreateEventGender> {
+  void clear() {}
+
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
@@ -37,6 +39,10 @@ class _CreateEventGenderState extends State<CreateEventGender> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: const [
+                          LevelTile(
+                            payType: "All",
+                          ),
+                          spacingBox,
                           LevelTile(
                             payType: "Male",
                           ),
@@ -74,8 +80,9 @@ class _CreateEventGenderState extends State<CreateEventGender> {
               ),
             ),
           ),
-          const EventAppBar2(
+          EventAppBar(
             title: "Gender",
+            cbClear: clear,
           ),
         ],
       ),

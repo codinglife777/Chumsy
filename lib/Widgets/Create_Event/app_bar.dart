@@ -2,18 +2,16 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:simple_shadow/simple_shadow.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../Constants/colors.dart';
 import '../../Constants/sizes.dart';
 import '../../Constants/spacing.dart';
 
 class EventAppBar extends StatelessWidget {
-  const EventAppBar({
-    super.key,
-    required this.title,
-  });
+  const EventAppBar({super.key, required this.title, required this.cbClear});
   final String title;
-
+  final VoidCallback cbClear;
   @override
   Widget build(BuildContext context) {
     return SimpleShadow(
@@ -43,19 +41,26 @@ class EventAppBar extends StatelessWidget {
                   title,
                   style: subHeadingStyle,
                 ),
-                CupertinoButton(
-                  onPressed: () {},
-                  child: const Text(
-                    "Clear",
-                    style: TextStyle(
-                      color: blackColor,
-                      fontSize: 12,
+                Padding(
+                  padding: const EdgeInsets.only(right: 5),
+                  child: CupertinoButton(
+                    onPressed: cbClear,
+                    child: Text(
+                      AppLocalizations.of(context)!.clear,
+                      style: const TextStyle(
+                        color: blackColor,
+                        fontSize: 16,
+                      ),
                     ),
                   ),
                 ),
               ],
             ),
-            const Divider(),
+            const Divider(
+              height: 10,
+              thickness: 2,
+              color: Colors.grey,
+            ),
           ],
         ),
       ),

@@ -16,7 +16,7 @@ dependencies:
   fluttertoast: ^8.2.1
   image_picker: ^0.8.7+1
   flutter_progress_hud: ^2.0.2
-  syncfusion_flutter_sliders: ^21.1.38
+  syncfusion_flutter_sliders: ^21.2.3
   animations: ^2.0.7
   card_swiper: ^2.0.4
   flutter_animated_dialog: ^2.0.1
@@ -30,7 +30,16 @@ dependencies:
   simple_shadow: ^0.3.1
   google_fonts:
   flutter_svg:
-
+  provider:
+  location:
+  google_maps_flutter:
+  google_mlkit_face_detection: ^0.6.0
+  flutter_localizations:
+    sdk: flutter
+  intl: any
+  hive: 
+  hive_flutter:
+  url_launcher: ^6.1.10
   
 dev_dependencies:
   flutter_test:
@@ -38,6 +47,7 @@ dev_dependencies:
   flutter_lints: ^2.0.0
 
 flutter:
+  generate: true
   uses-material-design: true
 
   assets:

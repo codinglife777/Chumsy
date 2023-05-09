@@ -72,7 +72,7 @@ class _MobileScreenState extends State<MobileScreen> {
                           height: 51,
                           child: Padding(
                             padding: const EdgeInsets.symmetric(
-                              horizontal: 15,
+                              horizontal: 0,
                             ),
                             child: CupertinoTextField(
                               controller: _nameCont,
@@ -105,7 +105,7 @@ class _MobileScreenState extends State<MobileScreen> {
                           height: 51,
                           child: Padding(
                             padding: const EdgeInsets.symmetric(
-                              horizontal: 15,
+                              horizontal: 0,
                             ),
                             child: CupertinoTextField(
                               controller: _sNameCont,
@@ -138,7 +138,7 @@ class _MobileScreenState extends State<MobileScreen> {
                           height: 51,
                           child: Padding(
                             padding: const EdgeInsets.symmetric(
-                              horizontal: 15,
+                              horizontal: 0,
                             ),
                             child: Container(
                               padding: EdgeInsets.symmetric(
@@ -255,7 +255,7 @@ class _MobileScreenState extends State<MobileScreen> {
                                             )
                                           ],
                                           style: const TextStyle(
-                                            color: blackColor,
+                                            color: Colors.black,
                                             fontSize: 13,
                                           ),
                                         ),
@@ -271,8 +271,8 @@ class _MobileScreenState extends State<MobileScreen> {
                                 height: 51,
                                 child: Padding(
                                   padding: const EdgeInsets.only(
-                                    left: 15,
-                                    right: 15,
+                                    left: 0,
+                                    right: 0,
                                   ),
                                   child: ElevatedButton(
                                     style: ElevatedButton.styleFrom(

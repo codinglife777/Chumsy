@@ -1,6 +1,8 @@
+import 'package:chumsy_app/Screens/Help_Center/mng_bottom_nav.dart';
 import 'package:chumsy_app/Screens/Help_Center/support.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../Functions/build_event_row.dart';
 import '../../Constants/sizes.dart';
@@ -19,6 +21,12 @@ class HelpCenterMain extends StatefulWidget {
 }
 
 class _HelpCenterMainState extends State<HelpCenterMain> {
+  Future<void> termsAndConditions(Uri url) async {
+    if (!await launchUrl(url, mode: LaunchMode.externalApplication)) {
+      throw Exception('Could not launch $url');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
@@ -42,7 +50,7 @@ class _HelpCenterMainState extends State<HelpCenterMain> {
                             "Support",
                             "",
                             () {
-                              Get.to(() => const HelpCenterSupport());
+                              Get.to(() => const MngSupportPage());
                             },
                           ),
                           spacingBox,
@@ -50,7 +58,7 @@ class _HelpCenterMainState extends State<HelpCenterMain> {
                             "Report a bug",
                             "",
                             () {
-                              Get.to(() => const HelpCenterReport());
+                              Get.to(() => const MngReportPage());
                             },
                           ),
                           spacingBox,
@@ -58,14 +66,17 @@ class _HelpCenterMainState extends State<HelpCenterMain> {
                             "FAQ",
                             "",
                             () {
-                              Get.to(() => const HelpCenterFaq());
+                              Get.to(() => const MngFaqPage());
                             },
                           ),
                           spacingBox,
                           buildRow(
                             "Terms & Conditions",
                             "",
-                            () {},
+                            () async {
+                              final Uri url = Uri.parse('https://chumsy.com');
+                              await termsAndConditions(url);
+                            },
                           ),
                         ],
                       ),

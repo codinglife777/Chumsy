@@ -2,6 +2,7 @@ import 'package:chumsy_app/Constants/sizes.dart';
 import 'package:chumsy_app/Widgets/Extra%20Widgets/gradient_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../Constants/spacing.dart';
 import '../../Widgets/Create_Event/app_bar.dart';
@@ -15,6 +16,8 @@ class CreateEventWIthWhom extends StatefulWidget {
 }
 
 class _CreateEventWIthWhomState extends State<CreateEventWIthWhom> {
+  void clear() {}
+
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
@@ -69,8 +72,9 @@ class _CreateEventWIthWhomState extends State<CreateEventWIthWhom> {
               ),
             ),
           ),
-          const EventAppBar2(
+          EventAppBar(
             title: "With whom?",
+            cbClear: clear,
           ),
         ],
       ),

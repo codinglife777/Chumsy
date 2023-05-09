@@ -4,6 +4,8 @@ import 'package:chumsy_app/Widgets/Extra%20Widgets/dismiss_keyboard.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,10 +20,19 @@ class MyApp extends StatelessWidget {
       child: GetCupertinoApp(
         debugShowCheckedModeBanner: false,
         defaultTransition: Transition.cupertino,
+        locale: Locale('en', ''),
         localizationsDelegates: [
-          DefaultMaterialLocalizations.delegate,
-          DefaultCupertinoLocalizations.delegate,
-          DefaultWidgetsLocalizations.delegate,
+          AppLocalizations.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: [
+          Locale('en', ''),
+          Locale('pl', ''),
+          Locale('uk', ''),
+          Locale('es', ''),
+          Locale('ru', ''),
         ],
         theme: CupertinoThemeData.raw(
           Brightness.light,

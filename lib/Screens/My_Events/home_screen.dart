@@ -52,9 +52,10 @@ class _MyEventHomeState extends State<MyEventHome> {
                   horizontal: 30,
                 ),
                 child: SizedBox(
-                  height: screenHeight / 1.43,
+                  height: screenHeight / 1.45,
                   child: ListView(
-                    shrinkWrap: true,
+                    // shrinkWrap: true,
+                    padding: const EdgeInsets.only(top: 0.0),
                     children: active == 0
                         ? [
                             const CustomMyEventCard(
@@ -199,7 +200,7 @@ class _MyEventHomeState extends State<MyEventHome> {
           child: Container(
             width: 100,
             padding: const EdgeInsets.symmetric(
-              vertical: 8,
+              vertical: 6,
               horizontal: 10,
             ),
             decoration: BoxDecoration(
@@ -236,7 +237,7 @@ class _MyEventHomeState extends State<MyEventHome> {
           child: Container(
             width: 100,
             padding: const EdgeInsets.symmetric(
-              vertical: 8,
+              vertical: 6,
               horizontal: 10,
             ),
             decoration: BoxDecoration(
@@ -273,7 +274,7 @@ class _MyEventHomeState extends State<MyEventHome> {
           child: Container(
             width: 100,
             padding: const EdgeInsets.symmetric(
-              vertical: 8,
+              vertical: 6,
               horizontal: 10,
             ),
             decoration: BoxDecoration(

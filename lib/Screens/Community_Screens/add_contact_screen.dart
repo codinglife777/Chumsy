@@ -56,15 +56,15 @@ class _AddContactScreenState extends State<AddContactScreen> {
               ),
               const Divider(),
               spacingBox,
-              spacingBox,
+              // spacingBox,
               topButtons(),
-              spacingBox,
+              // spacingBox,
               Padding(
                 padding: const EdgeInsets.symmetric(
                   horizontal: 30,
                 ),
                 child: SizedBox(
-                  height: screenHeight / 1.6,
+                  height: screenHeight / 1.7,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,

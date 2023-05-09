@@ -11,8 +11,12 @@ import '../../Functions/chat_bottom_sheet.dart';
 import '../../Widgets/Chat_Screen/custom_chat_bubble.dart';
 
 class ChattingScreen extends StatefulWidget {
-  const ChattingScreen({super.key, required this.name, required this.image});
-  final String name, image;
+  const ChattingScreen(
+      {super.key,
+      required this.name,
+      required this.surName,
+      required this.image});
+  final String name, surName, image;
 
   @override
   State<ChattingScreen> createState() => _ChattingScreenState();
@@ -116,14 +120,20 @@ class _ChattingScreenState extends State<ChattingScreen> {
                   children: [
                     Text(
                       widget.name,
-                      style: subHeadingStyle,
+                      style: regularStyleBold.copyWith(
+                          fontWeight: FontWeight.w600),
                     ),
                     Text(
-                      "Online",
-                      style: smallStyle.copyWith(
-                        color: textColor,
-                      ),
+                      widget.surName,
+                      style: regularStyleBold.copyWith(
+                          fontWeight: FontWeight.w600),
                     ),
+                    // Text(
+                    //   "Online",
+                    //   style: smallStyle.copyWith(
+                    //     color: textColor,
+                    //   ),
+                    // ),
                   ],
                 ),
               ],
@@ -183,7 +193,7 @@ class _ChattingScreenState extends State<ChattingScreen> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(
-                    bottom: 10,
+                    bottom: 40,
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,

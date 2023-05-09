@@ -3,7 +3,9 @@ import 'package:flutter/cupertino.dart';
 import '../../Constants/colors.dart';
 import '../../Constants/sizes.dart';
 
-GestureDetector buildRow(String leftText, String rightText, VoidCallback cb) {
+GestureDetector buildRow(String leftText, String rightText, VoidCallback cb,
+    [String? secondaryText]) {
+  secondaryText ??= "";
   return GestureDetector(
     onTap: cb,
     child: Padding(
@@ -13,11 +15,22 @@ GestureDetector buildRow(String leftText, String rightText, VoidCallback cb) {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(
-            leftText,
-            style: regularStyleBold.copyWith(
-              fontWeight: FontWeight.bold,
-            ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                leftText,
+                style: regularStyleBold.copyWith(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              secondaryText.isEmpty
+                  ? const SizedBox()
+                  : Text(
+                      secondaryText,
+                      style: smallStyle,
+                    ),
+            ],
           ),
           CupertinoButton(
             padding: EdgeInsets.zero,
@@ -25,13 +38,19 @@ GestureDetector buildRow(String leftText, String rightText, VoidCallback cb) {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Text(
-                  rightText != "" ? rightText : "              ",
-                  style: const TextStyle(
-                    fontSize: 16,
-                    color: blackColor,
-                  ),
-                ),
+                rightText != ""
+                    ? SizedBox(
+                        width: 200,
+                        child: Text(
+                          rightText,
+                          style: const TextStyle(
+                            fontSize: 16,
+                            color: blackColor,
+                          ),
+                          textAlign: TextAlign.right,
+                        ),
+                      )
+                    : const SizedBox(),
                 const Icon(
                   CupertinoIcons.right_chevron,
                 ),

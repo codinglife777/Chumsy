@@ -133,7 +133,7 @@ Future<void> showChatBottomSheet(BuildContext context) {
                     ),
                   ),
                   subtitle: const AutoSizeText(
-                    "Invite to become friends and keep in touch!",
+                    "You can mute the notifications",
                     style: smallStyle,
                     maxLines: 1,
                     softWrap: true,

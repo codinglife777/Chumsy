@@ -95,16 +95,16 @@ class Styles {
             ]);
   }
 
+  static LinearGradient primaryGradient() {
+    return const LinearGradient(colors: [
+      Color(0xFFD7FDCB),
+      Color(0xFFB3FDEB),
+    ], begin: Alignment.centerLeft, end: Alignment.centerRight);
+  }
+
   static BoxDecoration gredientButtonContainer({Color? borderColor}) {
     return BoxDecoration(
-      gradient: const LinearGradient(
-        colors: [
-          Color(0xffD8FECB),
-          Color(0xffA5FAFA),
-        ],
-        begin: Alignment.centerLeft,
-        end: Alignment.centerRight,
-      ),
+      gradient: primaryGradient(),
       border: Border.all(
           color: borderColor ?? const Color(0xff282828),
           width: 2,

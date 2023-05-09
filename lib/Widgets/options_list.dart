@@ -1,5 +1,5 @@
 List<String> options = [
-  "FREE",
-  "OUTDOOR",
-  "BEGINNER",
+  "Free",
+  "Public",
+  "All",
 ];

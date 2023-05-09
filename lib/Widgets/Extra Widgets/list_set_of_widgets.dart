@@ -4,13 +4,14 @@ import '../../Constants/colors.dart';
 import '../../Constants/sizes.dart';
 
 class ChipSets extends StatefulWidget {
-  const ChipSets({
-    super.key,
-    required this.listOfChips,
-    required this.islarge,
-  });
+  const ChipSets(
+      {super.key,
+      required this.listOfChips,
+      required this.islarge,
+      this.readonly});
   final List<String> listOfChips;
   final bool islarge;
+  final bool? readonly;
 
   @override
   State<ChipSets> createState() => _ChipSetsState();
@@ -21,6 +22,7 @@ List<String> selected = [];
 class _ChipSetsState extends State<ChipSets> {
   @override
   Widget build(BuildContext context) {
+    bool readonly = widget.readonly ?? false;
     return SizedBox(
       height: 50,
       child: ListView(
@@ -46,26 +48,32 @@ class _ChipSetsState extends State<ChipSets> {
                     border: Border.all(
                       color: blackColor,
                     ),
-                    color: selected.contains(e) ? blackColor : whiteColor,
+                    color: !readonly && selected.contains(e)
+                        ? blackColor
+                        : whiteColor,
                   ),
                   child: Center(
                     child: Text(
                       e,
                       style: regularStyleBold.copyWith(
                         fontSize: widget.islarge ? 16 : 10,
-                        color: selected.contains(e) ? whiteColor : blackColor,
+                        color: !readonly && selected.contains(e)
+                            ? whiteColor
+                            : blackColor,
                       ),
                     ),
                   ),
                 ),
                 onPressed: () {
-                  setState(() {
-                    if (selected.contains(e)) {
-                      selected.remove(e);
-                    } else {
-                      selected.add(e);
-                    }
-                  });
+                  if (!readonly) {
+                    setState(() {
+                      if (selected.contains(e)) {
+                        selected.remove(e);
+                      } else {
+                        selected.add(e);
+                      }
+                    });
+                  }
                 },
               ),
             )

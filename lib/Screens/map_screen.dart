@@ -15,6 +15,7 @@ import '../Constants/sizes.dart';
 import '../Constants/spacing.dart';
 import '../Widgets/map_bottom_container.dart';
 import 'Help_Center/front_screen.dart';
+import 'Help_Center/mng_bottom_nav.dart';
 
 class MapScreen extends StatelessWidget {
   const MapScreen({super.key, required this.constraints});
@@ -184,7 +185,7 @@ class MapScreen extends StatelessWidget {
                                     child: CupertinoButton(
                                       padding: EdgeInsets.zero,
                                       onPressed: () =>
-                                          Get.to(() => const HelpCenterMain()),
+                                          Get.to(() => const MngHelpPages()),
                                       child: const Icon(
                                         CupertinoIcons.question,
                                         color: whiteColor,

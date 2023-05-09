@@ -61,7 +61,14 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                                   },
                                 ),
                                 buildRow(
-                                  "Chumsy Coin",
+                                  "Change Password",
+                                  "",
+                                  () {
+                                    // Get.to(() => const InsidePaymentHomePage());
+                                  },
+                                ),
+                                buildRow(
+                                  "Change Language",
                                   "",
                                   () {
                                     // Get.to(() => const InsidePaymentHomePage());
@@ -74,18 +81,25 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                                     Get.to(() => const ShareScreen());
                                   },
                                 ),
-                                buildRow(
-                                  "Payments",
-                                  "",
-                                  () {
-                                    Get.to(() => const PaymentProfileScreen());
-                                  },
-                                ),
+                                // buildRow(
+                                //   "Payments",
+                                //   "",
+                                //   () {
+                                //     Get.to(() => const PaymentProfileScreen());
+                                //   },
+                                // ),
                                 buildRow(
                                   "Help Center",
                                   "",
                                   () {
                                     Get.to(() => const HelpCenterMain());
+                                  },
+                                ),
+                                buildRow(
+                                  "Delete Account",
+                                  "",
+                                  () {
+                                    // Get.to(() => const InsidePaymentHomePage());
                                   },
                                 ),
                               ],

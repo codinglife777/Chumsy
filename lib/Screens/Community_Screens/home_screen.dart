@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:chumsy_app/Constants/colors.dart';
 import 'package:chumsy_app/Constants/sizes.dart';
+import 'package:chumsy_app/Screens/Community_Screens/mng_bottom_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -56,7 +57,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
                     ),
                     CupertinoButton(
                       child: Image.asset(
-                        "assets/extras/user_add.png",
+                        "assets/extras/camera.png",
                         width: 22,
                       ),
                       onPressed: () => Get.back(),
@@ -73,12 +74,13 @@ class _CommunityScreenState extends State<CommunityScreen> {
                 height: 29,
               ),
               Container(
-                height: screenHeight - 267,
+                height: screenHeight - (active == 1 ? 370 : 301),
                 padding: const EdgeInsets.symmetric(
                   horizontal: 30,
                 ),
                 child: ListView(
                   shrinkWrap: true,
+                  padding: const EdgeInsets.only(top: 0),
                   children: active == 0
                       ? [
                           const SizedBox(
@@ -156,41 +158,43 @@ class _CommunityScreenState extends State<CommunityScreen> {
                             events: "4",
                             profileLocation: "assets/extras/dp_2.jpg",
                           ),
-                          Padding(
-                            padding: EdgeInsets.only(
-                              top: screenHeight / 8,
-                              left: 20,
-                              right: 20,
-                            ),
-                            child: CustomGradientButtonWidget(
-                              buttonWidget: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Expanded(
-                                    flex: 0,
-                                    child: Image.asset(
-                                      "assets/extras/user_add.png",
-                                      width: 20,
-                                    ),
-                                  ),
-                                  horizontalSpacingBoxSmall,
-                                  const Expanded(
-                                    flex: 0,
-                                    child: Text(
-                                      "ADD FRIENDS",
-                                      style: regularStyleBold,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              onTapFunction: () {
-                                Get.to(() => const AddContactScreen());
-                              },
-                            ),
-                          ),
                         ],
                 ),
-              )
+              ),
+              active == 1
+                  ? Padding(
+                      padding: const EdgeInsets.only(
+                        top: 10,
+                        left: 20,
+                        right: 20,
+                      ),
+                      child: CustomGradientButtonWidget(
+                        buttonWidget: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Expanded(
+                              flex: 0,
+                              child: Image.asset(
+                                "assets/extras/user_add.png",
+                                width: 20,
+                              ),
+                            ),
+                            horizontalSpacingBoxSmall,
+                            const Expanded(
+                              flex: 0,
+                              child: Text(
+                                "FIND FRIENDS",
+                                style: regularStyleBold,
+                              ),
+                            ),
+                          ],
+                        ),
+                        onTapFunction: () {
+                          Get.to(() => const FindFriendPage());
+                        },
+                      ),
+                    )
+                  : const SizedBox(),
             ],
           )
         ],
@@ -211,7 +215,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
               right: screenWidth / 100,
             ),
             padding: const EdgeInsets.symmetric(
-              vertical: 8,
+              vertical: 6,
               horizontal: 10,
             ),
             decoration: BoxDecoration(
@@ -250,7 +254,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
               right: screenWidth / 100,
             ),
             padding: const EdgeInsets.symmetric(
-              vertical: 8,
+              vertical: 6,
               horizontal: 10,
             ),
             decoration: BoxDecoration(
@@ -278,6 +282,45 @@ class _CommunityScreenState extends State<CommunityScreen> {
           onPressed: () {
             setState(() {
               active = 1;
+            });
+          },
+        ),
+        CupertinoButton(
+          padding: EdgeInsets.zero,
+          child: Container(
+            width: 100,
+            margin: EdgeInsets.only(
+              right: screenWidth / 100,
+            ),
+            padding: const EdgeInsets.symmetric(
+              vertical: 6,
+              horizontal: 10,
+            ),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(
+                100,
+              ),
+              border: Border.all(
+                color: blackColor,
+                width: 2,
+              ),
+              color: active == 2 ? blackColor : whiteColor,
+            ),
+            child: Center(
+              child: AutoSizeText(
+                "Requests",
+                style: regularStyleBold.copyWith(
+                  color: active == 2 ? whiteColor : blackColor,
+                  fontWeight: FontWeight.bold,
+                ),
+                maxLines: 1,
+                softWrap: true,
+              ),
+            ),
+          ),
+          onPressed: () {
+            setState(() {
+              active = 2;
             });
           },
         ),

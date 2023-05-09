@@ -7,6 +7,7 @@ import '../../Constants/sizes.dart';
 import '../../Constants/spacing.dart';
 import '../../Widgets/Create_Event/app_bar.dart';
 import 'faq_answer.dart';
+import 'mng_bottom_nav.dart';
 
 class HelpCenterFaq extends StatefulWidget {
   const HelpCenterFaq({
@@ -18,6 +19,44 @@ class HelpCenterFaq extends StatefulWidget {
 }
 
 class _HelpCenterFaqState extends State<HelpCenterFaq> {
+  static List<String> fagList = [
+    "What is Chumsy for?",
+    "How to create an account in the Chumsy app?",
+    "What is Master Status?",
+    "How to set Master status?",
+    "How can I find an event that interestes me?",
+    "Filtering events",
+    "How can I save the event?",
+    "How can I sign up for an event?",
+    "What are the available payment methods for participation in paid events?..."
+  ];
+
+  late TextEditingController searchController;
+
+  List<String> filteredFaq = fagList;
+  void onSearch() {
+    String strSearch = searchController.text;
+    List<String> filtered = fagList
+        .where((element) =>
+            element.toLowerCase().contains(strSearch.toLowerCase()))
+        .toList();
+    setState(() {
+      filteredFaq = filtered;
+    });
+  }
+
+  @override
+  void initState() {
+    searchController = TextEditingController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    searchController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
@@ -58,9 +97,9 @@ class _HelpCenterFaqState extends State<HelpCenterFaq> {
                             ),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.start,
-                              children: const [
+                              children: [
                                 horizontalSpacingBox,
-                                Expanded(
+                                const Expanded(
                                   flex: 0,
                                   child: Icon(
                                     CupertinoIcons.search,
@@ -71,14 +110,16 @@ class _HelpCenterFaqState extends State<HelpCenterFaq> {
                                 Expanded(
                                   flex: 1,
                                   child: CupertinoTextField(
-                                    padding: EdgeInsets.symmetric(
-                                      horizontal: 16,
+                                    controller: searchController,
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 5,
                                     ),
                                     placeholder: 'Search',
-                                    placeholderStyle: TextStyle(
-                                      color: greyIconColor,
-                                    ),
-                                    decoration: BoxDecoration(
+                                    placeholderStyle: smallStyle,
+                                    onChanged: (value) {
+                                      onSearch();
+                                    },
+                                    decoration: const BoxDecoration(
                                       borderRadius: BorderRadius.all(
                                         Radius.circular(
                                           100,
@@ -93,37 +134,45 @@ class _HelpCenterFaqState extends State<HelpCenterFaq> {
                           const SizedBox(
                             height: 6,
                           ),
-                          QuestionTile(
-                            onTapFunction: () {},
-                            question:
-                                "Excepteur sint occaecat cupidatat non proident",
+                          Column(
+                            children: filteredFaq
+                                .map((e) => QuestionTile(
+                                      onTapFunction: () {},
+                                      question: e,
+                                    ))
+                                .toList(),
                           ),
-                          QuestionTile(
-                            onTapFunction: () {},
-                            question: "Sed ut perspiciatis unde omnis iste",
-                          ),
-                          QuestionTile(
-                            onTapFunction: () {},
-                            question: "Ut enim ad minima veniam",
-                          ),
-                          QuestionTile(
-                            onTapFunction: () {},
-                            question:
-                                "Excepteur sint occaecat cupidatat non proident",
-                          ),
-                          QuestionTile(
-                            onTapFunction: () {},
-                            question: "Sed ut perspiciatis unde omnis iste",
-                          ),
-                          QuestionTile(
-                            onTapFunction: () {},
-                            question: "Ut enim ad minima veniam",
-                          ),
-                          QuestionTile(
-                            onTapFunction: () {},
-                            question:
-                                "Excepteur sint occaecat cupidatat non proident",
-                          ),
+                          // QuestionTile(
+                          //   onTapFunction: () {},
+                          //   question:
+                          //       "Excepteur sint occaecat cupidatat non proident",
+                          // ),
+                          // QuestionTile(
+                          //   onTapFunction: () {},
+                          //   question: "Sed ut perspiciatis unde omnis iste",
+                          // ),
+                          // QuestionTile(
+                          //   onTapFunction: () {},
+                          //   question: "Ut enim ad minima veniam",
+                          // ),
+                          // QuestionTile(
+                          //   onTapFunction: () {},
+                          //   question:
+                          //       "Excepteur sint occaecat cupidatat non proident",
+                          // ),
+                          // QuestionTile(
+                          //   onTapFunction: () {},
+                          //   question: "Sed ut perspiciatis unde omnis iste",
+                          // ),
+                          // QuestionTile(
+                          //   onTapFunction: () {},
+                          //   question: "Ut enim ad minima veniam",
+                          // ),
+                          // QuestionTile(
+                          //   onTapFunction: () {},
+                          //   question:
+                          //       "Excepteur sint occaecat cupidatat non proident",
+                          // ),
                         ],
                       ),
                     ),
@@ -154,7 +203,7 @@ class QuestionTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => Get.to(
-        HelpCenterFaqAns(
+        () => MngFaqAnswerPage(
           question: question,
         ),
       ),

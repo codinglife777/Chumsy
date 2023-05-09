@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
 import '../../Constants/colors.dart';
+import '../../Styles/styles.dart';
 
 class CustomGradientButtonWidget extends StatelessWidget {
   const CustomGradientButtonWidget({
@@ -27,12 +28,7 @@ class CustomGradientButtonWidget extends StatelessWidget {
             color: blackColor,
             width: 2,
           ),
-          gradient: const LinearGradient(
-            colors: [
-              neonColor,
-              blueColor,
-            ],
-          ),
+          gradient: Styles.primaryGradient(),
         ),
         child: buttonWidget,
       ),

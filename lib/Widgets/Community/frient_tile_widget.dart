@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../Constants/colors.dart';
 import '../../Constants/sizes.dart';
-import '../../Screens/Community_Screens/view_friend.dart';
+import '../../Screens/Community_Screens/mng_bottom_bar.dart';
 
 class FriendTile extends StatelessWidget {
   const FriendTile({
@@ -23,9 +23,9 @@ class FriendTile extends StatelessWidget {
           0.2,
         ),
         onTap: () => Get.to(
-          () => ViewFriendProfile(
+          () => ViewFriendPage(
             dp: profileLocation,
-            location: "Poland. Warsaw",
+            location: "Warsaw, Poland",
             nameAndAge: "$name, 26",
           ),
         ),

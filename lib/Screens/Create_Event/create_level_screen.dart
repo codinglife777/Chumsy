@@ -16,6 +16,8 @@ class CreateEventLevel extends StatefulWidget {
 }
 
 class _CreateEventLevelState extends State<CreateEventLevel> {
+  void clear() {}
+
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
@@ -80,8 +82,9 @@ class _CreateEventLevelState extends State<CreateEventLevel> {
               ),
             ),
           ),
-          const EventAppBar2(
+          EventAppBar(
             title: "Level",
+            cbClear: clear,
           ),
         ],
       ),

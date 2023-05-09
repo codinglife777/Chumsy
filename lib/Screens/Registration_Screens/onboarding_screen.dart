@@ -1,4 +1,5 @@
 import 'package:chumsy_app/Constants/colors.dart';
+import 'package:chumsy_app/Constants/sizes.dart';
 import 'package:chumsy_app/Constants/spacing.dart';
 import 'package:chumsy_app/Screens/Registration_Screens/login_screen.dart';
 import 'package:flutter/cupertino.dart';
@@ -252,9 +253,11 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                         ),
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            padding: EdgeInsets.symmetric(
-                              vertical: screenHeight / 45,
-                            ),
+                            // padding: EdgeInsets.symmetric(
+                            //   vertical: screenHeight / 45,
+                            // ),
+                            minimumSize: Size(screenWidth, 51),
+                            maximumSize: Size(screenWidth, 51),
                             backgroundColor: blackColor,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(
@@ -284,9 +287,11 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                         ),
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            padding: EdgeInsets.symmetric(
-                              vertical: screenHeight / 45,
-                            ),
+                            minimumSize: Size(screenWidth, 51),
+                            maximumSize: Size(screenWidth, 51),
+                            // padding: EdgeInsets.symmetric(
+                            //   vertical: screenHeight / 45,
+                            // ),
                             backgroundColor: whiteColor,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(30),

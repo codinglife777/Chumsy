@@ -1,3 +1,4 @@
+import 'package:chumsy_app/styles/styles.dart';
 import 'package:flutter/material.dart';
 
 class CustomSwitch extends StatefulWidget {
@@ -91,14 +92,17 @@ class _CustomSwitchState extends State<CustomSwitch>
                   width: 55.0,
                   height: 32.0,
                   decoration: BoxDecoration(
-                    color: widget.changeColor ? widget.color2 : Colors.white,
-                    border: Border.all(
-                        color: widget.isLight
-                            ? const Color(0xff282828)
-                            : Colors.transparent,
-                        width: 2),
-                    borderRadius: BorderRadius.circular(24.0),
-                  ),
+                      // color: widget.changeColor ? widget.color2 : Colors.white,
+                      border: Border.all(
+                          color: widget.isLight
+                              ? const Color(0xff282828)
+                              : Colors.transparent,
+                          width: 2),
+                      borderRadius: BorderRadius.circular(24.0),
+                      gradient: widget.changeColor
+                          ? Styles.primaryGradient()
+                          : const LinearGradient(
+                              colors: [Colors.white, Colors.white])),
                   child: Padding(
                     padding: const EdgeInsets.only(
                         top: 2.0, bottom: 2.0, right: 2.0, left: 2.0),

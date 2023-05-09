@@ -1,11 +1,12 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../Functions/show_alert.dart';
-import '../../constants/colors.dart';
-import '../../constants/sizes.dart';
-import '../../constants/spacing.dart';
+import '../../Constants/colors.dart';
+import '../../Constants/sizes.dart';
+import '../../Constants/spacing.dart';
 import '../../Functions/show_tosts.dart';
 import '../../Widgets/chumsyerrordialog.dart';
 import 'mobile_screen.dart';
@@ -20,6 +21,8 @@ class SignupScreen extends StatefulWidget {
 class _SignupScreenState extends State<SignupScreen> {
   final TextEditingController _emailCont = TextEditingController();
   final TextEditingController _passwordCont = TextEditingController();
+  bool agree = false;
+  bool _obscureText = true;
 
   Future<void> _dialogBuilder(BuildContext context, String errorMessage) {
     return showDialog<void>(
@@ -41,7 +44,7 @@ class _SignupScreenState extends State<SignupScreen> {
               margin: const EdgeInsets.only(
                 top: 18,
               ),
-              height: screenHeight / 1.6,
+              height: screenHeight / 1.7,
               width: screenWidth,
               decoration: const BoxDecoration(
                 image: DecorationImage(
@@ -52,21 +55,23 @@ class _SignupScreenState extends State<SignupScreen> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.fromLTRB(40, screenHeight / 6, 40, 0),
+              padding: EdgeInsets.fromLTRB(40, screenHeight / 5.2, 40, 0),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
+                // crossAxisAlignment: CrossAxisAlignment.stretch,
                 mainAxisAlignment: MainAxisAlignment.start,
-                mainAxisSize: MainAxisSize.max,
+                // mainAxisSize: MainAxisSize.max,
                 children: [
                   SizedBox(
-                    width: screenWidth / 4,
-                    child: Image.asset("assets/login/logo.png",),
+                    width: 147,
+                    child: Image.asset(
+                      "assets/login/logo.png",
+                    ),
                   ),
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 45),
                   SizedBox(
-                    height: mainButtonSize,
+                    height: 51,
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      padding: const EdgeInsets.symmetric(horizontal: 0),
                       child: CupertinoTextField(
                         controller: _emailCont,
                         decoration: BoxDecoration(
@@ -85,19 +90,19 @@ class _SignupScreenState extends State<SignupScreen> {
                           color: blackColor,
                         ),
                         padding: EdgeInsets.symmetric(
-                          vertical: screenWidth / 50,
+                          // vertical: screenWidth / 50,
                           horizontal: screenWidth / 50,
                         ),
                       ),
                     ),
                   ),
                   const SizedBox(
-                    height: 11,
+                    height: 20,
                   ),
                   SizedBox(
-                    height: mainButtonSize,
+                    height: 51,
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      padding: const EdgeInsets.symmetric(horizontal: 0),
                       child: CupertinoTextField(
                         controller: _passwordCont,
                         decoration: BoxDecoration(
@@ -110,26 +115,98 @@ class _SignupScreenState extends State<SignupScreen> {
                             width: 2,
                           ),
                         ),
-                        obscureText: true,
+                        suffix: GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                _obscureText = !_obscureText;
+                              });
+                            },
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 15,
+                              ),
+                              child: Icon(
+                                _obscureText
+                                    ? Icons.visibility
+                                    : Icons.visibility_off,
+                                color: Colors.black,
+                              ),
+                            )),
+                        obscureText: _obscureText,
                         placeholder: 'Password',
                         placeholderStyle: const TextStyle(
                           fontSize: 13,
                           color: blackColor,
                         ),
                         padding: EdgeInsets.symmetric(
-                          vertical: screenWidth / 50,
+                          // vertical: screenWidth / 50,
                           horizontal: screenWidth / 50,
                         ),
                       ),
                     ),
                   ),
                   const SizedBox(
-                    height: 11,
+                    height: 20,
                   ),
                   SizedBox(
-                    height: mainButtonSize,
+                      height: 60,
+                      child: GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            agree = !agree;
+                          });
+                        },
+                        child: Row(
+                          children: [
+                            Icon(
+                              agree
+                                  ? CupertinoIcons.checkmark_square_fill
+                                  : CupertinoIcons.square,
+                            ),
+                            horizontalSpacingBox,
+                            Expanded(
+                              child: RichText(
+                                text: TextSpan(
+                                  text: "I agree to ",
+                                  children: [
+                                    TextSpan(
+                                      text: "Terms and Conditions",
+                                      style: const TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        decoration: TextDecoration.underline,
+                                      ),
+                                      recognizer: TapGestureRecognizer()
+                                        ..onTap = () {},
+                                    ),
+                                    const TextSpan(text: " and "),
+                                    TextSpan(
+                                      text: "Privacy Policy",
+                                      style: const TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        decoration: TextDecoration.underline,
+                                      ),
+                                      recognizer: TapGestureRecognizer()
+                                        ..onTap = () {},
+                                    )
+                                  ],
+                                  style: const TextStyle(
+                                    color: blackColor,
+                                    fontSize: 13,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      )),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  SizedBox(
+                    height: 51,
+                    width: screenWidth * 0.8,
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      padding: const EdgeInsets.symmetric(horizontal: 0),
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
                             backgroundColor: blackColor,
@@ -165,16 +242,16 @@ class _SignupScreenState extends State<SignupScreen> {
                     ),
                   ),
                   const SizedBox(
-                    height: 87,
+                    height: 60,
                   ),
                   Column(
                     children: [
                       const Text(
-                        'Sign in with:',
+                        'Sign up with:',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 16,
-                          color: greyIconColor,
+                          color: Colors.black,
                           fontWeight: FontWeight.w600,
                         ),
                       ),
@@ -186,28 +263,21 @@ class _SignupScreenState extends State<SignupScreen> {
                         children: [
                           CupertinoButton(
                             onPressed: () => openDialog(context, "Google.com"),
-                            child: Image.asset(
-                              "assets/login/google.png",
-                              width: 40,
-                              height: 40,
-                            ),
+                            child: Image.asset("assets/login/google.png",
+                                width: 40, fit: BoxFit.contain),
                           ),
                           CupertinoButton(
                             onPressed: () =>
                                 openDialog(context, "Facebook.com"),
-                            child: Image.asset(
-                              "assets/login/facebook.png",
-                              width: 40,
-                              height: 40,
-                            ),
+                            child: Image.asset("assets/login/facebook.png",
+                                width: 40, fit: BoxFit.contain),
                           ),
                           CupertinoButton(
                             onPressed: () => openDialog(context, "Apple.com"),
                             child: Image.asset(
-                              "assets/login/apple_black@2x.png",
-                              width: 40,
-                              height: 40,
-                            ),
+                                "assets/login/apple_black@2x.png",
+                                width: 40,
+                                fit: BoxFit.contain),
                           ),
                         ],
                       ),

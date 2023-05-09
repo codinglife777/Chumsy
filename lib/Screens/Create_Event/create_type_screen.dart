@@ -16,6 +16,8 @@ class CreateEventType extends StatefulWidget {
 }
 
 class _CreateEventTypeState extends State<CreateEventType> {
+  void clear() {}
+
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
@@ -70,8 +72,9 @@ class _CreateEventTypeState extends State<CreateEventType> {
               ),
             ),
           ),
-          const EventAppBar2(
+          EventAppBar(
             title: "Type",
+            cbClear: clear,
           ),
         ],
       ),

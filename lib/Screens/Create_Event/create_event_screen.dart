@@ -1,7 +1,10 @@
 import 'package:chumsy_app/Constants/sizes.dart';
+import 'package:chumsy_app/Widgets/Extra%20Widgets/custom_slider_tooptip.dart';
 import 'package:chumsy_app/Widgets/Extra%20Widgets/gradient_widget.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../Functions/build_event_row.dart';
 import '../../Constants/colors.dart';
@@ -16,6 +19,8 @@ import 'create_level_screen.dart';
 import 'create_price_screen.dart';
 import 'create_type_screen.dart';
 import 'create_with_whom_screen.dart';
+import 'package:syncfusion_flutter_core/theme.dart';
+import 'package:syncfusion_flutter_sliders/sliders.dart';
 
 class CreateEvent extends StatefulWidget {
   const CreateEvent({super.key});
@@ -28,6 +33,12 @@ class _CreateEventState extends State<CreateEvent> {
   int numberChumsys = 1;
   bool isAdvanced = false;
   bool needMaster = false;
+  bool showAgeSlider = false;
+  bool ageChanged = false;
+  SfRangeValues ageRange = const SfRangeValues(25.0, 45.0);
+
+  void clear() {}
+
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
@@ -46,16 +57,20 @@ class _CreateEventState extends State<CreateEvent> {
                     child: SingleChildScrollView(
                       child: Column(
                         children: [
-                          buildRow("Category", "Choose", () {
+                          buildRow(AppLocalizations.of(context)!.category,
+                              AppLocalizations.of(context)!.choose, () {
                             Get.to(() => const CreateEventCategory());
                           }),
-                          buildRow("Time", "Choose", () {
+                          buildRow(AppLocalizations.of(context)!.time,
+                              AppLocalizations.of(context)!.choose, () {
                             Get.to(() => const CreateEventTime());
                           }),
-                          buildRow("Location", "Choose", () {
+                          buildRow(AppLocalizations.of(context)!.location,
+                              AppLocalizations.of(context)!.choose, () {
                             Get.to(() => const CreateEventLocation());
                           }),
-                          buildRow("Price", "Free", () {
+                          buildRow(AppLocalizations.of(context)!.price,
+                              AppLocalizations.of(context)!.choose, () {
                             Get.to(() => const CreateEventPrice());
                           }),
                           Padding(
@@ -106,13 +121,8 @@ class _CreateEventState extends State<CreateEvent> {
                                       padding: const EdgeInsets.symmetric(
                                         horizontal: 10,
                                       ),
-                                      child: Text(
-                                        numberChumsys.toString(),
-                                        style: const TextStyle(
-                                          fontSize: 16,
-                                          color: blackColor,
-                                        ),
-                                      ),
+                                      child: Text(numberChumsys.toString(),
+                                          style: regularStyleBold),
                                     ),
                                     CupertinoButton(
                                       padding: EdgeInsets.zero,
@@ -173,9 +183,9 @@ class _CreateEventState extends State<CreateEvent> {
                                           ),
                                           CustomSwitch(
                                             value: needMaster,
-                                            isDarkBtn: true,
+                                            isDarkBtn: false,
                                             isLight: true,
-                                            changeColor: false,
+                                            changeColor: true,
                                             color2: neonColor,
                                             onChanged: (bool val) {
                                               setState(() {
@@ -186,27 +196,101 @@ class _CreateEventState extends State<CreateEvent> {
                                         ],
                                       ),
                                     ),
-                                    buildRow("With whom?", "Choose", () {
-                                      Get.to(() => const CreateEventWIthWhom(
-                                            btnText: "SAVE",
+                                    buildRow(
+                                        AppLocalizations.of(context)!.withWhom,
+                                        AppLocalizations.of(context)!.choose,
+                                        () {
+                                      Get.to(() => CreateEventWIthWhom(
+                                            btnText:
+                                                AppLocalizations.of(context)!
+                                                    .save,
                                           ));
                                     }),
-                                    buildRow("Level", "Choose", () {
-                                      Get.to(() => const CreateEventLevel(
-                                            btnText: "SAVE",
+                                    buildRow(
+                                        AppLocalizations.of(context)!.level,
+                                        AppLocalizations.of(context)!.choose,
+                                        () {
+                                      Get.to(() => CreateEventLevel(
+                                            btnText:
+                                                AppLocalizations.of(context)!
+                                                    .save,
                                           ));
                                     }),
-                                    buildRow("Type", "Choose", () {
-                                      Get.to(() => const CreateEventType(
-                                            btnText: "SAVE",
+                                    buildRow(AppLocalizations.of(context)!.type,
+                                        AppLocalizations.of(context)!.choose,
+                                        () {
+                                      Get.to(() => CreateEventType(
+                                            btnText:
+                                                AppLocalizations.of(context)!
+                                                    .save,
                                           ));
                                     }),
-                                    buildRow("Gender", "Choose", () {
-                                      Get.to(() => const CreateEventGender(
-                                            btnText: "SAVE",
+                                    buildRow(
+                                        AppLocalizations.of(context)!.gender,
+                                        AppLocalizations.of(context)!.choose,
+                                        () {
+                                      Get.to(() => CreateEventGender(
+                                            btnText:
+                                                AppLocalizations.of(context)!
+                                                    .choose,
                                           ));
                                     }),
-                                    buildRow("Age", "Choose", () {}),
+                                    buildRow(
+                                        AppLocalizations.of(context)!.age,
+                                        ageChanged
+                                            ? "${ageRange.start.floor()}-${ageRange.end.floor()}"
+                                            : AppLocalizations.of(context)!
+                                                .choose, () {
+                                      setState(() {
+                                        showAgeSlider = !showAgeSlider;
+                                      });
+                                    }),
+                                    if (showAgeSlider)
+                                      SizedBox(
+                                        height: 70,
+                                        width: screenWidth,
+                                        child: SfRangeSliderTheme(
+                                            data: SfRangeSliderThemeData(
+                                              activeTrackHeight: 4,
+                                              inactiveTrackHeight: 3,
+                                              activeTrackColor: activeColor,
+                                              inactiveTrackColor: blackColor,
+                                              thumbColor: Colors.white,
+                                              thumbStrokeColor: Colors.black26,
+                                              thumbStrokeWidth: 2,
+                                              thumbRadius: 16,
+                                              tooltipBackgroundColor:
+                                                  transparentColor,
+                                              tooltipTextStyle:
+                                                  regularStyleBold,
+                                            ),
+                                            child: SfRangeSlider(
+                                              values: ageRange,
+                                              min: 16,
+                                              max: 100,
+                                              interval: 1,
+                                              tooltipShape:
+                                                  const CustomTooltipShape(),
+                                              // activeColor: activeColor,
+                                              // inactiveColor: blackColor,
+                                              enableTooltip: true,
+                                              shouldAlwaysShowTooltip: true,
+                                              tooltipTextFormatterCallback:
+                                                  (actualValue, formattedText) {
+                                                formattedText =
+                                                    double.parse(formattedText)
+                                                        .floor()
+                                                        .toString();
+                                                return formattedText;
+                                              },
+                                              onChanged: (value) {
+                                                setState(() {
+                                                  ageRange = value;
+                                                  ageChanged = true;
+                                                });
+                                              },
+                                            )),
+                                      ),
                                     const SizedBox(
                                       height: 18,
                                     ),
@@ -214,8 +298,9 @@ class _CreateEventState extends State<CreateEvent> {
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
-                                        const Text(
-                                          "Add Description",
+                                        Text(
+                                          AppLocalizations.of(context)!
+                                              .addDescription,
                                           style: smallStyleBold,
                                         ),
                                         spacingBox,
@@ -226,7 +311,9 @@ class _CreateEventState extends State<CreateEvent> {
                                             horizontal: 15,
                                             vertical: 12,
                                           ),
-                                          placeholder: "This event will be...",
+                                          placeholder:
+                                              AppLocalizations.of(context)!
+                                                  .thisEventWillBe,
                                           placeholderStyle: smallStyle,
                                           decoration: BoxDecoration(
                                             borderRadius: BorderRadius.circular(
@@ -246,9 +333,9 @@ class _CreateEventState extends State<CreateEvent> {
                                     top: 55,
                                   ),
                                   child: CupertinoButton(
-                                    child: const Text(
-                                      "Advanced",
-                                      style: TextStyle(
+                                    child: Text(
+                                      AppLocalizations.of(context)!.advanced,
+                                      style: const TextStyle(
                                         fontSize: 16,
                                         decoration: TextDecoration.underline,
                                         color: blackColor,
@@ -276,9 +363,9 @@ class _CreateEventState extends State<CreateEvent> {
                     child: CustomGradientButtonWidget(
                       buttonWidget: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: const [
+                        children: [
                           Text(
-                            "CREATE AN EVENT",
+                            AppLocalizations.of(context)!.createAnEventCC,
                             style: regularStyleBold,
                           ),
                         ],
@@ -290,8 +377,9 @@ class _CreateEventState extends State<CreateEvent> {
               ),
             ),
           ),
-          const EventAppBar(
-            title: "Create an event",
+          EventAppBar(
+            title: AppLocalizations.of(context)!.createAnEvent,
+            cbClear: clear,
           ),
         ],
       ),

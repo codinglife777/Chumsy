@@ -5,6 +5,7 @@ import 'package:flutter/material.dart' hide BoxShadow, BoxDecoration;
 import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
 import 'package:get/get.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../Constants/colors.dart';
 
@@ -12,20 +13,20 @@ void openTimePicker(BuildContext context) {
   showCupertinoModalPopup<void>(
     context: context,
     builder: (BuildContext context) => Theme(
-      data: ThemeData.dark().copyWith(
+      data: ThemeData.light().copyWith(
         dialogTheme: const DialogTheme(
           surfaceTintColor: blackColor,
         ),
       ),
       child: SlidingUpPanel(
-        color: blackColor,
+        color: whiteColor,
         backdropEnabled: true,
         minHeight: 250,
         panel: Column(
           children: [
             Container(
               decoration: BoxDecoration(
-                color: blackColor.withRed(1),
+                color: Colors.grey,
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -52,21 +53,21 @@ void openTimePicker(BuildContext context) {
                     }
                   },
                 ),
-                IgnorePointer(
-                  ignoring: true,
-                  child: Container(
-                    height: 250,
-                    width: screenWidth,
-                    decoration: BoxDecoration(
-                      border: Border.symmetric(
-                        horizontal: BorderSide(
-                          color: blackColor.withOpacity(0.9),
-                          width: 60,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
+                // IgnorePointer(
+                //   ignoring: true,
+                //   child: Container(
+                //     height: 250,
+                //     width: screenWidth,
+                //     decoration: BoxDecoration(
+                //       border: Border.symmetric(
+                //         horizontal: BorderSide(
+                //           color: blackColor.withOpacity(0.9),
+                //           width: 60,
+                //         ),
+                //       ),
+                //     ),
+                //   ),
+                // ),
               ],
             ),
           ],
@@ -80,20 +81,16 @@ void openDatePicker(BuildContext context) {
   showCupertinoModalPopup<void>(
     context: context,
     builder: (BuildContext context) => Theme(
-      data: ThemeData.dark().copyWith(
-        dialogTheme: const DialogTheme(
-          surfaceTintColor: blackColor,
-        ),
-      ),
+      data: ThemeData.light(),
       child: SlidingUpPanel(
-        color: blackColor,
+        color: whiteColor,
         backdropEnabled: true,
         minHeight: 250,
         panel: Column(
           children: [
             Container(
-              decoration: BoxDecoration(
-                color: blackColor.withRed(1),
+              decoration: const BoxDecoration(
+                color: Colors.grey,
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -103,8 +100,9 @@ void openDatePicker(BuildContext context) {
                     onPressed: () {
                       Get.back();
                     },
-                    child: const Text(
-                      "Done",
+                    child: Text(
+                      AppLocalizations.of(context)!.done,
+                      style: const TextStyle(color: Colors.black, fontSize: 16),
                     ),
                   ),
                 ],
@@ -122,27 +120,27 @@ void openDatePicker(BuildContext context) {
                       minuteInterval: 1,
                       use24hFormat: true,
                       dateOrder: DatePickerDateOrder.dmy,
-                      mode: CupertinoDatePickerMode.dateAndTime,
+                      mode: CupertinoDatePickerMode.date,
                       initialDateTime: DateTime.now(),
                       onDateTimeChanged: (val) {},
                     ),
                   ),
                 ),
-                IgnorePointer(
-                  ignoring: true,
-                  child: Container(
-                    height: 250,
-                    width: screenWidth,
-                    decoration: BoxDecoration(
-                      border: Border.symmetric(
-                        horizontal: BorderSide(
-                          color: blackColor.withOpacity(0.8),
-                          width: 60,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
+                // IgnorePointer(
+                //   ignoring: true,
+                //   child: Container(
+                //     height: 250,
+                //     width: screenWidth,
+                //     decoration: BoxDecoration(
+                //       border: Border.symmetric(
+                //         horizontal: BorderSide(
+                //           color: blackColor.withOpacity(0.8),
+                //           width: 60,
+                //         ),
+                //       ),
+                //     ),
+                //   ),
+                // ),
               ],
             ),
           ],

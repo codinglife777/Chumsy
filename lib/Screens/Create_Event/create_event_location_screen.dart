@@ -2,6 +2,7 @@ import 'package:chumsy_app/Constants/sizes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../Constants/colors.dart';
 import '../../Constants/spacing.dart';
@@ -17,6 +18,9 @@ class CreateEventLocation extends StatefulWidget {
 
 class _CreateEventLocationState extends State<CreateEventLocation> {
   final TextEditingController searchCont = TextEditingController();
+
+  void clear() {}
+
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
@@ -169,8 +173,9 @@ class _CreateEventLocationState extends State<CreateEventLocation> {
               ],
             ),
           ),
-          const EventAppBar(
-            title: "Location",
+          EventAppBar(
+            title: AppLocalizations.of(context)!.location,
+            cbClear: clear,
           ),
         ],
       ),

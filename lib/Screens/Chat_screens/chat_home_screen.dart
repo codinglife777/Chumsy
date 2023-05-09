@@ -27,12 +27,21 @@ class _ChatScreenState extends State<ChatScreen> {
           Expanded(
             flex: 0,
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
-                Text(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const SizedBox(),
+                const Text(
                   "Chat",
                   style: subHeadingStyle,
                 ),
+                Padding(
+                  padding: const EdgeInsets.only(right: 0),
+                  child: CupertinoButton(
+                    onPressed: () {},
+                    child: const ImageIcon(
+                        AssetImage('assets/extras/user_add.png')),
+                  ),
+                )
               ],
             ),
           ),
@@ -63,27 +72,27 @@ class _ChatScreenState extends State<ChatScreen> {
                         ),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.start,
-                          children: const [
+                          children: [
                             horizontalSpacingBox,
-                            Expanded(
+                            const Expanded(
                               flex: 0,
                               child: Icon(
                                 CupertinoIcons.search,
-                                color: blackColor,
+                                color: Color(0xff777777),
                               ),
                             ),
                             horizontalSpacingBox,
                             Expanded(
                               flex: 1,
                               child: CupertinoTextField(
-                                padding: EdgeInsets.symmetric(
-                                  horizontal: 16,
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 5,
                                 ),
                                 placeholder: 'Search',
-                                placeholderStyle: TextStyle(
-                                  color: greyIconColor,
-                                ),
-                                decoration: BoxDecoration(
+                                placeholderStyle: regularStyleBold.copyWith(
+                                    color: const Color(0xff888888),
+                                    fontWeight: FontWeight.w600),
+                                decoration: const BoxDecoration(
                                   borderRadius: BorderRadius.all(
                                     Radius.circular(
                                       100,
@@ -97,7 +106,7 @@ class _ChatScreenState extends State<ChatScreen> {
                       ),
                     ),
                     const SizedBox(
-                      height: 21,
+                      height: 10,
                     ),
                     // main body
                     Expanded(
@@ -108,21 +117,24 @@ class _ChatScreenState extends State<ChatScreen> {
                           shrinkWrap: true,
                           children: const [
                             ChatTile(
-                              name: "Max Smith",
+                              name: "Alexandra",
+                              surName: "Pawluczuk-Loskot",
                               profileLocation: "assets/extras/dp_1.jpg",
                               message:
                                   "Nice. I don't know why peoole get all worked up about hawaiian pizza. I like it",
                               time: "9: 36 AM",
                             ),
                             ChatTile(
-                              name: "Dee McRobie",
+                              name: "Dee",
+                              surName: "McRobie",
                               profileLocation: "assets/extras/dp_2.jpg",
                               message:
                                   "Nice. I don't know why peoole get all worked up about hawaiian pizza. I like it",
                               time: "9: 36 AM",
                             ),
                             ChatTile(
-                              name: "Max Kowalski",
+                              name: "Max",
+                              surName: "Kowalski",
                               profileLocation: "assets/extras/dp_3.jpg",
                               message:
                                   "Nice. I don't know why peoole get all worked up about hawaiian pizza. I like it",
@@ -130,13 +142,15 @@ class _ChatScreenState extends State<ChatScreen> {
                             ),
                             ChatTile(
                               name: "Anna Perez",
+                              surName: "Kowalski",
                               profileLocation: "assets/extras/dp_4.jpg",
                               message:
                                   "Nice. I don't know why peoole get all worked up about hawaiian pizza. I like it",
                               time: "9: 36 AM",
                             ),
                             ChatTile(
-                              name: "Luna Kith",
+                              name: "Luna",
+                              surName: "Kowalski",
                               profileLocation: "assets/extras/dp_4.jpg",
                               message:
                                   "Nice. I don't know why peoole get all worked up about hawaiian pizza. I like it",
@@ -144,32 +158,37 @@ class _ChatScreenState extends State<ChatScreen> {
                             ),
                             ChatTile(
                               name: "Robert Johnson",
+                              surName: "Kowalski",
                               profileLocation: "assets/extras/dp_2.jpg",
                               message:
                                   "Nice. I don't know why peoole get all worked up about hawaiian pizza. I like it",
                               time: "9: 36 AM",
                             ),
                             ChatTile(
-                              name: "Sarah Johnson",
+                              name: "Sarah",
+                              surName: "Johnson",
                               profileLocation: "assets/extras/dp_3.jpg",
                               message: "Hey there! How are you doing today?",
                               time: "10:30 AM",
                             ),
                             ChatTile(
-                              name: "John Doe",
+                              name: "John",
+                              surName: "Kowalski",
                               profileLocation: "assets/extras/dp_1.jpg",
                               message: "Can't wait for the weekend! Any plans?",
                               time: "11:15 AM",
                             ),
                             ChatTile(
-                              name: "Jane Smith",
+                              name: "Jane",
+                              surName: "Smith",
                               profileLocation: "assets/extras/dp_2.jpg",
                               message:
                                   "I'm so excited for the concert tonight!",
                               time: "1:45 PM",
                             ),
                             ChatTile(
-                              name: "Mike Davis",
+                              name: "Mike",
+                              surName: "Davis",
                               profileLocation: "assets/extras/dp_3.jpg",
                               message: "What's up?",
                               time: "3:20 PM",

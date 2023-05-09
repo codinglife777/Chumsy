@@ -48,4 +48,3 @@ const smallStyle = TextStyle(
 
 double screenHeight = Get.height;
 double screenWidth = Get.height;
-double mainButtonSize = 49;

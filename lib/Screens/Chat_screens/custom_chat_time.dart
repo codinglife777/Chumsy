@@ -10,11 +10,12 @@ class ChatTile extends StatelessWidget {
   const ChatTile({
     super.key,
     required this.name,
+    required this.surName,
     required this.time,
     required this.profileLocation,
     required this.message,
   });
-  final String name, time, profileLocation, message;
+  final String name, surName, time, profileLocation, message;
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +26,7 @@ class ChatTile extends StatelessWidget {
       onTap: () => Get.to(
         () => ChattingScreen(
           name: name,
+          surName: surName,
           image: profileLocation,
         ),
       ),
@@ -36,12 +38,20 @@ class ChatTile extends StatelessWidget {
         foregroundImage: AssetImage(profileLocation),
       ),
       leadingSize: 62,
-      title: Text(
-        name,
-        style: regularStyleBold.copyWith(
-          fontWeight: FontWeight.w700,
+      title: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        Text(
+          name,
+          style: regularStyleBold.copyWith(
+            fontWeight: FontWeight.w700,
+          ),
         ),
-      ),
+        Text(
+          surName,
+          style: regularStyleBold.copyWith(
+            fontWeight: FontWeight.w700,
+          ),
+        ),
+      ]),
       subtitle: AutoSizeText(
         message,
         style: const TextStyle(

@@ -43,10 +43,10 @@ class _CreateEventPaymentOptionsState extends State<CreateEventPaymentOptions> {
                           PaymentTypes(
                             payType: "Online via application",
                           ),
-                          spacingBox,
-                          PaymentTypes(
-                            payType: "Chumsy Coins",
-                          ),
+                          // spacingBox,
+                          // PaymentTypes(
+                          //   payType: "Chumsy Coins",
+                          // ),
                         ],
                       ),
                     ),

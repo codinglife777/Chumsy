@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 
 import '../../Constants/sizes.dart';
 import '../../Widgets/Extra Widgets/custom_otp_input_field.dart';
+import '../../Widgets/chumsyerrordialog.dart';
 
 class VerificationScreen extends StatefulWidget {
   const VerificationScreen({Key? key}) : super(key: key);
@@ -31,6 +32,15 @@ class _VerificationScreenState extends State<VerificationScreen> {
     _fieldFour.text = "6";
     _fieldFive.text = "4";
     code = true;
+  }
+
+  Future<void> _dialogBuilder(BuildContext context, String errorMessage) {
+    return showDialog<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return ChumsyErrorDialog(errorMessage: errorMessage);
+      },
+    );
   }
 
   @override
@@ -106,7 +116,10 @@ class _VerificationScreenState extends State<VerificationScreen> {
                                 children: [
                                   const Text('Didn\'t receive a code?'),
                                   TextButton(
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      _dialogBuilder(context,
+                                          "A new verification code has been sent to your e-mail");
+                                    },
                                     child: const Text(
                                       'Resend',
                                       style: TextStyle(

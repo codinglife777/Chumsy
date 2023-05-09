@@ -40,12 +40,13 @@ class _CreateEventPriceMoneyState extends State<CreateEventPriceMoney> {
                   topSpacingBox,
                   SizedBox(
                     height: screenHeight / 1.6,
-                    width: 85,
+                    width: 200,
                     child: Center(
                       child: CupertinoTextField(
                         controller: _ammountController,
                         keyboardType: TextInputType.number,
                         style: headingStyle24,
+                        textAlign: TextAlign.right,
                         decoration: const BoxDecoration(
                           color: whiteColor,
                         ),

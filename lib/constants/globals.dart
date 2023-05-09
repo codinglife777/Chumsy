@@ -1,20 +1,8 @@
-// ignore_for_file: non_constant_identifier_names
+library chumsy_app.globals;
 
-library chumsy.globals;
+import 'dart:async';
 
-String g_userName = '';
-String g_phoneNumber = '';
+import '../providers/locationprovider.dart';
 
-class LoginConstants {
-  static const double buttonColumnSpacing = 16;
-}
-
-class LoginSplashList {
-  LoginSplashList({
-    this.title = '',
-    this.imagePath = '',
-  });
-
-  String title;
-  String imagePath;
-}
+StreamController messageStreamController = StreamController.broadcast();
+LocationProvider locationProvider = LocationProvider();

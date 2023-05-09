@@ -28,7 +28,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           Column(
             children: [
               Container(
-                height: MediaQuery.of(context).size.height * 0.25,
+                height: MediaQuery.of(context).size.height * 0.2,
                 decoration: const BoxDecoration(
                   gradient: LinearGradient(
                     begin: Alignment.topLeft,
@@ -88,7 +88,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 height: 4,
               ),
               const Text(
-                'Poland, Warsaw',
+                'Warsaw, Poland',
                 style: smallStyle,
               ),
               const SizedBox(
