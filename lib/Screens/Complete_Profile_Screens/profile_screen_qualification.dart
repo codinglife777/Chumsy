@@ -1,6 +1,5 @@
 import 'package:chumsy_app/Constants/colors.dart';
 import 'package:chumsy_app/Constants/sizes.dart';
-import 'package:chumsy_app/Constants/spacing.dart';
 import 'package:chumsy_app/Screens/landing_page.dart';
 import 'package:flutter/cupertino.dart' hide BoxDecoration, BoxShadow;
 import 'package:flutter/foundation.dart';
@@ -10,14 +9,10 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'package:get/get.dart';
 
-import '../../Constants/globals.dart';
-import '../../ModelClasses/user_model.dart';
+import '../../Widgets/Extra Widgets/google_map.dart';
 import '../../Widgets/Extra Widgets/gradient_widget.dart';
-import '../../Widgets/Extra Widgets/list_set_of_widgets.dart';
 import '../../Widgets/Extra Widgets/scatteredgrid.dart';
-import '../../Widgets/Extra Widgets/signup_bottom_sheet.dart';
 import '../../styles/styles.dart';
-import 'qualification_items_list.dart';
 
 class CreateProfileQualification extends StatefulWidget {
   const CreateProfileQualification({super.key});
@@ -65,18 +60,84 @@ class _CreateProfileQualificationState
     {"topic": "Floorball"},
     {"topic": "Football"},
     {"topic": "Frisbee"},
-    {"topic": "Tennis"},
-    {"topic": "Nordic Walking"},
-    {"topic": "Yoga"},
+    {"topic": "Golf"},
+    {"topic": "Gym"},
+    {"topic": "Gymnastics"},
+    {"topic": "Handball"},
+    {"topic": "Hockey"},
+    {"topic": "Horse riding"},
+    {"topic": "Ice-skating"},
+    {"topic": "Judo"},
+    {"topic": "Karate"},
+    {"topic": "Karting"},
+    {"topic": "Kick-boxing"},
+    {"topic": "Kitesurfing"},
+    {"topic": "MMA"},
+    {"topic": "Motorbike riding"},
+    {"topic": "Nordic walking"},
+    {"topic": "Padel"},
+    {"topic": "Pedalo"},
+    {"topic": "Physiotherapy (exercise)"},
     {"topic": "Pilates"},
+    {"topic": "Pool"},
+    {"topic": "Roller blading"},
+    {"topic": "Roller skates"},
+    {"topic": "Rowing"},
+    {"topic": "Rugby"},
+    {"topic": "Running"},
+    {"topic": "Sailing"},
+    {"topic": "Shooting"},
+    {"topic": "Skateboard"},
+    {"topic": "Ski jumping"},
+    {"topic": "Skiing"},
+    {"topic": "Snowboard"},
+    {"topic": "Squash"},
+    {"topic": "SUP"},
+    {"topic": "Surfing"},
+    {"topic": "Swimming"},
+    {"topic": "Tennis"},
+    {"topic": "Taekwondo"},
+    {"topic": "Tennis"},
+    {"topic": "Trekking"},
+    {"topic": "Triathlon"},
+    {"topic": "Volleyball"},
+    {"topic": "Weightlifting"},
+    {"topic": "Windsurfing"},
+    {"topic": "Wrestling"},
+    {"topic": "Yoga"},
   ];
 
   List<Map<String, String>> lifeStyleTopics = [
-    {"topic": 'Beer Pong'},
-    {"topic": 'Massage'},
-    {"topic": "Rummy"},
-    {"topic": 'Yoga'},
-    {"topic": 'Wholistic Living'},
+    {"topic": 'Board games'},
+    {"topic": 'Calligraphy'},
+    {"topic": 'Caravanning'},
+    {"topic": "Card games"},
+    {"topic": 'Ceramics and Pottery'},
+    {"topic": 'Cooking'},
+    {"topic": 'Crocheting'},
+    {"topic": 'Drawing'},
+    {"topic": 'Embroidering'},
+    {"topic": 'Fashion'},
+    {"topic": 'Fishing'},
+    {"topic": 'Floristics'},
+    {"topic": 'Handicraft'},
+    {"topic": 'Macrame'},
+    {"topic": 'Make-up and Beauty care'},
+    {"topic": 'Mindfulness'},
+    {"topic": 'Music and Singing'},
+    {"topic": 'Paintball'},
+    {"topic": 'Painting'},
+    {"topic": 'Photography'},
+    {"topic": 'Picnic'},
+    {"topic": 'Pole dance'},
+    {"topic": 'Rope course'},
+    {"topic": 'Sauna'},
+    {"topic": 'Sled'},
+    {"topic": 'Trampolines'},
+    {"topic": 'Walk'},
+    {"topic": 'Walk with a dog'},
+    {"topic": 'Walk with children'},
+    {"topic": 'Zumba'},
   ];
 
   List<Map<String, String>> controlList = [];

@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../Functions/show_alert.dart';
 import '../../Constants/colors.dart';
@@ -84,7 +85,7 @@ class _SignupScreenState extends State<SignupScreen> {
                             width: 2,
                           ),
                         ),
-                        placeholder: 'E-mail address',
+                        placeholder: AppLocalizations.of(context)!.emailAddress,
                         placeholderStyle: const TextStyle(
                           fontSize: 13,
                           color: blackColor,
@@ -133,7 +134,7 @@ class _SignupScreenState extends State<SignupScreen> {
                               ),
                             )),
                         obscureText: _obscureText,
-                        placeholder: 'Password',
+                        placeholder: AppLocalizations.of(context)!.password,
                         placeholderStyle: const TextStyle(
                           fontSize: 13,
                           color: blackColor,
@@ -167,10 +168,11 @@ class _SignupScreenState extends State<SignupScreen> {
                             Expanded(
                               child: RichText(
                                 text: TextSpan(
-                                  text: "I agree to ",
+                                  text: AppLocalizations.of(context)!.agreeTo,
                                   children: [
                                     TextSpan(
-                                      text: "Terms and Conditions",
+                                      text: AppLocalizations.of(context)!
+                                          .termsAndConditions,
                                       style: const TextStyle(
                                         fontWeight: FontWeight.bold,
                                         decoration: TextDecoration.underline,
@@ -178,9 +180,12 @@ class _SignupScreenState extends State<SignupScreen> {
                                       recognizer: TapGestureRecognizer()
                                         ..onTap = () {},
                                     ),
-                                    const TextSpan(text: " and "),
                                     TextSpan(
-                                      text: "Privacy Policy",
+                                        text:
+                                            AppLocalizations.of(context)!.and),
+                                    TextSpan(
+                                      text: AppLocalizations.of(context)!
+                                          .privacyPolicy,
                                       style: const TextStyle(
                                         fontWeight: FontWeight.bold,
                                         decoration: TextDecoration.underline,

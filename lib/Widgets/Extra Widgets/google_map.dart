@@ -39,8 +39,7 @@ class _MainMapState extends State<MainMap> {
               //  liteModeEnabled: Platform.isAndroid ? true : false,
               zoomControlsEnabled: false,
               initialCameraPosition: CameraPosition(
-                target: LatLng(locationProvider.locationData.latitude,
-                    locationProvider.locationData.longitude),
+                target: LatLng(22, 22),
                 zoom: 14,
               ),
               myLocationButtonEnabled: false,
@@ -66,7 +65,7 @@ class _MainMapState extends State<MainMap> {
                       children: [
                         Padding(
                           padding: const EdgeInsets.only(left: 24),
-                          child: Image.asset('assets/searchicon.png'),
+                          child: Image.asset('assets/extras/location@2x.png'),
                         ),
                         const SizedBox(
                           width: 13.3,
@@ -119,7 +118,7 @@ class _MainMapState extends State<MainMap> {
                 ),
                 child: GestureDetector(
                   onTap: () {},
-                  child: Image.asset('assets/mylocationicon.png'),
+                  child: Image.asset('assets/home/mylocation@1x.png'),
                 ),
               ),
             ),
@@ -135,7 +134,7 @@ class _MainMapState extends State<MainMap> {
                 ),
                 child: GestureDetector(
                   onTap: () {},
-                  child: Image.asset('assets/listviewicon.png'),
+                  child: Image.asset('assets/home/send.png'),
                 ),
               ),
             ),

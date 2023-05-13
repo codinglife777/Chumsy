@@ -1,7 +1,7 @@
 import 'package:location/location.dart';
 
 class LocationProvider {
-  final Location _location = Location();
+  final Location _location = new Location();
   bool _serviceEnabled = false;
   late PermissionStatus _permissionStatus;
   late LocationData _locationData;
