@@ -1,15 +1,13 @@
+import 'package:chumsy_app/Constants/colors.dart';
 import 'package:chumsy_app/Screens/Help_Center/mng_bottom_nav.dart';
-import 'package:chumsy_app/Screens/Help_Center/support.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../../Functions/build_event_row.dart';
 import '../../Constants/sizes.dart';
 import '../../Constants/spacing.dart';
+import '../../Functions/terms.dart';
 import '../../Widgets/Create_Event/app_bar.dart';
-import 'faq.dart';
-import 'report.dart';
 
 class HelpCenterMain extends StatefulWidget {
   const HelpCenterMain({
@@ -21,15 +19,10 @@ class HelpCenterMain extends StatefulWidget {
 }
 
 class _HelpCenterMainState extends State<HelpCenterMain> {
-  Future<void> termsAndConditions(Uri url) async {
-    if (!await launchUrl(url, mode: LaunchMode.externalApplication)) {
-      throw Exception('Could not launch $url');
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
+      backgroundColor: whiteColor,
       child: Stack(
         children: [
           Padding(
@@ -41,7 +34,7 @@ class _HelpCenterMainState extends State<HelpCenterMain> {
                 children: [
                   topSpacingBox,
                   SizedBox(
-                    height: screenHeight / 1.4,
+                    height: screenHeight,
                     child: SingleChildScrollView(
                       child: Column(
                         children: [
@@ -74,8 +67,7 @@ class _HelpCenterMainState extends State<HelpCenterMain> {
                             "Terms & Conditions",
                             "",
                             () async {
-                              final Uri url = Uri.parse('https://chumsy.com');
-                              await termsAndConditions(url);
+                              await termsAndConditions();
                             },
                           ),
                         ],

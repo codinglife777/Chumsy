@@ -58,6 +58,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
           Expanded(
               child: SingleChildScrollView(
             child: Container(
+              height: screenHeight,
               color: whiteColor,
               constraints: BoxConstraints(
                   minWidth: widget.constraints.maxWidth,
@@ -163,7 +164,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: const [
                   Text(
-                    "Save",
+                    "SAVE",
                     style: regularStyleBold,
                   ),
                 ],

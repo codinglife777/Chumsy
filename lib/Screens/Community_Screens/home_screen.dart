@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../Constants/spacing.dart';
+import '../../Controllers/image_controller.dart';
+import '../../Functions/cupertino_action_sheet.dart';
 import '../../Widgets/Community/feed_card.dart';
 import '../../Widgets/Community/frient_tile_widget.dart';
 import '../../Widgets/Extra Widgets/gradient_widget.dart';
@@ -25,6 +27,8 @@ class CommunityScreen extends StatefulWidget {
 int active = 0;
 
 class _CommunityScreenState extends State<CommunityScreen> {
+  final ImageController imageController = Get.put(ImageController());
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -60,7 +64,10 @@ class _CommunityScreenState extends State<CommunityScreen> {
                         "assets/extras/camera.png",
                         width: 22,
                       ),
-                      onPressed: () => Get.back(),
+                      onPressed: () {
+                        showActionSheet(context, imageController,
+                            "Take a Photo", 'Photo Library');
+                      },
                     ),
                   ],
                 ),
@@ -112,53 +119,61 @@ class _CommunityScreenState extends State<CommunityScreen> {
                             height: 34,
                           ),
                         ]
-                      : [
-                          const FriendTile(
-                            name: "Max Smith",
-                            events: "9",
-                            profileLocation: "assets/extras/dp_1.jpg",
-                          ),
-                          const SizedBox(
-                            height: 22,
-                          ),
-                          const FriendTile(
-                            name: "Dee McRobie",
-                            events: "1",
-                            profileLocation: "assets/extras/dp_2.jpg",
-                          ),
-                          const SizedBox(
-                            height: 22,
-                          ),
-                          const FriendTile(
-                            name: "Max Kowalski",
-                            events: "3",
-                            profileLocation: "assets/extras/dp_3.jpg",
-                          ),
-                          const SizedBox(
-                            height: 22,
-                          ),
-                          const FriendTile(
-                            name: "Anna Perez",
-                            events: "1",
-                            profileLocation: "assets/extras/dp_4.jpg",
-                          ),
-                          const SizedBox(
-                            height: 22,
-                          ),
-                          const FriendTile(
-                            name: "Luna Kith",
-                            events: "6",
-                            profileLocation: "assets/extras/dp_4.jpg",
-                          ),
-                          const SizedBox(
-                            height: 22,
-                          ),
-                          const FriendTile(
-                            name: "Robert Johnson",
-                            events: "4",
-                            profileLocation: "assets/extras/dp_2.jpg",
-                          ),
-                        ],
+                      : active == 1
+                          ? [
+                              const FriendTile(
+                                name: "Max Smith",
+                                events: "9",
+                                profileLocation: "assets/extras/dp_1.jpg",
+                              ),
+                              const SizedBox(
+                                height: 22,
+                              ),
+                              const FriendTile(
+                                name: "Dee McRobie",
+                                events: "1",
+                                profileLocation: "assets/extras/dp_2.jpg",
+                              ),
+                              const SizedBox(
+                                height: 22,
+                              ),
+                              const FriendTile(
+                                name: "Max Kowalski",
+                                events: "3",
+                                profileLocation: "assets/extras/dp_3.jpg",
+                              ),
+                              const SizedBox(
+                                height: 22,
+                              ),
+                              const FriendTile(
+                                name: "Anna Perez",
+                                events: "1",
+                                profileLocation: "assets/extras/dp_4.jpg",
+                              ),
+                              const SizedBox(
+                                height: 22,
+                              ),
+                              const FriendTile(
+                                name: "Luna Kith",
+                                events: "6",
+                                profileLocation: "assets/extras/dp_4.jpg",
+                              ),
+                              const SizedBox(
+                                height: 22,
+                              ),
+                              const FriendTile(
+                                name: "Robert Johnson",
+                                events: "4",
+                                profileLocation: "assets/extras/dp_2.jpg",
+                              ),
+                            ]
+                          : [
+                              const FriendRequestTile(
+                                name: "Max Smith",
+                                location: "Warsaw, Poland",
+                                profileLocation: "assets/extras/dp_1.jpg",
+                              ),
+                            ],
                 ),
               ),
               active == 1

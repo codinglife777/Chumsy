@@ -68,20 +68,20 @@ class CustomFeedCard extends StatelessWidget {
             imageLocation,
             width: screenWidth,
           ),
-          spacingBox,
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                "$cheers cheers",
-                style: smallStyle,
-              ),
-              Text(
-                "$comments comments",
-                style: smallStyle,
-              ),
-            ],
-          ),
+          // spacingBox,
+          // Row(
+          //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //   children: [
+          //     Text(
+          //       "$cheers cheers",
+          //       style: smallStyle,
+          //     ),
+          //     Text(
+          //       "$comments comments",
+          //       style: smallStyle,
+          //     ),
+          //   ],
+          // ),
           spacingBox,
           Divider(
             color: textColor.withOpacity(

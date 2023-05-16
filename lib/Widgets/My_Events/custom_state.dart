@@ -58,7 +58,7 @@ class _CustomState extends State<CustomState> {
           height: 7,
         ),
         const Text(
-          "Choose the reason for cancelations:",
+          "Choose the reason for cancelation:",
           style: smallStyle,
         ),
         const SizedBox(

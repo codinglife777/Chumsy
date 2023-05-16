@@ -1,4 +1,5 @@
 import 'package:chumsy_app/Constants/sizes.dart';
+import 'package:chumsy_app/Functions/show_google_map.dart';
 import 'package:chumsy_app/Screens/Community_Screens/add_contact_screen.dart';
 import 'package:chumsy_app/Screens/Create_Event/create_gender_screen.dart';
 import 'package:chumsy_app/Screens/Create_Event/create_level_screen.dart';
@@ -8,6 +9,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'dart:math' as math;
+import 'package:slidable_button/slidable_button.dart';
 
 import 'package:syncfusion_flutter_core/core.dart';
 import 'package:syncfusion_flutter_core/theme.dart';
@@ -17,9 +19,11 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../Functions/build_event_row.dart';
 import '../../Constants/colors.dart';
 import '../../Constants/spacing.dart';
+import '../../Styles/styles.dart';
 import '../../Widgets/Create_Event/app_bar.dart';
 import '../../Widgets/Extra Widgets/custom_slider_tooptip.dart';
 import '../../Widgets/Extra Widgets/custom_switch.dart';
+import '../../Widgets/Extra Widgets/google_map.dart';
 import '../Create_Event/create_price_screen.dart';
 import '../Create_Event/create_with_whom_screen.dart';
 import 'filter_category_screen.dart';
@@ -38,7 +42,7 @@ class _FilterHomeState extends State<FilterHome> {
   bool showAgeSlider = false;
   bool ageChanged = false;
   bool isAdvanced = false;
-  SfRangeValues ageRange = const SfRangeValues(25.1, 45.2);
+  SfRangeValues ageRange = const SfRangeValues(16.01, 100.01);
   bool needMaster = false;
   double locationSlider = 50;
   Map<dynamic, dynamic> filterData = {};
@@ -84,14 +88,15 @@ class _FilterHomeState extends State<FilterHome> {
                             Get.to(
                                 () => FilterTime(setFilterData: setFilterData));
                           }),
-                          buildRow(
-                              AppLocalizations.of(context)!.location,
-                              // AppLocalizations.of(context)!.choose
-                              'Wolska 62, 01-134, Mlynow, Warszawa, Polska',
+                          buildRow(AppLocalizations.of(context)!.location,
+                              AppLocalizations.of(context)!.choose,
+                              // 'Wolska 62, 01-134, Mlynow, Warszawa, Polska',
                               () {
-                            setState(() {
-                              showLocationSlider = !showLocationSlider;
-                            });
+                            // setState(() {
+                            //   showLocationSlider = !showLocationSlider;
+                            // });
+                            // showGoogleMap(context);
+                            Get.to(() => const MainMap());
                           }, "Distance (km)"),
                           if (showLocationSlider)
                             SizedBox(
@@ -160,18 +165,71 @@ class _FilterHomeState extends State<FilterHome> {
                                                 color: blackColor,
                                                 fontWeight: FontWeight.bold),
                                           ),
-                                          CustomSwitch(
-                                            value: needMaster,
-                                            isDarkBtn: false,
-                                            isLight: true,
-                                            changeColor: true,
-                                            color2: neonColor,
-                                            onChanged: (bool val) {
+                                          HorizontalSlidableButton(
+                                            width: 60,
+                                            height: 32,
+                                            buttonWidth: 34,
+                                            color: Colors.white,
+                                            initialPosition: needMaster
+                                                ? SlidableButtonPosition.end
+                                                : SlidableButtonPosition.start,
+                                            // buttonColor: Theme.of(context).primaryColor,
+                                            dismissible: false,
+                                            label: Container(
+                                              margin: const EdgeInsets.all(4),
+                                              constraints:
+                                                  const BoxConstraints.expand(),
+                                              decoration: BoxDecoration(
+                                                  color: Colors.white,
+                                                  border: Border.all(
+                                                      color: Colors.black,
+                                                      width: 2),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          25)),
+                                            ),
+                                            child: Container(
+                                              padding: const EdgeInsets.all(2),
+                                              decoration: BoxDecoration(
+                                                  border: Border.all(
+                                                      color: Colors.black,
+                                                      width: 2),
+                                                  borderRadius:
+                                                      BorderRadius.circular(24),
+                                                  gradient: needMaster
+                                                      ? Styles.primaryGradient()
+                                                      : const LinearGradient(
+                                                          colors: [
+                                                              Colors.white,
+                                                              Colors.white
+                                                            ])),
+                                            ),
+                                            onChanged: (position) {
                                               setState(() {
-                                                needMaster = val;
+                                                if (position ==
+                                                    SlidableButtonPosition
+                                                        .end) {
+                                                  setState(
+                                                      () => needMaster = true);
+                                                } else {
+                                                  setState(
+                                                      () => needMaster = false);
+                                                }
                                               });
                                             },
-                                          ),
+                                          )
+                                          // CustomSwitch(
+                                          //   value: needMaster,
+                                          //   isDarkBtn: false,
+                                          //   isLight: true,
+                                          //   changeColor: true,
+                                          //   color2: neonColor,
+                                          //   onChanged: (bool val) {
+                                          //     setState(() {
+                                          //       needMaster = val;
+                                          //     });
+                                          //   },
+                                          // ),
                                         ],
                                       ),
                                     ),
@@ -246,9 +304,9 @@ class _FilterHomeState extends State<FilterHome> {
                                             ),
                                             child: SfRangeSlider(
                                               values: ageRange,
-                                              min: 16,
-                                              max: 100,
-                                              interval: 1,
+                                              min: 16.1,
+                                              max: 100.1,
+                                              interval: 1.0,
                                               tooltipShape:
                                                   const CustomTooltipShape(),
                                               enableTooltip: true,

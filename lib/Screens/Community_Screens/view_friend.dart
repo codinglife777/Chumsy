@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import '../../Functions/build_profile_settings_row.dart';
 import '../../Constants/sizes.dart';
 import '../../Constants/spacing.dart';
+import '../../Functions/chat_bottom_sheet.dart';
 import 'eveents_screen.dart';
 
 class ViewFriendProfile extends StatefulWidget {
@@ -164,7 +165,9 @@ class _ViewFriendProfileState extends State<ViewFriendProfile> {
                       Icons.more_horiz_outlined,
                       color: blackColor,
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      showChatBottomSheet(context, true);
+                    },
                   ),
                 ],
               ),

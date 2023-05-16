@@ -38,20 +38,26 @@ class ChatTile extends StatelessWidget {
         foregroundImage: AssetImage(profileLocation),
       ),
       leadingSize: 62,
-      title: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        Text(
-          name,
-          style: regularStyleBold.copyWith(
-            fontWeight: FontWeight.w700,
-          ),
-        ),
-        Text(
-          surName,
-          style: regularStyleBold.copyWith(
-            fontWeight: FontWeight.w700,
-          ),
-        ),
-      ]),
+      title: Row(
+          // crossAxisAlignment: CrossAxisAlignment.start,
+          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              name,
+              style: regularStyleBold.copyWith(
+                fontSize: 15,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+            const SizedBox(width: 5),
+            Text(
+              surName,
+              style: regularStyleBold.copyWith(
+                fontSize: 15,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ]),
       subtitle: AutoSizeText(
         message,
         style: const TextStyle(

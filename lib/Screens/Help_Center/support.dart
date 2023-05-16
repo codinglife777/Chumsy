@@ -41,7 +41,9 @@ class _HelpCenterSupportState extends State<HelpCenterSupport> {
                             "Please type your message if you have any question or need any help! We will get back to you within 24 hours!",
                             style: regularStyle,
                           ),
-                          const SizedBox(height: 42,),
+                          const SizedBox(
+                            height: 42,
+                          ),
                           CupertinoTextField(
                             maxLines: 15,
                             maxLength: 500,
@@ -61,7 +63,7 @@ class _HelpCenterSupportState extends State<HelpCenterSupport> {
                                 20,
                               ),
                               color: textColor.withOpacity(
-                                0.2,
+                                0.13,
                               ),
                             ),
                           ),

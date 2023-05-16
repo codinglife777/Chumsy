@@ -71,7 +71,7 @@ class _HelpCenterFaqState extends State<HelpCenterFaq> {
                 children: [
                   topSpacingBox,
                   SizedBox(
-                    height: screenHeight / 1.5,
+                    height: screenHeight,
                     child: SingleChildScrollView(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -82,6 +82,7 @@ class _HelpCenterFaqState extends State<HelpCenterFaq> {
                             "How can we help you?",
                             style: subHeadingStyle,
                           ),
+                          spacingBox,
                           spacingBox,
                           Container(
                             height: 34,

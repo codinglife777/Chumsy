@@ -46,7 +46,8 @@ class _ScatteredGridState extends State<ScatteredGrid> {
             child: Text(
               widget.topicList[i]["topic"]!,
               style: Styles.greyButtonText(
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w600,
+                  fontSize: 15,
                   color: widget.elementTextColor ?? Colors.white),
             ),
           ),

@@ -18,8 +18,8 @@ class _ChumsyErrorDialogState extends State<ChumsyErrorDialog> {
     // double screenHeight = MediaQuery.of(context).size.height;
 
     return AlertDialog(
-      insetPadding: const EdgeInsets.only(left: 20, right: 20),
-      backgroundColor: Colors.transparent,
+      insetPadding: const EdgeInsets.only(left: 1, right: 1),
+      backgroundColor: Colors.black38,
       content: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -41,7 +41,7 @@ class _ChumsyErrorDialogState extends State<ChumsyErrorDialog> {
                 decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.all(
-                    Radius.circular(18),
+                    Radius.circular(42),
                   ),
                 ),
                 child: Column(children: [
@@ -56,7 +56,10 @@ class _ChumsyErrorDialogState extends State<ChumsyErrorDialog> {
                       child: Text(
                         widget.errorMessage,
                         textAlign: TextAlign.center,
-                        style: Styles.regularText(),
+                        style: Styles.regularText().copyWith(
+                            color: Colors.black,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600),
                       ),
                     ),
                   ),
@@ -65,12 +68,12 @@ class _ChumsyErrorDialogState extends State<ChumsyErrorDialog> {
                     decoration: const BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(18),
-                        bottomRight: Radius.circular(18),
+                        bottomLeft: Radius.circular(22),
+                        bottomRight: Radius.circular(22),
                       ),
                     ),
                     child: Container(
-                      margin: const EdgeInsets.all(30),
+                      margin: const EdgeInsets.all(20),
                       decoration: Styles.gredientButtonContainer(),
                       child: TextButton(
                         onPressed: () {
@@ -78,7 +81,8 @@ class _ChumsyErrorDialogState extends State<ChumsyErrorDialog> {
                         },
                         child: Text(
                           "OK",
-                          style: Styles.greyButtonText(),
+                          style: Styles.greyButtonText()
+                              .copyWith(fontWeight: FontWeight.w600),
                         ),
                       ),
                     ),

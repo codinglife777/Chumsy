@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import '../../Constants/colors.dart';
 import '../../Constants/sizes.dart';
 import '../../Constants/spacing.dart';
+import '../../Functions/terms.dart';
 
 class MobileScreen extends StatefulWidget {
   const MobileScreen({Key? key}) : super(key: key);
@@ -53,16 +54,16 @@ class _MobileScreenState extends State<MobileScreen> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(48, 190, 48, 100),
+                    padding: const EdgeInsets.fromLTRB(48, 130, 48, 100),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       mainAxisAlignment: MainAxisAlignment.center,
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         SizedBox(
-                          height: 120,
+                          width: 151,
                           child: Image.asset(
-                            "assets/login/logo.png",
+                            "assets/logo/chumsy_logo@1x.png",
                           ),
                         ),
                         const SizedBox(
@@ -240,7 +241,9 @@ class _MobileScreenState extends State<MobileScreen> {
                                                     TextDecoration.underline,
                                               ),
                                               recognizer: TapGestureRecognizer()
-                                                ..onTap = () {},
+                                                ..onTap = () async {
+                                                  await termsAndConditions();
+                                                },
                                             ),
                                             const TextSpan(text: " and "),
                                             TextSpan(
@@ -251,7 +254,9 @@ class _MobileScreenState extends State<MobileScreen> {
                                                     TextDecoration.underline,
                                               ),
                                               recognizer: TapGestureRecognizer()
-                                                ..onTap = () {},
+                                                ..onTap = () async {
+                                                  await privacy();
+                                                },
                                             )
                                           ],
                                           style: const TextStyle(

@@ -1,31 +1,20 @@
 import 'package:chumsy_app/Constants/sizes.dart';
 import 'package:chumsy_app/Widgets/Extra%20Widgets/gradient_widget.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../Constants/colors.dart';
 import '../../Constants/spacing.dart';
 import '../../Widgets/Create_Event/app_bar.dart';
 
-class CreateEventPriceMoney extends StatefulWidget {
-  const CreateEventPriceMoney({super.key});
+class CreateEventPaymentOptions extends StatefulWidget {
+  const CreateEventPaymentOptions({super.key});
 
   @override
-  State<CreateEventPriceMoney> createState() => _CreateEventPriceMoneyState();
+  State<CreateEventPaymentOptions> createState() =>
+      _CreateEventPaymentOptionsState();
 }
 
-final TextEditingController _ammountController = TextEditingController();
-
-class _CreateEventPriceMoneyState extends State<CreateEventPriceMoney> {
-  @override
-  void initState() {
-    super.initState();
-    setState(() {
-      // _ammountController.text = "0,00";
-    });
-  }
-
+class _CreateEventPaymentOptionsState extends State<CreateEventPaymentOptions> {
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
@@ -39,25 +28,26 @@ class _CreateEventPriceMoneyState extends State<CreateEventPriceMoney> {
               child: Column(
                 children: [
                   topSpacingBox,
+                  spacingBox,
+                  spacingBox,
                   SizedBox(
                     height: screenHeight / 1.6,
-                    width: 200,
-                    child: Center(
-                      child: CupertinoTextField(
-                        controller: _ammountController,
-                        keyboardType: TextInputType.number,
-                        placeholder: '0,00',
-                        placeholderStyle:
-                            const TextStyle(color: Colors.black54),
-                        style: headingStyle24,
-                        textAlign: TextAlign.right,
-                        decoration: const BoxDecoration(
-                          color: whiteColor,
-                        ),
-                        suffix: const Text(
-                          "zł",
-                          style: headingStyle24,
-                        ),
+                    child: SingleChildScrollView(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: const [
+                          PaymentTypes(
+                            payType: "Cash",
+                          ),
+                          spacingBox,
+                          PaymentTypes(
+                            payType: "Online via application",
+                          ),
+                          // spacingBox,
+                          // PaymentTypes(
+                          //   payType: "Chumsy Coins",
+                          // ),
+                        ],
                       ),
                     ),
                   ),
@@ -84,7 +74,34 @@ class _CreateEventPriceMoneyState extends State<CreateEventPriceMoney> {
             ),
           ),
           const EventAppBar2(
-            title: "Price",
+            title: "Payment Method",
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class PaymentTypes extends StatelessWidget {
+  const PaymentTypes({
+    super.key,
+    required this.payType,
+  });
+  final String payType;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(
+        vertical: 20,
+      ),
+      child: Row(
+        children: [
+          Text(
+            payType,
+            style: regularStyleBold.copyWith(
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ],
       ),

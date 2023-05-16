@@ -40,6 +40,8 @@ dependencies:
   hive: 
   hive_flutter:
   url_launcher: ^6.1.10
+  slidable_button: ^2.0.0
+  flutter_slidable: ^3.0.0
   
 dev_dependencies:
   flutter_test:

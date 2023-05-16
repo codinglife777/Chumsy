@@ -5,6 +5,9 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:slidable_button/slidable_button.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:flutter/material.dart';
 
 import '../../Constants/colors.dart';
 import '../../Constants/spacing.dart';
@@ -61,18 +64,84 @@ class _FilterCategoryState extends State<FilterCategory> {
     {"topic": "Floorball"},
     {"topic": "Football"},
     {"topic": "Frisbee"},
-    {"topic": "Tennis"},
-    {"topic": "Nordic Walking"},
-    {"topic": "Yoga"},
+    {"topic": "Golf"},
+    {"topic": "Gym"},
+    {"topic": "Gymnastics"},
+    {"topic": "Handball"},
+    {"topic": "Hockey"},
+    {"topic": "Horse riding"},
+    {"topic": "Ice-skating"},
+    {"topic": "Judo"},
+    {"topic": "Karate"},
+    {"topic": "Karting"},
+    {"topic": "Kick-boxing"},
+    {"topic": "Kitesurfing"},
+    {"topic": "MMA"},
+    {"topic": "Motorbike riding"},
+    {"topic": "Nordic walking"},
+    {"topic": "Padel"},
+    {"topic": "Pedalo"},
+    {"topic": "Physiotherapy (exercise)"},
     {"topic": "Pilates"},
+    {"topic": "Pool"},
+    {"topic": "Roller blading"},
+    {"topic": "Roller skates"},
+    {"topic": "Rowing"},
+    {"topic": "Rugby"},
+    {"topic": "Running"},
+    {"topic": "Sailing"},
+    {"topic": "Shooting"},
+    {"topic": "Skateboard"},
+    {"topic": "Ski jumping"},
+    {"topic": "Skiing"},
+    {"topic": "Snowboard"},
+    {"topic": "Squash"},
+    {"topic": "SUP"},
+    {"topic": "Surfing"},
+    {"topic": "Swimming"},
+    {"topic": "Tennis"},
+    {"topic": "Taekwondo"},
+    {"topic": "Tennis"},
+    {"topic": "Trekking"},
+    {"topic": "Triathlon"},
+    {"topic": "Volleyball"},
+    {"topic": "Weightlifting"},
+    {"topic": "Windsurfing"},
+    {"topic": "Wrestling"},
+    {"topic": "Yoga"},
   ];
 
   List<Map<String, String>> lifeStyleTopics = [
-    {"topic": 'Beer Pong'},
-    {"topic": 'Massage'},
-    {"topic": "Rummy"},
-    {"topic": 'Yoga'},
-    {"topic": 'Wholistic Living'},
+    {"topic": 'Board games'},
+    {"topic": 'Calligraphy'},
+    {"topic": 'Caravanning'},
+    {"topic": "Card games"},
+    {"topic": 'Ceramics and Pottery'},
+    {"topic": 'Cooking'},
+    {"topic": 'Crocheting'},
+    {"topic": 'Drawing'},
+    {"topic": 'Embroidering'},
+    {"topic": 'Fashion'},
+    {"topic": 'Fishing'},
+    {"topic": 'Floristics'},
+    {"topic": 'Handicraft'},
+    {"topic": 'Macrame'},
+    {"topic": 'Make-up and Beauty care'},
+    {"topic": 'Mindfulness'},
+    {"topic": 'Music and Singing'},
+    {"topic": 'Paintball'},
+    {"topic": 'Painting'},
+    {"topic": 'Photography'},
+    {"topic": 'Picnic'},
+    {"topic": 'Pole dance'},
+    {"topic": 'Rope course'},
+    {"topic": 'Sauna'},
+    {"topic": 'Sled'},
+    {"topic": 'Trampolines'},
+    {"topic": 'Walk'},
+    {"topic": 'Walk with a dog'},
+    {"topic": 'Walk with children'},
+    {"topic": 'Zumba'},
   ];
 
   List<Map<String, String>> controlList = [];
@@ -91,8 +160,9 @@ class _FilterCategoryState extends State<FilterCategory> {
     setState(() {
       if (_sport.value) {
         controlList = topicList
-            .where((element) =>
-                element["topic"]!.toLowerCase().contains(searchString))
+            .where((element) => element["topic"]!
+                .toLowerCase()
+                .contains(searchString.toLowerCase()))
             .toList();
       } else {
         controlList = lifeStyleTopics
@@ -232,6 +302,7 @@ class _FilterCategoryState extends State<FilterCategory> {
                                           vertical: 12,
                                         ),
                                         child: GestureDetector(
+                                          onPanStart: (dragStatDetail) {},
                                           onTap: () {
                                             setState(() {
                                               selected = e;
@@ -304,7 +375,7 @@ class _FilterCategoryState extends State<FilterCategory> {
                               : Container(
                                   decoration: BoxDecoration(
                                     color: textColor.withOpacity(
-                                      0.2,
+                                      0.13,
                                     ),
                                     borderRadius: BorderRadius.circular(
                                       100,
@@ -334,10 +405,12 @@ class _FilterCategoryState extends State<FilterCategory> {
                                             onSearch(_search.text);
                                           },
                                           padding: const EdgeInsets.symmetric(
-                                            horizontal: 16,
-                                            vertical: 10,
+                                            horizontal: 5,
+                                            vertical: 7,
                                           ),
-                                          placeholder: 'Search',
+                                          placeholder:
+                                              AppLocalizations.of(context)!
+                                                  .search,
                                           placeholderStyle: const TextStyle(
                                               color: greyIconColor,
                                               fontSize: 16),
@@ -409,16 +482,21 @@ class _FilterCategoryState extends State<FilterCategory> {
                                             ],
                                           ),
                                           spacingBox,
-                                          Image.asset(
-                                            "assets/extras/pexels-olya-kobruseva-5428836@3x.png",
-                                            width: screenWidth / 1.5,
+                                          ClipRRect(
+                                            borderRadius:
+                                                const BorderRadius.all(
+                                                    Radius.circular(24)),
+                                            child: Image.asset(
+                                              "assets/extras/millo-lin-IbngTBpNuMA-unsplash.jpg",
+                                              width: screenWidth / 1.5,
+                                            ),
                                           ),
                                           spacingBox,
                                           Row(
                                             mainAxisAlignment:
                                                 MainAxisAlignment.center,
-                                            children: const [
-                                              Icon(
+                                            children: [
+                                              const Icon(
                                                 CupertinoIcons.add_circled,
                                                 color: blackColor,
                                                 size: 36,
@@ -426,7 +504,10 @@ class _FilterCategoryState extends State<FilterCategory> {
                                               horizontalSpacingBox,
                                               Text(
                                                 "Change a picture",
-                                                style: regularStyleBold,
+                                                style:
+                                                    regularStyleBold.copyWith(
+                                                        fontWeight:
+                                                            FontWeight.w600),
                                               ),
                                             ],
                                           ),

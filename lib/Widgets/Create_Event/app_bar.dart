@@ -15,8 +15,8 @@ class EventAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SimpleShadow(
-      offset: const Offset(0, 2),
-      opacity: 0.1,
+      // offset: const Offset(0, 0),
+      opacity: 0.2,
       child: Container(
         color: whiteColor,
         child: Column(
@@ -57,8 +57,8 @@ class EventAppBar extends StatelessWidget {
               ],
             ),
             const Divider(
-              height: 10,
-              thickness: 2,
+              // height: 10,
+              // thickness: 1,
               color: Colors.grey,
             ),
           ],

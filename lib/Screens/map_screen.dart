@@ -152,7 +152,7 @@ class MapScreen extends StatelessWidget {
                                         ),
                                         CupertinoButton(
                                           onPressed: () {
-                                            Get.to(const FilterHome());
+                                            Get.to(() => const FilterHome());
                                           },
                                           padding: EdgeInsets.zero,
                                           borderRadius: BorderRadius.circular(

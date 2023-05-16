@@ -64,7 +64,7 @@ class _ChatScreenState extends State<ChatScreen> {
                         height: 35,
                         decoration: BoxDecoration(
                           color: textColor.withOpacity(
-                            0.2,
+                            0.13,
                           ),
                           borderRadius: BorderRadius.circular(
                             100,
@@ -115,6 +115,7 @@ class _ChatScreenState extends State<ChatScreen> {
                         height: screenHeight / 1.25,
                         child: ListView(
                           shrinkWrap: true,
+                          padding: EdgeInsets.all(0),
                           children: const [
                             ChatTile(
                               name: "Alexandra",

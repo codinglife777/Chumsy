@@ -36,7 +36,7 @@ class _CreateProfile4State extends State<CreateProfile4> {
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: blackColor,
-          toolbarHeight: 64.5,
+          toolbarHeight: 55,
           centerTitle: true,
           leading: CupertinoButton(
             padding: EdgeInsets.zero,

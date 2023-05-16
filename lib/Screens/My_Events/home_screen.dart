@@ -1,10 +1,13 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:chumsy_app/Constants/colors.dart';
 import 'package:chumsy_app/Constants/sizes.dart';
+import 'package:chumsy_app/Screens/My_Events/update_event.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../Constants/spacing.dart';
+import '../../Functions/update_event.dart';
 import '../../Widgets/My_Events/event_card.dart';
 import '../../Widgets/My_Events/event_card2.dart';
 
@@ -21,6 +24,11 @@ class MyEventHome extends StatefulWidget {
 int active = 0;
 
 class _MyEventHomeState extends State<MyEventHome> {
+  void updateEvent() {
+    Get.back();
+    seeUpdateEvent(context);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -58,7 +66,7 @@ class _MyEventHomeState extends State<MyEventHome> {
                     padding: const EdgeInsets.only(top: 0.0),
                     children: active == 0
                         ? [
-                            const CustomMyEventCard(
+                            CustomMyEventCard(
                               name: "You",
                               subName: "",
                               cardSubTitle: "Lazienki Park",
@@ -68,9 +76,10 @@ class _MyEventHomeState extends State<MyEventHome> {
                               month: 'May',
                               cardTitle: "Running",
                               profileLocation: "assets/extras/dp_2.jpg",
+                              updateEvent: updateEvent,
                             ),
                             spacingBox,
-                            const CustomMyEventCard(
+                            CustomMyEventCard(
                               name: "Dee McRobie",
                               subName: "Contact Dee",
                               cardSubTitle: "Address Lorem Ipsum",
@@ -80,9 +89,10 @@ class _MyEventHomeState extends State<MyEventHome> {
                               month: 'June',
                               cardTitle: "Running",
                               profileLocation: "assets/extras/dp_4.jpg",
+                              updateEvent: () {},
                             ),
                             spacingBox,
-                            const CustomMyEventCard(
+                            CustomMyEventCard(
                               name: "Luke Edison",
                               subName: "Contact Luke",
                               cardSubTitle: "Address Lorem Ipsum",
@@ -92,11 +102,12 @@ class _MyEventHomeState extends State<MyEventHome> {
                               month: 'July',
                               cardTitle: "Running",
                               profileLocation: "assets/extras/dp_1.jpg",
+                              updateEvent: () {},
                             ),
                           ]
                         : active == 1
                             ? [
-                                const CustomMyEventCard(
+                                CustomMyEventCard(
                                   name: "Max Smith",
                                   subName: "Contact Max",
                                   cardSubTitle: "Address Lorem Ipsum",
@@ -106,9 +117,10 @@ class _MyEventHomeState extends State<MyEventHome> {
                                   month: 'July',
                                   cardTitle: "Running",
                                   profileLocation: "assets/extras/dp_3.jpg",
+                                  updateEvent: () {},
                                 ),
                                 spacingBox,
-                                const CustomMyEventCard(
+                                CustomMyEventCard(
                                   name: "Dee McRob.",
                                   subName: "Contact Dee",
                                   cardSubTitle: "Address Lorem Ipsum",
@@ -118,9 +130,10 @@ class _MyEventHomeState extends State<MyEventHome> {
                                   month: 'May',
                                   cardTitle: "Gymnastics",
                                   profileLocation: "assets/extras/dp_1.jpg",
+                                  updateEvent: () {},
                                 ),
                                 spacingBox,
-                                const CustomMyEventCard(
+                                CustomMyEventCard(
                                   name: "Luke Edison",
                                   subName: "Contact Luke",
                                   cardSubTitle: "Address Lorem Ipsum",
@@ -130,9 +143,10 @@ class _MyEventHomeState extends State<MyEventHome> {
                                   month: 'May',
                                   cardTitle: "Swimming",
                                   profileLocation: "assets/extras/dp_2.jpg",
+                                  updateEvent: () {},
                                 ),
                                 spacingBox,
-                                const CustomMyEventCard(
+                                CustomMyEventCard(
                                   name: "Luke Edison",
                                   subName: "Contact Luke",
                                   cardSubTitle: "Address Lorem Ipsum",
@@ -142,6 +156,7 @@ class _MyEventHomeState extends State<MyEventHome> {
                                   month: 'July',
                                   cardTitle: "Running",
                                   profileLocation: "assets/extras/dp_3.jpg",
+                                  updateEvent: () {},
                                 ),
                                 spacingBox,
                               ]

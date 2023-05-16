@@ -63,7 +63,7 @@ class _HelpCenterReportState extends State<HelpCenterReport> {
                                 20,
                               ),
                               color: textColor.withOpacity(
-                                0.2,
+                                0.13,
                               ),
                             ),
                           ),

@@ -9,6 +9,7 @@ import '../../Constants/colors.dart';
 import '../../Constants/sizes.dart';
 import '../../Constants/spacing.dart';
 import '../../Functions/show_tosts.dart';
+import '../../Functions/terms.dart';
 import '../../Widgets/chumsyerrordialog.dart';
 import 'mobile_screen.dart';
 
@@ -63,9 +64,9 @@ class _SignupScreenState extends State<SignupScreen> {
                 // mainAxisSize: MainAxisSize.max,
                 children: [
                   SizedBox(
-                    width: 147,
+                    width: 151,
                     child: Image.asset(
-                      "assets/login/logo.png",
+                      "assets/logo/chumsy_logo@1x.png",
                     ),
                   ),
                   const SizedBox(height: 45),
@@ -178,7 +179,9 @@ class _SignupScreenState extends State<SignupScreen> {
                                         decoration: TextDecoration.underline,
                                       ),
                                       recognizer: TapGestureRecognizer()
-                                        ..onTap = () {},
+                                        ..onTap = () async {
+                                          await termsAndConditions();
+                                        },
                                     ),
                                     TextSpan(
                                         text:
@@ -191,7 +194,9 @@ class _SignupScreenState extends State<SignupScreen> {
                                         decoration: TextDecoration.underline,
                                       ),
                                       recognizer: TapGestureRecognizer()
-                                        ..onTap = () {},
+                                        ..onTap = () async {
+                                          await privacy();
+                                        },
                                     )
                                   ],
                                   style: const TextStyle(
@@ -224,11 +229,12 @@ class _SignupScreenState extends State<SignupScreen> {
                               () => const MobileScreen(),
                             );
                           } else if (_emailCont.text == "") {
-                            _dialogBuilder(
-                                context, "Please enter an e-mail address");
+                            _dialogBuilder(context,
+                                AppLocalizations.of(context)!.emailRequired);
                             //showErrorToast("Please fill e-mail", context);
                           } else if (_passwordCont.text == "") {
-                            _dialogBuilder(context, "Password is required");
+                            _dialogBuilder(context,
+                                AppLocalizations.of(context)!.passwordRequired);
                             //showErrorToast("Please fill password", context);
                           }
                           //  else {

@@ -53,7 +53,7 @@ class _CreateProfile2State extends State<CreateProfile2> {
         // ),
         appBar: AppBar(
           backgroundColor: blackColor,
-          toolbarHeight: 64.5,
+          toolbarHeight: 55,
           centerTitle: true,
           leading: CupertinoButton(
             padding: EdgeInsets.zero,
@@ -219,6 +219,7 @@ class _CreateProfile2State extends State<CreateProfile2> {
                     //     ],
                     //   ),
                     // ),
+                    const SizedBox(height: 30),
                     CustomGradientButtonWidget(
                       buttonWidget: Row(
                         mainAxisAlignment: MainAxisAlignment.center,

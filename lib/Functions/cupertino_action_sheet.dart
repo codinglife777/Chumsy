@@ -31,7 +31,11 @@ Future<void> _dialogBuilder(BuildContext context, String errorMessage) {
 }
 
 void showActionSheet(
-    BuildContext context, ImageController imageController, String secondText) {
+  BuildContext context,
+  ImageController imageController,
+  String firstText,
+  String secondText,
+) {
   showCupertinoModalPopup<void>(
     context: context,
     builder: (BuildContext context) => Theme(
@@ -76,7 +80,7 @@ void showActionSheet(
               imageController.changeImage(true);
               Get.back();
             },
-            child: const Text('Photo Library'),
+            child: Text(firstText),
           ),
           CupertinoActionSheetAction(
             isDefaultAction: true,

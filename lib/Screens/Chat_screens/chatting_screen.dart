@@ -118,16 +118,28 @@ class _ChattingScreenState extends State<ChattingScreen> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    Expanded(
+                        child: Row(
+                      children: [
+                        Text(
+                          widget.name,
+                          style: regularStyleBold.copyWith(
+                              fontWeight: FontWeight.w600),
+                        ),
+                        const SizedBox(width: 5),
+                        Text(
+                          widget.surName,
+                          style: regularStyleBold.copyWith(
+                              fontWeight: FontWeight.w600),
+                        ),
+                      ],
+                    )),
                     Text(
-                      widget.name,
-                      style: regularStyleBold.copyWith(
-                          fontWeight: FontWeight.w600),
-                    ),
-                    Text(
-                      widget.surName,
-                      style: regularStyleBold.copyWith(
-                          fontWeight: FontWeight.w600),
-                    ),
+                      "Online",
+                      style: smallStyle.copyWith(
+                        color: textColor,
+                      ),
+                    )
                     // Text(
                     //   "Online",
                     //   style: smallStyle.copyWith(
@@ -145,7 +157,7 @@ class _ChattingScreenState extends State<ChattingScreen> {
                 color: blackColor,
               ),
               onPressed: () {
-                showChatBottomSheet(context);
+                showChatBottomSheet(context, false);
               },
             ),
           ],
@@ -204,7 +216,7 @@ class _ChattingScreenState extends State<ChattingScreen> {
                           padding: EdgeInsets.zero,
                           onPressed: () {
                             showActionSheet(context, Get.put(ImageController()),
-                                "Add a File");
+                                'Photo Library', "Add a File");
                           },
                           child: const Icon(
                             CupertinoIcons.add,
@@ -303,8 +315,11 @@ class _ChattingScreenState extends State<ChattingScreen> {
                           child: CupertinoButton(
                             padding: EdgeInsets.zero,
                             onPressed: () {
-                              showActionSheet(context,
-                                  Get.put(ImageController()), "Add a File");
+                              showActionSheet(
+                                  context,
+                                  Get.put(ImageController()),
+                                  'Photo Library',
+                                  "Add a File");
                             },
                             child: const Icon(
                               CupertinoIcons.camera,

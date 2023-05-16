@@ -55,7 +55,7 @@ class _CreateProfile3State extends State<CreateProfile3> {
         // ),
         appBar: AppBar(
           backgroundColor: blackColor,
-          toolbarHeight: 64.5,
+          toolbarHeight: 55,
           centerTitle: true,
           leading: CupertinoButton(
             padding: EdgeInsets.zero,
@@ -158,8 +158,8 @@ class _CreateProfile3State extends State<CreateProfile3> {
                           padding: EdgeInsets.zero,
                           color: transparentColor,
                           onPressed: () {
-                            showActionSheet(
-                                context, imageController, "Take a Photo");
+                            showActionSheet(context, imageController,
+                                'Photo Library', "Take a Photo");
                           },
                           child: Container(
                             height: 51,
@@ -205,8 +205,8 @@ class _CreateProfile3State extends State<CreateProfile3> {
                           if (imageController.showImage.value) {
                             Get.to(() => const CreateProfile4());
                           } else {
-                            showActionSheet(
-                                context, imageController, "Take a Photo");
+                            showActionSheet(context, imageController,
+                                'Photo Library', "Take a Photo");
                           }
                         },
                       ),

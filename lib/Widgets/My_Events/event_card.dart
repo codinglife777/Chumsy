@@ -1,5 +1,6 @@
 // event card used in finished and planned
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:chumsy_app/Controllers/bnb_controller.dart';
 import 'package:chumsy_app/Widgets/Extra%20Widgets/gradient_widget.dart';
 import 'package:chumsy_app/Widgets/My_Events/planned_bottom_sheet.dart';
 import 'package:chumsy_app/Widgets/My_Events/share_bottom_sheet.dart';
@@ -11,6 +12,9 @@ import 'package:sliding_up_panel/sliding_up_panel.dart';
 import '../../Constants/colors.dart';
 import '../../Constants/sizes.dart';
 import '../../Constants/spacing.dart';
+import '../../Screens/Create_Event/create_event_screen.dart';
+import '../../Screens/My_Events/update_event.dart';
+import '../../Screens/Registration_Screens/login_screen.dart';
 import '../Extra Widgets/list_set_of_widgets.dart';
 import '../Extra Widgets/simple_button_widget.dart';
 import '../options_list.dart';
@@ -28,7 +32,8 @@ class CustomMyEventCard extends StatefulWidget {
       required this.profileLocation,
       required this.buttonText,
       required this.subName,
-      required this.cardSubTitle})
+      required this.cardSubTitle,
+      required this.updateEvent})
       : super(key: key);
   final String name,
       time,
@@ -39,6 +44,7 @@ class CustomMyEventCard extends StatefulWidget {
       buttonText,
       subName,
       cardSubTitle;
+  final VoidCallback updateEvent;
 
   @override
   State<CustomMyEventCard> createState() => _CustomMyEventCardState();
@@ -49,196 +55,206 @@ class _CustomMyEventCardState extends State<CustomMyEventCard> {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 3,
-      shape: RoundedRectangleBorder(
-        side: BorderSide(
-          color: widget.buttonText.contains("PAYMENT")
-              ? eventCardColor
-              : whiteColor,
-          width: 2,
-        ),
-        borderRadius: BorderRadius.circular(
-          20,
-        ),
-      ),
-      child: Stack(
-        children: [
-          Container(
-            padding: const EdgeInsets.all(
-              20,
-            ),
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    Expanded(
-                      flex: 1,
-                      child: Container(
-                        decoration: const BoxDecoration(
-                          border: Border(
-                            right: BorderSide(
-                              width: 2,
-                              color: blackColor,
+    return GetBuilder<BNBController>(
+        init: BNBController(),
+        builder: (controller) => Card(
+              elevation: 3,
+              shape: RoundedRectangleBorder(
+                side: BorderSide(
+                  color: widget.buttonText.contains("PAYMENT")
+                      ? eventCardColor
+                      : whiteColor,
+                  width: 2,
+                ),
+                borderRadius: BorderRadius.circular(
+                  20,
+                ),
+              ),
+              child: Stack(
+                children: [
+                  Container(
+                    padding: const EdgeInsets.all(
+                      20,
+                    ),
+                    child: Column(
+                      children: [
+                        Row(
+                          children: [
+                            Expanded(
+                              flex: 1,
+                              child: Container(
+                                decoration: const BoxDecoration(
+                                  border: Border(
+                                    right: BorderSide(
+                                      width: 2,
+                                      color: blackColor,
+                                    ),
+                                  ),
+                                ),
+                                padding: const EdgeInsets.only(
+                                  right: 10,
+                                ),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    CupertinoListTile(
+                                      padding: EdgeInsets.zero,
+                                      title: AutoSizeText(
+                                        widget.cardTitle,
+                                        style: regularStyleBold.copyWith(
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                        maxLines: 1,
+                                        softWrap: true,
+                                      ),
+                                      subtitle: AutoSizeText(
+                                        widget.cardSubTitle,
+                                        style: smallStyle,
+                                        maxLines: 1,
+                                        softWrap: true,
+                                      ),
+                                    ),
+                                    spacingBox,
+                                    CupertinoListTile(
+                                      padding: EdgeInsets.zero,
+                                      leading: CircleAvatar(
+                                        backgroundColor: eventCardColor,
+                                        foregroundImage:
+                                            AssetImage(widget.profileLocation),
+                                      ),
+                                      leadingSize: 39,
+                                      title: AutoSizeText(
+                                        widget.name,
+                                        style: regularStyleBold.copyWith(
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                        maxLines: 1,
+                                        softWrap: true,
+                                      ),
+                                      subtitle: AutoSizeText(
+                                        widget.subName,
+                                        style: smallStyle,
+                                        maxLines: 1,
+                                        softWrap: true,
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              flex: 0,
+                              child: Container(
+                                padding: const EdgeInsetsDirectional.symmetric(
+                                  horizontal: 20,
+                                ),
+                                child: Column(
+                                  children: [
+                                    AutoSizeText(
+                                      widget.month,
+                                      style: smallStyleBold,
+                                      maxLines: 1,
+                                      softWrap: true,
+                                    ),
+                                    spacingBoxSmall,
+                                    AutoSizeText(
+                                      widget.date,
+                                      style: headingStyle24.copyWith(
+                                        fontSize: 25,
+                                      ),
+                                      maxLines: 1,
+                                      softWrap: true,
+                                    ),
+                                    spacingBoxSmall,
+                                    AutoSizeText(
+                                      widget.time,
+                                      style: regularStyleBold,
+                                      maxLines: 1,
+                                      softWrap: true,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        spacingBox,
+                        CustomGradientButtonWidget(
+                          buttonWidget: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              AutoSizeText(
+                                widget.buttonText,
+                                style: regularStyleBold,
+                                maxLines: 1,
+                                softWrap: true,
+                              ),
+                            ],
+                          ),
+                          onTapFunction: () {
+                            if (widget.buttonText.contains("MANAGE")) {
+                              plannedEventBottomSheet(
+                                  context,
+                                  "assets/extras/bottomBack2.png",
+                                  widget.profileLocation,
+                                  widget.cardTitle,
+                                  widget.name,
+                                  "26",
+                                  widget.cardSubTitle,
+                                  widget.updateEvent);
+                            } else if (widget.buttonText.contains("SEE")) {
+                              finishedEventBottomSheet(
+                                  context,
+                                  "assets/extras/bottomBack1.png",
+                                  widget.profileLocation,
+                                  widget.cardTitle,
+                                  widget.name,
+                                  "26",
+                                  widget.cardSubTitle);
+                            }
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                  if (widget.buttonText.contains("PAYMENT"))
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Align(
+                        alignment: Alignment.topRight,
+                        child: Container(
+                          width: 30,
+                          height: 30,
+                          decoration: BoxDecoration(
+                            color: eventCardColor,
+                            borderRadius: BorderRadius.circular(
+                              100,
+                            ),
+                          ),
+                          child: const Center(
+                            child: Text(
+                              "\$",
+                              style: regularStyleBold,
                             ),
                           ),
                         ),
-                        padding: const EdgeInsets.only(
-                          right: 10,
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            CupertinoListTile(
-                              padding: EdgeInsets.zero,
-                              title: AutoSizeText(
-                                widget.cardTitle,
-                                style: regularStyleBold.copyWith(
-                                  fontWeight: FontWeight.bold,
-                                ),
-                                maxLines: 1,
-                                softWrap: true,
-                              ),
-                              subtitle: AutoSizeText(
-                                widget.cardSubTitle,
-                                style: smallStyle,
-                                maxLines: 1,
-                                softWrap: true,
-                              ),
-                            ),
-                            spacingBox,
-                            CupertinoListTile(
-                              padding: EdgeInsets.zero,
-                              leading: CircleAvatar(
-                                backgroundColor: eventCardColor,
-                                foregroundImage:
-                                    AssetImage(widget.profileLocation),
-                              ),
-                              leadingSize: 39,
-                              title: AutoSizeText(
-                                widget.name,
-                                style: regularStyleBold.copyWith(
-                                  fontWeight: FontWeight.bold,
-                                ),
-                                maxLines: 1,
-                                softWrap: true,
-                              ),
-                              subtitle: AutoSizeText(
-                                widget.subName,
-                                style: smallStyle,
-                                maxLines: 1,
-                                softWrap: true,
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                            ),
-                          ],
-                        ),
                       ),
                     ),
-                    Expanded(
-                      flex: 0,
-                      child: Container(
-                        padding: const EdgeInsetsDirectional.symmetric(
-                          horizontal: 20,
-                        ),
-                        child: Column(
-                          children: [
-                            AutoSizeText(
-                              widget.month,
-                              style: smallStyleBold,
-                              maxLines: 1,
-                              softWrap: true,
-                            ),
-                            spacingBoxSmall,
-                            AutoSizeText(
-                              widget.date,
-                              style: headingStyle24.copyWith(
-                                fontSize: 25,
-                              ),
-                              maxLines: 1,
-                              softWrap: true,
-                            ),
-                            spacingBoxSmall,
-                            AutoSizeText(
-                              widget.time,
-                              style: regularStyleBold,
-                              maxLines: 1,
-                              softWrap: true,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                spacingBox,
-                CustomGradientButtonWidget(
-                  buttonWidget: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      AutoSizeText(
-                        widget.buttonText,
-                        style: regularStyleBold,
-                        maxLines: 1,
-                        softWrap: true,
-                      ),
-                    ],
-                  ),
-                  onTapFunction: () {
-                    if (widget.buttonText.contains("MANAGE")) {
-                      plannedEventBottomSheet(
-                          context,
-                          "assets/extras/bottomBack2.png",
-                          widget.profileLocation,
-                          widget.cardTitle,
-                          widget.name,
-                          "26",
-                          widget.cardSubTitle);
-                    } else if (widget.buttonText.contains("SEE")) {
-                      finishedEventBottomSheet(
-                          context,
-                          "assets/extras/bottomBack1.png",
-                          widget.profileLocation,
-                          widget.cardTitle,
-                          widget.name,
-                          "26",
-                          widget.cardSubTitle);
-                    }
-                  },
-                ),
-              ],
-            ),
-          ),
-          if (widget.buttonText.contains("PAYMENT"))
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Align(
-                alignment: Alignment.topRight,
-                child: Container(
-                  width: 30,
-                  height: 30,
-                  decoration: BoxDecoration(
-                    color: eventCardColor,
-                    borderRadius: BorderRadius.circular(
-                      100,
-                    ),
-                  ),
-                  child: const Center(
-                    child: Text(
-                      "\$",
-                      style: regularStyleBold,
-                    ),
-                  ),
-                ),
+                ],
               ),
-            ),
-        ],
-      ),
-    );
+            ));
   }
 
-  Future<void> plannedEventBottomSheet(BuildContext context, String bgImage,
-      String dp, String tite, String name, String age, String location) {
+  Future<void> plannedEventBottomSheet(
+      BuildContext context,
+      String bgImage,
+      String dp,
+      String tite,
+      String name,
+      String age,
+      String location,
+      VoidCallback updateEvent) {
     bool cancelState1 = true;
     return showCupertinoModalPopup<void>(
       context: context,
@@ -494,7 +510,11 @@ class _CustomMyEventCardState extends State<CustomMyEventCard> {
                             ],
                           ),
                           onTapFunction: () {
-                            Get.back();
+                            // Get.replace(const UpdateEvent());
+                            // Get.back();
+                            updateEvent();
+                            // Get.put(() => const LoginScreen());
+                            // updateEvent();
                           },
                         ),
                       ),

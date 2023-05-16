@@ -7,7 +7,7 @@ import '../../Constants/colors.dart';
 import '../../Constants/sizes.dart';
 import '../../Constants/spacing.dart';
 
-Future<void> showChatBottomSheet(BuildContext context) {
+Future<void> showChatBottomSheet(BuildContext context, bool isCommunity) {
   return showCupertinoModalPopup<void>(
     context: context,
     builder: (BuildContext context) => SlidingUpPanel(
@@ -20,7 +20,7 @@ Future<void> showChatBottomSheet(BuildContext context) {
           30,
         ),
       ),
-      minHeight: screenHeight / 2.5,
+      minHeight: isCommunity ? screenHeight / 4 : screenHeight / 2.5,
       panel: Column(
         children: [
           spacingBox,
@@ -67,7 +67,7 @@ Future<void> showChatBottomSheet(BuildContext context) {
                   leading: Image.asset("assets/extras/icons/alert@2x.png"),
                   leadingSize: 28,
                   title: Text(
-                    "Report user",
+                    "Report",
                     style: regularStyleBold.copyWith(
                       fontWeight: FontWeight.bold,
                     ),
@@ -79,26 +79,28 @@ Future<void> showChatBottomSheet(BuildContext context) {
                     softWrap: true,
                   ),
                 ),
-                CupertinoListTile(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 10,
-                  ),
-                  onTap: () => Get.back(),
-                  leading: Image.asset("assets/extras/icons/ban.png"),
-                  leadingSize: 28,
-                  title: AutoSizeText(
-                    "Block",
-                    style: regularStyleBold.copyWith(
-                      fontWeight: FontWeight.bold,
-                    ),
-                    maxLines: 1,
-                    softWrap: true,
-                  ),
-                  subtitle: const Text(
-                    "You can block the user",
-                    style: smallStyle,
-                  ),
-                ),
+                isCommunity
+                    ? const SizedBox()
+                    : CupertinoListTile(
+                        padding: const EdgeInsets.symmetric(
+                          vertical: 10,
+                        ),
+                        onTap: () => Get.back(),
+                        leading: Image.asset("assets/extras/icons/ban.png"),
+                        leadingSize: 28,
+                        title: AutoSizeText(
+                          "Block",
+                          style: regularStyleBold.copyWith(
+                            fontWeight: FontWeight.bold,
+                          ),
+                          maxLines: 1,
+                          softWrap: true,
+                        ),
+                        subtitle: const Text(
+                          "You can block the user",
+                          style: smallStyle,
+                        ),
+                      ),
                 CupertinoListTile(
                   padding: const EdgeInsets.symmetric(
                     vertical: 10,
@@ -119,26 +121,28 @@ Future<void> showChatBottomSheet(BuildContext context) {
                     softWrap: true,
                   ),
                 ),
-                CupertinoListTile(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 10,
-                  ),
-                  onTap: () => Get.back(),
-                  leading: Image.asset("assets/extras/icons/mute.png"),
-                  leadingSize: 28,
-                  title: Text(
-                    "Mute",
-                    style: regularStyleBold.copyWith(
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  subtitle: const AutoSizeText(
-                    "You can mute the notifications",
-                    style: smallStyle,
-                    maxLines: 1,
-                    softWrap: true,
-                  ),
-                ),
+                isCommunity
+                    ? const SizedBox()
+                    : CupertinoListTile(
+                        padding: const EdgeInsets.symmetric(
+                          vertical: 10,
+                        ),
+                        onTap: () => Get.back(),
+                        leading: Image.asset("assets/extras/icons/mute.png"),
+                        leadingSize: 28,
+                        title: Text(
+                          "Mute",
+                          style: regularStyleBold.copyWith(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        subtitle: const AutoSizeText(
+                          "You can mute the notifications",
+                          style: smallStyle,
+                          maxLines: 1,
+                          softWrap: true,
+                        ),
+                      ),
               ],
             ),
           ),

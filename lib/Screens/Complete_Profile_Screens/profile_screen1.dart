@@ -6,6 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../Widgets/Extra Widgets/custom_datepicker.dart';
 import '../../Widgets/Extra Widgets/gradient_widget.dart';
 
 class CreateProfile extends StatefulWidget {
@@ -27,7 +28,7 @@ class _CreateProfileState extends State<CreateProfile> {
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: blackColor,
-          toolbarHeight: 64.5,
+          toolbarHeight: 55,
           centerTitle: true,
           leading: CupertinoButton(
             padding: EdgeInsets.zero,
@@ -74,6 +75,8 @@ class _CreateProfileState extends State<CreateProfile> {
               spacingBox,
               spacingBox,
               spacingBox,
+              spacingBox,
+              spacingBox,
               SingleChildScrollView(
                 child: Column(
                   children: [
@@ -88,30 +91,68 @@ class _CreateProfileState extends State<CreateProfile> {
                         ),
                       ),
                     ),
+                    const SizedBox(
+                      height: 30,
+                    ),
                     Stack(
                       children: [
                         Padding(
                           padding: const EdgeInsets.symmetric(
-                            horizontal: 50,
+                            horizontal: 30,
                           ),
                           child: SizedBox(
-                            height: screenHeight / 2,
+                            height: screenHeight / 2.5,
                             child: CupertinoTheme(
                               data: const CupertinoThemeData(
                                 brightness: Brightness.dark,
                                 textTheme: CupertinoTextThemeData(
                                   dateTimePickerTextStyle: TextStyle(
-                                      fontSize: 20, color: Colors.white),
+                                    fontSize: 20,
+                                    color: Colors.white,
+                                  ),
                                 ),
                               ),
-                              child: CupertinoDatePicker(
-                                minuteInterval: 1,
-                                backgroundColor: Colors.transparent,
-                                dateOrder: DatePickerDateOrder.dmy,
-                                mode: CupertinoDatePickerMode.date,
-                                initialDateTime: DateTime.now(),
-                                onDateTimeChanged: (val) {},
-                              ),
+                              child: Align(
+                                  alignment: Alignment.centerLeft,
+                                  // child: CupertinoDatePicker(
+                                  //   minuteInterval: 1,
+                                  //   backgroundColor: Colors.transparent,
+                                  //   dateOrder: DatePickerDateOrder.dmy,
+                                  //   mode: CupertinoDatePickerMode.date,
+                                  //   initialDateTime: DateTime.now(),
+                                  //   onDateTimeChanged: (val) {},
+                                  // )
+                                  child: CustomCupertinoDatePicker(
+                                    itemExtent: 50,
+                                    minDate: DateTime(DateTime.now().year - 16),
+                                    maxDate:
+                                        DateTime(DateTime.now().year + 100),
+                                    selectedDate: DateTime.now(),
+                                    selectionOverlay: const SizedBox(
+                                      width: double.infinity,
+                                      height: 50,
+                                      // decoration: const BoxDecoration(
+                                      //   border: Border.symmetric(
+                                      //     horizontal: BorderSide(
+                                      //         color: Colors.grey, width: 1),
+                                      //   ),
+                                      // ),
+                                    ),
+                                    selectedStyle: const TextStyle(
+                                      color: Colors.white,
+                                      // fontWeight: FontWeight.w600,
+                                      fontSize: 22,
+                                    ),
+                                    unselectedStyle: const TextStyle(
+                                      color: Colors.grey,
+                                      fontSize: 22,
+                                    ),
+                                    disabledStyle: TextStyle(
+                                      color: Colors.grey[400],
+                                      fontSize: 18,
+                                    ),
+                                    onSelectedItemChanged: (date) => {},
+                                  )),
                             ),
                           ),
                         ),
@@ -163,13 +204,13 @@ class _CreateProfileState extends State<CreateProfile> {
                         IgnorePointer(
                           ignoring: true,
                           child: SizedBox(
-                            height: screenWidth / 2,
+                            height: screenWidth / 2.5,
                             width: screenWidth / 2,
                             child: Center(
                               child: Container(
                                 height: 43,
                                 margin: const EdgeInsets.symmetric(
-                                  horizontal: 55,
+                                  horizontal: 30,
                                 ),
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(
@@ -187,6 +228,9 @@ class _CreateProfileState extends State<CreateProfile> {
                       ],
                     ),
                     spacingBoxExtended,
+                    const SizedBox(
+                      height: 30,
+                    ),
                     Padding(
                       padding: const EdgeInsets.symmetric(
                         horizontal: 50,

@@ -6,6 +6,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
 import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:slidable_button/slidable_button.dart';
 
 import 'package:get/get.dart';
 
@@ -156,13 +157,15 @@ class _CreateProfileQualificationState
     setState(() {
       if (_sport.value) {
         controlList = topicList
-            .where((element) =>
-                element["topic"]!.toLowerCase().contains(searchString))
+            .where((element) => element["topic"]!
+                .toLowerCase()
+                .contains(searchString.toLowerCase()))
             .toList();
       } else {
         controlList = lifeStyleTopics
-            .where((element) =>
-                element["topic"]!.toLowerCase().contains(searchString))
+            .where((element) => element["topic"]!
+                .toLowerCase()
+                .contains(searchString.toLowerCase()))
             .toList();
       }
     });
@@ -339,80 +342,135 @@ class _CreateProfileQualificationState
                       textAlign: TextAlign.center,
                     ),
                   ),
-                  Container(
-                    alignment: Alignment.centerLeft,
-                    margin: EdgeInsets.only(
-                      left: screenWidth < 390 ? 57 : 64,
-                      right: screenWidth < 390 ? 57 : 64,
-                    ),
-                    height: 51,
-                    width: screenWidth - (screenWidth < 390 ? 57 * 2 : 64 * 2),
-                    decoration: const BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.all(Radius.circular(100)),
-                    ),
-                    child: Stack(
-                      children: [
-                        ValueListenableBuilder(
-                          valueListenable: _sport,
-                          builder: (BuildContext context, bool value,
-                              Widget? child) {
-                            return AnimatedContainer(
-                              duration: const Duration(milliseconds: 300),
-                              height: 47,
-                              width: 129,
-                              margin: EdgeInsets.only(
-                                  left: value
-                                      ? 2
-                                      : (screenWidth < 390 ? 57 * 2 : 64 * 2) +
-                                          4),
-                              decoration: Styles.gredientButtonContainer(
-                                  borderColor: Colors.transparent),
-                            );
-                          },
+                  Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      HorizontalSlidableButton(
+                        width: MediaQuery.of(context).size.width / 1.3,
+                        height: 51,
+                        buttonWidth: MediaQuery.of(context).size.width / 2.6,
+                        color: Colors.white,
+                        // buttonColor: Theme.of(context).primaryColor,
+                        dismissible: false,
+                        label: Container(
+                          constraints: const BoxConstraints.expand(),
+                          decoration: Styles.gredientButtonContainer(
+                              borderColor: Colors.transparent),
                         ),
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.center,
+                        onChanged: (position) {
+                          setState(() {
+                            if (position == SlidableButtonPosition.end) {
+                              _sport.value = false;
+                              onSearch(_search.text);
+                            } else {
+                              _sport.value = true;
+                              onSearch(_search.text);
+                            }
+                          });
+                        },
+                      ),
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width / 1.3,
+                        // padding: const EdgeInsets.all(8.0),
+                        child: IgnorePointer(
+                            child: Row(
+                          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            GestureDetector(
-                              onTap: () {
-                                _sport.value = true;
-                                onSearch(_search.text);
-                              },
-                              child: Container(
-                                color: Colors.transparent,
-                                alignment: Alignment.center,
-                                width: (screenWidth < 390 ? 57 * 2 : 64 * 2),
-                                height: 45,
+                            SizedBox(
+                                width: MediaQuery.of(context).size.width / 2.6,
                                 child: Text(
                                   AppLocalizations.of(context)!.sport,
                                   style: Styles.greyButtonText(
                                       fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                            ),
-                            GestureDetector(
-                              onTap: () {
-                                _sport.value = false;
-                                onSearch(_search.text);
-                              },
-                              child: Container(
-                                color: Colors.transparent,
-                                alignment: Alignment.center,
-                                width: (screenWidth < 390 ? 57 * 2 : 64 * 2),
-                                height: 45,
+                                  textAlign: TextAlign.center,
+                                )),
+                            SizedBox(
+                                width: MediaQuery.of(context).size.width / 2.6,
                                 child: Text(
-                                    AppLocalizations.of(context)!.lifeStyle,
-                                    style: Styles.greyButtonText(
-                                        fontWeight: FontWeight.bold)),
-                              ),
-                            ),
+                                  AppLocalizations.of(context)!.lifeStyle,
+                                  style: Styles.greyButtonText(
+                                      fontWeight: FontWeight.bold),
+                                  textAlign: TextAlign.center,
+                                )),
                           ],
-                        )
-                      ],
-                    ),
+                        )),
+                      )
+                    ],
                   ),
+                  // Container(
+                  //   alignment: Alignment.centerLeft,
+                  //   margin: EdgeInsets.only(
+                  //     left: screenWidth < 390 ? 57 : 64,
+                  //     right: screenWidth < 390 ? 57 : 64,
+                  //   ),
+                  //   height: 51,
+                  //   width: screenWidth - (screenWidth < 390 ? 57 * 2 : 64 * 2),
+                  //   decoration: const BoxDecoration(
+                  //     color: Colors.white,
+                  //     borderRadius: BorderRadius.all(Radius.circular(100)),
+                  //   ),
+                  //   child: Stack(
+                  //     children: [
+                  //       ValueListenableBuilder(
+                  //         valueListenable: _sport,
+                  //         builder: (BuildContext context, bool value,
+                  //             Widget? child) {
+                  //           return AnimatedContainer(
+                  //             duration: const Duration(milliseconds: 300),
+                  //             height: 47,
+                  //             width: 129,
+                  //             margin: EdgeInsets.only(
+                  //                 left: value
+                  //                     ? 2
+                  //                     : (screenWidth < 390 ? 57 * 2 : 64 * 2) +
+                  //                         4),
+                  //             decoration: Styles.gredientButtonContainer(
+                  //                 borderColor: Colors.transparent),
+                  //           );
+                  //         },
+                  //       ),
+                  //       Row(
+                  //         crossAxisAlignment: CrossAxisAlignment.center,
+                  //         mainAxisAlignment: MainAxisAlignment.center,
+                  //         children: [
+                  //           GestureDetector(
+                  //             onTap: () {
+                  //               _sport.value = true;
+                  //               onSearch(_search.text);
+                  //             },
+                  //             child: Container(
+                  //               color: Colors.transparent,
+                  //               alignment: Alignment.center,
+                  //               width: (screenWidth < 390 ? 57 * 2 : 64 * 2),
+                  //               height: 45,
+                  //               child: Text(
+                  //                 AppLocalizations.of(context)!.sport,
+                  //                 style: Styles.greyButtonText(
+                  //                     fontWeight: FontWeight.bold),
+                  //               ),
+                  //             ),
+                  //           ),
+                  //           GestureDetector(
+                  //             onTap: () {
+                  //               _sport.value = false;
+                  //               onSearch(_search.text);
+                  //             },
+                  //             child: Container(
+                  //               color: Colors.transparent,
+                  //               alignment: Alignment.center,
+                  //               width: (screenWidth < 390 ? 57 * 2 : 64 * 2),
+                  //               height: 45,
+                  //               child: Text(
+                  //                   AppLocalizations.of(context)!.lifeStyle,
+                  //                   style: Styles.greyButtonText(
+                  //                       fontWeight: FontWeight.bold)),
+                  //             ),
+                  //           ),
+                  //         ],
+                  //       )
+                  //     ],
+                  //   ),
+                  // ),
                   ValueListenableBuilder(
                     valueListenable: _selectedTopics,
                     builder: (BuildContext context,

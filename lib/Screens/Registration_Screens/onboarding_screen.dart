@@ -20,7 +20,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
   final List<SwipItem> swipItems = [
     SwipItem(title: "Sport", imagePath: 'assets/login/sports.png'),
     SwipItem(title: "Lifestyle", imagePath: 'assets/login/lifestyle@2x.png'),
-    SwipItem(title: "Your name it", imagePath: 'assets/login/nameit@2x.png'),
+    SwipItem(title: "Name it", imagePath: 'assets/login/nameit@2x.png'),
   ];
   final PageController _pageController = PageController();
   int activatedPage = 0;

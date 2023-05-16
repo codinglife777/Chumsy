@@ -146,18 +146,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
             children: [
               topAppBarSpacing,
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.end,
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  CupertinoButton(
-                    padding: EdgeInsets.zero,
-                    child: const Icon(
-                      CupertinoIcons.back,
-                      color: blackColor,
-                      size: 24,
-                    ),
-                    onPressed: () => Get.back(),
-                  ),
+                  // CupertinoButton(
+                  //   padding: EdgeInsets.zero,
+                  //   child: const Icon(
+                  //     CupertinoIcons.back,
+                  //     color: blackColor,
+                  //     size: 24,
+                  //   ),
+                  //   onPressed: () => Get.back(),
+                  // ),
                   CupertinoButton(
                     padding: EdgeInsets.zero,
                     child: const Icon(

@@ -7,7 +7,7 @@ const spacingBox = SizedBox(
   height: 10,
 );
 const spacingBoxExtended = SizedBox(
-  height: 50,
+  height: 55,
 );
 
 const horizontalSpacingBox = SizedBox(

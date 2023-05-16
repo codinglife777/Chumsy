@@ -1,31 +1,22 @@
 import 'package:chumsy_app/Constants/sizes.dart';
 import 'package:chumsy_app/Widgets/Extra%20Widgets/gradient_widget.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../Functions/build_event_row.dart';
 import '../../Constants/colors.dart';
 import '../../Constants/spacing.dart';
 import '../../Widgets/Create_Event/app_bar.dart';
+import 'create_paid_screen.dart';
 
-class CreateEventPriceMoney extends StatefulWidget {
-  const CreateEventPriceMoney({super.key});
+class CreateEventPrice extends StatefulWidget {
+  const CreateEventPrice({super.key});
 
   @override
-  State<CreateEventPriceMoney> createState() => _CreateEventPriceMoneyState();
+  State<CreateEventPrice> createState() => _CreateEventPriceState();
 }
 
-final TextEditingController _ammountController = TextEditingController();
-
-class _CreateEventPriceMoneyState extends State<CreateEventPriceMoney> {
-  @override
-  void initState() {
-    super.initState();
-    setState(() {
-      // _ammountController.text = "0,00";
-    });
-  }
-
+class _CreateEventPriceState extends State<CreateEventPrice> {
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
@@ -39,25 +30,31 @@ class _CreateEventPriceMoneyState extends State<CreateEventPriceMoney> {
               child: Column(
                 children: [
                   topSpacingBox,
+                  spacingBox,
+                  spacingBox,
                   SizedBox(
                     height: screenHeight / 1.6,
-                    width: 200,
-                    child: Center(
-                      child: CupertinoTextField(
-                        controller: _ammountController,
-                        keyboardType: TextInputType.number,
-                        placeholder: '0,00',
-                        placeholderStyle:
-                            const TextStyle(color: Colors.black54),
-                        style: headingStyle24,
-                        textAlign: TextAlign.right,
-                        decoration: const BoxDecoration(
-                          color: whiteColor,
-                        ),
-                        suffix: const Text(
-                          "zł",
-                          style: headingStyle24,
-                        ),
+                    child: SingleChildScrollView(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Padding(
+                            padding: EdgeInsets.symmetric(
+                              vertical: 20,
+                            ),
+                            child: Text(
+                              "Free",
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                color: blackColor,
+                              ),
+                            ),
+                          ),
+                          buildRow("Paid", "", () {
+                            Get.to(() => const CreateEventPaidOptions());
+                          }),
+                        ],
                       ),
                     ),
                   ),
