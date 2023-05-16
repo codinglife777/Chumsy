@@ -14,6 +14,7 @@ import '../../Constants/spacing.dart';
 import '../../Styles/styles.dart';
 import '../../Widgets/Create_Event/app_bar.dart';
 import '../../Widgets/Extra Widgets/scatteredgrid.dart';
+import '../../Widgets/Extra Widgets/three_state_switch.dart';
 
 typedef FilterSetCallbak = Function(String key, Map<dynamic, dynamic> data);
 
@@ -238,6 +239,23 @@ class _FilterCategoryState extends State<FilterCategory> {
     onSearch(_search.text);
   }
 
+  void cbState(SwitchState state) {
+    setState(() {
+      if (state == SwitchState.state1) {
+        _sport.value = true;
+      } else {
+        _sport.value = false;
+      }
+
+      if (state == SwitchState.state3) {
+        _nameIt.value = true;
+      } else {
+        _nameIt.value = false;
+        onSearch(_search.text);
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
@@ -257,89 +275,90 @@ class _FilterCategoryState extends State<FilterCategory> {
                       child: Column(
                         children: [
                           spacingBox,
-                          Container(
-                            width: screenWidth,
-                            decoration: BoxDecoration(
-                              color: blackColor,
-                              borderRadius: BorderRadius.circular(
-                                100,
-                              ),
-                            ),
-                            padding: const EdgeInsets.all(
-                              3,
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                AppLocalizations.of(context)!.sport,
-                                AppLocalizations.of(context)!.lifeStyle,
-                                AppLocalizations.of(context)!.nameIt
-                              ]
-                                  .map(
-                                    (e) => Expanded(
-                                      flex: 1,
-                                      child: Container(
-                                        decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(
-                                            100,
-                                          ),
-                                          gradient: selected.contains(e)
-                                              ? const LinearGradient(
-                                                  colors: [
-                                                    neonColor,
-                                                    blueColor,
-                                                  ],
-                                                )
-                                              : const LinearGradient(
-                                                  colors: [
-                                                    blackColor,
-                                                    blackColor,
-                                                  ],
-                                                ),
-                                        ),
-                                        padding: const EdgeInsets.symmetric(
-                                          vertical: 12,
-                                        ),
-                                        child: GestureDetector(
-                                          onPanStart: (dragStatDetail) {},
-                                          onTap: () {
-                                            setState(() {
-                                              selected = e;
-                                              if (e ==
-                                                  AppLocalizations.of(context)!
-                                                      .sport) {
-                                                _sport.value = true;
-                                              } else {
-                                                _sport.value = false;
-                                              }
-                                              if (e ==
-                                                  AppLocalizations.of(context)!
-                                                      .nameIt) {
-                                                _nameIt.value = true;
-                                              } else {
-                                                _nameIt.value = false;
-                                                onSearch(_search.text);
-                                              }
-                                            });
-                                          },
-                                          child: Center(
-                                            child: Text(
-                                              e,
-                                              style: subHeadingStyle.copyWith(
-                                                color: selected.contains(e)
-                                                    ? blackColor
-                                                    : whiteColor,
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  )
-                                  .toList(),
-                            ),
-                          ),
+                          ThreeStateSwitch(cbState: cbState),
+                          // Container(
+                          //   width: screenWidth,
+                          //   decoration: BoxDecoration(
+                          //     color: blackColor,
+                          //     borderRadius: BorderRadius.circular(
+                          //       100,
+                          //     ),
+                          //   ),
+                          //   padding: const EdgeInsets.all(
+                          //     3,
+                          //   ),
+                          //   child: Row(
+                          //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          //     mainAxisSize: MainAxisSize.min,
+                          //     children: [
+                          //       AppLocalizations.of(context)!.sport,
+                          //       AppLocalizations.of(context)!.lifeStyle,
+                          //       AppLocalizations.of(context)!.nameIt
+                          //     ]
+                          //         .map(
+                          //           (e) => Expanded(
+                          //             flex: 1,
+                          //             child: Container(
+                          //               decoration: BoxDecoration(
+                          //                 borderRadius: BorderRadius.circular(
+                          //                   100,
+                          //                 ),
+                          //                 gradient: selected.contains(e)
+                          //                     ? const LinearGradient(
+                          //                         colors: [
+                          //                           neonColor,
+                          //                           blueColor,
+                          //                         ],
+                          //                       )
+                          //                     : const LinearGradient(
+                          //                         colors: [
+                          //                           blackColor,
+                          //                           blackColor,
+                          //                         ],
+                          //                       ),
+                          //               ),
+                          //               padding: const EdgeInsets.symmetric(
+                          //                 vertical: 12,
+                          //               ),
+                          //               child: GestureDetector(
+                          //                 onPanStart: (dragStatDetail) {},
+                          //                 onTap: () {
+                          //                   setState(() {
+                          //                     selected = e;
+                          //                     if (e ==
+                          //                         AppLocalizations.of(context)!
+                          //                             .sport) {
+                          //                       _sport.value = true;
+                          //                     } else {
+                          //                       _sport.value = false;
+                          //                     }
+                          //                     if (e ==
+                          //                         AppLocalizations.of(context)!
+                          //                             .nameIt) {
+                          //                       _nameIt.value = true;
+                          //                     } else {
+                          //                       _nameIt.value = false;
+                          //                       onSearch(_search.text);
+                          //                     }
+                          //                   });
+                          //                 },
+                          //                 child: Center(
+                          //                   child: Text(
+                          //                     e,
+                          //                     style: subHeadingStyle.copyWith(
+                          //                       color: selected.contains(e)
+                          //                           ? blackColor
+                          //                           : whiteColor,
+                          //                     ),
+                          //                   ),
+                          //                 ),
+                          //               ),
+                          //             ),
+                          //           ),
+                          //         )
+                          //         .toList(),
+                          //   ),
+                          // ),
                           spacingBox,
                           spacingBox,
                           _nameIt.value
@@ -431,8 +450,7 @@ class _FilterCategoryState extends State<FilterCategory> {
                             constraints: BoxConstraints(
                               maxHeight: screenHeight / 1.6,
                             ),
-                            child: selected.contains(
-                                    AppLocalizations.of(context)!.nameIt)
+                            child: _nameIt.value
                                 ? Column(
                                     children: [
                                       Column(

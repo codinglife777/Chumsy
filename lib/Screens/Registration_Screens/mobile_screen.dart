@@ -54,13 +54,14 @@ class _MobileScreenState extends State<MobileScreen> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(48, 130, 48, 100),
+                    padding: const EdgeInsets.fromLTRB(48, 100, 48, 100),
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      // crossAxisAlignment: CrossAxisAlignment.stretch,
+                      // mainAxisAlignment: MainAxisAlignment.center,
                       mainAxisSize: MainAxisSize.max,
                       children: [
-                        SizedBox(
+                        Container(
+                          padding: EdgeInsets.only(top: 100),
                           width: 151,
                           child: Image.asset(
                             "assets/logo/chumsy_logo@1x.png",
@@ -73,7 +74,7 @@ class _MobileScreenState extends State<MobileScreen> {
                           height: 51,
                           child: Padding(
                             padding: const EdgeInsets.symmetric(
-                              horizontal: 0,
+                              vertical: 0,
                             ),
                             child: CupertinoTextField(
                               controller: _nameCont,
