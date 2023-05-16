@@ -60,9 +60,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   SizedBox(
-                    width: 147,
+                    width: 151,
                     child: Image.asset(
-                      "assets/login/logo@2x.png",
+                      "assets/logo/chumsy_logo@1x.png",
                     ),
                   ),
                   SizedBox(
