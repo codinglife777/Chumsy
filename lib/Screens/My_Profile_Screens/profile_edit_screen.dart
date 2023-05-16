@@ -1,5 +1,6 @@
 import 'package:chumsy_app/Constants/colors.dart';
 import 'package:chumsy_app/Screens/My_Profile_Screens/Payments_Screens/profile_payment_screen1.dart';
+import 'package:chumsy_app/Screens/Registration_Screens/login_screen.dart';
 import 'package:chumsy_app/Screens/share.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
@@ -122,7 +123,8 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                                     ),
                                   ],
                                 ),
-                                onTapFunction: () => Get.back(),
+                                onTapFunction: () =>
+                                    Get.to(() => const LoginScreen()),
                               ),
                             ),
                           ),
