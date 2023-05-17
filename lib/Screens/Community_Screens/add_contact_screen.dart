@@ -4,6 +4,7 @@ import 'package:chumsy_app/Constants/sizes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../Constants/spacing.dart';
 import '../../Widgets/Extra Widgets/gradient_widget.dart';
@@ -23,6 +24,7 @@ int active = 0;
 class _AddContactScreenState extends State<AddContactScreen> {
   @override
   Widget build(BuildContext context) {
+    AppLocalizations l = AppLocalizations.of(context)!;
     return Container(
       height: screenHeight,
       width: screenWidth,
@@ -42,8 +44,8 @@ class _AddContactScreenState extends State<AddContactScreen> {
                       color: blackColor,
                     ),
                   ),
-                  const Text(
-                    "Find Friends",
+                  Text(
+                    l.findFriends,
                     style: subHeadingStyle,
                   ),
                   CupertinoButton(
@@ -57,7 +59,7 @@ class _AddContactScreenState extends State<AddContactScreen> {
               const Divider(),
               spacingBox,
               // spacingBox,
-              topButtons(),
+              topButtons(context),
               // spacingBox,
               Padding(
                 padding: const EdgeInsets.symmetric(
@@ -70,7 +72,7 @@ class _AddContactScreenState extends State<AddContactScreen> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Text(
-                        "Scan Contacts?",
+                        l.scanContactsQ,
                         style: headingStyle24.copyWith(
                           fontSize: 25,
                         ),
@@ -80,8 +82,8 @@ class _AddContactScreenState extends State<AddContactScreen> {
                       ),
                       SizedBox(
                         width: screenWidth / 3,
-                        child: const Text(
-                          "Find Chumsys by scanning\nyour address book.",
+                        child: Text(
+                          l.findChumsysbyscanning,
                           style: regularStyle,
                           textAlign: TextAlign.center,
                         ),
@@ -98,10 +100,10 @@ class _AddContactScreenState extends State<AddContactScreen> {
                 child: CustomGradientButtonWidget(
                   buttonWidget: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
+                    children: [
                       horizontalSpacingBoxSmall,
                       Text(
-                        "SCAN CONTACTS",
+                        l.scanContacts,
                         style: regularStyleBold,
                       ),
                     ],
@@ -117,7 +119,8 @@ class _AddContactScreenState extends State<AddContactScreen> {
   }
 
 // top buttons used in the UI
-  Row topButtons() {
+  Row topButtons(BuildContext context) {
+    AppLocalizations l = AppLocalizations.of(context)!;
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -144,7 +147,7 @@ class _AddContactScreenState extends State<AddContactScreen> {
             ),
             child: Center(
               child: AutoSizeText(
-                "Contacts",
+                l.contacts,
                 style: regularStyleBold.copyWith(
                   fontWeight: FontWeight.bold,
                   color: active == 0 ? whiteColor : blackColor,
@@ -183,7 +186,7 @@ class _AddContactScreenState extends State<AddContactScreen> {
             ),
             child: Center(
               child: AutoSizeText(
-                "E-mail",
+                l.email,
                 style: regularStyleBold.copyWith(
                   fontWeight: FontWeight.bold,
                   color: active == 1 ? whiteColor : blackColor,
@@ -222,7 +225,7 @@ class _AddContactScreenState extends State<AddContactScreen> {
             ),
             child: Center(
               child: AutoSizeText(
-                "Username",
+                l.username,
                 style: regularStyleBold.copyWith(
                   fontWeight: FontWeight.bold,
                   color: active == 2 ? whiteColor : blackColor,

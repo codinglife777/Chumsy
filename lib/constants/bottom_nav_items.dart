@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../Controllers/bnb_controller.dart';
 
-List<BottomNavigationBarItem> bottomNavItems(BNBController bnbCont) {
+List<BottomNavigationBarItem> bottomNavItems(BuildContext context, BNBController bnbCont) {
+  AppLocalizations l = AppLocalizations.of(context)!;
   return [
     BottomNavigationBarItem(
       icon: bnbCont.currentIndex.value == 0
@@ -14,7 +16,7 @@ List<BottomNavigationBarItem> bottomNavItems(BNBController bnbCont) {
               "assets/home/map_bottom@2x.png",
               width: 22,
             ),
-      label: 'Map',
+      label: l.map,
     ),
     BottomNavigationBarItem(
       icon: bnbCont.currentIndex.value == 1
@@ -26,7 +28,7 @@ List<BottomNavigationBarItem> bottomNavItems(BNBController bnbCont) {
               "assets/home/chat_bottom@2x.png",
               width: 22,
             ),
-      label: 'Chat',
+      label: l.chat,
     ),
     BottomNavigationBarItem(
       icon: bnbCont.currentIndex.value == 2
@@ -38,7 +40,7 @@ List<BottomNavigationBarItem> bottomNavItems(BNBController bnbCont) {
               "assets/home/cheer@2x.png",
               width: 24,
             ),
-      label: 'Community',
+      label: l.community,
     ),
     BottomNavigationBarItem(
       icon: bnbCont.currentIndex.value == 3
@@ -50,7 +52,7 @@ List<BottomNavigationBarItem> bottomNavItems(BNBController bnbCont) {
               "assets/home/event_bottom@2x.png",
               width: 22,
             ),
-      label: 'My Events',
+      label: l.myEvents,
     ),
     BottomNavigationBarItem(
       icon: bnbCont.currentIndex.value == 4
@@ -62,7 +64,7 @@ List<BottomNavigationBarItem> bottomNavItems(BNBController bnbCont) {
               radius: 14,
               foregroundImage: AssetImage("assets/register/avatar@2x.png"),
             ),
-      label: 'Profile',
+      label: l.profile,
     )
   ];
 }

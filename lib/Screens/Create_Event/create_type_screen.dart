@@ -3,6 +3,7 @@ import 'package:chumsy_app/Constants/sizes.dart';
 import 'package:chumsy_app/Widgets/Extra%20Widgets/gradient_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../Constants/spacing.dart';
 import '../../Widgets/Create_Event/app_bar.dart';
@@ -20,6 +21,7 @@ class _CreateEventTypeState extends State<CreateEventType> {
 
   @override
   Widget build(BuildContext context) {
+    AppLocalizations l = AppLocalizations.of(context)!;
     return CupertinoPageScaffold(
       child: Stack(
         children: [
@@ -38,13 +40,13 @@ class _CreateEventTypeState extends State<CreateEventType> {
                     child: SingleChildScrollView(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: const [
+                        children: [
                           LevelTile(
-                            payType: "Outdoor",
+                            payType: l.outdoor,
                           ),
                           spacingBox,
                           LevelTile(
-                            payType: "Indoor",
+                            payType: l.indoor,
                           ),
                         ],
                       ),
@@ -73,7 +75,7 @@ class _CreateEventTypeState extends State<CreateEventType> {
             ),
           ),
           EventAppBar(
-            title: "Type",
+            title: l.type,
             cbClear: clear,
           ),
         ],

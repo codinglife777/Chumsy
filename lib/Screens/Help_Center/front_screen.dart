@@ -2,6 +2,7 @@ import 'package:chumsy_app/Constants/colors.dart';
 import 'package:chumsy_app/Screens/Help_Center/mng_bottom_nav.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../Functions/build_event_row.dart';
 import '../../Constants/sizes.dart';
@@ -21,6 +22,7 @@ class HelpCenterMain extends StatefulWidget {
 class _HelpCenterMainState extends State<HelpCenterMain> {
   @override
   Widget build(BuildContext context) {
+    AppLocalizations l = AppLocalizations.of(context)!;
     return CupertinoPageScaffold(
       backgroundColor: whiteColor,
       child: Stack(
@@ -40,7 +42,7 @@ class _HelpCenterMainState extends State<HelpCenterMain> {
                         children: [
                           spacingBox,
                           buildRow(
-                            "Support",
+                            l.support,
                             "",
                             () {
                               Get.to(() => const MngSupportPage());
@@ -48,7 +50,7 @@ class _HelpCenterMainState extends State<HelpCenterMain> {
                           ),
                           spacingBox,
                           buildRow(
-                            "Report a bug",
+                            l.reportAbug,
                             "",
                             () {
                               Get.to(() => const MngReportPage());
@@ -56,7 +58,7 @@ class _HelpCenterMainState extends State<HelpCenterMain> {
                           ),
                           spacingBox,
                           buildRow(
-                            "FAQ",
+                            l.faq,
                             "",
                             () {
                               Get.to(() => const MngFaqPage());
@@ -64,7 +66,7 @@ class _HelpCenterMainState extends State<HelpCenterMain> {
                           ),
                           spacingBox,
                           buildRow(
-                            "Terms & Conditions",
+                            l.terms_Conditions,
                             "",
                             () async {
                               await termsAndConditions();
@@ -78,8 +80,8 @@ class _HelpCenterMainState extends State<HelpCenterMain> {
               ),
             ),
           ),
-          const EventAppBar2(
-            title: "Help Center",
+          EventAppBar2(
+            title: l.helpCenter,
           ),
         ],
       ),

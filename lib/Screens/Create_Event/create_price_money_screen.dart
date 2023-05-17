@@ -3,6 +3,7 @@ import 'package:chumsy_app/Widgets/Extra%20Widgets/gradient_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../Constants/colors.dart';
 import '../../Constants/spacing.dart';
@@ -28,6 +29,7 @@ class _CreateEventPriceMoneyState extends State<CreateEventPriceMoney> {
 
   @override
   Widget build(BuildContext context) {
+    AppLocalizations l = AppLocalizations.of(context)!;
     return CupertinoPageScaffold(
       child: Stack(
         children: [
@@ -69,9 +71,9 @@ class _CreateEventPriceMoneyState extends State<CreateEventPriceMoney> {
                     child: CustomGradientButtonWidget(
                       buttonWidget: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: const [
+                        children: [
                           Text(
-                            "SAVE",
+                            l.save,
                             style: regularStyleBold,
                           ),
                         ],
@@ -83,8 +85,8 @@ class _CreateEventPriceMoneyState extends State<CreateEventPriceMoney> {
               ),
             ),
           ),
-          const EventAppBar2(
-            title: "Price",
+          EventAppBar2(
+            title: l.price,
           ),
         ],
       ),

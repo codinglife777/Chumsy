@@ -3,6 +3,7 @@ import 'package:chumsy_app/Constants/sizes.dart';
 import 'package:chumsy_app/Widgets/Extra%20Widgets/gradient_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../Constants/spacing.dart';
 import '../../Widgets/Create_Event/app_bar.dart';
@@ -20,6 +21,7 @@ class _CreateEventLevelState extends State<CreateEventLevel> {
 
   @override
   Widget build(BuildContext context) {
+    AppLocalizations l = AppLocalizations.of(context)!;
     return CupertinoPageScaffold(
       child: Stack(
         children: [
@@ -38,21 +40,21 @@ class _CreateEventLevelState extends State<CreateEventLevel> {
                     child: SingleChildScrollView(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: const [
+                        children: [
                           LevelTile(
-                            payType: "Beginner",
+                            payType: l.beginner,
                           ),
                           spacingBox,
                           LevelTile(
-                            payType: "Intermediate",
+                            payType: l.intermediate,
                           ),
                           spacingBox,
                           LevelTile(
-                            payType: "Advanced",
+                            payType: l.advanced,
                           ),
                           spacingBox,
                           LevelTile(
-                            payType: "Pro",
+                            payType: l.pro,
                           ),
                         ],
                       ),
@@ -83,7 +85,7 @@ class _CreateEventLevelState extends State<CreateEventLevel> {
             ),
           ),
           EventAppBar(
-            title: "Level",
+            title: l.level,
             cbClear: clear,
           ),
         ],

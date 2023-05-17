@@ -2,6 +2,7 @@ import 'package:chumsy_app/Constants/sizes.dart';
 import 'package:chumsy_app/Widgets/Extra%20Widgets/gradient_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../Functions/build_event_row.dart';
 import '../../Constants/spacing.dart';
@@ -17,8 +18,12 @@ class CreateEventPaidOptions extends StatefulWidget {
 }
 
 class _CreateEventPaidOptionsState extends State<CreateEventPaidOptions> {
+  
   @override
   Widget build(BuildContext context) {
+
+    AppLocalizations l = AppLocalizations.of(context)!;
+
     return CupertinoPageScaffold(
       child: Stack(
         children: [
@@ -38,11 +43,11 @@ class _CreateEventPaidOptionsState extends State<CreateEventPaidOptions> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          buildRow("Price", "", () {
+                          buildRow(l.price, "", () {
                             Get.to(() => const CreateEventPriceMoney());
                           }),
                           spacingBox,
-                          buildRow("Payment Method", "", () {
+                          buildRow(l.paymentMethod, "", () {
                             Get.to(() => const CreateEventPaymentOptions());
                           }),
                         ],
@@ -57,9 +62,9 @@ class _CreateEventPaidOptionsState extends State<CreateEventPaidOptions> {
                     child: CustomGradientButtonWidget(
                       buttonWidget: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: const [
+                        children: [
                           Text(
-                            "SAVE",
+                            l.save,
                             style: regularStyleBold,
                           ),
                         ],
@@ -71,8 +76,8 @@ class _CreateEventPaidOptionsState extends State<CreateEventPaidOptions> {
               ),
             ),
           ),
-          const EventAppBar2(
-            title: "Paid",
+          EventAppBar2(
+            title: l.paid,
           ),
         ],
       ),

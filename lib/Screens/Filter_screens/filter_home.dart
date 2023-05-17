@@ -60,6 +60,9 @@ class _FilterHomeState extends State<FilterHome> {
 
   @override
   Widget build(BuildContext context) {
+
+    AppLocalizations l = AppLocalizations.of(context)!;
+
     return CupertinoPageScaffold(
       child: Stack(
         children: [
@@ -97,7 +100,7 @@ class _FilterHomeState extends State<FilterHome> {
                             // });
                             // showGoogleMap(context);
                             Get.to(() => const MainMap());
-                          }, "Distance (km)"),
+                          }, l.distance),
                           if (showLocationSlider)
                             SizedBox(
                               height: 70,
@@ -365,9 +368,9 @@ class _FilterHomeState extends State<FilterHome> {
                     child: CustomGradientButtonWidget(
                       buttonWidget: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: const [
+                        children: [
                           Text(
-                            "APPLY FILTERS",
+                            l.applyFilters,
                             style: regularStyleBold,
                           ),
                         ],

@@ -48,7 +48,7 @@ class _CreateProfileQualificationState
   didChangeDependencies() {
     WidgetsBinding.instance.addObserver(this);
     l = AppLocalizations.of(context)!;
-    // try {
+    try {
       List<dynamic> dataSports = jsonDecode(AppLocalizations.of(context)!.sports);
       List<dynamic> dataLifeStyles = jsonDecode(AppLocalizations.of(context)!.lifeStyles);
       List<Map<String, String>> sports = dataSports.map((e) {
@@ -58,12 +58,15 @@ class _CreateProfileQualificationState
         return {"topic": e as String};
       }).toList();
       setState(() {
-        
-         
+        topicList = sports;
+        lifeStyleTopics = lifeStyles;
+        controlList = _sport.value ? topicList : lifeStyleTopics;
       });
-    // } catch (e) {
-    //   print(e); 
-    // }
+    } catch (e) {
+      if (kDebugMode) {
+        print(e);
+      } 
+    }
 
     super.didChangeDependencies();
   }

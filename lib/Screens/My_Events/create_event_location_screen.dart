@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../Constants/colors.dart';
 import '../../Constants/spacing.dart';
@@ -23,6 +24,7 @@ class _CreateEventLocationState extends State<CreateEventLocation> {
 
   @override
   Widget build(BuildContext context) {
+    AppLocalizations l = AppLocalizations.of(context)!;
     return CupertinoPageScaffold(
       child: Stack(
         children: [
@@ -77,7 +79,7 @@ class _CreateEventLocationState extends State<CreateEventLocation> {
                                 padding: const EdgeInsets.symmetric(
                                   horizontal: 16,
                                 ),
-                                placeholder: 'Search location...',
+                                placeholder: l.searchLocation,
                                 placeholderStyle: TextStyle(
                                   color: greyIconColor.withOpacity(0.5),
                                 ),
@@ -103,8 +105,8 @@ class _CreateEventLocationState extends State<CreateEventLocation> {
                           color: blackColor,
                           size: 22,
                         ),
-                        title: const Text(
-                          "My Location",
+                        title: Text(
+                          l.myLocation,
                           style: regularStyle,
                         ),
                       ),
@@ -132,12 +134,12 @@ class _CreateEventLocationState extends State<CreateEventLocation> {
                     children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
-                        children: const [
+                        children: [
                           horizontalSpacingBox,
                           Expanded(
                             flex: 1,
                             child: Text(
-                              "Recent",
+                              l.recent,
                               style: regularStyleBold,
                             ),
                           ),

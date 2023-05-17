@@ -67,6 +67,7 @@ class _CreateEventTimeState extends State<CreateEventTime> {
 
   @override
   Widget build(BuildContext context) {
+    AppLocalizations l = AppLocalizations.of(context)!;
     return CupertinoPageScaffold(
       child: Stack(
         children: [
@@ -84,12 +85,12 @@ class _CreateEventTimeState extends State<CreateEventTime> {
                       child: Column(
                         children: [
                           buildRow(
-                              "Beginning", AppLocalizations.of(context)!.choose,
+                              l.begining, AppLocalizations.of(context)!.choose,
                               () {
                             openDatePicker(context);
                           }),
                           buildRow(
-                              "Duration",
+                              l.duration,
                               timeChanged
                                   ? getTimeDuration()
                                   : AppLocalizations.of(context)!.choose, () {
@@ -151,9 +152,9 @@ class _CreateEventTimeState extends State<CreateEventTime> {
                     child: CustomGradientButtonWidget(
                       buttonWidget: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: const [
+                        children: [
                           Text(
-                            "SAVE",
+                            l.save,
                             style: regularStyleBold,
                           ),
                         ],
@@ -185,14 +186,14 @@ class _CreateEventTimeState extends State<CreateEventTime> {
                       ),
                       onPressed: () => Get.back(),
                     ),
-                    const Text(
-                      "Time",
+                    Text(
+                      l.time,
                       style: subHeadingStyle,
                     ),
-                    const CupertinoButton(
+                    CupertinoButton(
                       onPressed: null,
                       child: Text(
-                        "Clear",
+                        l.clear,
                         style: regularStyle,
                       ),
                     ),

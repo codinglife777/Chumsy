@@ -5,6 +5,7 @@ import '../../Constants/colors.dart';
 import '../../Constants/sizes.dart';
 import '../../Constants/spacing.dart';
 import '../../Widgets/Create_Event/app_bar.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ShareScreen extends StatefulWidget {
   const ShareScreen({
@@ -18,6 +19,7 @@ class ShareScreen extends StatefulWidget {
 class _ShareScreenState extends State<ShareScreen> {
   @override
   Widget build(BuildContext context) {
+    AppLocalizations l = AppLocalizations.of(context)!;
     return CupertinoPageScaffold(
       child: Stack(
         children: [
@@ -80,7 +82,7 @@ class _ShareScreenState extends State<ShareScreen> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              "SHARE THE LINK",
+                              l.shareTheLink,
                               style: smallStyleBold.copyWith(
                                 color: whiteColor,
                               ),
@@ -94,8 +96,8 @@ class _ShareScreenState extends State<ShareScreen> {
               ),
             ),
           ),
-          const EventAppBar2(
-            title: "Support",
+          EventAppBar2(
+            title: l.support,
           ),
         ],
       ),

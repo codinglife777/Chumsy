@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../Constants/colors.dart';
 import '../../Constants/sizes.dart';
@@ -10,6 +11,8 @@ import '../../Constants/spacing.dart';
 
 Future<void> finishedEventBottomSheet(BuildContext context, String bgImage,
     String dp, String tite, String name, String age, String location) {
+      AppLocalizations l = AppLocalizations.of(context)!;
+
   return showCupertinoModalPopup<void>(
     context: context,
     builder: (BuildContext context) => SlidingUpPanel(
@@ -176,9 +179,9 @@ Future<void> finishedEventBottomSheet(BuildContext context, String bgImage,
                   height: 19,
                 ),
                 Row(
-                  children: const [
+                  children: [
                     Text(
-                      'Photos',
+                      l.photos,
                       style: smallStyleBold,
                     ),
                     horizontalSpacingBox,

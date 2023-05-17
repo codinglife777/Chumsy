@@ -2,6 +2,7 @@ import 'package:chumsy_app/Constants/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../Constants/sizes.dart';
 import '../../Constants/spacing.dart';
@@ -14,6 +15,7 @@ class ChooseMapScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AppLocalizations l = AppLocalizations.of(context)!;
     return SingleChildScrollView(
       child: GestureDetector(
         onTap: () {},
@@ -103,8 +105,8 @@ class ChooseMapScreen extends StatelessWidget {
                                     child: const Text(""),
                                     onPressed: () {},
                                   ),
-                                  const Text(
-                                    "Pin the location on the map",
+                                  Text(
+                                    l.pinLocationOnMap,
                                     style: regularStyleBold,
                                   ),
                                   CupertinoButton(
@@ -150,9 +152,9 @@ class ChooseMapScreen extends StatelessWidget {
                                 child: CustomGradientButtonWidget(
                                   buttonWidget: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
-                                    children: const [
+                                    children: [
                                       Text(
-                                        "CONFIRM LOCATION",
+                                        l.confirmLocationC,
                                         style: regularStyleBold,
                                       ),
                                     ],

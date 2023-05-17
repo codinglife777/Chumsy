@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'dart:convert';
 
 import '../../Constants/colors.dart';
 import '../../Constants/spacing.dart';
@@ -22,7 +23,7 @@ class CreateEventCategory extends StatefulWidget {
   State<CreateEventCategory> createState() => _CreateEventCategoryState();
 }
 
-class _CreateEventCategoryState extends State<CreateEventCategory> {
+class _CreateEventCategoryState extends State<CreateEventCategory>  with WidgetsBindingObserver  {
   String selected = "Sport";
   int dataCount = 0;
 
@@ -34,113 +35,39 @@ class _CreateEventCategoryState extends State<CreateEventCategory> {
   final ValueNotifier<bool> _keyboardVisible = ValueNotifier(false);
   final FocusNode _searchNode = FocusNode();
   List<Map<String, String>> topicList = [
-    {"topic": "Acrobatics"},
-    {"topic": "Aerobics"},
-    {"topic": "Aqua Aerobics"},
-    {"topic": "Archery"},
-    {"topic": "Athletics"},
-    {"topic": "Badminton"},
-    {"topic": "Baseball"},
-    {"topic": "Basketball"},
-    {"topic": "Biathlon"},
-    {"topic": "Bowling"},
-    {"topic": "Boxing"},
-    {"topic": "Canoening"},
-    {"topic": "Chess"},
-    {"topic": "Climbing"},
-    {"topic": "Combat sports (other)"},
-    {"topic": "Cricket"},
-    {"topic": "CrossFit"},
-    {"topic": "Crossminton"},
-    {"topic": "Cycling"},
-    {"topic": "Dance"},
-    {"topic": "eSport"},
-    {"topic": "Fencing"},
-    {"topic": "Fitness"},
-    {"topic": "Floorball"},
-    {"topic": "Football"},
-    {"topic": "Frisbee"},
-    {"topic": "Golf"},
-    {"topic": "Gym"},
-    {"topic": "Gymnastics"},
-    {"topic": "Handball"},
-    {"topic": "Hockey"},
-    {"topic": "Horse riding"},
-    {"topic": "Ice-skating"},
-    {"topic": "Judo"},
-    {"topic": "Karate"},
-    {"topic": "Karting"},
-    {"topic": "Kick-boxing"},
-    {"topic": "Kitesurfing"},
-    {"topic": "MMA"},
-    {"topic": "Motorbike riding"},
-    {"topic": "Nordic walking"},
-    {"topic": "Padel"},
-    {"topic": "Pedalo"},
-    {"topic": "Physiotherapy (exercise)"},
-    {"topic": "Pilates"},
-    {"topic": "Pool"},
-    {"topic": "Roller blading"},
-    {"topic": "Roller skates"},
-    {"topic": "Rowing"},
-    {"topic": "Rugby"},
-    {"topic": "Running"},
-    {"topic": "Sailing"},
-    {"topic": "Shooting"},
-    {"topic": "Skateboard"},
-    {"topic": "Ski jumping"},
-    {"topic": "Skiing"},
-    {"topic": "Snowboard"},
-    {"topic": "Squash"},
-    {"topic": "SUP"},
-    {"topic": "Surfing"},
-    {"topic": "Swimming"},
-    {"topic": "Tennis"},
-    {"topic": "Taekwondo"},
-    {"topic": "Tennis"},
-    {"topic": "Trekking"},
-    {"topic": "Triathlon"},
-    {"topic": "Volleyball"},
-    {"topic": "Weightlifting"},
-    {"topic": "Windsurfing"},
-    {"topic": "Wrestling"},
-    {"topic": "Yoga"},
   ];
 
   List<Map<String, String>> lifeStyleTopics = [
-    {"topic": 'Board games'},
-    {"topic": 'Calligraphy'},
-    {"topic": 'Caravanning'},
-    {"topic": "Card games"},
-    {"topic": 'Ceramics and Pottery'},
-    {"topic": 'Cooking'},
-    {"topic": 'Crocheting'},
-    {"topic": 'Drawing'},
-    {"topic": 'Embroidering'},
-    {"topic": 'Fashion'},
-    {"topic": 'Fishing'},
-    {"topic": 'Floristics'},
-    {"topic": 'Handicraft'},
-    {"topic": 'Macrame'},
-    {"topic": 'Make-up and Beauty care'},
-    {"topic": 'Mindfulness'},
-    {"topic": 'Music and Singing'},
-    {"topic": 'Paintball'},
-    {"topic": 'Painting'},
-    {"topic": 'Photography'},
-    {"topic": 'Picnic'},
-    {"topic": 'Pole dance'},
-    {"topic": 'Rope course'},
-    {"topic": 'Sauna'},
-    {"topic": 'Sled'},
-    {"topic": 'Trampolines'},
-    {"topic": 'Walk'},
-    {"topic": 'Walk with a dog'},
-    {"topic": 'Walk with children'},
-    {"topic": 'Zumba'},
   ];
 
   List<Map<String, String>> controlList = [];
+  
+  @override
+  didChangeDependencies() {
+    WidgetsBinding.instance.addObserver(this);
+    try {
+      List<dynamic> dataSports = jsonDecode(AppLocalizations.of(context)!.sports);
+      List<dynamic> dataLifeStyles = jsonDecode(AppLocalizations.of(context)!.lifeStyles);
+      List<Map<String, String>> sports = dataSports.map((e) {
+        return {"topic": e as String};
+      }).toList();
+      List<Map<String, String>> lifeStyles = dataLifeStyles.map((e) {
+        return {"topic": e as String};
+      }).toList();
+      setState(() {
+        topicList = sports;
+        lifeStyleTopics = lifeStyles;
+        controlList = _sport.value ? topicList : lifeStyleTopics;
+      });
+    } catch (e) {
+      if (kDebugMode) {
+        print(e);
+      } 
+    }
+
+    super.didChangeDependencies();
+  }
+
   @override
   void initState() {
     super.initState();
@@ -235,6 +162,7 @@ class _CreateEventCategoryState extends State<CreateEventCategory> {
 
   @override
   Widget build(BuildContext context) {
+    AppLocalizations l = AppLocalizations.of(context)!;
     return CupertinoPageScaffold(
       child: Stack(
         children: [
@@ -402,7 +330,7 @@ class _CreateEventCategoryState extends State<CreateEventCategory> {
                                             horizontal: 16,
                                             vertical: 5,
                                           ),
-                                          placeholder: 'Search',
+                                          placeholder: l.search,
                                           placeholderStyle: const TextStyle(
                                               color: greyIconColor,
                                               fontSize: 16),
@@ -495,7 +423,7 @@ class _CreateEventCategoryState extends State<CreateEventCategory> {
                                               ),
                                               horizontalSpacingBox,
                                               Text(
-                                                "Change a picture",
+                                                l.changeAPicture,
                                                 style:
                                                     regularStyleBold.copyWith(
                                                         fontWeight:

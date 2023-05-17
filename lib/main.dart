@@ -7,6 +7,8 @@ import 'package:get/get.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import 'Screens/landing_page.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -20,7 +22,7 @@ class MyApp extends StatelessWidget {
       child: GetCupertinoApp(
         debugShowCheckedModeBanner: false,
         defaultTransition: Transition.cupertino,
-        locale: Locale('en', ''),
+        locale: Locale('pl', ''),
         localizationsDelegates: [
           AppLocalizations.delegate,
           GlobalMaterialLocalizations.delegate,
@@ -47,7 +49,7 @@ class MyApp extends StatelessWidget {
           whiteColor,
           whiteColor,
         ),
-        home: SplashScreen(),
+        home: LandingPage(),
       ),
     );
   }

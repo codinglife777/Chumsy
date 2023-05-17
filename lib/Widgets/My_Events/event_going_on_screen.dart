@@ -6,6 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pull_down_button/pull_down_button.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../Constants/sizes.dart';
 
@@ -21,6 +22,7 @@ bool showOptions = false;
 class _EventGoingOnState extends State<EventGoingOn> {
   @override
   Widget build(BuildContext context) {
+    AppLocalizations l = AppLocalizations.of(context)!;
     return Container(
       decoration: const BoxDecoration(
         image: DecorationImage(
@@ -73,14 +75,14 @@ class _EventGoingOnState extends State<EventGoingOn> {
                             PullDownMenuItem(
                               icon: CupertinoIcons.arrow_down_to_line,
                               iconColor: blackColor,
-                              title: 'Share',
+                              title: l.share,
                               onTap: () {},
                             ),
                             const PullDownMenuDivider(),
                             PullDownMenuItem(
                               icon: CupertinoIcons.delete,
                               iconColor: blackColor,
-                              title: 'Delete',
+                              title: l.delete,
                               onTap: () {},
                             ),
                           ],
@@ -107,9 +109,9 @@ class _EventGoingOnState extends State<EventGoingOn> {
                     child: CustomGradientButtonWidget(
                       buttonWidget: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: const [
+                        children: [
                           Text(
-                            "NEXT",
+                            l.next,
                             style: smallStyleBold,
                           ),
                         ],
@@ -138,8 +140,8 @@ class _EventGoingOnState extends State<EventGoingOn> {
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                const Text(
-                                  "Add Description",
+                                Text(
+                                  l.addDescription,
                                   style: smallStyleBold,
                                 ),
                                 spacingBox,
@@ -150,7 +152,7 @@ class _EventGoingOnState extends State<EventGoingOn> {
                                     horizontal: 15,
                                     vertical: 15,
                                   ),
-                                  placeholder: "This event was...",
+                                  placeholder: l.thisEventWas,
                                   placeholderStyle: smallStyle,
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(
@@ -164,9 +166,9 @@ class _EventGoingOnState extends State<EventGoingOn> {
                               ],
                             ),
                             spacingBox,
-                            buildRow("Tag people", "Choose", () {}),
+                            buildRow(l.tagPeople, l.choose, () {}),
                             spacingBox,
-                            buildRow("Share with", "Friends", () {}),
+                            buildRow(l.shareWith, l.friends, () {}),
                             spacingBox,
                             Padding(
                               padding: const EdgeInsets.only(
@@ -177,9 +179,9 @@ class _EventGoingOnState extends State<EventGoingOn> {
                               child: CustomGradientButtonWidget(
                                 buttonWidget: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
-                                  children: const [
+                                  children: [
                                     Text(
-                                      "SHARE WITH COMMUNITY",
+                                      l.shareWithCommunity,
                                       style: smallStyleBold,
                                     ),
                                   ],
@@ -195,17 +197,17 @@ class _EventGoingOnState extends State<EventGoingOn> {
                                         ),
                                       ),
                                       child: CupertinoAlertDialog(
-                                        title: const Text(
-                                          "Posted Successfully",
+                                        title: Text(
+                                          l.postedSuccess,
                                           style: smallStyleBold,
                                         ),
-                                        content: const Text(
-                                          "Your photo was shared with the community!",
+                                        content: Text(
+                                          l.yourPhotoWasShared,
                                           style: smallStyle,
                                         ),
                                         actions: <Widget>[
                                           CupertinoDialogAction(
-                                            child: const Text("OK"),
+                                            child: Text(l.ok_c),
                                             onPressed: () {
                                               Get.back();
                                               Get.back();

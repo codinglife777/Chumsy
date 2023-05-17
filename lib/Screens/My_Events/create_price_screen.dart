@@ -2,6 +2,7 @@ import 'package:chumsy_app/Constants/sizes.dart';
 import 'package:chumsy_app/Widgets/Extra%20Widgets/gradient_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../Functions/build_event_row.dart';
 import '../../Constants/colors.dart';
@@ -19,6 +20,7 @@ class CreateEventPrice extends StatefulWidget {
 class _CreateEventPriceState extends State<CreateEventPrice> {
   @override
   Widget build(BuildContext context) {
+    AppLocalizations l = AppLocalizations.of(context)!;
     return CupertinoPageScaffold(
       child: Stack(
         children: [
@@ -38,12 +40,12 @@ class _CreateEventPriceState extends State<CreateEventPrice> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Padding(
+                          Padding(
                             padding: EdgeInsets.symmetric(
                               vertical: 20,
                             ),
                             child: Text(
-                              "Free",
+                              l.free,
                               style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
@@ -51,7 +53,7 @@ class _CreateEventPriceState extends State<CreateEventPrice> {
                               ),
                             ),
                           ),
-                          buildRow("Paid", "", () {
+                          buildRow(l.paid, "", () {
                             Get.to(() => const CreateEventPaidOptions());
                           }),
                         ],
@@ -66,9 +68,9 @@ class _CreateEventPriceState extends State<CreateEventPrice> {
                     child: CustomGradientButtonWidget(
                       buttonWidget: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: const [
+                        children: [
                           Text(
-                            "SAVE",
+                            l.save,
                             style: regularStyleBold,
                           ),
                         ],
@@ -80,8 +82,8 @@ class _CreateEventPriceState extends State<CreateEventPrice> {
               ),
             ),
           ),
-          const EventAppBar2(
-            title: "Price",
+          EventAppBar2(
+            title: l.price,
           ),
         ],
       ),

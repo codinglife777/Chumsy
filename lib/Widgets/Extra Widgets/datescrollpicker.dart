@@ -1,5 +1,6 @@
 import 'package:chumsy_app/Widgets/Extra%20Widgets/scrollpicker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class DateScrollPicker extends StatefulWidget {
   DateScrollPicker({
@@ -26,20 +27,7 @@ class _DateScrollPickerState extends State<DateScrollPicker> {
   DateTime? selectedDate;
 
   List<String> _days = [];
-  final List<String> _months = [
-    'January',
-    'February',
-    'March',
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December"
-  ];
+  
   List<String> _years = [];
   final FixedExtentScrollController daysController =
       FixedExtentScrollController();
@@ -129,6 +117,21 @@ class _DateScrollPickerState extends State<DateScrollPicker> {
 
   @override
   Widget build(BuildContext context) {
+    AppLocalizations l = AppLocalizations.of(context)!;
+    final List<String> months = [
+    l.january,
+    l.february,
+    l.march,
+    l.april,
+    l.may,
+    l.june,
+    l.july,
+    l.august,
+    l.september,
+    l.october,
+    l.novemeber,
+    l.december
+  ];
     return Container(
       width: MediaQuery.of(context).size.width,
       child: Stack(
@@ -159,7 +162,7 @@ class _DateScrollPickerState extends State<DateScrollPicker> {
                 width: 120,
                 height: 275,
                 child: ScrollPicker(
-                  list: _months,
+                  list: months,
                   controller: monthsController,
                   onChanged: onMonthChanged,
                   selectedIndex: _monthSelectedIndex,

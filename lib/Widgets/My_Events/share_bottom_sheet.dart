@@ -5,11 +5,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../Constants/colors.dart';
 import '../../Constants/sizes.dart';
 
 Future<void> openShareBottomSheet(BuildContext context) {
+  AppLocalizations l = AppLocalizations.of(context)!;
   return showCupertinoModalPopup<void>(
     context: context,
     builder: (BuildContext context) => SlidingUpPanel(
@@ -44,12 +46,12 @@ Future<void> openShareBottomSheet(BuildContext context) {
                 leading: Image.asset(
                   "assets/extras/icons/share (5)@2x.png",
                 ),
-                title: const Text(
-                  "Share event",
+                title: Text(
+                  l.shareEvent,
                   style: regularStyleBold,
                 ),
-                subtitle: const AutoSizeText(
-                  "You can share the event with anyone",
+                subtitle: AutoSizeText(
+                  l.youCanSharetheEventWithAnyone,
                   style: regularStyle,
                   maxLines: 1,
                   softWrap: true,

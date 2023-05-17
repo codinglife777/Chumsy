@@ -3,11 +3,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../Constants/colors.dart';
 import '../../Constants/sizes.dart';
 
 Future<void> openOptionsBottomSheet(BuildContext context) {
+  AppLocalizations l = AppLocalizations.of(context)!;
   return showCupertinoModalPopup<void>(
     context: context,
     builder: (BuildContext context) => SlidingUpPanel(
@@ -44,13 +46,13 @@ Future<void> openOptionsBottomSheet(BuildContext context) {
                   height: 25.17,
                 ),
                 title: Text(
-                  "Report",
+                  l.report,
                   style: regularStyleBold.copyWith(
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                subtitle: const AutoSizeText(
-                  "somethings not right? We will take a look!",
+                subtitle: AutoSizeText(
+                  l.somethingNotRight,
                   style: smallStyle,
                   maxLines: 1,
                   softWrap: true,
@@ -69,13 +71,13 @@ Future<void> openOptionsBottomSheet(BuildContext context) {
                   height: 25.17,
                 ),
                 title: Text(
-                  "Save",
+                  l.saveL,
                   style: regularStyleBold.copyWith(
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                subtitle: const AutoSizeText(
-                  "You can save the event for later",
+                subtitle: AutoSizeText(
+                  l.youCanSavetheEventforLater,
                   style: smallStyle,
                   maxLines: 1,
                   softWrap: true,
@@ -94,13 +96,13 @@ Future<void> openOptionsBottomSheet(BuildContext context) {
                   height: 25.17,
                 ),
                 title: Text(
-                  "Add to friend",
+                  l.addToFriends,
                   style: regularStyleBold.copyWith(
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                subtitle: const AutoSizeText(
-                  "Invite to become friends and keep in touch!",
+                subtitle: AutoSizeText(
+                  l.inviteToBecomeFriends,
                   style: smallStyle,
                   maxLines: 1,
                   softWrap: true,

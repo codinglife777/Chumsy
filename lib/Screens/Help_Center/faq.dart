@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../Constants/colors.dart';
 import '../../Constants/sizes.dart';
@@ -59,6 +60,7 @@ class _HelpCenterFaqState extends State<HelpCenterFaq> {
 
   @override
   Widget build(BuildContext context) {
+    AppLocalizations l = AppLocalizations.of(context)!;
     return CupertinoPageScaffold(
       child: Stack(
         children: [
@@ -78,8 +80,8 @@ class _HelpCenterFaqState extends State<HelpCenterFaq> {
                         children: [
                           spacingBox,
                           spacingBox,
-                          const Text(
-                            "How can we help you?",
+                          Text(
+                            l.howCanWeHelpYou,
                             style: subHeadingStyle,
                           ),
                           spacingBox,
@@ -115,7 +117,7 @@ class _HelpCenterFaqState extends State<HelpCenterFaq> {
                                     padding: const EdgeInsets.symmetric(
                                       horizontal: 5,
                                     ),
-                                    placeholder: 'Search',
+                                    placeholder: l.search,
                                     placeholderStyle: smallStyle,
                                     onChanged: (value) {
                                       onSearch();
@@ -182,8 +184,8 @@ class _HelpCenterFaqState extends State<HelpCenterFaq> {
               ),
             ),
           ),
-          const EventAppBar2(
-            title: "FAQ",
+          EventAppBar2(
+            title: l.faq,
           ),
         ],
       ),

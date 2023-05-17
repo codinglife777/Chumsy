@@ -4,6 +4,7 @@ import 'package:chumsy_app/Screens/landing_page.dart';
 import 'package:chumsy_app/Screens/map_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../Constants/bottom_nav_items.dart';
 import 'edit_profile_screen1.dart';
@@ -20,6 +21,7 @@ class _InsideEditHomePageState extends State<InsideEditHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    AppLocalizations l = AppLocalizations.of(context)!;
     return Obx(
       () => CupertinoTabScaffold(
         backgroundColor: whiteColor,

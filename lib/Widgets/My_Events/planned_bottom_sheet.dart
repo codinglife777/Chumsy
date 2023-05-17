@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../Widgets/Extra Widgets/gradient_widget.dart';
 import '../../Widgets/Extra Widgets/list_set_of_widgets.dart';
@@ -15,6 +16,7 @@ import 'share_bottom_sheet.dart';
 
 SizedBox frientBuilder(
     String nameAndAge, String location, String profile, BuildContext context) {
+      AppLocalizations l = AppLocalizations.of(context)!;
   return SizedBox(
     height: 45,
     child: CupertinoListTile(
@@ -58,9 +60,9 @@ SizedBox frientBuilder(
                     )
                   ],
                 ),
-                const Center(
+                Center(
                   child: Text(
-                    "You have a Chumsy!",
+                    l.youHaveAChumsy,
                     style: headingStyle24,
                   ),
                 ),
@@ -134,9 +136,9 @@ SizedBox frientBuilder(
                         child: CustomSimpleuttonWidget(
                           buttonWidget: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
-                            children: const [
+                            children: [
                               Text(
-                                "DECLINE",
+                                l.decline,
                                 style: regularStyleBold,
                               ),
                             ],
@@ -154,9 +156,9 @@ SizedBox frientBuilder(
                         child: CustomGradientButtonWidget(
                           buttonWidget: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
-                            children: const [
+                            children: [
                               Text(
-                                "ACCEPT",
+                                l.accept,
                                 style: regularStyleBold,
                               ),
                             ],

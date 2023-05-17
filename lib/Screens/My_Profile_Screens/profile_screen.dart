@@ -3,6 +3,7 @@ import 'package:chumsy_app/Screens/My_Profile_Screens/edit_home_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../Functions/build_profile_settings_row.dart';
 import '../../Constants/sizes.dart';
@@ -20,6 +21,7 @@ class ProfileScreen extends StatefulWidget {
 class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
+    AppLocalizations l = AppLocalizations.of(context)!;
     return Container(
       height: screenHeight,
       color: whiteColor,
@@ -101,12 +103,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    buildProfileSettingsRow("Events",
+                    buildProfileSettingsRow(l.events,
                         () => Get.to(() => const ProfileEventsScreen())),
                     const SizedBox(
                       height: 30,
                     ),
-                    buildProfileSettingsRow("Posts", () {}),
+                    buildProfileSettingsRow(l.posts, () {}),
                     const SizedBox(
                       height: 23,
                     ),
@@ -119,10 +121,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     const SizedBox(
                       height: 25,
                     ),
-                    const Padding(
+                    Padding(
                       padding: EdgeInsets.only(left: 40),
                       child: Text(
-                        "Friends",
+                        l.friends,
                         style: subHeadingStyle,
                       ),
                     ),

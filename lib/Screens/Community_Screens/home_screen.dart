@@ -5,6 +5,7 @@ import 'package:chumsy_app/Screens/Community_Screens/mng_bottom_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../Constants/spacing.dart';
 import '../../Controllers/image_controller.dart';
@@ -31,6 +32,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
 
   @override
   Widget build(BuildContext context) {
+    AppLocalizations l = AppLocalizations.of(context)!;
     return Container(
       height: screenHeight,
       width: screenWidth,
@@ -55,8 +57,8 @@ class _CommunityScreenState extends State<CommunityScreen> {
                         ),
                       ),
                     ),
-                    const Text(
-                      "Community",
+                    Text(
+                      l.community,
                       style: subHeadingStyle,
                     ),
                     CupertinoButton(
@@ -66,7 +68,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
                       ),
                       onPressed: () {
                         showActionSheet(context, imageController,
-                            "Take a Photo", 'Photo Library');
+                            l.takeAPhoto, l.photoLibrary);
                       },
                     ),
                   ],
@@ -76,7 +78,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
               const SizedBox(
                 height: 18,
               ),
-              topButtons(),
+              topButtons(context),
               const SizedBox(
                 height: 29,
               ),
@@ -195,10 +197,10 @@ class _CommunityScreenState extends State<CommunityScreen> {
                               ),
                             ),
                             horizontalSpacingBoxSmall,
-                            const Expanded(
+                            Expanded(
                               flex: 0,
                               child: Text(
-                                "FIND FRIENDS",
+                                l.findFriends,
                                 style: regularStyleBold,
                               ),
                             ),
@@ -218,7 +220,8 @@ class _CommunityScreenState extends State<CommunityScreen> {
   }
 
 // top buttons used in the UI
-  Row topButtons() {
+  Row topButtons(BuildContext context) {
+    AppLocalizations l = AppLocalizations.of(context)!;
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -245,7 +248,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
             ),
             child: Center(
               child: AutoSizeText(
-                "Feed",
+                l.feed,
                 style: regularStyleBold.copyWith(
                   color: active == 0 ? whiteColor : blackColor,
                   fontWeight: FontWeight.bold,
@@ -284,7 +287,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
             ),
             child: Center(
               child: AutoSizeText(
-                "Friends",
+                l.friends,
                 style: regularStyleBold.copyWith(
                   color: active == 1 ? whiteColor : blackColor,
                   fontWeight: FontWeight.bold,
@@ -323,7 +326,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
             ),
             child: Center(
               child: AutoSizeText(
-                "Requests",
+                l.requests,
                 style: regularStyleBold.copyWith(
                   color: active == 2 ? whiteColor : blackColor,
                   fontWeight: FontWeight.bold,

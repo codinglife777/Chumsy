@@ -2,17 +2,19 @@ import 'package:chumsy_app/Constants/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 openDialog(BuildContext context, String url) {
+  AppLocalizations l = AppLocalizations.of(context)!;
   Get.generalDialog(
     pageBuilder: (context, animation, secondaryAnimation) => Theme(
       data: ThemeData.light(),
       child: CupertinoAlertDialog(
         title: Text(
-          "Chumsy wants to use \"$url\" to log in",
+          l.chumsyWantstoUse(url),
         ),
-        content: const Text(
-          "Do you allow to use your information for registration purposes?",
+        content: Text(
+          l.doYouAllowTouseYourInfo,
           style: TextStyle(
             color: blackColor,
             fontWeight: FontWeight.normal,
@@ -20,11 +22,11 @@ openDialog(BuildContext context, String url) {
         ),
         actions: <Widget>[
           CupertinoDialogAction(
-            child: const Text("Cancel"),
+            child: Text(l.cancel),
             onPressed: () => Get.back(),
           ),
           CupertinoDialogAction(
-            child: const Text("Allow"),
+            child: Text(l.allow),
             onPressed: () => Get.back(),
           ),
         ],

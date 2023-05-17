@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../Controllers/bnb_controller.dart';
 import '../../Widgets/Extra Widgets/gradient_widget.dart';
@@ -16,6 +17,7 @@ import 'share_bottom_sheet.dart';
 
 Future<void> savedEventBottomSheet(BuildContext context, String bgImage,
     String dp, String tite, String name, String age, String location) {
+      AppLocalizations l = AppLocalizations.of(context)!;
   return showCupertinoModalPopup<void>(
     context: context,
     builder: (BuildContext context) => SlidingUpPanel(
@@ -189,9 +191,9 @@ Future<void> savedEventBottomSheet(BuildContext context, String bgImage,
                       child: CustomSimpleuttonWidget(
                         buttonWidget: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
-                          children: const [
+                          children: [
                             Text(
-                              "DELETE",
+                              l.deleteC,
                               style: regularStyleBold,
                             ),
                           ],
@@ -207,9 +209,9 @@ Future<void> savedEventBottomSheet(BuildContext context, String bgImage,
                       child: CustomGradientButtonWidget(
                         buttonWidget: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
-                          children: const [
+                          children: [
                             Text(
-                              "APPLY",
+                              l.apply,
                               style: regularStyleBold,
                             ),
                           ],
@@ -225,21 +227,21 @@ Future<void> savedEventBottomSheet(BuildContext context, String bgImage,
                                 ),
                               ),
                               child: CupertinoAlertDialog(
-                                title: const Text(
-                                  "New event!",
+                                title: Text(
+                                  l.newEvent,
                                   style: smallStyleBold,
                                 ),
-                                content: const Text(
-                                  "Do you want to apply?",
+                                content: Text(
+                                 l.doYouWnatToApply,
                                   style: smallStyle,
                                 ),
                                 actions: <Widget>[
                                   CupertinoDialogAction(
-                                    child: const Text("NO"),
+                                    child: Text(l.noC),
                                     onPressed: () => Get.back(),
                                   ),
                                   CupertinoDialogAction(
-                                    child: const Text("YES"),
+                                    child: Text(l.yesC),
                                     onPressed: () {
                                       Get.back();
                                       Get.back();

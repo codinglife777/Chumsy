@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'dart:convert';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:slidable_button/slidable_button.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
@@ -27,7 +28,7 @@ class FilterCategory extends StatefulWidget {
   State<FilterCategory> createState() => _FilterCategoryState();
 }
 
-class _FilterCategoryState extends State<FilterCategory> {
+class _FilterCategoryState extends State<FilterCategory> with WidgetsBindingObserver {
   String selected = "Sport";
   int dataCount = 0;
 
@@ -38,114 +39,38 @@ class _FilterCategoryState extends State<FilterCategory> {
       ValueNotifier([]);
   final ValueNotifier<bool> _keyboardVisible = ValueNotifier(false);
   final FocusNode _searchNode = FocusNode();
-  List<Map<String, String>> topicList = [
-    {"topic": "Acrobatics"},
-    {"topic": "Aerobics"},
-    {"topic": "Aqua Aerobics"},
-    {"topic": "Archery"},
-    {"topic": "Athletics"},
-    {"topic": "Badminton"},
-    {"topic": "Baseball"},
-    {"topic": "Basketball"},
-    {"topic": "Biathlon"},
-    {"topic": "Bowling"},
-    {"topic": "Boxing"},
-    {"topic": "Canoening"},
-    {"topic": "Chess"},
-    {"topic": "Climbing"},
-    {"topic": "Combat sports (other)"},
-    {"topic": "Cricket"},
-    {"topic": "CrossFit"},
-    {"topic": "Crossminton"},
-    {"topic": "Cycling"},
-    {"topic": "Dance"},
-    {"topic": "eSport"},
-    {"topic": "Fencing"},
-    {"topic": "Fitness"},
-    {"topic": "Floorball"},
-    {"topic": "Football"},
-    {"topic": "Frisbee"},
-    {"topic": "Golf"},
-    {"topic": "Gym"},
-    {"topic": "Gymnastics"},
-    {"topic": "Handball"},
-    {"topic": "Hockey"},
-    {"topic": "Horse riding"},
-    {"topic": "Ice-skating"},
-    {"topic": "Judo"},
-    {"topic": "Karate"},
-    {"topic": "Karting"},
-    {"topic": "Kick-boxing"},
-    {"topic": "Kitesurfing"},
-    {"topic": "MMA"},
-    {"topic": "Motorbike riding"},
-    {"topic": "Nordic walking"},
-    {"topic": "Padel"},
-    {"topic": "Pedalo"},
-    {"topic": "Physiotherapy (exercise)"},
-    {"topic": "Pilates"},
-    {"topic": "Pool"},
-    {"topic": "Roller blading"},
-    {"topic": "Roller skates"},
-    {"topic": "Rowing"},
-    {"topic": "Rugby"},
-    {"topic": "Running"},
-    {"topic": "Sailing"},
-    {"topic": "Shooting"},
-    {"topic": "Skateboard"},
-    {"topic": "Ski jumping"},
-    {"topic": "Skiing"},
-    {"topic": "Snowboard"},
-    {"topic": "Squash"},
-    {"topic": "SUP"},
-    {"topic": "Surfing"},
-    {"topic": "Swimming"},
-    {"topic": "Tennis"},
-    {"topic": "Taekwondo"},
-    {"topic": "Tennis"},
-    {"topic": "Trekking"},
-    {"topic": "Triathlon"},
-    {"topic": "Volleyball"},
-    {"topic": "Weightlifting"},
-    {"topic": "Windsurfing"},
-    {"topic": "Wrestling"},
-    {"topic": "Yoga"},
-  ];
+  List<Map<String, String>> topicList = [];
 
-  List<Map<String, String>> lifeStyleTopics = [
-    {"topic": 'Board games'},
-    {"topic": 'Calligraphy'},
-    {"topic": 'Caravanning'},
-    {"topic": "Card games"},
-    {"topic": 'Ceramics and Pottery'},
-    {"topic": 'Cooking'},
-    {"topic": 'Crocheting'},
-    {"topic": 'Drawing'},
-    {"topic": 'Embroidering'},
-    {"topic": 'Fashion'},
-    {"topic": 'Fishing'},
-    {"topic": 'Floristics'},
-    {"topic": 'Handicraft'},
-    {"topic": 'Macrame'},
-    {"topic": 'Make-up and Beauty care'},
-    {"topic": 'Mindfulness'},
-    {"topic": 'Music and Singing'},
-    {"topic": 'Paintball'},
-    {"topic": 'Painting'},
-    {"topic": 'Photography'},
-    {"topic": 'Picnic'},
-    {"topic": 'Pole dance'},
-    {"topic": 'Rope course'},
-    {"topic": 'Sauna'},
-    {"topic": 'Sled'},
-    {"topic": 'Trampolines'},
-    {"topic": 'Walk'},
-    {"topic": 'Walk with a dog'},
-    {"topic": 'Walk with children'},
-    {"topic": 'Zumba'},
-  ];
+  List<Map<String, String>> lifeStyleTopics = [];
 
   List<Map<String, String>> controlList = [];
+
+  @override
+  didChangeDependencies() {
+    WidgetsBinding.instance.addObserver(this);
+    try {
+      List<dynamic> dataSports = jsonDecode(AppLocalizations.of(context)!.sports);
+      List<dynamic> dataLifeStyles = jsonDecode(AppLocalizations.of(context)!.lifeStyles);
+      List<Map<String, String>> sports = dataSports.map((e) {
+        return {"topic": e as String};
+      }).toList();
+      List<Map<String, String>> lifeStyles = dataLifeStyles.map((e) {
+        return {"topic": e as String};
+      }).toList();
+      setState(() {
+        topicList = sports;
+        lifeStyleTopics = lifeStyles;
+        controlList = _sport.value ? topicList : lifeStyleTopics;
+      });
+    } catch (e) {
+      if (kDebugMode) {
+        print(e);
+      } 
+    }
+
+    super.didChangeDependencies();
+  }
+
   @override
   void initState() {
     super.initState();
@@ -258,6 +183,9 @@ class _FilterCategoryState extends State<FilterCategory> {
 
   @override
   Widget build(BuildContext context) {
+
+    AppLocalizations l = AppLocalizations.of(context)!;
+
     return CupertinoPageScaffold(
       child: Stack(
         children: [
@@ -276,89 +204,6 @@ class _FilterCategoryState extends State<FilterCategory> {
                         children: [
                           spacingBox,
                           ThreeStateSwitch(cbState: cbState),
-                          // Container(
-                          //   width: screenWidth,
-                          //   decoration: BoxDecoration(
-                          //     color: blackColor,
-                          //     borderRadius: BorderRadius.circular(
-                          //       100,
-                          //     ),
-                          //   ),
-                          //   padding: const EdgeInsets.all(
-                          //     3,
-                          //   ),
-                          //   child: Row(
-                          //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          //     mainAxisSize: MainAxisSize.min,
-                          //     children: [
-                          //       AppLocalizations.of(context)!.sport,
-                          //       AppLocalizations.of(context)!.lifeStyle,
-                          //       AppLocalizations.of(context)!.nameIt
-                          //     ]
-                          //         .map(
-                          //           (e) => Expanded(
-                          //             flex: 1,
-                          //             child: Container(
-                          //               decoration: BoxDecoration(
-                          //                 borderRadius: BorderRadius.circular(
-                          //                   100,
-                          //                 ),
-                          //                 gradient: selected.contains(e)
-                          //                     ? const LinearGradient(
-                          //                         colors: [
-                          //                           neonColor,
-                          //                           blueColor,
-                          //                         ],
-                          //                       )
-                          //                     : const LinearGradient(
-                          //                         colors: [
-                          //                           blackColor,
-                          //                           blackColor,
-                          //                         ],
-                          //                       ),
-                          //               ),
-                          //               padding: const EdgeInsets.symmetric(
-                          //                 vertical: 12,
-                          //               ),
-                          //               child: GestureDetector(
-                          //                 onPanStart: (dragStatDetail) {},
-                          //                 onTap: () {
-                          //                   setState(() {
-                          //                     selected = e;
-                          //                     if (e ==
-                          //                         AppLocalizations.of(context)!
-                          //                             .sport) {
-                          //                       _sport.value = true;
-                          //                     } else {
-                          //                       _sport.value = false;
-                          //                     }
-                          //                     if (e ==
-                          //                         AppLocalizations.of(context)!
-                          //                             .nameIt) {
-                          //                       _nameIt.value = true;
-                          //                     } else {
-                          //                       _nameIt.value = false;
-                          //                       onSearch(_search.text);
-                          //                     }
-                          //                   });
-                          //                 },
-                          //                 child: Center(
-                          //                   child: Text(
-                          //                     e,
-                          //                     style: subHeadingStyle.copyWith(
-                          //                       color: selected.contains(e)
-                          //                           ? blackColor
-                          //                           : whiteColor,
-                          //                     ),
-                          //                   ),
-                          //                 ),
-                          //               ),
-                          //             ),
-                          //           ),
-                          //         )
-                          //         .toList(),
-                          //   ),
-                          // ),
                           spacingBox,
                           spacingBox,
                           _nameIt.value
@@ -521,7 +366,7 @@ class _FilterCategoryState extends State<FilterCategory> {
                                               ),
                                               horizontalSpacingBox,
                                               Text(
-                                                "Change a picture",
+                                               l.changeAPicture,
                                                 style:
                                                     regularStyleBold.copyWith(
                                                         fontWeight:

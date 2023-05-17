@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../Constants/colors.dart';
 import '../../Constants/sizes.dart';
 import '../../Styles/styles.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 enum SwitchState { state1, state2, state3 }
 
@@ -21,6 +22,7 @@ class _ThreeStateSwitchState extends State<ThreeStateSwitch> {
   SwitchState _currentSwitchState = SwitchState.state1;
   @override
   Widget build(BuildContext context) {
+    AppLocalizations l = AppLocalizations.of(context)!;
     double indicatorWidth = (MediaQuery.of(context).size.width - 40) / 3 - 4;
     double containerWidth = MediaQuery.of(context).size.width - 40 - 4;
 
@@ -63,7 +65,7 @@ class _ThreeStateSwitchState extends State<ThreeStateSwitch> {
         child: Stack(
           children: [
             AnimatedPositioned(
-              duration: const Duration(milliseconds: 100),
+              duration: const Duration(milliseconds: 200),
               left: _containerPosition,
               child: Container(
                 width: (MediaQuery.of(context).size!.width - 40) / 3,
@@ -79,7 +81,7 @@ class _ThreeStateSwitchState extends State<ThreeStateSwitch> {
                 Expanded(
                   child: Container(
                     alignment: Alignment.center,
-                    child: Text('Sport',
+                    child: Text(l.sport,
                         style: subHeadingStyle.copyWith(
                           color: _currentSwitchState == SwitchState.state1
                               ? blackColor
@@ -90,7 +92,7 @@ class _ThreeStateSwitchState extends State<ThreeStateSwitch> {
                 Expanded(
                   child: Container(
                     alignment: Alignment.center,
-                    child: Text('Lifestyle',
+                    child: Text(l.lifeStyle,
                         style: subHeadingStyle.copyWith(
                           color: _currentSwitchState == SwitchState.state2
                               ? blackColor
@@ -101,7 +103,7 @@ class _ThreeStateSwitchState extends State<ThreeStateSwitch> {
                 Expanded(
                   child: Container(
                     alignment: Alignment.center,
-                    child: Text('Name it!',
+                    child: Text(l.nameIt,
                         style: subHeadingStyle.copyWith(
                           color: _currentSwitchState == SwitchState.state3
                               ? blackColor

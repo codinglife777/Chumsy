@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../Constants/colors.dart';
 
@@ -79,6 +80,7 @@ void showNotificationToast(String msg) {
 
 void showAlertDialog(BuildContext context, String strTitle, String strDetail,
     String? strYes, String? strNo, VoidCallback? cbYes, VoidCallback? cbNo) {
+      AppLocalizations l = AppLocalizations.of(context)!;
   showCupertinoModalPopup<void>(
     context: context,
     builder: (BuildContext context) => CupertinoAlertDialog(
@@ -93,7 +95,7 @@ void showAlertDialog(BuildContext context, String strTitle, String strDetail,
             if (cbNo != null) cbNo();
             Navigator.pop(context);
           },
-          child: Text(strNo ?? "No"),
+          child: Text(strNo ?? l.no),
         ),
         CupertinoDialogAction(
           /// This parameter indicates the action would perform
@@ -104,7 +106,7 @@ void showAlertDialog(BuildContext context, String strTitle, String strDetail,
             if (cbYes != null) cbYes();
             Navigator.pop(context);
           },
-          child: Text(strYes ?? "Yes"),
+          child: Text(strYes ?? l.yes),
         ),
       ],
     ),
@@ -113,7 +115,7 @@ void showAlertDialog(BuildContext context, String strTitle, String strDetail,
 
 AlertDialog getAlertDlg(BuildContext context, String title) {
   Widget okButton = TextButton(
-    child: const Text("ok"),
+    child: const Text("Ok"),
     onPressed: () {
       Navigator.pop(context);
     },

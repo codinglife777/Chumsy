@@ -11,6 +11,7 @@ import '../../Constants/colors.dart';
 import '../Widgets/Extra Widgets/custom_datepicker.dart';
 
 void openTimePicker(BuildContext context) {
+  AppLocalizations l = AppLocalizations.of(context)!;
   showCupertinoModalPopup<void>(
     context: context,
     builder: (BuildContext context) => Theme(
@@ -37,8 +38,8 @@ void openTimePicker(BuildContext context) {
                     onPressed: () {
                       Get.back();
                     },
-                    child: const Text(
-                      "Done",
+                    child: Text(
+                      l.done,
                     ),
                   ),
                 ],

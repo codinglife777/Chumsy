@@ -13,6 +13,8 @@ import '../../Constants/colors.dart';
 import '../../Constants/sizes.dart';
 import '../../Constants/spacing.dart';
 import 'open_options_bottom_sheet.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 Future<void> seeEventBottomSheet(
     BuildContext context,
@@ -23,6 +25,7 @@ Future<void> seeEventBottomSheet(
     String name,
     String age,
     String location) {
+      AppLocalizations l = AppLocalizations.of(context)!;
   return showCupertinoModalPopup<void>(
     context: context,
     builder: (BuildContext context) => SlidingUpPanel(
@@ -214,9 +217,9 @@ Future<void> seeEventBottomSheet(
                       child: CustomSimpleuttonWidget(
                         buttonWidget: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
-                          children: const [
+                          children: [
                             Text(
-                              "SHARE",
+                              l.shareC,
                               style: regularStyleBold,
                             ),
                           ],
@@ -234,9 +237,9 @@ Future<void> seeEventBottomSheet(
                       child: CustomGradientButtonWidget(
                         buttonWidget: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
-                          children: const [
+                          children: [
                             Text(
-                              "APPLY",
+                              l.apply,
                               style: regularStyleBold,
                             ),
                           ],

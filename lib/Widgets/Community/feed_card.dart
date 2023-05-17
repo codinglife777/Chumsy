@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../Constants/colors.dart';
 import '../../Constants/sizes.dart';
@@ -26,6 +27,7 @@ class CustomFeedCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AppLocalizations l = AppLocalizations.of(context)!;
     return SizedBox(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -163,10 +165,10 @@ class CustomFeedCard extends StatelessWidget {
                       const SizedBox(
                         width: 6.7,
                       ),
-                      const Expanded(
+                      Expanded(
                         flex: 0,
                         child: Text(
-                          "Send",
+                          l.send,
                           style: smallStyle,
                         ),
                       ),

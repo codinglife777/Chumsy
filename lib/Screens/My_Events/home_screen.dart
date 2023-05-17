@@ -5,6 +5,7 @@ import 'package:chumsy_app/Screens/My_Events/update_event.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../Constants/spacing.dart';
 import '../../Functions/update_event.dart';
@@ -31,6 +32,7 @@ class _MyEventHomeState extends State<MyEventHome> {
 
   @override
   Widget build(BuildContext context) {
+    AppLocalizations l = AppLocalizations.of(context)!;
     return Container(
       height: screenHeight,
       width: screenWidth,
@@ -43,9 +45,9 @@ class _MyEventHomeState extends State<MyEventHome> {
               spacingBox,
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
+                children: [
                   Text(
-                    "My Events",
+                    l.myEvents,
                     style: subHeadingStyle,
                   ),
                 ],
@@ -53,7 +55,7 @@ class _MyEventHomeState extends State<MyEventHome> {
               const Divider(),
               spacingBox,
               spacingBox,
-              topButtons(),
+              topButtons(context),
               spacingBox,
               Padding(
                 padding: const EdgeInsets.symmetric(
@@ -206,7 +208,8 @@ class _MyEventHomeState extends State<MyEventHome> {
   }
 
 // top buttons used in the UI
-  Row topButtons() {
+  Row topButtons(BuildContext context) {
+    AppLocalizations l = AppLocalizations.of(context)!;
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -230,7 +233,7 @@ class _MyEventHomeState extends State<MyEventHome> {
             ),
             child: Center(
               child: AutoSizeText(
-                "Planned",
+                l.planned,
                 style: regularStyleBold.copyWith(
                   color: active == 0 ? whiteColor : blackColor,
                   fontWeight: FontWeight.bold,
@@ -267,7 +270,7 @@ class _MyEventHomeState extends State<MyEventHome> {
             ),
             child: Center(
               child: AutoSizeText(
-                "Finished",
+                l.finished,
                 style: regularStyleBold.copyWith(
                   color: active == 1 ? whiteColor : blackColor,
                   fontWeight: FontWeight.bold,
@@ -304,7 +307,7 @@ class _MyEventHomeState extends State<MyEventHome> {
             ),
             child: Center(
               child: AutoSizeText(
-                "Saved",
+                l.saved,
                 style: regularStyleBold.copyWith(
                   color: active == 2 ? whiteColor : blackColor,
                   fontWeight: FontWeight.bold,

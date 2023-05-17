@@ -41,6 +41,7 @@ class _CreateEventState extends State<CreateEvent> {
 
   @override
   Widget build(BuildContext context) {
+    AppLocalizations l = AppLocalizations.of(context)!;
     return CupertinoPageScaffold(
       child: Stack(
         children: [
@@ -81,7 +82,7 @@ class _CreateEventState extends State<CreateEvent> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  "Number of Chumsys",
+                                  l.numberOfChumsys,
                                   style: regularStyleBold.copyWith(
                                     fontWeight: FontWeight.bold,
                                   ),
@@ -174,8 +175,8 @@ class _CreateEventState extends State<CreateEvent> {
                                         crossAxisAlignment:
                                             CrossAxisAlignment.center,
                                         children: [
-                                          const Text(
-                                            "Need a Master?",
+                                          Text(
+                                            l.needAMaster,
                                             style: TextStyle(
                                                 fontSize: 16,
                                                 color: blackColor,

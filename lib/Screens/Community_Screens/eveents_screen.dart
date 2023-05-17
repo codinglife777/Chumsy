@@ -4,6 +4,7 @@ import 'package:chumsy_app/Constants/sizes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../Constants/spacing.dart';
 import '../../Widgets/Community/custom_event_card.dart';
@@ -23,6 +24,7 @@ int active = 0;
 class _ProfileEventsScreenState extends State<ProfileEventsScreen> {
   @override
   Widget build(BuildContext context) {
+    AppLocalizations l = AppLocalizations.of(context)!;
     return Container(
       height: screenHeight,
       width: screenWidth,
@@ -42,8 +44,8 @@ class _ProfileEventsScreenState extends State<ProfileEventsScreen> {
                     ),
                     onPressed: () => Get.back(),
                   ),
-                  const Text(
-                    "Events",
+                  Text(
+                    l.events,
                     style: subHeadingStyle,
                   ),
                   CupertinoButton(
@@ -55,7 +57,7 @@ class _ProfileEventsScreenState extends State<ProfileEventsScreen> {
               const Divider(),
               spacingBox,
               spacingBox,
-              topButtons(),
+              topButtons(context),
               const SizedBox(
                 height: 29,
               ),
@@ -145,7 +147,8 @@ class _ProfileEventsScreenState extends State<ProfileEventsScreen> {
   }
 
 // top buttons used in the UI
-  Row topButtons() {
+  Row topButtons(BuildContext context) {
+    AppLocalizations l = AppLocalizations.of(context)!;
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -172,7 +175,7 @@ class _ProfileEventsScreenState extends State<ProfileEventsScreen> {
             ),
             child: Center(
               child: AutoSizeText(
-                "Planned",
+                l.planned,
                 style: regularStyleBold.copyWith(
                   color: active == 0 ? whiteColor : blackColor,
                   fontWeight: FontWeight.bold,
@@ -211,7 +214,7 @@ class _ProfileEventsScreenState extends State<ProfileEventsScreen> {
             ),
             child: Center(
               child: AutoSizeText(
-                "Finished",
+                l.finished,
                 style: regularStyleBold.copyWith(
                   color: active == 1 ? whiteColor : blackColor,
                   fontWeight: FontWeight.bold,

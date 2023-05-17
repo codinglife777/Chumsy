@@ -10,6 +10,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:simple_shadow/simple_shadow.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../Constants/sizes.dart';
 import '../Constants/spacing.dart';
@@ -28,7 +29,7 @@ class MapScreen extends StatelessWidget {
         Get.put(MapScreenControllers());
     final BNBController bnbController = Get.put(BNBController());
     final TextEditingController searchCont = TextEditingController();
-
+    AppLocalizations l = AppLocalizations.of(context)!;
     return SingleChildScrollView(
       child: GestureDetector(
         onTap: () => mapScreenControllers.closeInfoWindow(),
@@ -130,7 +131,7 @@ class MapScreen extends StatelessWidget {
                                             padding: const EdgeInsets.symmetric(
                                               horizontal: 16,
                                             ),
-                                            placeholder: 'Search an event..',
+                                            placeholder: l.searchAnEvent,
                                             placeholderStyle: TextStyle(
                                                 color:
                                                     textColor.withOpacity(0.7),
@@ -236,9 +237,9 @@ class MapScreen extends StatelessWidget {
                                           buttonWidget: Row(
                                             mainAxisAlignment:
                                                 MainAxisAlignment.center,
-                                            children: const [
+                                            children: [
                                               Text(
-                                                "EVENT IN PROGRESS",
+                                                l.eventInProgress,
                                                 style: regularStyleBold,
                                               )
                                             ],
@@ -285,11 +286,11 @@ class MapScreen extends StatelessWidget {
                               borderRadius: BorderRadius.circular(
                                 100,
                               ),
-                              child: const SizedBox(
+                              child: SizedBox(
                                 height: 51,
                                 child: Center(
                                   child: Text(
-                                    'CREATE AN EVENT',
+                                    l.createAnEventCC,
                                     style: regularStyleBold,
                                   ),
                                 ),

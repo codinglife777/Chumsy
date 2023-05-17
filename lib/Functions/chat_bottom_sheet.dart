@@ -2,12 +2,14 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../Constants/colors.dart';
 import '../../Constants/sizes.dart';
 import '../../Constants/spacing.dart';
 
 Future<void> showChatBottomSheet(BuildContext context, bool isCommunity) {
+  AppLocalizations l = AppLocalizations.of(context)!;
   return showCupertinoModalPopup<void>(
     context: context,
     builder: (BuildContext context) => SlidingUpPanel(
@@ -67,13 +69,13 @@ Future<void> showChatBottomSheet(BuildContext context, bool isCommunity) {
                   leading: Image.asset("assets/extras/icons/alert@2x.png"),
                   leadingSize: 28,
                   title: Text(
-                    "Report",
+                    l.report,
                     style: regularStyleBold.copyWith(
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  subtitle: const AutoSizeText(
-                    "Something not right? We will take a look!",
+                  subtitle: AutoSizeText(
+                    l.somethingNotRight,
                     style: smallStyle,
                     maxLines: 1,
                     softWrap: true,
@@ -89,15 +91,15 @@ Future<void> showChatBottomSheet(BuildContext context, bool isCommunity) {
                         leading: Image.asset("assets/extras/icons/ban.png"),
                         leadingSize: 28,
                         title: AutoSizeText(
-                          "Block",
+                          l.block,
                           style: regularStyleBold.copyWith(
                             fontWeight: FontWeight.bold,
                           ),
                           maxLines: 1,
                           softWrap: true,
                         ),
-                        subtitle: const Text(
-                          "You can block the user",
+                        subtitle: Text(
+                          l.youCanBlocktheUser,
                           style: smallStyle,
                         ),
                       ),
@@ -109,13 +111,13 @@ Future<void> showChatBottomSheet(BuildContext context, bool isCommunity) {
                   leading: Image.asset("assets/extras/user_add.png"),
                   leadingSize: 28,
                   title: Text(
-                    "Add to friends",
+                    l.addToFriends,
                     style: regularStyleBold.copyWith(
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  subtitle: const AutoSizeText(
-                    "Invite to become friends and keep in touch!",
+                  subtitle: AutoSizeText(
+                    l.inviteToBecomeFriends,
                     style: smallStyle,
                     maxLines: 1,
                     softWrap: true,
@@ -131,13 +133,13 @@ Future<void> showChatBottomSheet(BuildContext context, bool isCommunity) {
                         leading: Image.asset("assets/extras/icons/mute.png"),
                         leadingSize: 28,
                         title: Text(
-                          "Mute",
+                          l.mute,
                           style: regularStyleBold.copyWith(
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        subtitle: const AutoSizeText(
-                          "You can mute the notifications",
+                        subtitle: AutoSizeText(
+                          l.youCanMute,
                           style: smallStyle,
                           maxLines: 1,
                           softWrap: true,

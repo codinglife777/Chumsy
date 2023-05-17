@@ -8,6 +8,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../Constants/colors.dart';
 import '../../Constants/sizes.dart';
@@ -255,6 +256,7 @@ class _CustomMyEventCardState extends State<CustomMyEventCard> {
       String age,
       String location,
       VoidCallback updateEvent) {
+    AppLocalizations l = AppLocalizations.of(context)!;    
     bool cancelState1 = true;
     return showCupertinoModalPopup<void>(
       context: context,
@@ -464,9 +466,9 @@ class _CustomMyEventCardState extends State<CustomMyEventCard> {
                         child: CustomSimpleuttonWidget(
                           buttonWidget: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
-                            children: const [
+                            children: [
                               Text(
-                                "CANCEL",
+                                l.cancelC,
                                 style: regularStyleBold,
                               ),
                             ],
@@ -502,9 +504,9 @@ class _CustomMyEventCardState extends State<CustomMyEventCard> {
                         child: CustomGradientButtonWidget(
                           buttonWidget: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
-                            children: const [
+                            children: [
                               Text(
-                                "EDIT",
+                                l.edit,
                                 style: regularStyleBold,
                               ),
                             ],

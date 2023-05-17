@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 
 import '../Constants/colors.dart';
 
-void showEmailPasswordAlert(String message) {
+void showEmailPasswordAlert(BuildContext context, String message) {
   Get.generalDialog(
     pageBuilder: (context, animation, secondaryAnimation) => Theme(
       data: ThemeData.light(),

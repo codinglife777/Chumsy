@@ -8,6 +8,7 @@ import 'package:chumsy_app/Screens/landing_page.dart';
 import 'package:chumsy_app/Screens/map_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../Constants/bottom_nav_items.dart';
 import 'faq.dart';

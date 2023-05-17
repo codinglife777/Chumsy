@@ -20,6 +20,7 @@ class _CreateEventWIthWhomState extends State<CreateEventWIthWhom> {
 
   @override
   Widget build(BuildContext context) {
+    AppLocalizations l = AppLocalizations.of(context)!;
     return CupertinoPageScaffold(
       child: Stack(
         children: [
@@ -38,13 +39,13 @@ class _CreateEventWIthWhomState extends State<CreateEventWIthWhom> {
                     child: SingleChildScrollView(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: const [
+                        children: [
                           WithWhomTypes(
-                            payType: "Friends",
+                            payType: l.friends,
                           ),
                           spacingBox,
                           WithWhomTypes(
-                            payType: "Public",
+                            payType: l.public,
                           ),
                         ],
                       ),
@@ -73,7 +74,7 @@ class _CreateEventWIthWhomState extends State<CreateEventWIthWhom> {
             ),
           ),
           EventAppBar(
-            title: "With whom?",
+            title: l.withWhom,
             cbClear: clear,
           ),
         ],

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../Constants/colors.dart';
 import '../../Constants/sizes.dart';
@@ -14,6 +15,7 @@ import '../Extra Widgets/gradient_widget.dart';
 import 'event_going_on_screen.dart';
 
 Future<void> runningEventBottomSheet(BuildContext context) {
+  AppLocalizations l = AppLocalizations.of(context)!;
   return showCupertinoModalPopup<void>(
     context: context,
     builder: (BuildContext context) => SlidingUpPanel(
@@ -74,8 +76,8 @@ Future<void> runningEventBottomSheet(BuildContext context) {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
-                  "Tennis",
+                Text(
+                  l.tennis,
                   style: headingStyle24,
                 ),
                 const SizedBox(
@@ -187,7 +189,7 @@ Future<void> runningEventBottomSheet(BuildContext context) {
                 Row(
                   children: [
                     Text(
-                      'Photos',
+                      l.photos,
                       style: regularStyle.copyWith(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
@@ -277,7 +279,7 @@ Future<void> runningEventBottomSheet(BuildContext context) {
                         await Share.share('sharing', subject: "Sharing");
                       },
                       child: Text(
-                        "Share my location",
+                        l.shareMyLocation,
                         style: regularStyle.copyWith(
                           decoration: TextDecoration.underline,
                           decorationColor: blackColor,
@@ -296,9 +298,9 @@ Future<void> runningEventBottomSheet(BuildContext context) {
                   child: CustomSimpleuttonWidget(
                     buttonWidget: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
+                      children: [
                         Text(
-                          "FINISH",
+                          l.finishC,
                           style: smallStyleBold,
                         )
                       ],
@@ -318,9 +320,9 @@ Future<void> runningEventBottomSheet(BuildContext context) {
                   child: CustomGradientButtonWidget(
                     buttonWidget: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
+                      children: [
                         Text(
-                          "CHUMSY POWER",
+                          l.chumsyPowerC,
                           style: smallStyleBold,
                         )
                       ],

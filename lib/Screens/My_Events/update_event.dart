@@ -41,6 +41,7 @@ class _UpdateEventState extends State<UpdateEvent> {
 
   @override
   Widget build(BuildContext context) {
+    AppLocalizations l = AppLocalizations.of(context)!;
     return Container(
       width: screenWidth,
       height: screenHeight,
@@ -92,7 +93,7 @@ class _UpdateEventState extends State<UpdateEvent> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                "Number of Chumsys",
+                                l.numberOfChumsys,
                                 style: regularStyleBold.copyWith(
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -185,8 +186,8 @@ class _UpdateEventState extends State<UpdateEvent> {
                                       crossAxisAlignment:
                                           CrossAxisAlignment.center,
                                       children: [
-                                        const Text(
-                                          "Need a Master?",
+                                        Text(
+                                          l.needAMaster,
                                           style: TextStyle(
                                               fontSize: 16,
                                               color: blackColor,
@@ -369,7 +370,7 @@ class _UpdateEventState extends State<UpdateEvent> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    'UPDATE',
+                    l.update,
                     style: regularStyleBold,
                   ),
                 ],
@@ -377,8 +378,8 @@ class _UpdateEventState extends State<UpdateEvent> {
               onTapFunction: () => Get.back(),
             ),
           ),
-          const EventAppBar2(
-            title: 'Update an event',
+          EventAppBar2(
+            title: l.updateAnEvent,
             // cbClear: clear,
           ),
         ],

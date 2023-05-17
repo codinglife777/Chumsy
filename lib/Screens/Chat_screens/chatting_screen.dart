@@ -3,6 +3,7 @@ import 'package:chumsy_app/Functions/cupertino_action_sheet.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../Constants/colors.dart';
 import '../../Constants/sizes.dart';
@@ -93,6 +94,7 @@ class _ChattingScreenState extends State<ChattingScreen> {
 
   @override
   Widget build(BuildContext context) {
+    AppLocalizations l = AppLocalizations.of(context)!;
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
         backgroundColor: whiteColor,
@@ -135,7 +137,7 @@ class _ChattingScreenState extends State<ChattingScreen> {
                       ],
                     )),
                     Text(
-                      "Online",
+                      l.online,
                       style: smallStyle.copyWith(
                         color: textColor,
                       ),
@@ -216,7 +218,7 @@ class _ChattingScreenState extends State<ChattingScreen> {
                           padding: EdgeInsets.zero,
                           onPressed: () {
                             showActionSheet(context, Get.put(ImageController()),
-                                'Photo Library', "Add a File");
+                                l.photoLibrary, l.addAFile);
                           },
                           child: const Icon(
                             CupertinoIcons.add,
@@ -256,7 +258,7 @@ class _ChattingScreenState extends State<ChattingScreen> {
                               width: 2,
                             ),
                           ),
-                          placeholder: 'Message...',
+                          placeholder: l.message,
                           placeholderStyle: const TextStyle(
                             fontSize: 13,
                             color: blackColor,
@@ -302,8 +304,8 @@ class _ChattingScreenState extends State<ChattingScreen> {
                                   end: Alignment.centerRight,
                                 ),
                               ),
-                              child: const Text(
-                                "Send",
+                              child: Text(
+                                l.sendLower,
                                 style: smallStyleBold,
                               ),
                             ),
@@ -318,8 +320,8 @@ class _ChattingScreenState extends State<ChattingScreen> {
                               showActionSheet(
                                   context,
                                   Get.put(ImageController()),
-                                  'Photo Library',
-                                  "Add a File");
+                                  l.photoLibrary,
+                                  l.addAFile);
                             },
                             child: const Icon(
                               CupertinoIcons.camera,

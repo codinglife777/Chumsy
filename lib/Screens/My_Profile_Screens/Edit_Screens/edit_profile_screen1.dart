@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:simple_shadow/simple_shadow.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../Functions/build_event_row.dart';
 import '../../../Constants/sizes.dart';
@@ -21,6 +22,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   bool needMaster = true;
   @override
   Widget build(BuildContext context) {
+    AppLocalizations l = AppLocalizations.of(context)!;
     return Container(
       padding: const EdgeInsets.only(
         top: 50,
@@ -43,8 +45,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   ),
                   onPressed: () => Get.back(),
                 ),
-                const Text(
-                  "Edit Profile",
+                Text(
+                  l.editProfile,
                   style: headingStyle20,
                 ),
                 CupertinoButton(
@@ -108,14 +110,14 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              buildRow("Name", "Emily", () {}),
-                              buildRow("Surname", "Benneth", () {}),
+                              buildRow(l.name, "Emily", () {}),
+                              buildRow(l.surname, "Benneth", () {}),
                               buildRow(
-                                  "Email", "Alexpawluczuk@gmail.com", () {}),
-                              buildRow("Phone number", "+48501666030", () {}),
-                              buildRow("Date of birth", "21 June 1991", () {}),
-                              buildRow("Gender", "Female", () {}),
-                              buildRow("Location", "Poland, Warsaw", () {}),
+                                  l.email, "Alexpawluczuk@gmail.com", () {}),
+                              buildRow(l.phoneNumber, "+48501666030", () {}),
+                              buildRow(l.dateOfBirth, "21 June 1991", () {}),
+                              buildRow(l.gender, "Female", () {}),
+                              buildRow(l.location, "Poland, Warsaw", () {}),
                               const SizedBox(
                                 height: 12,
                               ),
@@ -125,7 +127,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Text(
-                                    "Are you a Master? *",
+                                    l.areYouAMaster,
                                     style: regularStyleBold.copyWith(
                                       fontWeight: FontWeight.bold,
                                     ),
@@ -162,9 +164,9 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
             child: CustomGradientButtonWidget(
               buttonWidget: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
+                children: [
                   Text(
-                    "SAVE",
+                    l.save,
                     style: regularStyleBold,
                   ),
                 ],

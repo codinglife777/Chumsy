@@ -74,6 +74,8 @@ class _FilterTimeState extends State<FilterTime> {
 
   @override
   Widget build(BuildContext context) {
+    AppLocalizations l = AppLocalizations.of(context)!;
+
     return CupertinoPageScaffold(
       child: Stack(
         children: [

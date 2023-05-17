@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../Constants/colors.dart';
 import '../../Constants/sizes.dart';
@@ -20,6 +21,7 @@ class _HelpCenterReportState extends State<HelpCenterReport> {
   int countWords = 0;
   @override
   Widget build(BuildContext context) {
+    AppLocalizations l = AppLocalizations.of(context)!;
     return CupertinoPageScaffold(
       child: Stack(
         children: [
@@ -37,8 +39,8 @@ class _HelpCenterReportState extends State<HelpCenterReport> {
                       child: Column(
                         children: [
                           spacingBoxExtended,
-                          const Text(
-                            "Run into an issue while using Chumsy or found a missing feature you need? Let us know here!",
+                          Text(
+                           l.runIntoAnIssue,
                             style: regularStyle,
                           ),
                           const SizedBox(
@@ -56,7 +58,7 @@ class _HelpCenterReportState extends State<HelpCenterReport> {
                               horizontal: 15,
                               vertical: 15,
                             ),
-                            placeholder: "Write your message...",
+                            placeholder: l.writeYourMessage,
                             placeholderStyle: smallStyle,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(
@@ -90,7 +92,7 @@ class _HelpCenterReportState extends State<HelpCenterReport> {
                               ),
                               horizontalSpacingBox,
                               Text(
-                                "Add a screenshot",
+                                l.addAScreenshot,
                                 style: regularStyleBold.copyWith(
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -109,9 +111,9 @@ class _HelpCenterReportState extends State<HelpCenterReport> {
                     child: CustomGradientButtonWidget(
                       buttonWidget: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: const [
+                        children: [
                           Text(
-                            "SEND",
+                            l.send,
                             style: regularStyleBold,
                           ),
                         ],
@@ -123,8 +125,8 @@ class _HelpCenterReportState extends State<HelpCenterReport> {
               ),
             ),
           ),
-          const EventAppBar2(
-            title: "Report a bug",
+          EventAppBar2(
+            title: l.reportAbug,
           ),
         ],
       ),

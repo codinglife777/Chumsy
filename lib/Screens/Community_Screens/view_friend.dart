@@ -2,6 +2,7 @@ import 'package:chumsy_app/Constants/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../Functions/build_profile_settings_row.dart';
 import '../../Constants/sizes.dart';
@@ -25,6 +26,7 @@ class ViewFriendProfile extends StatefulWidget {
 class _ViewFriendProfileState extends State<ViewFriendProfile> {
   @override
   Widget build(BuildContext context) {
+    AppLocalizations l = AppLocalizations.of(context)!;
     return CupertinoPageScaffold(
       backgroundColor: whiteColor,
       child: Stack(
@@ -106,10 +108,10 @@ class _ViewFriendProfileState extends State<ViewFriendProfile> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  buildProfileSettingsRow("Events",
+                  buildProfileSettingsRow(l.events,
                       () => Get.to(() => const ProfileEventsScreen())),
                   spacingBoxExtended,
-                  buildProfileSettingsRow("Posts", () {}),
+                  buildProfileSettingsRow(l.posts, () {}),
                   const SizedBox(
                     height: 23,
                   ),
@@ -122,10 +124,10 @@ class _ViewFriendProfileState extends State<ViewFriendProfile> {
                   const SizedBox(
                     height: 25,
                   ),
-                  const Padding(
-                    padding: EdgeInsets.only(left: 40),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 40),
                     child: Text(
-                      "Friends",
+                      l.friends,
                       style: subHeadingStyle,
                     ),
                   ),

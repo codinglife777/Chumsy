@@ -5,6 +5,7 @@ import '../../Constants/colors.dart';
 import '../../Constants/sizes.dart';
 import '../../Constants/spacing.dart';
 import 'custom_chat_time.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({super.key});
@@ -16,6 +17,7 @@ class ChatScreen extends StatefulWidget {
 class _ChatScreenState extends State<ChatScreen> {
   @override
   Widget build(BuildContext context) {
+    AppLocalizations l = AppLocalizations.of(context)!;
     return Container(
       height: screenHeight,
       width: screenWidth,
@@ -30,8 +32,8 @@ class _ChatScreenState extends State<ChatScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 const SizedBox(),
-                const Text(
-                  "Chat",
+                Text(
+                  l.chat,
                   style: subHeadingStyle,
                 ),
                 Padding(
@@ -88,7 +90,7 @@ class _ChatScreenState extends State<ChatScreen> {
                                 padding: const EdgeInsets.symmetric(
                                   horizontal: 5,
                                 ),
-                                placeholder: 'Search',
+                                placeholder: l.search,
                                 placeholderStyle: regularStyleBold.copyWith(
                                     color: const Color(0xff888888),
                                     fontWeight: FontWeight.w600),

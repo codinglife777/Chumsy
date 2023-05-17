@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../Constants/sizes.dart';
 import '../../Constants/spacing.dart';
@@ -20,6 +21,7 @@ class HelpCenterFaqAns extends StatefulWidget {
 class _HelpCenterFaqAnsState extends State<HelpCenterFaqAns> {
   @override
   Widget build(BuildContext context) {
+    AppLocalizations l = AppLocalizations.of(context)!;
     return CupertinoPageScaffold(
       child: Stack(
         children: [
@@ -58,9 +60,9 @@ class _HelpCenterFaqAnsState extends State<HelpCenterFaqAns> {
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
+                    children: [
                       Text(
-                        "Didn't find an answer to your question?",
+                        l.didntFindAnswer,
                         style: regularStyleBold,
                       ),
                     ],
@@ -73,9 +75,9 @@ class _HelpCenterFaqAnsState extends State<HelpCenterFaqAns> {
                     child: CustomGradientButtonWidget(
                       buttonWidget: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: const [
+                        children: [
                           AutoSizeText(
-                            "CONTACT SUPPORT",
+                            l.contactSupport,
                             style: regularStyleBold,
                             maxLines: 1,
                             softWrap: true,
@@ -89,8 +91,8 @@ class _HelpCenterFaqAnsState extends State<HelpCenterFaqAns> {
               ),
             ),
           ),
-          const EventAppBar2(
-            title: "FAQ",
+          EventAppBar2(
+            title: l.faq,
           ),
         ],
       ),

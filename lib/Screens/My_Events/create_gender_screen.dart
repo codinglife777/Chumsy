@@ -3,6 +3,7 @@ import 'package:chumsy_app/Constants/sizes.dart';
 import 'package:chumsy_app/Widgets/Extra%20Widgets/gradient_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../Constants/spacing.dart';
 import '../../Widgets/Create_Event/app_bar.dart';
@@ -20,6 +21,7 @@ class _CreateEventGenderState extends State<CreateEventGender> {
 
   @override
   Widget build(BuildContext context) {
+    AppLocalizations l = AppLocalizations.of(context)!;
     return CupertinoPageScaffold(
       child: Stack(
         children: [
@@ -38,21 +40,21 @@ class _CreateEventGenderState extends State<CreateEventGender> {
                     child: SingleChildScrollView(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: const [
+                        children: [
                           LevelTile(
-                            payType: "All",
+                            payType: l.all,
                           ),
                           spacingBox,
                           LevelTile(
-                            payType: "Male",
+                            payType: l.male,
                           ),
                           spacingBox,
                           LevelTile(
-                            payType: "Female",
+                            payType: l.female,
                           ),
                           spacingBox,
                           LevelTile(
-                            payType: "Non-binary",
+                            payType: l.nonBinary,
                           ),
                         ],
                       ),
@@ -81,7 +83,7 @@ class _CreateEventGenderState extends State<CreateEventGender> {
             ),
           ),
           EventAppBar(
-            title: "Gender",
+            title: l.gender,
             cbClear: clear,
           ),
         ],

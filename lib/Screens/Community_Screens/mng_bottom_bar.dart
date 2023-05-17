@@ -6,6 +6,7 @@ import 'package:chumsy_app/Screens/landing_page.dart';
 import 'package:chumsy_app/Screens/map_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../Constants/bottom_nav_items.dart';
 import '../My_Profile_Screens/profile_screen.dart';
@@ -28,6 +29,7 @@ class _ViewFriendPageState extends State<ViewFriendPage> {
 
   @override
   Widget build(BuildContext context) {
+    AppLocalizations l = AppLocalizations.of(context)!;
     return Obx(
       () => CupertinoTabScaffold(
         backgroundColor: whiteColor,
@@ -40,7 +42,7 @@ class _ViewFriendPageState extends State<ViewFriendPage> {
           currentIndex: _bnbCont.currentIndex.value,
           activeColor: blackColor,
           inactiveColor: blackColor,
-          items: bottomNavItems(_bnbCont),
+          items: bottomNavItems(context, _bnbCont),
         ),
         tabBuilder: (BuildContext context, int index) {
           return CupertinoTabView(
@@ -52,16 +54,16 @@ class _ViewFriendPageState extends State<ViewFriendPage> {
                     MapScreen(
                       constraints: constraints,
                     ),
-                    const Center(
-                      child: Text('Chats'),
+                    Center(
+                      child: Text(l.chats),
                     ),
                     ViewFriendProfile(
                       dp: widget.dp,
                       location: widget.location,
                       nameAndAge: widget.nameAndAge,
                     ),
-                    const Center(
-                      child: Text('My Events'),
+                    Center(
+                      child: Text(l.myEvents),
                     ),
                     ProfileScreen(
                       constraints: constraints,

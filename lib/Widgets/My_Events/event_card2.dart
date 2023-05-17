@@ -4,6 +4,7 @@ import 'package:chumsy_app/Widgets/Extra%20Widgets/gradient_widget.dart';
 import 'package:chumsy_app/Widgets/My_Events/saved_bottom_sheet.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../Constants/colors.dart';
 import '../../Constants/sizes.dart';
@@ -33,6 +34,7 @@ class CustomMyEventCard2 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AppLocalizations l = AppLocalizations.of(context)!;
     return Card(
       elevation: 3,
       shape: RoundedRectangleBorder(
@@ -154,9 +156,9 @@ class CustomMyEventCard2 extends StatelessWidget {
                   child: CustomSimpleuttonWidget(
                     buttonWidget: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
+                      children: [
                         AutoSizeText(
-                          "DELETE",
+                          l.deleteC,
                           style: regularStyleBold,
                           maxLines: 1,
                           softWrap: true,
@@ -174,9 +176,9 @@ class CustomMyEventCard2 extends StatelessWidget {
                   child: CustomGradientButtonWidget(
                     buttonWidget: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
+                      children: [
                         AutoSizeText(
-                          "APPLY",
+                          l.apply,
                           style: regularStyleBold,
                           maxLines: 1,
                           softWrap: true,

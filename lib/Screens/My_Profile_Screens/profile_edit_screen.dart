@@ -5,6 +5,7 @@ import 'package:chumsy_app/Screens/share.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:simple_shadow/simple_shadow.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../Functions/build_event_row.dart';
 import '../../Constants/sizes.dart';
@@ -24,6 +25,7 @@ class ProfileEditScreen extends StatefulWidget {
 class _ProfileEditScreenState extends State<ProfileEditScreen> {
   @override
   Widget build(BuildContext context) {
+    AppLocalizations l = AppLocalizations.of(context)!;
     return SingleChildScrollView(
       child: Container(
         color: whiteColor,
@@ -55,28 +57,28 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                             child: Column(
                               children: [
                                 buildRow(
-                                  "Edit Profile",
+                                  l.editProfile,
                                   "",
                                   () {
                                     Get.to(() => const InsideEditHomePage());
                                   },
                                 ),
                                 buildRow(
-                                  "Change Password",
+                                  l.changePassword,
                                   "",
                                   () {
                                     // Get.to(() => const InsidePaymentHomePage());
                                   },
                                 ),
                                 buildRow(
-                                  "Change Language",
+                                  l.changeLanguage,
                                   "",
                                   () {
                                     // Get.to(() => const InsidePaymentHomePage());
                                   },
                                 ),
                                 buildRow(
-                                  "Invite Chumsys",
+                                  l.inviteChumsys,
                                   "",
                                   () {
                                     Get.to(() => const ShareScreen());
@@ -90,14 +92,14 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                                 //   },
                                 // ),
                                 buildRow(
-                                  "Help Center",
+                                  l.helpCenter,
                                   "",
                                   () {
                                     Get.to(() => const HelpCenterMain());
                                   },
                                 ),
                                 buildRow(
-                                  "Delete Account",
+                                  l.deleteAccount,
                                   "",
                                   () {
                                     // Get.to(() => const InsidePaymentHomePage());
@@ -116,9 +118,9 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                               child: CustomGradientButtonWidget(
                                 buttonWidget: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
-                                  children: const [
+                                  children: [
                                     Text(
-                                      "LOG OUT",
+                                      l.logOut,
                                       style: regularStyleBold,
                                     ),
                                   ],
@@ -154,8 +156,8 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                           ),
                           onPressed: () => Get.back(),
                         ),
-                        const Text(
-                          "Profile",
+                        Text(
+                          l.profile,
                           style: headingStyle20,
                         ),
                         CupertinoButton(
