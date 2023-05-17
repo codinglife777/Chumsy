@@ -7,7 +7,7 @@ GestureDetector buildRow(String leftText, String rightText, VoidCallback cb,
     [String? secondaryText]) {
   secondaryText ??= "";
   return GestureDetector(
-    onTap: cb,
+    onTap: (){},
     child: Padding(
       padding: const EdgeInsets.symmetric(
         vertical: 12,
