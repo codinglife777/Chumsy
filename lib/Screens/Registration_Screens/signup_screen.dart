@@ -274,13 +274,13 @@ class _SignupScreenState extends State<SignupScreen> {
                         children: [
                           CupertinoButton(
                             onPressed: () => openDialog(context, "Google.com"),
-                            child: Image.asset("assets/login/google.png",
+                            child: Image.asset("assets/login/google@2x.png",
                                 width: 40, fit: BoxFit.contain),
                           ),
                           CupertinoButton(
                             onPressed: () =>
                                 openDialog(context, "Facebook.com"),
-                            child: Image.asset("assets/login/facebook.png",
+                            child: Image.asset("assets/login/facebook@2x.png",
                                 width: 40, fit: BoxFit.contain),
                           ),
                           CupertinoButton(
