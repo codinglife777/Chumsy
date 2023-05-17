@@ -43,7 +43,7 @@ GestureDetector buildRow(String leftText, String rightText, VoidCallback cb,
               children: [
                 rightText != ""
                     ? SizedBox(
-                        width: 200,
+                        // width: 185,
                         child: Text(
                           rightText,
                           style: const TextStyle(
