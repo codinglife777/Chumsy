@@ -66,10 +66,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 children: [
                   SizedBox(
                     width: 151,
-                    child: Image.asset(
-                      // "assets/logo/chumsy_logo@1x.png",
-                      "assets/login/logo@3x.png",
-                    ),
+                    child: SvgPicture.asset("assets/logo/logo.svg"),
                   ),
                   const SizedBox(height: 45),
                   SizedBox(
@@ -276,15 +273,12 @@ class _SignupScreenState extends State<SignupScreen> {
                         children: [
                           CupertinoButton(
                             onPressed: () => openDialog(context, "Google.com"),
-                            child: Image.asset("assets/login/google@3x.png",
-                            width: 40,
-                                fit: BoxFit.contain),
+                            child: SvgPicture.asset("assets/login/google.svg", width: 40,),
                           ),
                           CupertinoButton(
                             onPressed: () =>
                                 openDialog(context, "Facebook.com"),
-                            child: Image.asset("assets/login/facebook@3x.png",
-                                width: 40, fit: BoxFit.contain),
+                            child: SvgPicture.asset("assets/login/facebook.svg", width: 40,),
                           ),
                           CupertinoButton(
                             onPressed: () => openDialog(context, "Apple.com"),

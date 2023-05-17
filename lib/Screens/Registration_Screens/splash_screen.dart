@@ -1,6 +1,7 @@
 import 'package:chumsy_app/Constants/colors.dart';
 import 'package:chumsy_app/Screens/Registration_Screens/onboarding_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'dart:async';
 
@@ -45,11 +46,8 @@ class _SplashScreenState extends State<SplashScreen> {
             Hero(
               tag: "SplashLogo",
               child: SizedBox(
-                width: 151,
-                child: Image.asset(
-                  "assets/login/logo@2x.png",
-                  fit: BoxFit.contain,
-                ),
+                width: 161,
+                child: SvgPicture.asset("assets/logo/logo.svg"),
               ),
             ),
           ],

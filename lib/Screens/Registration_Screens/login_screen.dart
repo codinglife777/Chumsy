@@ -5,6 +5,7 @@ import 'package:chumsy_app/Constants/spacing.dart';
 import 'package:chumsy_app/Screens/landing_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -62,10 +63,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 children: [
                   SizedBox(
                     width: 151,
-                    child: Image.asset(
-                      "assets/login/logo@2x.png",
-                    ),
+                    child: SvgPicture.asset("assets/logo/logo.svg"),
                   ),
+                  const SizedBox(height: 60,),
                   SizedBox(
                     height: 51,
                     child: Padding(
@@ -202,21 +202,16 @@ class _LoginScreenState extends State<LoginScreen> {
                         children: [
                           CupertinoButton(
                             onPressed: () => openDialog(context, "Google.com"),
-                            child: Image.asset("assets/login/google.png",
-                                width: 40, fit: BoxFit.contain),
+                            child: SvgPicture.asset("assets/login/google.svg", width: 40,),
                           ),
                           CupertinoButton(
                             onPressed: () =>
                                 openDialog(context, "Facebook.com"),
-                            child: Image.asset("assets/login/facebook.png",
-                                width: 40, fit: BoxFit.contain),
+                            child: SvgPicture.asset("assets/login/facebook.svg", width: 40,),
                           ),
                           CupertinoButton(
                             onPressed: () => openDialog(context, "Apple.com"),
-                            child: Image.asset(
-                                "assets/login/apple_black@2x.png",
-                                width: 40,
-                                fit: BoxFit.contain),
+                            child: SvgPicture.asset("assets/login/apple_black.svg", width: 40,),
                           ),
                         ],
                       ),
