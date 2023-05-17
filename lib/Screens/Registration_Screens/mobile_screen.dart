@@ -2,6 +2,7 @@ import 'package:chumsy_app/Screens/Registration_Screens/verification_screen.dart
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -64,9 +65,7 @@ class _MobileScreenState extends State<MobileScreen> {
                         Container(
                           padding: EdgeInsets.only(top: 100),
                           width: 151,
-                          child: Image.asset(
-                            "assets/logo/chumsy_logo@1x.png",
-                          ),
+                          child: SvgPicture.asset("assets/logo/logo.svg"),
                         ),
                         const SizedBox(
                           height: 50,
