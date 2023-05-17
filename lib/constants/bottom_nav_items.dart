@@ -9,11 +9,11 @@ List<BottomNavigationBarItem> bottomNavItems(BuildContext context, BNBController
     BottomNavigationBarItem(
       icon: bnbCont.currentIndex.value == 0
           ? Image.asset(
-              "assets/home/select_map_bottom@2x.png",
+              "assets/home/select_map_bottom@3x.png",
               width: 22,
             )
           : Image.asset(
-              "assets/home/map_bottom@2x.png",
+              "assets/home/map_bottom@3x.png",
               width: 22,
             ),
       label: l.map,
@@ -21,11 +21,11 @@ List<BottomNavigationBarItem> bottomNavItems(BuildContext context, BNBController
     BottomNavigationBarItem(
       icon: bnbCont.currentIndex.value == 1
           ? Image.asset(
-              "assets/home/select_chat_bottom@2x.png",
+              "assets/home/select_chat_bottom@3x.png",
               width: 22,
             )
           : Image.asset(
-              "assets/home/chat_bottom@2x.png",
+              "assets/home/chat_bottom@3x.png",
               width: 22,
             ),
       label: l.chat,
@@ -33,11 +33,11 @@ List<BottomNavigationBarItem> bottomNavItems(BuildContext context, BNBController
     BottomNavigationBarItem(
       icon: bnbCont.currentIndex.value == 2
           ? Image.asset(
-              "assets/home/select_community_bottom@2x.png",
+              "assets/home/select_community_bottom@3x.png",
               width: 24,
             )
           : Image.asset(
-              "assets/home/cheer@2x.png",
+              "assets/home/cheer@3x.png",
               width: 24,
             ),
       label: l.community,
@@ -45,11 +45,11 @@ List<BottomNavigationBarItem> bottomNavItems(BuildContext context, BNBController
     BottomNavigationBarItem(
       icon: bnbCont.currentIndex.value == 3
           ? Image.asset(
-              "assets/home/select_event_bottom@2x.png",
+              "assets/home/select_event_bottom@3x.png",
               width: 22,
             )
           : Image.asset(
-              "assets/home/event_bottom@2x.png",
+              "assets/home/event_bottom@3x.png",
               width: 22,
             ),
       label: l.myEvents,
