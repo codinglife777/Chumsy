@@ -8,6 +8,7 @@ import 'package:get/get.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../Constants/swipe_constants.dart';
+import '../../Functions/cupertino_action_sheet.dart';
 import 'signup_screen.dart';
 
 class OnBoardingScreen extends StatefulWidget {
@@ -113,6 +114,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                     onPageChanged: (value) {
                       setState(() {
                         activatedPage = value;
+
                       });
                     },
                   ),
@@ -276,7 +278,9 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                         height: 12,
                       ),
                       TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          showChangeLanguageAction(context);
+                        },
                         child: Text(
                           AppLocalizations.of(context)!.changeLanguage,
                           style: const TextStyle(

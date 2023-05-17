@@ -6,8 +6,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 
 import 'Screens/landing_page.dart';
+import 'l10n/support_locale.dart';
+import 'providers/locale_provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,39 +21,40 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const DismissKeyboard(
-      child: GetCupertinoApp(
-        debugShowCheckedModeBanner: false,
-        defaultTransition: Transition.cupertino,
-        locale: Locale('pl', ''),
-        localizationsDelegates: [
-          AppLocalizations.delegate,
-          GlobalMaterialLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-          GlobalCupertinoLocalizations.delegate,
-        ],
-        supportedLocales: [
-          Locale('en', ''),
-          Locale('pl', ''),
-          Locale('uk', ''),
-          Locale('es', ''),
-          Locale('ru', ''),
-        ],
-        theme: CupertinoThemeData.raw(
-          Brightness.light,
-          blackColor,
-          whiteColor,
-          CupertinoTextThemeData(
-            textStyle: TextStyle(
-              fontFamily: "Proxima",
-              color: blackColor,
+    return ChangeNotifierProvider( 
+      create: (context) => LocaleProvider(),
+      builder: (context, child) {
+        return Consumer<LocaleProvider>(
+          builder: (context, provider, child) {
+      return DismissKeyboard(
+        child: GetCupertinoApp(
+          debugShowCheckedModeBanner: false,
+          defaultTransition: Transition.cupertino,
+          locale: provider.locale,
+          localizationsDelegates: const [
+            AppLocalizations.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          supportedLocales: L10n.support,
+          theme: const CupertinoThemeData.raw(
+            Brightness.light,
+            blackColor,
+            whiteColor,
+            CupertinoTextThemeData(
+              textStyle: TextStyle(
+                fontFamily: "Proxima",
+                color: blackColor,
+              ),
             ),
+            whiteColor,
+            whiteColor,
           ),
-          whiteColor,
-          whiteColor,
-        ),
-        home: LandingPage(),
-      ),
+          home: const SplashScreen(),
+        ),);
+        });
+      }
     );
   }
 }

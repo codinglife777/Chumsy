@@ -10,6 +10,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../Functions/build_event_row.dart';
 import '../../Constants/sizes.dart';
 import '../../Constants/spacing.dart';
+import '../../Functions/cupertino_action_sheet.dart';
 import '../../Widgets/Extra Widgets/gradient_widget.dart';
 import '../Help_Center/front_screen.dart';
 import 'Edit_Screens/inside_edit_home_page.dart';
@@ -75,6 +76,7 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                                   "",
                                   () {
                                     // Get.to(() => const InsidePaymentHomePage());
+                                    showChangeLanguageAction(context);
                                   },
                                 ),
                                 buildRow(

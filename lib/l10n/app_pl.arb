@@ -209,6 +209,10 @@
      "saveL": "Zapisz",
      "youCanSavetheEventforLater":"Możesz zapisać to wydarzenie na później.",
      "chumsyWantstoUse": "Chumsy wants to use {url} to log in",
-     "doYouAllowTouseYourInfo":"Do you allow to use your information for registration purposes?"
+     "doYouAllowTouseYourInfo":"Do you allow to use your information for registration purposes?",
+     "selectLanguage":"Select Language",
+     "english":"English",
+     "polski":"Polski",
+     "ukrainian":"Ukrainian"
 
 }

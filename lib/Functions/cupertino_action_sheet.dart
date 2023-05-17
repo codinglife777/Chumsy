@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:chumsy_app/constants/sizes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -8,9 +9,11 @@ import 'package:file_picker/file_picker.dart';
 import 'package:google_mlkit_face_detection/google_mlkit_face_detection.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 
 import '../Controllers/image_controller.dart';
 import '../Widgets/chumsyerrordialog.dart';
+import '../providers/locale_provider.dart';
 
 Future<bool> hasFace(String filePath) async {
   final options = FaceDetectorOptions();
@@ -28,6 +31,60 @@ Future<void> _dialogBuilder(BuildContext context, String errorMessage) {
     builder: (BuildContext context) {
       return ChumsyErrorDialog(errorMessage: errorMessage);
     },
+  );
+}
+
+void showChangeLanguageAction(
+  BuildContext context
+) {
+  AppLocalizations l = AppLocalizations.of(context)!;
+  showCupertinoModalPopup<void>(
+    context: context,
+    builder: (BuildContext context) => Theme(
+      data: ThemeData.light(),
+      child: CupertinoActionSheet(
+        cancelButton: CupertinoActionSheetAction(
+          isDefaultAction: true,
+          onPressed: () {
+            Get.back();
+          },
+          child: Text(AppLocalizations.of(context)!.cancel, style: const TextStyle(color: Colors.red),),
+        ),
+        actions: [
+          CupertinoActionSheetAction(
+            isDefaultAction: true,
+            onPressed: () async {
+
+            },
+            child: Text(l.selectLanguage, style: smallStyle.copyWith(fontWeight: FontWeight.bold)),
+          ),
+          CupertinoActionSheetAction(
+            isDefaultAction: true,
+            onPressed: () async {
+              context.read<LocaleProvider>().setLocale(const Locale("en"));
+              Get.back();
+            },
+            child: Text(l.english, style: const TextStyle(color: Colors.black)),
+          ),
+          CupertinoActionSheetAction(
+            isDefaultAction: true,
+            onPressed: () async {
+              context.read<LocaleProvider>().setLocale(const Locale("pl"));
+              Get.back();
+            },
+            child: Text(l.polski, style: const TextStyle(color: Colors.black)),
+          ),
+          CupertinoActionSheetAction(
+            isDefaultAction: true,
+            onPressed: () async {
+              context.read<LocaleProvider>().setLocale(const Locale("ua"));
+              Get.back();
+            },
+            child: Text(l.ukrainian, style: const TextStyle(color: Colors.black)),
+          ),
+        ],
+      ),
+    ),
   );
 }
 

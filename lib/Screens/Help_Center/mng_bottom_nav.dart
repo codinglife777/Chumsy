@@ -39,7 +39,7 @@ class _MngHelpPagesState extends State<MngHelpPages> {
           currentIndex: _bnbCont.currentIndex.value,
           activeColor: blackColor,
           inactiveColor: blackColor,
-          items: bottomNavItems(_bnbCont),
+          items: bottomNavItems(context, _bnbCont),
         ),
         tabBuilder: (BuildContext context, int index) {
           return CupertinoTabView(
@@ -98,7 +98,7 @@ class _MngFaqPageState extends State<MngFaqPage> {
           currentIndex: _bnbCont.currentIndex.value,
           activeColor: blackColor,
           inactiveColor: blackColor,
-          items: bottomNavItems(_bnbCont),
+          items: bottomNavItems(context, _bnbCont),
         ),
         tabBuilder: (BuildContext context, int index) {
           return CupertinoTabView(
@@ -157,7 +157,7 @@ class _MngFaqAnswerPageState extends State<MngFaqAnswerPage> {
           currentIndex: _bnbCont.currentIndex.value,
           activeColor: blackColor,
           inactiveColor: blackColor,
-          items: bottomNavItems(_bnbCont),
+          items: bottomNavItems(context, _bnbCont),
         ),
         tabBuilder: (BuildContext context, int index) {
           return CupertinoTabView(
@@ -217,7 +217,7 @@ class _MngReportPagetate extends State<MngReportPage> {
           currentIndex: _bnbCont.currentIndex.value,
           activeColor: blackColor,
           inactiveColor: blackColor,
-          items: bottomNavItems(_bnbCont),
+          items: bottomNavItems(context, _bnbCont),
         ),
         tabBuilder: (BuildContext context, int index) {
           return CupertinoTabView(
@@ -276,7 +276,7 @@ class _MngSupportPageState extends State<MngSupportPage> {
           currentIndex: _bnbCont.currentIndex.value,
           activeColor: blackColor,
           inactiveColor: blackColor,
-          items: bottomNavItems(_bnbCont),
+          items: bottomNavItems(context, _bnbCont),
         ),
         tabBuilder: (BuildContext context, int index) {
           return CupertinoTabView(

@@ -34,7 +34,7 @@ class _LandingPageState extends State<LandingPage> {
           currentIndex: _bnbCont.currentIndex.value,
           activeColor: blackColor,
           inactiveColor: blackColor,
-          items: bottomNavItems(_bnbCont),
+          items: bottomNavItems(context, _bnbCont),
         ),
         tabBuilder: (BuildContext context, int index) {
           return CupertinoTabView(
