@@ -66,7 +66,8 @@ class _SignupScreenState extends State<SignupScreen> {
                   SizedBox(
                     width: 151,
                     child: Image.asset(
-                      "assets/logo/chumsy_logo@1x.png",
+                      // "assets/logo/chumsy_logo@1x.png",
+                      "assets/login/logo@2x.png",
                     ),
                   ),
                   const SizedBox(height: 45),
@@ -274,8 +275,8 @@ class _SignupScreenState extends State<SignupScreen> {
                         children: [
                           CupertinoButton(
                             onPressed: () => openDialog(context, "Google.com"),
-                            child: Image.asset("assets/login/google@2x.png",
-                                width: 40, fit: BoxFit.contain),
+                            child: Image.asset("assets/login/google.png",
+                                fit: BoxFit.contain),
                           ),
                           CupertinoButton(
                             onPressed: () =>
