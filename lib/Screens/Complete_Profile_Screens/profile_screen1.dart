@@ -5,6 +5,7 @@ import 'package:chumsy_app/Screens/Complete_Profile_Screens/profile_screen2.dart
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../Widgets/Extra Widgets/custom_datepicker.dart';
 import '../../Widgets/Extra Widgets/gradient_widget.dart';
@@ -19,6 +20,21 @@ class CreateProfile extends StatefulWidget {
 class _CreateProfileState extends State<CreateProfile> {
   @override
   Widget build(BuildContext context) {
+    final months = [
+      AppLocalizations.of(context)!.january,
+      AppLocalizations.of(context)!.february,
+      AppLocalizations.of(context)!.march,
+      AppLocalizations.of(context)!.april,
+      AppLocalizations.of(context)!.may,
+      AppLocalizations.of(context)!.june,
+      AppLocalizations.of(context)!.july,
+      AppLocalizations.of(context)!.august,
+      AppLocalizations.of(context)!.september,
+      AppLocalizations.of(context)!.october,
+      AppLocalizations.of(context)!.novemeber,
+      AppLocalizations.of(context)!.december,
+    ];
+
     return Theme(
       data: ThemeData.dark(
         useMaterial3: true,
@@ -39,9 +55,9 @@ class _CreateProfileState extends State<CreateProfile> {
             ),
             onPressed: () => Get.back(),
           ),
-          title: const Text(
-            "Complete your profile",
-            style: TextStyle(
+          title: Text(
+            AppLocalizations.of(context)!.completeYourProflieHeading,
+            style: const TextStyle(
               color: whiteColor,
               fontWeight: FontWeight.w500,
               fontSize: 18,
@@ -81,9 +97,9 @@ class _CreateProfileState extends State<CreateProfile> {
                 child: Column(
                   children: [
                     spacingBoxExtended,
-                    const Center(
+                    Center(
                       child: Text(
-                        "What is your age?",
+                        AppLocalizations.of(context)!.whatIsYourAge,
                         style: TextStyle(
                           color: whiteColor,
                           fontWeight: FontWeight.bold,
@@ -127,6 +143,7 @@ class _CreateProfileState extends State<CreateProfile> {
                                     minDate: DateTime(DateTime.now().year - 16),
                                     maxDate:
                                         DateTime(DateTime.now().year + 100),
+                                    months: months,
                                     selectedDate: DateTime.now(),
                                     selectionOverlay: const SizedBox(
                                       width: double.infinity,
@@ -238,9 +255,9 @@ class _CreateProfileState extends State<CreateProfile> {
                       child: CustomGradientButtonWidget(
                         buttonWidget: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
-                          children: const [
+                          children: [
                             Text(
-                              "NEXT",
+                              AppLocalizations.of(context)!.next,
                               style: regularStyleBold,
                             ),
                           ],

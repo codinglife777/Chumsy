@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:google_mlkit_face_detection/google_mlkit_face_detection.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../Controllers/image_controller.dart';
 import '../Widgets/chumsyerrordialog.dart';
@@ -46,7 +47,7 @@ void showActionSheet(
           onPressed: () {
             Get.back();
           },
-          child: const Text('Cancel'),
+          child: Text(AppLocalizations.of(context)!.cancel),
         ),
         actions: [
           CupertinoActionSheetAction(
@@ -65,7 +66,7 @@ void showActionSheet(
                   //   print("No face");
                   // }
                   _dialogBuilder(
-                      context, "Photo you have selected should have a face");
+                      context, AppLocalizations.of(context)!.photo_have_a_face);
                   return;
                 }
 

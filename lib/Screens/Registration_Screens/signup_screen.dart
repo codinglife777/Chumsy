@@ -242,9 +242,9 @@ class _SignupScreenState extends State<SignupScreen> {
                           //       "Please fill e-mail and password", context);
                           // }
                         },
-                        child: const Text(
-                          'CREATE ACCOUNT',
-                          style: TextStyle(
+                        child: Text(
+                          AppLocalizations.of(context)!.createAccount,
+                          style: const TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
                               color: whiteColor),
@@ -257,10 +257,10 @@ class _SignupScreenState extends State<SignupScreen> {
                   ),
                   Column(
                     children: [
-                      const Text(
-                        'Sign up with:',
+                      Text(
+                        AppLocalizations.of(context)!.signUpWith,
                         textAlign: TextAlign.center,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 16,
                           color: Colors.black,
                           fontWeight: FontWeight.w600,

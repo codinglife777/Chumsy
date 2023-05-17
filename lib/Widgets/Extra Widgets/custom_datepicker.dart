@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../Constants/sizes.dart';
 
@@ -27,6 +28,7 @@ class CustomCupertinoDatePicker extends StatefulWidget {
   final DateTime? maxDate;
   // Initially selected date
   final DateTime? selectedDate;
+  final List<String> months;
   const CustomCupertinoDatePicker({
     Key? key,
     required this.itemExtent,
@@ -44,6 +46,7 @@ class CustomCupertinoDatePicker extends StatefulWidget {
     this.offAxisFraction = 0.0,
     this.useMaginifier = false,
     this.selectionOverlay = const CupertinoPickerDefaultSelectionOverlay(),
+    required this.months,
   }) : super(key: key);
   @override
   State<CustomCupertinoDatePicker> createState() =>
@@ -58,30 +61,30 @@ class _CustomCupertinoDatePickerState extends State<CustomCupertinoDatePicker> {
   late int _selectedMonthIndex;
   late int _selectedYearIndex;
   late final FixedExtentScrollController _dayScrollController;
-  late final FixedExtentScrollController _monthScrollController;
+  late final FixedExtentScrollController _monthscrollController;
   late final FixedExtentScrollController _yearScrollController;
   final _days = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-  final _months = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'Novemeber',
-    'December',
-  ];
+  // final widget.months = [
+  //   'January',
+  //   'February',
+  //   'March',
+  //   'April',
+  //   'May',
+  //   'June',
+  //   'July',
+  //   'August',
+  //   'September',
+  //   'October',
+  //   'Novemeber',
+  //   'December',
+  // ];
 
   @override
   void initState() {
     super.initState();
     _validateDates();
     _dayScrollController = FixedExtentScrollController();
-    _monthScrollController = FixedExtentScrollController();
+    _monthscrollController = FixedExtentScrollController();
     _yearScrollController = FixedExtentScrollController();
     _initDates();
   }
@@ -115,7 +118,7 @@ class _CustomCupertinoDatePickerState extends State<CustomCupertinoDatePicker> {
     _selectedYearIndex = _selectedDate.year - _minDate.year;
     WidgetsBinding.instance.addPostFrameCallback((_) => {
           _scrollList(_dayScrollController, _selectedDayIndex),
-          _scrollList(_monthScrollController, _selectedMonthIndex),
+          _scrollList(_monthscrollController, _selectedMonthIndex),
           _scrollList(_yearScrollController, _selectedYearIndex),
         });
   }
@@ -146,7 +149,7 @@ class _CustomCupertinoDatePickerState extends State<CustomCupertinoDatePicker> {
   @override
   void dispose() {
     _dayScrollController.dispose();
-    _monthScrollController.dispose();
+    _monthscrollController.dispose();
     _yearScrollController.dispose();
     super.dispose();
   }
@@ -185,7 +188,7 @@ class _CustomCupertinoDatePickerState extends State<CustomCupertinoDatePicker> {
           _dayScrollController.jumpToItem(_selectedDayIndex);
           break;
         case _SelectorType.month:
-          _monthScrollController.jumpToItem(_selectedMonthIndex);
+          _monthscrollController.jumpToItem(_selectedMonthIndex);
           break;
         case _SelectorType.year:
           _yearScrollController.jumpToItem(_selectedYearIndex);
@@ -307,11 +310,11 @@ class _CustomCupertinoDatePickerState extends State<CustomCupertinoDatePicker> {
     );
   }
 
-  Widget _monthSelector() {
+  Widget _monthselector() {
     return _selector(
-      values: _months,
+      values: widget.months,
       selectedValueIndex: _selectedMonthIndex,
-      scrollController: _monthScrollController,
+      scrollController: _monthscrollController,
       isDisabled: (index) => _isDisabled(index, _SelectorType.month),
       onSelectedItemChanged: (v) => _onSelectedItemChanged(
         v,
@@ -343,9 +346,9 @@ class _CustomCupertinoDatePickerState extends State<CustomCupertinoDatePicker> {
       child: Row(
         children: [
           SizedBox(width: 50, child: _daySelector()),
-          SizedBox(width: 150, child: _monthSelector()),
+          SizedBox(width: 150, child: _monthselector()),
           SizedBox(width: 80, child: _yearSelector()),
-          // _monthSelector(),
+          // widget.monthselector(),
           // _yearSelector(),
         ],
       ),

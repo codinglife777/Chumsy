@@ -6,6 +6,7 @@ import 'package:chumsy_app/Screens/landing_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../Functions/show_tosts.dart';
 import '../../Widgets/chumsyerrordialog.dart';
@@ -81,7 +82,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             width: 2,
                           ),
                         ),
-                        placeholder: 'E-mail address',
+                        placeholder: AppLocalizations.of(context)!.emailAddress,
                         placeholderStyle: const TextStyle(
                           fontSize: 13,
                           color: blackColor,
@@ -113,7 +114,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ),
                         obscureText: true,
-                        placeholder: 'Password',
+                        placeholder: AppLocalizations.of(context)!.password,
                         placeholderStyle: const TextStyle(
                           fontSize: 13,
                           color: blackColor,
@@ -145,19 +146,17 @@ class _LoginScreenState extends State<LoginScreen> {
                             );
                           } else if (_emailCont.text == "") {
                             // showErrorToast("Please fill e-mail", context);
-                            _dialogBuilder(
-                                context, "Please enter an e-mail address");
+                            _dialogBuilder(context,
+                                AppLocalizations.of(context)!.emailRequired);
                           } else if (_passwordCont.text == "") {
-                            _dialogBuilder(context, "Password is required");
+                            _dialogBuilder(context,
+                                AppLocalizations.of(context)!.passwordRequired);
                             // showErrorToast("Please fill password", context);
-                          } else {
-                            showErrorToast(
-                                "Please fill e-mail and password", context);
                           }
                         },
-                        child: const Text(
-                          'LOG IN',
-                          style: TextStyle(
+                        child: Text(
+                          AppLocalizations.of(context)!.loginText,
+                          style: const TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
                               color: whiteColor),
@@ -170,9 +169,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   TextButton(
                     onPressed: () {},
-                    child: const Text(
-                      'Forgot your password?',
-                      style: TextStyle(
+                    child: Text(
+                      AppLocalizations.of(context)!.forgotPassword,
+                      style: const TextStyle(
                         color: blackColor,
                         fontSize: 14,
                         decoration: TextDecoration.underline,
@@ -186,10 +185,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   Column(
                     children: [
-                      const Text(
-                        'Log in with:',
+                      Text(
+                        AppLocalizations.of(context)!.loginWith,
                         textAlign: TextAlign.center,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w600,
                           color: greyIconColor,

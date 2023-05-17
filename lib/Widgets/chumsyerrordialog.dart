@@ -1,6 +1,7 @@
 import 'package:chumsy_app/styles/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ChumsyErrorDialog extends StatefulWidget {
   const ChumsyErrorDialog({Key? key, required this.errorMessage})
@@ -80,7 +81,7 @@ class _ChumsyErrorDialogState extends State<ChumsyErrorDialog> {
                           Navigator.pop(context);
                         },
                         child: Text(
-                          "OK",
+                          AppLocalizations.of(context)!.ok_c,
                           style: Styles.greyButtonText()
                               .copyWith(fontWeight: FontWeight.w600),
                         ),

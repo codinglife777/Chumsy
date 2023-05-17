@@ -79,6 +79,21 @@ void openTimePicker(BuildContext context) {
 }
 
 void openDatePicker(BuildContext context) {
+  final months = [
+    AppLocalizations.of(context)!.january,
+    AppLocalizations.of(context)!.february,
+    AppLocalizations.of(context)!.march,
+    AppLocalizations.of(context)!.april,
+    AppLocalizations.of(context)!.may,
+    AppLocalizations.of(context)!.june,
+    AppLocalizations.of(context)!.july,
+    AppLocalizations.of(context)!.august,
+    AppLocalizations.of(context)!.september,
+    AppLocalizations.of(context)!.october,
+    AppLocalizations.of(context)!.novemeber,
+    AppLocalizations.of(context)!.december,
+  ];
+
   showCupertinoModalPopup<void>(
     context: context,
     builder: (BuildContext context) => Theme(
@@ -119,6 +134,7 @@ void openDatePicker(BuildContext context) {
                       height: 250,
                       child: CustomCupertinoDatePicker(
                         itemExtent: 50,
+                        months: months,
                         backgroundColor: whiteColor,
                         minDate: DateTime(DateTime.now().year - 16),
                         maxDate: DateTime(DateTime.now().year + 100),

@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../Constants/colors.dart';
 import '../../Constants/sizes.dart';
@@ -88,7 +89,7 @@ class _MobileScreenState extends State<MobileScreen> {
                                   width: 2,
                                 ),
                               ),
-                              placeholder: 'Name',
+                              placeholder: AppLocalizations.of(context)!.name,
                               placeholderStyle: const TextStyle(
                                 fontSize: 13,
                                 color: blackColor,
@@ -121,7 +122,8 @@ class _MobileScreenState extends State<MobileScreen> {
                                   width: 2,
                                 ),
                               ),
-                              placeholder: 'Surname',
+                              placeholder:
+                                  AppLocalizations.of(context)!.surname,
                               placeholderStyle: const TextStyle(
                                 fontSize: 13,
                                 color: blackColor,
@@ -187,7 +189,8 @@ class _MobileScreenState extends State<MobileScreen> {
                                     child: CupertinoTextField(
                                       controller: _phoneCont,
                                       keyboardType: TextInputType.phone,
-                                      placeholder: 'Phone Number',
+                                      placeholder: AppLocalizations.of(context)!
+                                          .phoneNumber,
                                       placeholderStyle: const TextStyle(
                                         fontSize: 13,
                                         color: blackColor,
@@ -232,10 +235,13 @@ class _MobileScreenState extends State<MobileScreen> {
                                     Expanded(
                                       child: RichText(
                                         text: TextSpan(
-                                          text: "I agree to ",
+                                          text: AppLocalizations.of(context)!
+                                              .agreeTo,
                                           children: [
                                             TextSpan(
-                                              text: "Terms and Conditions",
+                                              text:
+                                                  AppLocalizations.of(context)!
+                                                      .termsAndConditions,
                                               style: const TextStyle(
                                                 fontWeight: FontWeight.bold,
                                                 decoration:
@@ -246,9 +252,14 @@ class _MobileScreenState extends State<MobileScreen> {
                                                   await termsAndConditions();
                                                 },
                                             ),
-                                            const TextSpan(text: " and "),
                                             TextSpan(
-                                              text: "Privacy Policy",
+                                                text: AppLocalizations.of(
+                                                        context)!
+                                                    .and),
+                                            TextSpan(
+                                              text:
+                                                  AppLocalizations.of(context)!
+                                                      .privacyPolicy,
                                               style: const TextStyle(
                                                 fontWeight: FontWeight.bold,
                                                 decoration:
@@ -291,8 +302,9 @@ class _MobileScreenState extends State<MobileScreen> {
                                     ),
                                     onPressed: () => Get.to(
                                         () => const VerificationScreen()),
-                                    child: const Text(
-                                      'CREATE ACCOUNT',
+                                    child: Text(
+                                      AppLocalizations.of(context)!
+                                          .createAccount,
                                       style: TextStyle(
                                           fontSize: 16,
                                           fontWeight: FontWeight.bold,

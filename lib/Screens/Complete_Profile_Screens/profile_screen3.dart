@@ -5,6 +5,7 @@ import 'package:chumsy_app/Screens/Complete_Profile_Screens/profile_screen4.dart
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../Functions/cupertino_action_sheet.dart';
 import '../../Controllers/image_controller.dart';
@@ -66,9 +67,9 @@ class _CreateProfile3State extends State<CreateProfile3> {
             ),
             onPressed: () => Get.back(),
           ),
-          title: const Text(
-            "Complete your profile",
-            style: TextStyle(
+          title: Text(
+            AppLocalizations.of(context)!.completeYourProflieHeading,
+            style: const TextStyle(
               color: whiteColor,
               fontWeight: FontWeight.w500,
               fontSize: 18,
@@ -113,10 +114,11 @@ class _CreateProfile3State extends State<CreateProfile3> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       spacingBoxExtended,
-                      const Center(
+                      Center(
                         child: Text(
-                          "Upload your\nprofile picture",
-                          style: TextStyle(
+                          AppLocalizations.of(context)!
+                              .uploadYourProfilePicture,
+                          style: const TextStyle(
                             color: whiteColor,
                             fontWeight: FontWeight.bold,
                             fontSize: 22,
@@ -158,8 +160,11 @@ class _CreateProfile3State extends State<CreateProfile3> {
                           padding: EdgeInsets.zero,
                           color: transparentColor,
                           onPressed: () {
-                            showActionSheet(context, imageController,
-                                'Photo Library', "Take a Photo");
+                            showActionSheet(
+                                context,
+                                imageController,
+                                AppLocalizations.of(context)!.photoLibrary,
+                                AppLocalizations.of(context)!.takeAPhoto);
                           },
                           child: Container(
                             height: 51,
@@ -174,9 +179,9 @@ class _CreateProfile3State extends State<CreateProfile3> {
                             ),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
-                              children: const [
+                              children: [
                                 Text(
-                                  "CHANGE A PHOTO",
+                                  AppLocalizations.of(context)!.changeAPhoto,
                                   style: TextStyle(
                                     color: whiteColor,
                                     fontWeight: FontWeight.bold,
@@ -195,8 +200,8 @@ class _CreateProfile3State extends State<CreateProfile3> {
                           children: [
                             Text(
                               imageController.showImage.value
-                                  ? "NEXT"
-                                  : "CHOOSE A PHOTO",
+                                  ? AppLocalizations.of(context)!.next
+                                  : AppLocalizations.of(context)!.chooseAPhoto,
                               style: regularStyleBold,
                             ),
                           ],
@@ -205,8 +210,11 @@ class _CreateProfile3State extends State<CreateProfile3> {
                           if (imageController.showImage.value) {
                             Get.to(() => const CreateProfile4());
                           } else {
-                            showActionSheet(context, imageController,
-                                'Photo Library', "Take a Photo");
+                            showActionSheet(
+                                context,
+                                imageController,
+                                AppLocalizations.of(context)!.photoLibrary,
+                                AppLocalizations.of(context)!.takeAPhoto);
                           }
                         },
                       ),

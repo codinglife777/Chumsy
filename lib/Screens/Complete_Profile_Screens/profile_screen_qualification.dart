@@ -34,6 +34,9 @@ class _CreateProfileQualificationState
       ValueNotifier([]);
   final ValueNotifier<bool> _keyboardVisible = ValueNotifier(false);
   final FocusNode _searchNode = FocusNode();
+
+  late AppLocalizations l;
+
   List<Map<String, String>> topicList = [
     {"topic": "Acrobatics"},
     {"topic": "Aerobics"},
@@ -109,14 +112,14 @@ class _CreateProfileQualificationState
   ];
 
   List<Map<String, String>> lifeStyleTopics = [
-    {"topic": 'Board games'},
-    {"topic": 'Calligraphy'},
-    {"topic": 'Caravanning'},
+    {"topic": "Board games"},
+    {"topic": "Calligraphy"},
+    {"topic": "Caravanning"},
     {"topic": "Card games"},
-    {"topic": 'Ceramics and Pottery'},
-    {"topic": 'Cooking'},
-    {"topic": 'Crocheting'},
-    {"topic": 'Drawing'},
+    {"topic": "Ceramics and Pottery"},
+    {"topic": "Cooking"},
+    {"topic": "Crocheting"},
+    {"topic": "Drawing"},
     {"topic": 'Embroidering'},
     {"topic": 'Fashion'},
     {"topic": 'Fishing'},

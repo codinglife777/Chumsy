@@ -4,6 +4,7 @@ import 'package:chumsy_app/Screens/Complete_Profile_Screens/profile_screen1.dart
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../Constants/sizes.dart';
 import '../../Widgets/Extra Widgets/custom_otp_input_field.dart';
@@ -64,8 +65,8 @@ class _VerificationScreenState extends State<VerificationScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       mainAxisSize: MainAxisSize.max,
                       children: [
-                        const Text(
-                          'Verification code',
+                        Text(
+                          AppLocalizations.of(context)!.verificationCode,
                           style: TextStyle(
                             fontFamily: 'Open Sans',
                             fontWeight: FontWeight.bold,
@@ -76,10 +77,11 @@ class _VerificationScreenState extends State<VerificationScreen> {
                         const SizedBox(
                           height: 20,
                         ),
-                        const Expanded(
+                        Expanded(
                           flex: 0,
                           child: Text(
-                            'A verification code has been sent to your phone number',
+                            AppLocalizations.of(context)!
+                                .verificationCodeMessage,
                             style: TextStyle(
                               fontSize: 16,
                             ),
@@ -114,15 +116,18 @@ class _VerificationScreenState extends State<VerificationScreen> {
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  const Text('Didn\'t receive a code?'),
+                                  Text(AppLocalizations.of(context)!
+                                      .didNotReceiveCode),
                                   TextButton(
                                     onPressed: () {
-                                      _dialogBuilder(context,
-                                          "A new verification code has been sent to your e-mail");
+                                      _dialogBuilder(
+                                          context,
+                                          AppLocalizations.of(context)!
+                                              .verificationCodeEmailMessage);
                                     },
-                                    child: const Text(
-                                      'Resend',
-                                      style: TextStyle(
+                                    child: Text(
+                                      AppLocalizations.of(context)!.resendCode,
+                                      style: const TextStyle(
                                         fontWeight: FontWeight.bold,
                                         decoration: TextDecoration.underline,
                                         color: blackColor,
@@ -172,9 +177,10 @@ class _VerificationScreenState extends State<VerificationScreen> {
                                               child: Container(
                                                 height: 50,
                                                 alignment: Alignment.center,
-                                                child: const Text(
-                                                  'CONFIRM',
-                                                  style: TextStyle(
+                                                child: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .confirm,
+                                                  style: const TextStyle(
                                                     fontSize: 16,
                                                     fontWeight: FontWeight.bold,
                                                     color: blackColor,
@@ -182,9 +188,10 @@ class _VerificationScreenState extends State<VerificationScreen> {
                                                 ),
                                               ),
                                             )
-                                          : const Text(
-                                              'CONFIRM',
-                                              style: TextStyle(
+                                          : Text(
+                                              AppLocalizations.of(context)!
+                                                  .confirm,
+                                              style: const TextStyle(
                                                 fontSize: 16,
                                                 fontWeight: FontWeight.bold,
                                                 color: blackColor,

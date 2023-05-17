@@ -5,6 +5,7 @@ import 'package:chumsy_app/Screens/Registration_Screens/login_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../Constants/swipe_constants.dart';
 import 'signup_screen.dart';
@@ -17,16 +18,22 @@ class OnBoardingScreen extends StatefulWidget {
 }
 
 class _OnBoardingScreenState extends State<OnBoardingScreen> {
-  final List<SwipItem> swipItems = [
-    SwipItem(title: "Sport", imagePath: 'assets/login/sports.png'),
-    SwipItem(title: "Lifestyle", imagePath: 'assets/login/lifestyle@2x.png'),
-    SwipItem(title: "Name it", imagePath: 'assets/login/nameit@2x.png'),
-  ];
   final PageController _pageController = PageController();
   int activatedPage = 0;
 
   @override
   Widget build(BuildContext context) {
+    final List<SwipItem> swipItems = [
+      SwipItem(
+          title: AppLocalizations.of(context)!.sport,
+          imagePath: 'assets/login/sports.png'),
+      SwipItem(
+          title: AppLocalizations.of(context)!.lifeStyle,
+          imagePath: 'assets/login/lifestyle@2x.png'),
+      SwipItem(
+          title: AppLocalizations.of(context)!.nameIt,
+          imagePath: 'assets/login/nameit@2x.png'),
+    ];
     final double screenHeight = MediaQuery.of(context).size.height;
     return CupertinoPageScaffold(
       child: Center(
@@ -176,55 +183,6 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
               const SizedBox(
                 height: 30,
               ),
-              // spacingBoxExtended,
-              // SizedBox(
-              //   width: screenWidth,
-              //   height: screenHeight * 0.55,
-              //   child: Swiper(
-              //     itemBuilder: (BuildContext context, int index) {
-              //       return Column(
-              //         mainAxisAlignment: MainAxisAlignment.start,
-              //         crossAxisAlignment: CrossAxisAlignment.stretch,
-              //         children: [
-              //           Padding(
-              //             padding: const EdgeInsets.only(
-              //               left: 32,
-              //               right: 32,
-              //             ),
-              //             child: Text(
-              //               swipItems[index].title,
-              //               textAlign: TextAlign.left,
-              //               style: const TextStyle(
-              //                   fontSize: 20, fontWeight: FontWeight.bold),
-              //             ),
-              //           ),
-              //           const SizedBox(height: 10),
-              //           Container(
-              //             width: screenWidth,
-              //             height: screenHeight * 0.40,
-              //             decoration: BoxDecoration(
-              //               image: DecorationImage(
-              //                 image: AssetImage(swipItems[index].imagePath),
-              //                 fit: BoxFit.fitHeight,
-              //               ),
-              //             ),
-              //           ),
-              //         ],
-              //       );
-              //     },
-              //     itemCount: 3,
-              //     indicatorLayout: PageIndicatorLayout.COLOR,
-              //     autoplay: false,
-              //     pagination: const SwiperPagination(
-              //       builder: DotSwiperPaginationBuilder(
-              //         color: blackColor,
-              //         activeColor: activeColor,
-              //         space: 10,
-              //         activeSize: 20,
-              //       ),
-              //     ),
-              //   ),
-              // ),
               Expanded(
                 flex: 0,
                 child: Padding(
@@ -236,10 +194,10 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      const Text(
-                        'Welcome to Chumsy!',
+                      Text(
+                        AppLocalizations.of(context)!.welcomeToChumsy,
                         textAlign: TextAlign.center,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 24,
                         ),
@@ -268,9 +226,9 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                           onPressed: () {
                             Get.to(() => const SignupScreen());
                           },
-                          child: const Text(
-                            'SIGN UP',
-                            style: TextStyle(
+                          child: Text(
+                            AppLocalizations.of(context)!.signUpText,
+                            style: const TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.w900,
                               color: whiteColor,
@@ -304,8 +262,8 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                           onPressed: () {
                             Get.to(() => const LoginScreen());
                           },
-                          child: const Text(
-                            'LOG IN',
+                          child: Text(
+                            AppLocalizations.of(context)!.loginText,
                             style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.w900,
@@ -319,9 +277,9 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                       ),
                       TextButton(
                         onPressed: () {},
-                        child: const Text(
-                          'Change language',
-                          style: TextStyle(
+                        child: Text(
+                          AppLocalizations.of(context)!.changeLanguage,
+                          style: const TextStyle(
                             color: blackColor,
                             fontWeight: FontWeight.bold,
                             fontSize: 14,

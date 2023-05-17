@@ -5,6 +5,7 @@ import 'package:chumsy_app/Screens/Complete_Profile_Screens/profile_screen3.dart
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../Widgets/Extra Widgets/gradient_widget.dart';
 
@@ -16,10 +17,14 @@ class CreateProfile2 extends StatefulWidget {
 }
 
 class _CreateProfile2State extends State<CreateProfile2> {
-  List<String> genders = ["Male", "Female", "Non-binary"];
   int selected = 0;
   @override
   Widget build(BuildContext context) {
+    List<String> genders = [
+      AppLocalizations.of(context)!.male,
+      AppLocalizations.of(context)!.female,
+      AppLocalizations.of(context)!.nonBinary
+    ];
     return Theme(
       // data: const CupertinoThemeData(
       //   brightness: Brightness.dark,
@@ -64,9 +69,9 @@ class _CreateProfile2State extends State<CreateProfile2> {
             ),
             onPressed: () => Get.back(),
           ),
-          title: const Text(
-            "Complete your profile",
-            style: TextStyle(
+          title: Text(
+            AppLocalizations.of(context)!.completeYourProflieHeading,
+            style: const TextStyle(
               color: whiteColor,
               fontWeight: FontWeight.w500,
               fontSize: 18,
@@ -109,10 +114,10 @@ class _CreateProfile2State extends State<CreateProfile2> {
                 child: Column(
                   children: [
                     spacingBoxExtended,
-                    const Center(
+                    Center(
                       child: Text(
-                        "What is your sex?",
-                        style: TextStyle(
+                        AppLocalizations.of(context)!.whatIsYourSex,
+                        style: const TextStyle(
                           color: whiteColor,
                           fontWeight: FontWeight.bold,
                           fontSize: 22,
@@ -223,9 +228,9 @@ class _CreateProfile2State extends State<CreateProfile2> {
                     CustomGradientButtonWidget(
                       buttonWidget: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: const [
+                        children: [
                           Text(
-                            "NEXT",
+                            AppLocalizations.of(context)!.next,
                             style: regularStyleBold,
                           ),
                         ],

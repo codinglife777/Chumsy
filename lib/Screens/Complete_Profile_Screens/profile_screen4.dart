@@ -6,6 +6,7 @@ import 'package:chumsy_app/Screens/Complete_Profile_Screens/profile_screen_quali
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../Widgets/Extra Widgets/gradient_widget.dart';
 import '../../Widgets/Extra Widgets/custom_switch.dart';
@@ -47,9 +48,9 @@ class _CreateProfile4State extends State<CreateProfile4> {
             ),
             onPressed: () => Get.back(),
           ),
-          title: const Text(
-            "Complete your profile",
-            style: TextStyle(
+          title: Text(
+            AppLocalizations.of(context)!.completeYourProflieHeading,
+            style: const TextStyle(
               color: whiteColor,
               fontWeight: FontWeight.w500,
               fontSize: 18,
@@ -155,7 +156,7 @@ class _CreateProfile4State extends State<CreateProfile4> {
                                       ),
                                       child: Center(
                                         child: Text(
-                                          "Master",
+                                          AppLocalizations.of(context)!.master,
                                           style: regularStyleBold.copyWith(
                                             fontSize: 15,
                                           ),
@@ -224,9 +225,10 @@ class _CreateProfile4State extends State<CreateProfile4> {
                               const SizedBox(
                                 width: 15,
                               ),
-                              const Text(
-                                "Are you a Master? *",
-                                style: TextStyle(
+                              Text(
+                                AppLocalizations.of(context)!.areYouAMaster,
+                                // "Are you a Master? *",
+                                style: const TextStyle(
                                   fontSize: 22,
                                   color: whiteColor,
                                   fontWeight: FontWeight.w600,
@@ -240,9 +242,10 @@ class _CreateProfile4State extends State<CreateProfile4> {
                           CustomGradientButtonWidget(
                             buttonWidget: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
-                              children: const [
+                              children: [
                                 Text(
-                                  "SAVE",
+                                  AppLocalizations.of(context)!.save,
+                                  // "SAVE",
                                   style: regularStyleBold,
                                 ),
                               ],
@@ -254,9 +257,10 @@ class _CreateProfile4State extends State<CreateProfile4> {
                           const SizedBox(
                             height: 13,
                           ),
-                          const Text(
-                            "* Would you like to be able to host events as a trainer / lecturer?",
-                            style: TextStyle(
+                          Text(
+                            AppLocalizations.of(context)!.areYouMasterComment,
+                            // "* Would you like to be able to host events as a trainer / lecturer?",
+                            style: const TextStyle(
                               color: whiteColor,
                               fontSize: 12,
                             ),
