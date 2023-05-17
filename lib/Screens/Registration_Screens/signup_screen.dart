@@ -3,6 +3,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../Functions/show_alert.dart';
 import '../../Constants/colors.dart';
@@ -287,10 +288,12 @@ class _SignupScreenState extends State<SignupScreen> {
                           ),
                           CupertinoButton(
                             onPressed: () => openDialog(context, "Apple.com"),
-                            child: Image.asset(
-                                "assets/login/apple_black@3x.png",
-                                width: 40,
-                                fit: BoxFit.contain),
+                            child: SvgPicture.asset("assets/login/apple_black.svg", width: 40,),
+                            
+                            // Image.asset(
+                            //     "assets/login/apple_black@3x.png",
+                            //     width: 40,
+                            //     fit: BoxFit.contain),
                           ),
                         ],
                       ),
