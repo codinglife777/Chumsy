@@ -77,8 +77,8 @@ void showChangeLanguageAction(
           CupertinoActionSheetAction(
             isDefaultAction: true,
             onPressed: () async {
-              context.read<LocaleProvider>().setLocale(const Locale("ua"));
-              Get.back();
+              // context.read<LocaleProvider>().setLocale(const Locale("ua"));
+              // Get.back();
             },
             child: Text(l.ukrainian, style: const TextStyle(color: Colors.black)),
           ),
