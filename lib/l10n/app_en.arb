@@ -111,5 +111,7 @@
     "novemeber":"Novemeber",
     "december":"December",
     "photo_have_a_face":"Photo you have selected should have a face",
-    "master":"Master"
+    "master":"Master",
+    "sports":"[\"Acrobatics\",\"Aerobics\",\"Aqua Aerobics\",\"Archery\",\"Athletics\",\"Badminton\",\"Baseball\",\"Basketball\",\"Biathlon\",\"Bowling\", \"Boxing\",\"Canoening\",\"Chess\",\"Climbing\", \"Combat sports (other)\", \"Cricket\", \"CrossFit\",\"Crossminton\",\"Cycling\",\"Dance\",\"eSport\",\"Fencing\",\"Fitness\",\"Floorball\",\"Football\",\"Frisbee\",\"Golf\",\"Gym\",\"Gymnastics\",\"Handball\",\"Hockey\",\"Horse riding\",\"Ice-skating\",\"Judo\",\"Karate\",\"Karting\",\"Kick-boxing\",\"Kitesurfing\",\"MMA\",\"Motorbike riding\",\"Nordic walking\",\"Padel\",\"Pedalo\",\"Physiotherapy (exercise)\",\"Pilates\",\"Pool\",\"Roller blading\",\"Roller skates\",\"Rowing\",\"Rugby\",\"Running\",\"Sailing\",\"Shooting\",\"Skateboard\",\"Ski jumping\",\"Skiing\",\"Snowboard\",\"Squash\",\"SUP\",\"Surfing\",\"Swimming\",\"Tennis\",\"Taekwondo\",\"Tennis\",\"Trekking\",\"Triathlon\",\"Volleyball\",\"Weightlifting\",\"Windsurfing\",\"Wrestling\",\"Yoga\"]",
+     "lifeStyles": "[\"Board games\",\"Calligraphy\",\"Caravanning\",\"Card games\",\"Ceramics and Pottery\",\"Cooking\",\"Crocheting\",\"Drawing\",\"Embroidering\",\"Fashion\", \"Fishing\", \"Floristics\", \"Handicraft\", \"Macrame\", \"Make-up and Beauty care\", \"Mindfulness\", \"Music and Singing\", \"Paintball\", \"Painting\", \"Photography\", \"Picnic\", \"Pole dance\", \"Rope course\", \"Sauna\", \"Sled\", \"Trampolines\", \"Walk\", \"Walk with a dog\", \"Walk with children\", \"Zumba\"]"
 }
