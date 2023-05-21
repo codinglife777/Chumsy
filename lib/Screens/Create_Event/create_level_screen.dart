@@ -105,9 +105,9 @@ class LevelTile extends StatefulWidget {
   State<LevelTile> createState() => _LevelTileState();
 }
 
-bool _isChecked = false;
 
 class _LevelTileState extends State<LevelTile> {
+bool _isChecked = false;
   @override
   Widget build(BuildContext context) {
     return CupertinoButton(
@@ -131,11 +131,23 @@ class _LevelTileState extends State<LevelTile> {
               ),
             ),
             if (_isChecked)
-              const Icon(
-                CupertinoIcons.check_mark,
-                size: 18,
+            Text(
+              String.fromCharCode(CupertinoIcons.check_mark.codePoint),
+              style: TextStyle(
+                inherit: false,
                 color: blackColor,
+                fontSize: 18.0,
+                fontWeight: FontWeight.bold,
+                fontFamily: CupertinoIcons.check_mark.fontFamily,
+                package: CupertinoIcons.check_mark.fontPackage,
               ),
+            )
+              // const Icon(
+              //   CupertinoIcons.check_mark,
+              //   size: 18,
+              //   color: blackColor,
+              //   weight: 500.00,
+              // ),
           ],
         ),
       ),

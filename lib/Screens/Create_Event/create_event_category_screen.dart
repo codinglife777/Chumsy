@@ -9,6 +9,8 @@ import 'dart:convert';
 
 import '../../Constants/colors.dart';
 import '../../Constants/spacing.dart';
+import '../../Controllers/image_controller.dart';
+import '../../Functions/cupertino_action_sheet.dart';
 import '../../Styles/styles.dart';
 import '../../Widgets/Create_Event/app_bar.dart';
 import '../../Widgets/Extra Widgets/scatteredgrid.dart';
@@ -178,6 +180,8 @@ class _CreateEventCategoryState extends State<CreateEventCategory> with WidgetsB
       }
     });
   }
+
+   final ImageController imageController = Get.put(ImageController());
 
   @override
   Widget build(BuildContext context) {
@@ -353,7 +357,15 @@ class _CreateEventCategoryState extends State<CreateEventCategory> with WidgetsB
                                             ),
                                           ),
                                           spacingBox,
-                                          Row(
+                                          GestureDetector(
+                                            onTap: () {
+                                              showActionSheet(
+                                              context,
+                                              imageController,
+                                              AppLocalizations.of(context)!.photoLibrary,
+                                              AppLocalizations.of(context)!.takeAPhoto);
+                                            },
+                                            child: Row(
                                             mainAxisAlignment:
                                                 MainAxisAlignment.center,
                                             children: [
@@ -372,6 +384,7 @@ class _CreateEventCategoryState extends State<CreateEventCategory> with WidgetsB
                                               ),
                                             ],
                                           ),
+                                          )
                                         ],
                                       ),
                                     ],

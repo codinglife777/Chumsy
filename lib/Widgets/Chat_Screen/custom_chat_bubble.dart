@@ -63,8 +63,8 @@ class InBubble extends StatelessWidget {
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: [
-                  textColor.withOpacity(0.3),
-                  textColor.withOpacity(0.3),
+                  textColor.withOpacity(0.1),
+                  textColor.withOpacity(0.1),
                 ],
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,

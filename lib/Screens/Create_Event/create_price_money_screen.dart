@@ -50,7 +50,7 @@ class _CreateEventPriceMoneyState extends State<CreateEventPriceMoney> {
                         keyboardType: TextInputType.number,
                         placeholder: '0,00',
                         placeholderStyle:
-                            const TextStyle(color: Colors.black54),
+                            const TextStyle(color: Colors.black),
                         style: headingStyle24,
                         textAlign: TextAlign.right,
                         decoration: const BoxDecoration(

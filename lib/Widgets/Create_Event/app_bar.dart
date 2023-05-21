@@ -56,11 +56,11 @@ class EventAppBar extends StatelessWidget {
                 ),
               ],
             ),
-            const Divider(
-              // height: 10,
-              // thickness: 1,
-              color: Colors.grey,
-            ),
+            // const Divider(
+            //   // height: 10,
+            //   // thickness: 1,
+            //   color: Colors.grey,
+            // ),
           ],
         ),
       ),

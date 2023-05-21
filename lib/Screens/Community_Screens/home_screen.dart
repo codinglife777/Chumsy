@@ -42,18 +42,23 @@ class _CommunityScreenState extends State<CommunityScreen> {
           Column(
             children: [
               topAppBarSpacing,
-              Expanded(
-                flex: 0,
+              Container(
+                // flex: 0,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    CupertinoButton(
-                      onPressed: () {},
-                      child: const Text(
-                        "",
-                        style: TextStyle(
-                          color: blackColor,
-                          fontSize: 12,
+                    SizedBox(
+                      height: 20,
+                      child: 
+                      CupertinoButton(
+                        onPressed: () {},
+                        padding: const EdgeInsets.all(0),
+                        child: const Text(
+                          "",
+                          style: TextStyle(
+                            color: blackColor,
+                            fontSize: 12,
+                          ),
                         ),
                       ),
                     ),
@@ -61,7 +66,10 @@ class _CommunityScreenState extends State<CommunityScreen> {
                       l.community,
                       style: subHeadingStyle,
                     ),
-                    CupertinoButton(
+                    SizedBox(
+                      height: 20,
+                      child: CupertinoButton(
+                      padding: const EdgeInsets.all(0),
                       child: Image.asset(
                         "assets/extras/camera.png",
                         width: 22,
@@ -70,7 +78,9 @@ class _CommunityScreenState extends State<CommunityScreen> {
                         showActionSheet(context, imageController,
                             l.takeAPhoto, l.photoLibrary);
                       },
-                    ),
+                    )
+                    )
+                    ,
                   ],
                 ),
               ),

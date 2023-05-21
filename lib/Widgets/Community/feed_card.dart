@@ -5,6 +5,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../Constants/colors.dart';
 import '../../Constants/sizes.dart';
 import '../../Constants/spacing.dart';
+import '../../Functions/chat_bottom_sheet.dart';
 
 class CustomFeedCard extends StatelessWidget {
   const CustomFeedCard({
@@ -56,7 +57,9 @@ class CustomFeedCard extends StatelessWidget {
                 color: blackColor,
                 size: 30,
               ),
-              onPressed: () {},
+              onPressed: () {
+                showChatBottomSheet(context, true);
+              },
             ),
           ),
           spacingBox,

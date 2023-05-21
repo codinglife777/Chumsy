@@ -33,7 +33,7 @@ class _ScatteredGridState extends State<ScatteredGrid> {
     for (int i = 0; i < widget.topicList.length; i++) {
       tempState.add(
         Container(
-          height: 40,
+          height: 36,
           padding: const EdgeInsets.only(left: 5, right: 5),
           decoration: Styles.greyButton(
               borderColor: widget.elementBorderColor ?? Colors.white,
@@ -47,7 +47,7 @@ class _ScatteredGridState extends State<ScatteredGrid> {
               widget.topicList[i]["topic"]!,
               style: Styles.greyButtonText(
                   fontWeight: FontWeight.w600,
-                  fontSize: 15,
+                  fontSize: 14,
                   color: widget.elementTextColor ?? Colors.white),
             ),
           ),
