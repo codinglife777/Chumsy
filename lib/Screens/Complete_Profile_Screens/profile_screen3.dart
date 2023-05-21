@@ -164,7 +164,7 @@ class _CreateProfile3State extends State<CreateProfile3> {
                                 context,
                                 imageController,
                                 AppLocalizations.of(context)!.photoLibrary,
-                                AppLocalizations.of(context)!.takeAPhoto);
+                                AppLocalizations.of(context)!.takeAPhoto, false);
                           },
                           child: Container(
                             height: 51,
@@ -214,7 +214,7 @@ class _CreateProfile3State extends State<CreateProfile3> {
                                 context,
                                 imageController,
                                 AppLocalizations.of(context)!.photoLibrary,
-                                AppLocalizations.of(context)!.takeAPhoto);
+                                AppLocalizations.of(context)!.takeAPhoto, false);
                           }
                         },
                       ),

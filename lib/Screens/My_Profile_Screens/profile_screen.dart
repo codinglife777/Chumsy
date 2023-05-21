@@ -30,7 +30,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           Column(
             children: [
               Container(
-                height: MediaQuery.of(context).size.height * 0.2,
+                height: MediaQuery.of(context).size.height * 0.25,
                 decoration: const BoxDecoration(
                   gradient: LinearGradient(
                     begin: Alignment.topLeft,

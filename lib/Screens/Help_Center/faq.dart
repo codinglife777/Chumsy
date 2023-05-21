@@ -12,8 +12,10 @@ import 'mng_bottom_nav.dart';
 
 class HelpCenterFaq extends StatefulWidget {
   const HelpCenterFaq({
-    super.key,
+    super.key, required this.isProfilePage,
   });
+
+  final bool isProfilePage;
 
   @override
   State<HelpCenterFaq> createState() => _HelpCenterFaqState();
@@ -32,9 +34,21 @@ class _HelpCenterFaqState extends State<HelpCenterFaq> {
     "What are the available payment methods for participation in paid events?..."
   ];
 
+  List<String> filteredFaq = fagList;
   late TextEditingController searchController;
 
-  List<String> filteredFaq = fagList;
+  @override
+  void dispose() {
+    searchController.dispose();
+    super.dispose();
+  }
+
+  @override
+  void initState() {
+    searchController = TextEditingController();
+    super.initState();
+  }
+
   void onSearch() {
     String strSearch = searchController.text;
     List<String> filtered = fagList
@@ -44,18 +58,6 @@ class _HelpCenterFaqState extends State<HelpCenterFaq> {
     setState(() {
       filteredFaq = filtered;
     });
-  }
-
-  @override
-  void initState() {
-    searchController = TextEditingController();
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    searchController.dispose();
-    super.dispose();
   }
 
   @override
@@ -142,6 +144,7 @@ class _HelpCenterFaqState extends State<HelpCenterFaq> {
                                 .map((e) => QuestionTile(
                                       onTapFunction: () {},
                                       question: e,
+                                      isProfilePage: widget.isProfilePage,
                                     ))
                                 .toList(),
                           ),
@@ -197,19 +200,28 @@ class QuestionTile extends StatelessWidget {
   const QuestionTile({
     super.key,
     required this.onTapFunction,
-    required this.question,
+    required this.question, required this.isProfilePage,
   });
+
+  final bool isProfilePage;
   final VoidCallback onTapFunction;
   final String question;
 
   @override
   Widget build(BuildContext context) {
+
     return GestureDetector(
-      onTap: () => Get.to(
-        () => MngFaqAnswerPage(
-          question: question,
-        ),
-      ),
+      onTap: () {
+        if (isProfilePage) {
+          Get.to(
+            () => HelpCenterFaqAns(question: question),
+          );
+        } else {
+          Get.to(
+            () => MngFaqAnswerPage(question: question),
+          );
+        }
+      },
       child: Padding(
         padding: const EdgeInsets.symmetric(
           vertical: 15.5,

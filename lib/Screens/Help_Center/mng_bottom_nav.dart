@@ -49,6 +49,7 @@ class _MngHelpPagesState extends State<MngHelpPages> {
                   index: _bnbCont.currentIndex.value,
                   children: [
                     const HelpCenterMain(
+                        isProfilePage: false,
                         // constraints: constraints,
                         ),
                     const Center(
@@ -108,6 +109,7 @@ class _MngFaqPageState extends State<MngFaqPage> {
                   index: _bnbCont.currentIndex.value,
                   children: [
                     const HelpCenterFaq(
+                      isProfilePage: false,
                         // constraints: constraints,
                         ),
                     const Center(

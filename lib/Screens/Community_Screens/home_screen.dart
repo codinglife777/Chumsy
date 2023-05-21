@@ -76,7 +76,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
                       ),
                       onPressed: () {
                         showActionSheet(context, imageController,
-                            l.takeAPhoto, l.photoLibrary);
+                            l.takeAPhoto, l.photoLibrary, true);
                       },
                     )
                     )

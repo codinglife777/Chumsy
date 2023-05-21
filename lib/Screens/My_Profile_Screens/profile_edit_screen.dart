@@ -97,7 +97,7 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                                   l.helpCenter,
                                   "",
                                   () {
-                                    Get.to(() => const HelpCenterMain());
+                                    Get.to(() => const HelpCenterMain(isProfilePage: true,));
                                   },
                                 ),
                                 buildRow(

@@ -277,7 +277,21 @@ class _CustomMyEventCardState extends State<CustomMyEventCard> {
         ),
         maxHeight: screenHeight - 200,
         minHeight: screenHeight / 1.6,
-        panel: Column(
+        onPanelSlide: (position) {
+          print(position);
+        },
+        onPanelClosed: () {
+          Get.back();
+        },
+        panel: GestureDetector(
+          onVerticalDragUpdate: (details) {
+            print(details.delta.dy);
+            if (details.delta.dy > 0) {
+              // _panelController.close(); // Close the panel when dragging down
+              Get.back();
+            }
+          },
+            child: Column(
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -527,6 +541,8 @@ class _CustomMyEventCardState extends State<CustomMyEventCard> {
             ),
           ],
         ),
+        )
+        ,
       ),
     );
   }

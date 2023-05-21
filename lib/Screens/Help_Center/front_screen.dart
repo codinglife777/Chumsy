@@ -9,11 +9,16 @@ import '../../Constants/sizes.dart';
 import '../../Constants/spacing.dart';
 import '../../Functions/terms.dart';
 import '../../Widgets/Create_Event/app_bar.dart';
+import 'faq.dart';
+import 'report.dart';
+import 'support.dart';
 
 class HelpCenterMain extends StatefulWidget {
   const HelpCenterMain({
-    super.key,
+    super.key, required this.isProfilePage,
   });
+
+  final bool isProfilePage;
 
   @override
   State<HelpCenterMain> createState() => _HelpCenterMainState();
@@ -45,7 +50,9 @@ class _HelpCenterMainState extends State<HelpCenterMain> {
                             l.support,
                             "",
                             () {
-                              Get.to(() => const MngSupportPage());
+                              Get.to(() => widget.isProfilePage ? const HelpCenterSupport(
+                        // constraints: constraints,
+                        ) : const MngSupportPage());
                             },
                           ),
                           spacingBox,
@@ -53,7 +60,7 @@ class _HelpCenterMainState extends State<HelpCenterMain> {
                             l.reportAbug,
                             "",
                             () {
-                              Get.to(() => const MngReportPage());
+                              Get.to(() => widget.isProfilePage ? const HelpCenterReport() : const MngReportPage());
                             },
                           ),
                           spacingBox,
@@ -61,7 +68,7 @@ class _HelpCenterMainState extends State<HelpCenterMain> {
                             l.faq,
                             "",
                             () {
-                              Get.to(() => const MngFaqPage());
+                              Get.to(() => widget.isProfilePage ?  HelpCenterFaq(isProfilePage: widget.isProfilePage,) : const MngFaqPage());
                             },
                           ),
                           spacingBox,

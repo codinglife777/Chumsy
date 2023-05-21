@@ -218,7 +218,7 @@ class _ChattingScreenState extends State<ChattingScreen> {
                           padding: EdgeInsets.zero,
                           onPressed: () {
                             showActionSheet(context, Get.put(ImageController()),
-                                l.photoLibrary, l.addAFile);
+                                l.photoLibrary, l.addAFile, false);
                           },
                           child: const Icon(
                             CupertinoIcons.add,
@@ -321,7 +321,7 @@ class _ChattingScreenState extends State<ChattingScreen> {
                                   context,
                                   Get.put(ImageController()),
                                   l.photoLibrary,
-                                  l.addAFile);
+                                  l.addAFile, false);
                             },
                             child: const Icon(
                               CupertinoIcons.camera,

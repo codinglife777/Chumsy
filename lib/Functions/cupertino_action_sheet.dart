@@ -93,6 +93,7 @@ void showActionSheet(
   ImageController imageController,
   String firstText,
   String secondText,
+  bool isFirstPhoto
 ) {
   showCupertinoModalPopup<void>(
     context: context,
@@ -143,10 +144,10 @@ void showActionSheet(
           CupertinoActionSheetAction(
             isDefaultAction: true,
             onPressed: () async {
-              // final ImagePicker picker = ImagePicker();
-              // final pickedFile =
-              //     await picker.pickImage(source: ImageSource.camera);
-              // File imgFile = File(pickedFile!.path);
+              final ImagePicker picker = ImagePicker();
+              final pickedFile =
+                  await picker.pickImage(source: ImageSource.camera);
+              File imgFile = File(pickedFile!.path);
 
               // bool face = await hasFace(imgFile.path);
               // Get.put(ImageController()).setNoFace(!face);
@@ -158,10 +159,10 @@ void showActionSheet(
               //   return;
               // }
 
-              // Get.put(ImageController()).setImage(imgFile.path);
-              // if (kDebugMode) {
-              //   print(imgFile.path);
-              // }
+              Get.put(ImageController()).setImage(imgFile.path);
+              if (kDebugMode) {
+                print(imgFile.path);
+              }
               imageController.changeImage(true);
               Get.back();
             },

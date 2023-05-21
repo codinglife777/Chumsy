@@ -124,7 +124,26 @@ Future<void> showChatBottomSheet(BuildContext context, bool isCommunity) {
                   ),
                 ),
                 isCommunity
-                    ? const SizedBox()
+                    ? CupertinoListTile(
+                        padding: const EdgeInsets.symmetric(
+                          vertical: 10,
+                        ),
+                        onTap: () => Get.back(),
+                        leading: Image.asset("assets/extras/icons/download.png"),
+                        leadingSize: 28,
+                        title: Text(
+                          l.downloadPhoto,
+                          style: regularStyleBold.copyWith(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        subtitle: AutoSizeText(
+                          l.youCanDownload,
+                          style: smallStyle,
+                          maxLines: 1,
+                          softWrap: true,
+                        ),
+                      )
                     : CupertinoListTile(
                         padding: const EdgeInsets.symmetric(
                           vertical: 10,

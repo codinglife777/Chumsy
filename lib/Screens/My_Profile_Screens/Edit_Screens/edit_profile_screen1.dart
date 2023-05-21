@@ -4,9 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:simple_shadow/simple_shadow.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:slidable_button/slidable_button.dart';
 
 import '../../../Functions/build_event_row.dart';
 import '../../../Constants/sizes.dart';
+import '../../../Styles/styles.dart';
 import '../../../Widgets/Extra Widgets/gradient_widget.dart';
 import '../../../Widgets/Extra Widgets/custom_switch.dart';
 
@@ -132,18 +134,71 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
-                                  CustomSwitch(
-                                    value: needMaster,
-                                    isDarkBtn: false,
-                                    changeColor: true,
-                                    color2: neonColor,
-                                    isLight: true,
-                                    onChanged: (bool val) {
-                                      setState(() {
-                                        needMaster = val;
-                                      });
-                                    },
-                                  ),
+                                  HorizontalSlidableButton(
+                                            width: 60,
+                                            height: 32,
+                                            buttonWidth: 34,
+                                            color: Colors.white,
+                                            initialPosition: needMaster
+                                                ? SlidableButtonPosition.end
+                                                : SlidableButtonPosition.start,
+                                            // buttonColor: Theme.of(context).primaryColor,
+                                            dismissible: false,
+                                            label: Container(
+                                              margin: const EdgeInsets.all(4),
+                                              constraints:
+                                                  const BoxConstraints.expand(),
+                                              decoration: BoxDecoration(
+                                                  color: Colors.white,
+                                                  border: Border.all(
+                                                      color: Colors.black,
+                                                      width: 2),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          25)),
+                                            ),
+                                            child: Container(
+                                              padding: const EdgeInsets.all(2),
+                                              decoration: BoxDecoration(
+                                                  border: Border.all(
+                                                      color: Colors.black,
+                                                      width: 2),
+                                                  borderRadius:
+                                                      BorderRadius.circular(24),
+                                                  gradient: needMaster
+                                                      ? Styles.primaryGradient()
+                                                      : const LinearGradient(
+                                                          colors: [
+                                                              Colors.white,
+                                                              Colors.white
+                                                            ])),
+                                            ),
+                                            onChanged: (position) {
+                                              setState(() {
+                                                if (position ==
+                                                    SlidableButtonPosition
+                                                        .end) {
+                                                  setState(
+                                                      () => needMaster = true);
+                                                } else {
+                                                  setState(
+                                                      () => needMaster = false);
+                                                }
+                                              });
+                                            },
+                                          )
+                                  // CustomSwitch(
+                                  //   value: needMaster,
+                                  //   isDarkBtn: false,
+                                  //   changeColor: true,
+                                  //   color2: neonColor,
+                                  //   isLight: true,
+                                  //   onChanged: (bool val) {
+                                  //     setState(() {
+                                  //       needMaster = val;
+                                  //     });
+                                  //   },
+                                  // ),
                                 ],
                               ),
                               const SizedBox(
@@ -159,8 +214,9 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
               ),
             ),
           )),
-          Padding(
+          Container(
             padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
+            color: Colors.white,
             child: CustomGradientButtonWidget(
               buttonWidget: Row(
                 mainAxisAlignment: MainAxisAlignment.center,

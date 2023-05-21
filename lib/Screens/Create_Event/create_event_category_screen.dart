@@ -363,7 +363,7 @@ class _CreateEventCategoryState extends State<CreateEventCategory> with WidgetsB
                                               context,
                                               imageController,
                                               AppLocalizations.of(context)!.photoLibrary,
-                                              AppLocalizations.of(context)!.takeAPhoto);
+                                              AppLocalizations.of(context)!.takeAPhoto, false);
                                             },
                                             child: Row(
                                             mainAxisAlignment:

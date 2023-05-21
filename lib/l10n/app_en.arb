@@ -215,7 +215,9 @@
      "selectLanguage":"Select Language",
      "english":"English",
      "polski":"Polski",
-     "ukrainian":"Ukrainian"
+     "ukrainian":"Ukrainian",
+     "downloadPhoto": "Download photo",
+     "youCanDownload":"You can download and save the photo in gallery"
 
     
 

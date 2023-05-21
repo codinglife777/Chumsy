@@ -365,7 +365,7 @@ class _FilterCategoryState extends State<FilterCategory> with WidgetsBindingObse
                                               context,
                                               imageController,
                                               AppLocalizations.of(context)!.photoLibrary,
-                                              AppLocalizations.of(context)!.takeAPhoto);
+                                              AppLocalizations.of(context)!.takeAPhoto, false);
                                             },
                                             child: Row(
                                             mainAxisAlignment:
