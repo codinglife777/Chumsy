@@ -5,6 +5,9 @@ import 'package:flutter/cupertino.dart';
 import '../../Constants/sizes.dart';
 import '../My_Events/saved_bottom_sheet.dart';
 
+typedef EventCardCallback = Function(String imgLocation, String avatar,
+    String title, String nameAge, String desc);
+
 class CustomEventCard extends StatelessWidget {
   const CustomEventCard({
     super.key,
@@ -14,9 +17,11 @@ class CustomEventCard extends StatelessWidget {
     required this.activity,
     this.location,
     required this.imageLocation,
+    this.cbClicked,
   });
   final String nameAndAge, time, dateText, activity, imageLocation;
   final String? location;
+  final EventCardCallback? cbClicked;
 
   @override
   Widget build(BuildContext context) {
@@ -24,15 +29,14 @@ class CustomEventCard extends StatelessWidget {
 
     return GestureDetector(
       onTap: () {
-        savedEventBottomSheet(
-            context,
-            imageLocation,
-            'assets/register/avatar@2x.png',
-            activity,
-            nameAndAge,
-            "",
-            "This is the event description, lorem ipsum dolor sit amet. consectetur adipiscing elit",
-            isCommunity: false);
+        if (cbClicked != null) {
+          cbClicked!(
+              imageLocation,
+              'assets/register/avatar@2x.png',
+              activity,
+              nameAndAge,
+              "This is the event description, lorem ipsum dolor sit amet. consectetur adipiscing elit");
+        }
       },
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,

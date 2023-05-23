@@ -7,6 +7,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../Controllers/bnb_controller.dart';
 import '../../Screens/Chat_screens/chatting_screen.dart';
+import '../../Screens/Events/bottom_manage.dart';
 import '../../Widgets/Extra Widgets/gradient_widget.dart';
 import '../../Widgets/Extra Widgets/list_set_of_widgets.dart';
 import '../../Widgets/Extra Widgets/simple_button_widget.dart';
@@ -20,9 +21,12 @@ Future<void> savedEventBottomSheet(BuildContext context, String bgImage,
     String dp, String tite, String name, String age, String location,
     {bool isCommunity = true}) {
   AppLocalizations l = AppLocalizations.of(context)!;
+  PanelController controller = PanelController();
+  bool panelCLosed = false;
   return showCupertinoModalPopup<void>(
     context: context,
     builder: (BuildContext context) => SlidingUpPanel(
+      controller: controller,
       backdropEnabled: true,
       body: Image.asset(
         bgImage,
@@ -40,8 +44,14 @@ Future<void> savedEventBottomSheet(BuildContext context, String bgImage,
       minHeight: isCommunity ? 530 : 600,
       maxHeight: screenHeight / 1.2,
       onPanelClosed: () {
-        Get.back();
+        if (!panelCLosed) {
+          Get.back();
+          panelCLosed = true;
+        }
       },
+      // onPanelSlide: (position) {
+      //   Get.off(() => const MapEventsMng());
+      // },
       panel: Column(
         children: [
           Row(
@@ -52,15 +62,15 @@ Future<void> savedEventBottomSheet(BuildContext context, String bgImage,
                 width: 20,
               ),
               GestureDetector(
-                onTap: () {
-                  Get.back();
-                },
-                onPanDown: (details) {
-                  Get.back();
-                },
-                onTapDown: (details) {
-                  Get.back();
-                },
+                // onTap: () {
+                //   Get.back();
+                // },
+                // onPanDown: (details) {
+                //   Get.back();
+                // },
+                // onTapDown: (details) {
+                //   Get.back();
+                // },
                 child: Container(
                   width: 30,
                   height: 5,

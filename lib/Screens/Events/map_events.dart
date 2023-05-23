@@ -9,6 +9,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../Constants/spacing.dart';
 import '../../Functions/mapevent_bottom_sheet.dart';
 import '../../Widgets/Community/custom_event_card.dart';
+import '../../Widgets/My_Events/saved_bottom_sheet.dart';
 import '../Filter_screens/filter_home.dart';
 
 class MapEventsScreen extends StatefulWidget {
@@ -24,6 +25,13 @@ class MapEventsScreen extends StatefulWidget {
 int active = 0;
 
 class _MapEventsScreenState extends State<MapEventsScreen> {
+  void goDetail(String imgLocation, String avatar, String title, String nameAge,
+      String desc) {
+    savedEventBottomSheet(
+        context, imgLocation, avatar, title, nameAge, "", desc,
+        isCommunity: false);
+  }
+
   @override
   Widget build(BuildContext context) {
     AppLocalizations l = AppLocalizations.of(context)!;
@@ -135,40 +143,44 @@ class _MapEventsScreenState extends State<MapEventsScreen> {
                     shrinkWrap: true,
                     children: active == 0
                         ? [
-                            const CustomEventCard(
+                            CustomEventCard(
                               nameAndAge: "Max, 26",
                               activity: "Running",
                               dateText: "April 12 | lh",
                               time: "9:20 AM",
                               location: "4246.00km",
                               imageLocation: "assets/extras/event_image1.png",
+                              cbClicked: goDetail,
                             ),
                             const SizedBox(height: 6),
-                            const CustomEventCard(
+                            CustomEventCard(
                               nameAndAge: "Emily, 30",
                               activity: "Swimming",
                               dateText: "May 3 | rh",
                               location: "7963.00km",
                               time: "2:30 PM",
                               imageLocation: "assets/extras/event_image3.jpg",
+                              cbClicked: goDetail,
                             ),
                             const SizedBox(height: 6),
-                            const CustomEventCard(
+                            CustomEventCard(
                               nameAndAge: "Alex, 23",
                               activity: "Tennis",
                               dateText: "June 8 | lh",
                               location: "8218.00km",
                               time: "5:00 PM",
                               imageLocation: "assets/extras/bottomBack1.png",
+                              cbClicked: goDetail,
                             ),
                             const SizedBox(height: 6),
-                            const CustomEventCard(
+                            CustomEventCard(
                               nameAndAge: "Sophia, 28",
                               activity: "Yoga",
                               dateText: "July 15 | rh",
                               location: "9529.00km",
                               time: "8:15 AM",
                               imageLocation: "assets/extras/event_image2.png",
+                              cbClicked: goDetail,
                             ),
                           ]
                         : [
