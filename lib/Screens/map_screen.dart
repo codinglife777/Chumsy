@@ -2,6 +2,7 @@ import 'package:chumsy_app/Constants/colors.dart';
 import 'package:chumsy_app/Controllers/bnb_controller.dart';
 import 'package:chumsy_app/Controllers/map_screen_controllers.dart';
 import 'package:chumsy_app/Screens/Create_Event/create_event_screen.dart';
+import 'package:chumsy_app/Screens/Events/bottom_manage.dart';
 import 'package:chumsy_app/Screens/Filter_screens/filter_home.dart';
 import 'package:chumsy_app/Widgets/Extra%20Widgets/gradient_widget.dart';
 import 'package:chumsy_app/Widgets/My_Events/running_bottom_sheet.dart';
@@ -253,7 +254,9 @@ class MapScreen extends StatelessWidget {
                                       ),
                                     ),
                                   CupertinoButton(
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      Get.to(() => const MapEventsMng());
+                                    },
                                     color: blackColor,
                                     borderRadius: BorderRadius.circular(
                                       100,

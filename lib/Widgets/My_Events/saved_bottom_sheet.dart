@@ -6,6 +6,7 @@ import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../Controllers/bnb_controller.dart';
+import '../../Screens/Chat_screens/chatting_screen.dart';
 import '../../Widgets/Extra Widgets/gradient_widget.dart';
 import '../../Widgets/Extra Widgets/list_set_of_widgets.dart';
 import '../../Widgets/Extra Widgets/simple_button_widget.dart';
@@ -16,8 +17,9 @@ import '../../Constants/spacing.dart';
 import 'share_bottom_sheet.dart';
 
 Future<void> savedEventBottomSheet(BuildContext context, String bgImage,
-    String dp, String tite, String name, String age, String location) {
-      AppLocalizations l = AppLocalizations.of(context)!;
+    String dp, String tite, String name, String age, String location,
+    {bool isCommunity = true}) {
+  AppLocalizations l = AppLocalizations.of(context)!;
   return showCupertinoModalPopup<void>(
     context: context,
     builder: (BuildContext context) => SlidingUpPanel(
@@ -35,8 +37,11 @@ Future<void> savedEventBottomSheet(BuildContext context, String bgImage,
           30,
         ),
       ),
-      minHeight: 530,
+      minHeight: isCommunity ? 530 : 600,
       maxHeight: screenHeight / 1.2,
+      onPanelClosed: () {
+        Get.back();
+      },
       panel: Column(
         children: [
           Row(
@@ -89,9 +94,61 @@ Future<void> savedEventBottomSheet(BuildContext context, String bgImage,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  tite,
-                  style: headingStyle24,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        Text(
+                          tite,
+                          style: headingStyle24,
+                        ),
+                        const SizedBox(
+                          width: 5,
+                        ),
+                        CupertinoButton(
+                            child: Image.asset(
+                              'assets/extras/icons/Path 5490@3x.png',
+                              width: 16,
+                            ),
+                            onPressed: () {})
+                      ],
+                    ),
+                    CupertinoButton(
+                      padding: EdgeInsets.zero,
+                      borderRadius: BorderRadius.circular(
+                        100,
+                      ),
+                      onPressed: () {
+                        Get.to(() => ChattingScreen(
+                              image: 'assets/register/avatar@3x.png',
+                              name: 'Alexandra',
+                              surName: 'Pawluczuk',
+                            ));
+                      },
+                      child: Container(
+                        height: 50,
+                        width: 50,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(
+                            100,
+                          ),
+                          gradient: const LinearGradient(
+                            colors: [
+                              neonColor,
+                              blueColor,
+                            ],
+                          ),
+                        ),
+                        child: Center(
+                          child: Image.asset(
+                            "assets/home/chat_bottom@2x.png",
+                            width: 15,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
                 const SizedBox(
                   height: 11,
@@ -193,7 +250,7 @@ Future<void> savedEventBottomSheet(BuildContext context, String bgImage,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              l.deleteC,
+                              isCommunity ? l.deleteC : l.shareC,
                               style: regularStyleBold,
                             ),
                           ],
@@ -232,7 +289,7 @@ Future<void> savedEventBottomSheet(BuildContext context, String bgImage,
                                   style: smallStyleBold,
                                 ),
                                 content: Text(
-                                 l.doYouWnatToApply,
+                                  l.doYouWnatToApply,
                                   style: smallStyle,
                                 ),
                                 actions: <Widget>[

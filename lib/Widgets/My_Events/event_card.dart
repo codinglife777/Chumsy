@@ -256,7 +256,7 @@ class _CustomMyEventCardState extends State<CustomMyEventCard> {
       String age,
       String location,
       VoidCallback updateEvent) {
-    AppLocalizations l = AppLocalizations.of(context)!;    
+    AppLocalizations l = AppLocalizations.of(context)!;
     bool cancelState1 = true;
     return showCupertinoModalPopup<void>(
       context: context,
@@ -291,258 +291,240 @@ class _CustomMyEventCardState extends State<CustomMyEventCard> {
               Get.back();
             }
           },
-            child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                const SizedBox(
-                  width: 20,
-                ),
-                GestureDetector(
-                  onTap: () {
-                    Get.back();
-                  },
-                  onPanDown: (details) {
-                    Get.back();
-                  },
-                  onTapDown: (details) {
-                    Get.back();
-                  },
-                  child: Container(
-                    width: 30,
-                    height: 5,
-                    decoration: BoxDecoration(
-                      color: blackColor,
-                      borderRadius: BorderRadius.circular(
-                        30,
-                      ),
-                    ),
-                  ),
-                ),
-                CupertinoButton(
-                  padding: const EdgeInsets.only(right: 20),
-                  onPressed: () {
-                    openShareBottomSheet(context);
-                  },
-                  child: const Icon(
-                    Icons.more_horiz_rounded,
-                    color: blackColor,
-                    size: 40,
-                  ),
-                ),
-              ],
-            ),
-            Padding(
-              padding: const EdgeInsets.only(
-                left: 30,
-                right: 40,
-                top: 20,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisSize: MainAxisSize.max,
                 children: [
-                  Text(
-                    tite,
-                    style: subHeadingStyle,
-                  ),
-                  spacingBox,
-                  CupertinoListTile(
-                    padding: EdgeInsets.zero,
-                    leadingSize: 40,
-                    leading: CircleAvatar(
-                      backgroundColor: neonColor,
-                      foregroundImage: AssetImage(dp),
-                    ),
-                    title: Text(
-                      "$name, $age ",
-                      style: subHeadingStyle,
-                    ),
-                    subtitle: Text(
-                      location,
-                      style: regularStyle,
-                    ),
-                    trailing: CupertinoButton(
-                      padding: EdgeInsets.zero,
-                      borderRadius: BorderRadius.circular(
-                        100,
-                      ),
-                      onPressed: () {},
-                      child: Container(
-                        height: 40,
-                        width: 40,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(
-                            100,
-                          ),
-                          gradient: const LinearGradient(
-                            colors: [
-                              neonColor,
-                              blueColor,
-                            ],
-                          ),
-                        ),
-                        child: Center(
-                          child: Image.asset(
-                            "assets/home/chat_bottom@2x.png",
-                            width: 15,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  spacingBox,
-                  Row(
-                    children: const [
-                      Expanded(
-                        flex: 0,
-                        child: Icon(
-                          CupertinoIcons.time,
-                          color: blackColor,
-                        ),
-                      ),
-                      horizontalSpacingBox,
-                      Expanded(
-                        flex: 1,
-                        child: AutoSizeText(
-                          "Monday, April 12 | 11:00 AM. 12:00 PM",
-                          style: regularStyle,
-                          softWrap: true,
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ),
-                    ],
-                  ),
-                  spacingBox,
-                  Row(
-                    children: const [
-                      Expanded(
-                        flex: 0,
-                        child: Icon(
-                          Icons.location_on_outlined,
-                          color: blackColor,
-                        ),
-                      ),
-                      horizontalSpacingBox,
-                      Expanded(
-                        flex: 1,
-                        child: AutoSizeText(
-                          "Korty Tenisowe Warszawianka Piaseczynska 71.00-765 Warszawa. Polska",
-                          style: smallStyle,
-                          softWrap: true,
-                          maxLines: 3,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ),
-                    ],
-                  ),
-                  spacingBox,
-                  const AutoSizeText(
-                    "This is the event description, lorem ipsum dolor sit amet. consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-                    style: regularStyle,
-                    softWrap: true,
-                    maxLines: 4,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  spacingBox,
-                  ChipSets(
-                    islarge: false,
-                    listOfChips: options,
-                    readonly: true,
-                  ),
                   const SizedBox(
-                    height: 17,
+                    width: 20,
                   ),
-                  // const Text(
-                  //   "Aplicants",
-                  //   style: subHeadingStyle,
-                  // ),
-                  // const SizedBox(
-                  //   height: 21,
-                  // ),
-                  // frientBuilder(
-                  //     "Maggie, 26", "Warsaw", "assets/extras/dp_4.jpg", context),
-                  // const SizedBox(
-                  //   height: 17,
-                  // ),
-                  // frientBuilder(
-                  //     "Luke, 30", "Warsaw", "assets/extras/dp_1.jpg", context),
-                  // const SizedBox(
-                  //   height: 34,
-                  // ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Expanded(
-                        flex: 1,
-                        child: CustomSimpleuttonWidget(
-                          buttonWidget: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                l.cancelC,
-                                style: regularStyleBold,
-                              ),
-                            ],
-                          ),
-                          onTapFunction: () {
-                            showCupertinoDialog(
-                              barrierDismissible: true,
-                              context: context,
-                              builder: (context) => Container(
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(
-                                      30,
-                                    ),
-                                    color: whiteColor,
-                                  ),
-                                  padding: const EdgeInsets.all(
-                                    2,
-                                  ),
-                                  margin: EdgeInsets.symmetric(
-                                    horizontal: 20,
-                                    vertical: screenHeight / 4,
-                                  ),
-                                  child: const CustomState()),
-                            );
-                          },
+                  GestureDetector(
+                    onTap: () {
+                      Get.back();
+                    },
+                    onPanDown: (details) {
+                      Get.back();
+                    },
+                    onTapDown: (details) {
+                      Get.back();
+                    },
+                    child: Container(
+                      width: 30,
+                      height: 5,
+                      decoration: BoxDecoration(
+                        color: blackColor,
+                        borderRadius: BorderRadius.circular(
+                          30,
                         ),
                       ),
-                      const SizedBox(
-                        width: 17,
-                      ),
-                      Expanded(
-                        flex: 1,
-                        child: CustomGradientButtonWidget(
-                          buttonWidget: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                l.edit,
-                                style: regularStyleBold,
-                              ),
-                            ],
-                          ),
-                          onTapFunction: () {
-                            // Get.replace(const UpdateEvent());
-                            // Get.back();
-                            updateEvent();
-                            // Get.put(() => const LoginScreen());
-                            // updateEvent();
-                          },
-                        ),
-                      ),
-                    ],
+                    ),
+                  ),
+                  CupertinoButton(
+                    padding: const EdgeInsets.only(right: 20),
+                    onPressed: () {
+                      openShareBottomSheet(context);
+                    },
+                    child: const Icon(
+                      Icons.more_horiz_rounded,
+                      color: blackColor,
+                      size: 40,
+                    ),
                   ),
                 ],
               ),
-            ),
-          ],
+              Padding(
+                padding: const EdgeInsets.only(
+                  left: 30,
+                  right: 40,
+                  top: 20,
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      tite,
+                      style: subHeadingStyle,
+                    ),
+                    spacingBox,
+                    CupertinoListTile(
+                      padding: EdgeInsets.zero,
+                      leadingSize: 40,
+                      leading: CircleAvatar(
+                        backgroundColor: neonColor,
+                        foregroundImage: AssetImage(dp),
+                      ),
+                      title: Text(
+                        "$name, $age ",
+                        style: subHeadingStyle,
+                      ),
+                      subtitle: Text(
+                        location,
+                        style: regularStyle,
+                      ),
+                      trailing: CupertinoButton(
+                        padding: EdgeInsets.zero,
+                        borderRadius: BorderRadius.circular(
+                          100,
+                        ),
+                        onPressed: () {},
+                        child: Container(
+                          height: 40,
+                          width: 40,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(
+                              100,
+                            ),
+                            gradient: const LinearGradient(
+                              colors: [
+                                neonColor,
+                                blueColor,
+                              ],
+                            ),
+                          ),
+                          child: Center(
+                            child: Image.asset(
+                              "assets/home/chat_bottom@2x.png",
+                              width: 15,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    spacingBox,
+                    Row(
+                      children: const [
+                        Expanded(
+                          flex: 0,
+                          child: Icon(
+                            CupertinoIcons.time,
+                            color: blackColor,
+                          ),
+                        ),
+                        horizontalSpacingBox,
+                        Expanded(
+                          flex: 1,
+                          child: AutoSizeText(
+                            "Monday, April 12 | 11:00 AM. 12:00 PM",
+                            style: regularStyle,
+                            softWrap: true,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                      ],
+                    ),
+                    spacingBox,
+                    Row(
+                      children: const [
+                        Expanded(
+                          flex: 0,
+                          child: Icon(
+                            Icons.location_on_outlined,
+                            color: blackColor,
+                          ),
+                        ),
+                        horizontalSpacingBox,
+                        Expanded(
+                          flex: 1,
+                          child: AutoSizeText(
+                            "Korty Tenisowe Warszawianka Piaseczynska 71.00-765 Warszawa. Polska",
+                            style: smallStyle,
+                            softWrap: true,
+                            maxLines: 3,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                      ],
+                    ),
+                    spacingBox,
+                    const AutoSizeText(
+                      "This is the event description, lorem ipsum dolor sit amet. consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                      style: regularStyle,
+                      softWrap: true,
+                      maxLines: 4,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    spacingBox,
+                    ChipSets(
+                      islarge: false,
+                      listOfChips: options,
+                      readonly: true,
+                    ),
+                    const SizedBox(
+                      height: 17,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Expanded(
+                          flex: 1,
+                          child: CustomSimpleuttonWidget(
+                            buttonWidget: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  l.cancelC,
+                                  style: regularStyleBold,
+                                ),
+                              ],
+                            ),
+                            onTapFunction: () {
+                              showCupertinoDialog(
+                                barrierDismissible: true,
+                                context: context,
+                                builder: (context) => Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(
+                                        30,
+                                      ),
+                                      color: whiteColor,
+                                    ),
+                                    padding: const EdgeInsets.all(
+                                      2,
+                                    ),
+                                    margin: EdgeInsets.symmetric(
+                                      horizontal: 20,
+                                      vertical: screenHeight / 4,
+                                    ),
+                                    child: const CustomState()),
+                              );
+                            },
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 17,
+                        ),
+                        Expanded(
+                          flex: 1,
+                          child: CustomGradientButtonWidget(
+                            buttonWidget: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  l.edit,
+                                  style: regularStyleBold,
+                                ),
+                              ],
+                            ),
+                            onTapFunction: () {
+                              // Get.replace(const UpdateEvent());
+                              // Get.back();
+                              updateEvent();
+                              // Get.put(() => const LoginScreen());
+                              // updateEvent();
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
-        )
-        ,
       ),
     );
   }

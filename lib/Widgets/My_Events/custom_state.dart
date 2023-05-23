@@ -46,7 +46,7 @@ class _CustomState extends State<CustomState> {
           ),
         ),
         const SizedBox(
-          height: 30,
+          height: 20,
         ),
         Text(
           "Why do you want to cancel the event?",
@@ -62,7 +62,7 @@ class _CustomState extends State<CustomState> {
           style: smallStyle,
         ),
         const SizedBox(
-          height: 27,
+          height: 20,
         ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 40),
@@ -137,7 +137,7 @@ class _CustomState extends State<CustomState> {
           ),
         ),
         const SizedBox(
-          height: 24,
+          height: 15,
         ),
         const Padding(
           padding: EdgeInsets.symmetric(

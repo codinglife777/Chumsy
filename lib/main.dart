@@ -21,41 +21,39 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider( 
-      create: (context) => LocaleProvider(),
-      builder: (context, child) {
-        return Consumer<LocaleProvider>(
-          builder: (context, provider, child) {
-      return DismissKeyboard(
-        child: GetCupertinoApp(
-          debugShowCheckedModeBanner: false,
-          defaultTransition: Transition.cupertino,
-          locale: provider.locale,
-          localizationsDelegates: const [
-            AppLocalizations.delegate,
-            GlobalMaterialLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-            GlobalCupertinoLocalizations.delegate,
-          ],
-          supportedLocales: L10n.support,
-          theme: const CupertinoThemeData.raw(
-            Brightness.light,
-            blackColor,
-            whiteColor,
-            CupertinoTextThemeData(
-              textStyle: TextStyle(
-                fontFamily: "Proxima",
-                color: blackColor,
+    return ChangeNotifierProvider(
+        create: (context) => LocaleProvider(),
+        builder: (context, child) {
+          return Consumer<LocaleProvider>(builder: (context, provider, child) {
+            return DismissKeyboard(
+              child: GetCupertinoApp(
+                debugShowCheckedModeBanner: false,
+                defaultTransition: Transition.cupertino,
+                locale: provider.locale,
+                localizationsDelegates: const [
+                  AppLocalizations.delegate,
+                  GlobalMaterialLocalizations.delegate,
+                  GlobalWidgetsLocalizations.delegate,
+                  GlobalCupertinoLocalizations.delegate,
+                ],
+                supportedLocales: L10n.support,
+                theme: const CupertinoThemeData.raw(
+                    Brightness.light,
+                    blackColor,
+                    whiteColor,
+                    CupertinoTextThemeData(
+                      textStyle: TextStyle(
+                        fontFamily: "Proxima",
+                        color: blackColor,
+                      ),
+                    ),
+                    whiteColor,
+                    whiteColor,
+                    true),
+                home: const LandingPage(),
               ),
-            ),
-            whiteColor,
-            whiteColor,
-            true
-          ),
-          home: const SplashScreen(),
-        ),);
+            );
+          });
         });
-      }
-    );
   }
 }

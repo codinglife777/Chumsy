@@ -23,6 +23,9 @@ Future<void> showChatBottomSheet(BuildContext context, bool isCommunity) {
         ),
       ),
       minHeight: isCommunity ? screenHeight / 4 : screenHeight / 2.5,
+      onPanelClosed: () {
+        Get.back();
+      },
       panel: Column(
         children: [
           spacingBox,
@@ -129,7 +132,8 @@ Future<void> showChatBottomSheet(BuildContext context, bool isCommunity) {
                           vertical: 10,
                         ),
                         onTap: () => Get.back(),
-                        leading: Image.asset("assets/extras/icons/download.png"),
+                        leading:
+                            Image.asset("assets/extras/icons/download.png"),
                         leadingSize: 28,
                         title: Text(
                           l.downloadPhoto,

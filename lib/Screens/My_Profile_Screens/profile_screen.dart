@@ -94,7 +94,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 style: smallStyle,
               ),
               const SizedBox(
-                height: 46,
+                height: 20,
               ),
               Padding(
                 padding: const EdgeInsets.only(

@@ -42,15 +42,15 @@ class _CommunityScreenState extends State<CommunityScreen> {
           Column(
             children: [
               topAppBarSpacing,
+              spacingBox,
               Container(
                 // flex: 0,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     SizedBox(
-                      height: 20,
-                      child: 
-                      CupertinoButton(
+                      height: 30,
+                      child: CupertinoButton(
                         onPressed: () {},
                         padding: const EdgeInsets.all(0),
                         child: const Text(
@@ -67,20 +67,18 @@ class _CommunityScreenState extends State<CommunityScreen> {
                       style: subHeadingStyle,
                     ),
                     SizedBox(
-                      height: 20,
-                      child: CupertinoButton(
-                      padding: const EdgeInsets.all(0),
-                      child: Image.asset(
-                        "assets/extras/camera.png",
-                        width: 22,
-                      ),
-                      onPressed: () {
-                        showActionSheet(context, imageController,
-                            l.takeAPhoto, l.photoLibrary, true);
-                      },
-                    )
-                    )
-                    ,
+                        height: 20,
+                        child: CupertinoButton(
+                          padding: const EdgeInsets.all(0),
+                          child: Image.asset(
+                            "assets/extras/camera.png",
+                            width: 22,
+                          ),
+                          onPressed: () {
+                            showActionSheet(context, imageController,
+                                l.takeAPhoto, l.photoLibrary, true);
+                          },
+                        )),
                   ],
                 ),
               ),

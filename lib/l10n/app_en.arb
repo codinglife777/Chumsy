@@ -98,6 +98,7 @@
     "paymentMethod": "Payment Method",
     "emailAlreadyRegistered": "This email address is already registered. Please try another e-mail address",
     "filters": "Filters",
+    "filter": "Filter",
     "date": "Date",
     "friends": "Friends",
     "january":"January",
@@ -118,6 +119,7 @@
      "lifeStyles": "[\"Board games\",\"Calligraphy\",\"Caravanning\",\"Card games\",\"Ceramics and Pottery\",\"Cooking\",\"Crocheting\",\"Drawing\",\"Embroidering\",\"Fashion\", \"Fishing\", \"Floristics\", \"Handicraft\", \"Macrame\", \"Make-up and Beauty care\", \"Mindfulness\", \"Music and Singing\", \"Paintball\", \"Painting\", \"Photography\", \"Picnic\", \"Pole dance\", \"Rope course\", \"Sauna\", \"Sled\", \"Trampolines\", \"Walk\", \"Walk with a dog\", \"Walk with children\", \"Zumba\"]",
      "eventInProgress": "EVENT IN PROGRESS",
      "distance": "Distance (km)",
+     "distance1": "Distance",
      "applyFilters": "APPLY FILTERS",
      "changeAPicture": "Change a picture",
      "cash":"Cash",
@@ -217,7 +219,10 @@
      "polski":"Polski",
      "ukrainian":"Ukrainian",
      "downloadPhoto": "Download photo",
-     "youCanDownload":"You can download and save the photo in gallery"
+     "youCanDownload":"You can download and save the photo in gallery",
+     "sort": "Sort",
+     "disciplineAlphabetic": "Discipline alphabetic",
+     "startingTime":"Starting time"
 
     
 
