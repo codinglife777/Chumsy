@@ -31,7 +31,7 @@ dependencies:
   google_fonts:
   flutter_svg:
   provider:
-  location: ^4.4.0
+  # location: ^4.4.0
   google_maps_flutter:
   google_mlkit_face_detection: ^0.6.0
   flutter_localizations:

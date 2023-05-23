@@ -50,6 +50,7 @@ class MyApp extends StatelessWidget {
             ),
             whiteColor,
             whiteColor,
+            true
           ),
           home: const SplashScreen(),
         ),);
