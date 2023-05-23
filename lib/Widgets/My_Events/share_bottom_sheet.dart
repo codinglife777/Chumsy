@@ -10,8 +10,10 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../Constants/colors.dart';
 import '../../Constants/sizes.dart';
 
-Future<void> openShareBottomSheet(BuildContext context) {
+Future<void> openShareBottomSheet(BuildContext context,
+    {bool isMyEvents = true}) {
   AppLocalizations l = AppLocalizations.of(context)!;
+  bool isPanelClosed = false;
   return showCupertinoModalPopup<void>(
     context: context,
     builder: (BuildContext context) => SlidingUpPanel(
@@ -24,17 +26,84 @@ Future<void> openShareBottomSheet(BuildContext context) {
           30,
         ),
       ),
-      // minHeight: 280,
+      onPanelClosed: () {
+        if (!isPanelClosed) {
+          Get.back();
+          isPanelClosed = true;
+        }
+      },
+      minHeight: isMyEvents ? 100 : 300,
       panel: Column(
         children: [
-          Divider(
-            endIndent: screenWidth / 4.5,
-            indent: screenWidth / 4.5,
-            color: blackColor,
-            thickness: 4,
+          const SizedBox(
+            height: 10,
+          ),
+          Container(
+            padding: const EdgeInsets.only(top: 10, bottom: 20),
+            width: 40,
+            height: 5,
+            decoration: BoxDecoration(
+              color: blackColor,
+              borderRadius: BorderRadius.circular(
+                30,
+              ),
+            ),
+          ),
+          const SizedBox(
+            height: 20,
           ),
           Column(
             children: [
+              isMyEvents
+                  ? const SizedBox()
+                  : CupertinoListTile(
+                      onTap: () {
+                        Get.back();
+                      },
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 15,
+                        horizontal: 20,
+                      ),
+                      leading: Image.asset(
+                        "assets/extras/icons/alert@2x.png",
+                      ),
+                      title: Text(
+                        l.report,
+                        style: regularStyleBold,
+                      ),
+                      subtitle: AutoSizeText(
+                        l.somethingNotRight,
+                        style: regularStyle,
+                        maxLines: 1,
+                        softWrap: true,
+                        overflow: TextOverflow.clip,
+                      ),
+                    ),
+              isMyEvents
+                  ? const SizedBox()
+                  : CupertinoListTile(
+                      onTap: () {
+                        Share.share("Chumsy").then((value) => Get.back());
+                      },
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 15,
+                        horizontal: 20,
+                      ),
+                      leading: Image.asset(
+                        "assets/extras/icons/Path 5490@2x.png",
+                      ),
+                      title: Text(
+                        l.saveL,
+                        style: regularStyleBold,
+                      ),
+                      subtitle: AutoSizeText(
+                        l.youCanSavetheEventforLater,
+                        style: regularStyle,
+                        maxLines: 1,
+                        softWrap: true,
+                        overflow: TextOverflow.clip,
+                      ),
+                    ),
               CupertinoListTile(
                 onTap: () {
                   Share.share("Chumsy").then((value) => Get.back());

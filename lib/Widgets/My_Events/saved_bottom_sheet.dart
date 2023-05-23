@@ -72,6 +72,7 @@ Future<void> savedEventBottomSheet(BuildContext context, String bgImage,
                 //   Get.back();
                 // },
                 child: Container(
+                  margin: const EdgeInsets.only(left: 30),
                   width: 30,
                   height: 5,
                   decoration: BoxDecoration(
@@ -85,7 +86,7 @@ Future<void> savedEventBottomSheet(BuildContext context, String bgImage,
               CupertinoButton(
                 padding: const EdgeInsets.only(right: 20),
                 onPressed: () {
-                  openShareBottomSheet(context);
+                  openShareBottomSheet(context, isMyEvents: false);
                 },
                 child: const Icon(
                   Icons.more_horiz_rounded,
@@ -130,7 +131,7 @@ Future<void> savedEventBottomSheet(BuildContext context, String bgImage,
                         100,
                       ),
                       onPressed: () {
-                        Get.to(() => ChattingScreen(
+                        Get.to(() => const ChattingScreen(
                               image: 'assets/register/avatar@3x.png',
                               name: 'Alexandra',
                               surName: 'Pawluczuk',

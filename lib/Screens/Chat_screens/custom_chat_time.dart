@@ -33,10 +33,13 @@ class ChatTile extends StatelessWidget {
       padding: const EdgeInsets.only(
         bottom: 20.05,
       ),
-      leading: CircleAvatar(
-        backgroundColor: neonColor,
-        foregroundImage: AssetImage(profileLocation),
-      ),
+      leading: Container(
+          padding: EdgeInsets.zero,
+          child: CircleAvatar(
+            radius: 28,
+            backgroundColor: neonColor,
+            foregroundImage: AssetImage(profileLocation),
+          )),
       leadingSize: 62,
       title: Row(
           // crossAxisAlignment: CrossAxisAlignment.start,
