@@ -9,10 +9,14 @@ import '../../Constants/sizes.dart';
 import '../../Constants/spacing.dart';
 
 Future<void> showMapBottomSheet(BuildContext context) {
+  bool isPanelClosed = false;
   return showCupertinoModalPopup<void>(
     context: context,
     builder: (BuildContext context) => SlidingUpPanel(
-      backdropEnabled: true,
+      backdropEnabled: false,
+      backdropTapClosesPanel: false,
+      panelSnapping: false,
+      // isDraggable: false,
       borderRadius: const BorderRadius.only(
         topLeft: Radius.circular(
           30,
@@ -22,7 +26,12 @@ Future<void> showMapBottomSheet(BuildContext context) {
         ),
       ),
       minHeight: screenHeight / 2.5,
-      // onPanelClosed: () {},
+      onPanelClosed: () {
+        if (!isPanelClosed) {
+          isPanelClosed = true;
+          Get.back();
+        }
+      },
       panel: const MapEventBottomPanel(),
     ),
   );
