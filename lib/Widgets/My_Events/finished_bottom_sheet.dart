@@ -11,8 +11,8 @@ import '../../Constants/spacing.dart';
 
 Future<void> finishedEventBottomSheet(BuildContext context, String bgImage,
     String dp, String tite, String name, String age, String location) {
-      AppLocalizations l = AppLocalizations.of(context)!;
-
+  AppLocalizations l = AppLocalizations.of(context)!;
+  bool isPanelClosed = false;
   return showCupertinoModalPopup<void>(
     context: context,
     builder: (BuildContext context) => SlidingUpPanel(
@@ -31,6 +31,12 @@ Future<void> finishedEventBottomSheet(BuildContext context, String bgImage,
         ),
       ),
       minHeight: 450,
+      onPanelClosed: () {
+        if (!isPanelClosed) {
+          isPanelClosed = true;
+          Get.back();
+        }
+      },
       panel: Column(
         children: [
           Row(
@@ -38,15 +44,6 @@ Future<void> finishedEventBottomSheet(BuildContext context, String bgImage,
             mainAxisSize: MainAxisSize.max,
             children: [
               GestureDetector(
-                onTap: () {
-                  Get.back();
-                },
-                onPanDown: (details) {
-                  Get.back();
-                },
-                onTapDown: (details) {
-                  Get.back();
-                },
                 child: Container(
                   margin: const EdgeInsets.only(
                     top: 10,
