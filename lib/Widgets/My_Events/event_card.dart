@@ -295,7 +295,7 @@ class _CustomMyEventCardState extends State<CustomMyEventCard> {
                   ),
                   Row(children: [
                     const SizedBox(
-                      width: 35,
+                      width: 40,
                     ),
                     Container(
                       width: 40,
