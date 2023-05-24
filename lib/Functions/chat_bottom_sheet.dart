@@ -38,15 +38,6 @@ Future<void> showChatBottomSheet(BuildContext context, bool isCommunity) {
             mainAxisSize: MainAxisSize.max,
             children: [
               GestureDetector(
-                onTap: () {
-                  Get.back();
-                },
-                onPanDown: (details) {
-                  Get.back();
-                },
-                onTapDown: (details) {
-                  Get.back();
-                },
                 child: Container(
                   width: 30,
                   height: 5,
