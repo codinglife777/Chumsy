@@ -10,6 +10,7 @@ import '../../Constants/spacing.dart';
 
 Future<void> showChatBottomSheet(BuildContext context, bool isCommunity) {
   AppLocalizations l = AppLocalizations.of(context)!;
+  bool isPanelClosed = false;
   return showCupertinoModalPopup<void>(
     context: context,
     builder: (BuildContext context) => SlidingUpPanel(
@@ -24,7 +25,10 @@ Future<void> showChatBottomSheet(BuildContext context, bool isCommunity) {
       ),
       minHeight: isCommunity ? screenHeight / 4 : screenHeight / 2.5,
       onPanelClosed: () {
-        Get.back();
+        if (!isPanelClosed) {
+          isPanelClosed = true;
+          Get.back();
+        }
       },
       panel: Column(
         children: [
