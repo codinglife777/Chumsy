@@ -29,6 +29,7 @@ class _CustomState extends State<CustomState> {
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             CupertinoButton(
+              padding: EdgeInsets.all(0),
               child: const Icon(
                 CupertinoIcons.clear,
                 color: blackColor,
