@@ -300,18 +300,12 @@ class _CustomMyEventCardState extends State<CustomMyEventCard> {
                   const SizedBox(
                     width: 20,
                   ),
-                  GestureDetector(
-                    onTap: () {
-                      Get.back();
-                    },
-                    onPanDown: (details) {
-                      Get.back();
-                    },
-                    onTapDown: (details) {
-                      Get.back();
-                    },
-                    child: Container(
-                      width: 30,
+                  Row(children: [
+                    const SizedBox(
+                      width: 35,
+                    ),
+                    Container(
+                      width: 40,
                       height: 5,
                       decoration: BoxDecoration(
                         color: blackColor,
@@ -320,7 +314,7 @@ class _CustomMyEventCardState extends State<CustomMyEventCard> {
                         ),
                       ),
                     ),
-                  ),
+                  ]),
                   CupertinoButton(
                     padding: const EdgeInsets.only(right: 20),
                     onPressed: () {
