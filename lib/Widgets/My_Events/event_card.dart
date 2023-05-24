@@ -257,7 +257,7 @@ class _CustomMyEventCardState extends State<CustomMyEventCard> {
       String location,
       VoidCallback updateEvent) {
     AppLocalizations l = AppLocalizations.of(context)!;
-    bool cancelState1 = true;
+    bool isPanelClosed = false;
     return showCupertinoModalPopup<void>(
       context: context,
       builder: (BuildContext context) => SlidingUpPanel(
@@ -277,20 +277,13 @@ class _CustomMyEventCardState extends State<CustomMyEventCard> {
         ),
         maxHeight: screenHeight - 200,
         minHeight: screenHeight / 1.6,
-        onPanelSlide: (position) {
-          print(position);
-        },
         onPanelClosed: () {
-          Get.back();
+          if (!isPanelClosed) {
+            isPanelClosed = true;
+            Get.back();
+          }
         },
         panel: GestureDetector(
-          onVerticalDragUpdate: (details) {
-            print(details.delta.dy);
-            if (details.delta.dy > 0) {
-              // _panelController.close(); // Close the panel when dragging down
-              Get.back();
-            }
-          },
           child: Column(
             children: [
               Row(
