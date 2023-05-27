@@ -4,6 +4,7 @@ import 'package:chumsy_app/Screens/Events/map_events.dart';
 import 'package:chumsy_app/Screens/My_Profile_Screens/profile_edit_screen.dart';
 import 'package:chumsy_app/Screens/landing_page.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -30,6 +31,7 @@ class _MapEventsMngState extends State<MapEventsMng> {
             Get.off(() => const LandingPage());
             _bnbCont.changeIndex(val);
           },
+          height: 65,
           backgroundColor: whiteColor,
           currentIndex: _bnbCont.currentIndex.value,
           activeColor: blackColor,

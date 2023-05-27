@@ -94,6 +94,7 @@ class _FindFriendPageState extends State<FindFriendPage> {
       () => CupertinoTabScaffold(
         backgroundColor: whiteColor,
         tabBar: CupertinoTabBar(
+          height: 65,
           onTap: (val) {
             Get.off(() => const LandingPage());
             _bnbCont.changeIndex(val);

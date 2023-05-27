@@ -45,10 +45,10 @@ class CustomEventCard extends StatelessWidget {
             children: [
               Image.asset(
                 imageLocation,
-                width: screenWidth / 4,
+                width: screenWidth / 3.5,
               ),
               SizedBox(
-                width: screenWidth / 4,
+                width: screenWidth / 3.5,
                 height: 50,
                 child: Align(
                   alignment: Alignment.topRight,

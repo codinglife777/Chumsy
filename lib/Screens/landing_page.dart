@@ -26,7 +26,7 @@ class _LandingPageState extends State<LandingPage> {
       () => CupertinoTabScaffold(
         backgroundColor: whiteColor,
         tabBar: CupertinoTabBar(
-          height: 65,
+          height: 58,
           onTap: (val) {
             _bnbCont.changeIndex(val);
           },
@@ -46,7 +46,7 @@ class _LandingPageState extends State<LandingPage> {
                     MapScreen(
                       constraints: constraints,
                     ),
-                    const ChatScreen(),
+                    ChatScreen(constraints: constraints),
                     const CommunityScreen(),
                     const MyEventHome(),
                     ProfileScreen(

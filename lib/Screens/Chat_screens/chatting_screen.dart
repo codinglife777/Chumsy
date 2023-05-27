@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:simple_shadow/simple_shadow.dart';
 
 import '../../Constants/colors.dart';
 import '../../Constants/sizes.dart';
@@ -96,77 +97,102 @@ class _ChattingScreenState extends State<ChattingScreen> {
   Widget build(BuildContext context) {
     AppLocalizations l = AppLocalizations.of(context)!;
     return CupertinoPageScaffold(
-      navigationBar: CupertinoNavigationBar(
-        backgroundColor: whiteColor,
-        automaticallyImplyLeading: false,
-        middle: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            CupertinoButton(
-              padding: EdgeInsets.zero,
-              child: const Icon(
-                CupertinoIcons.back,
-                color: blackColor,
-              ),
-              onPressed: () => Get.back(),
-            ),
-            Row(
-              children: [
-                CircleAvatar(
-                  foregroundImage: AssetImage(widget.image),
-                ),
-                horizontalSpacingBox,
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Expanded(
-                        child: Row(
-                      children: [
-                        Text(
-                          widget.name,
-                          style: regularStyleBold.copyWith(
-                              fontWeight: FontWeight.w600),
-                        ),
-                        const SizedBox(width: 5),
-                        Text(
-                          widget.surName,
-                          style: regularStyleBold.copyWith(
-                              fontWeight: FontWeight.w600),
-                        ),
-                      ],
-                    )),
-                    Text(
-                      l.online,
-                      style: smallStyle.copyWith(
-                        color: textColor,
-                      ),
-                    )
-                    // Text(
-                    //   "Online",
-                    //   style: smallStyle.copyWith(
-                    //     color: textColor,
-                    //   ),
-                    // ),
-                  ],
-                ),
-              ],
-            ),
-            CupertinoButton(
-              padding: EdgeInsets.zero,
-              child: const Icon(
-                Icons.more_horiz_outlined,
-                color: blackColor,
-              ),
-              onPressed: () {
-                showChatBottomSheet(context, false);
-              },
-            ),
-          ],
-        ),
-      ),
       child: Column(
         children: [
+          // topAppBarSpacing,
+          SimpleShadow(
+            // offset: const Offset(0, 0),
+            opacity: 0.2,
+            child: Container(
+              color: whiteColor,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  topAppBarSpacing,
+                  const SizedBox(
+                    height: 5,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      CupertinoButton(
+                        padding: const EdgeInsets.only(
+                          left: 20,
+                        ),
+                        child: const Icon(
+                          CupertinoIcons.back,
+                          color: blackColor,
+                          size: 25,
+                        ),
+                        onPressed: () => Get.back(),
+                      ),
+                      Row(
+                        children: [
+                          CircleAvatar(
+                            foregroundImage: AssetImage(widget.image),
+                          ),
+                          horizontalSpacingBox,
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              // Expanded(
+                              //     child:
+                              Row(
+                                children: [
+                                  Text(
+                                    widget.name,
+                                    style: regularStyleBold.copyWith(
+                                        fontWeight: FontWeight.w600),
+                                  ),
+                                  const SizedBox(width: 5),
+                                  Text(
+                                    widget.surName,
+                                    style: regularStyleBold.copyWith(
+                                        fontWeight: FontWeight.w600),
+                                  ),
+                                ],
+                              ),
+                              // ),
+                              Text(
+                                l.online,
+                                style: smallStyle.copyWith(
+                                  color: textColor,
+                                ),
+                              )
+                              // Text(
+                              //   "Online",
+                              //   style: smallStyle.copyWith(
+                              //     color: textColor,
+                              //   ),
+                              // ),
+                            ],
+                          ),
+                        ],
+                      ),
+                      CupertinoButton(
+                        padding: EdgeInsets.zero,
+                        child: const Icon(
+                          Icons.more_horiz_outlined,
+                          color: blackColor,
+                        ),
+                        onPressed: () {
+                          showChatBottomSheet(context, false);
+                        },
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 5,
+                  )
+                  // const Divider(
+                  //   // height: 10,
+                  //   // thickness: 1,
+                  //   color: Colors.grey,
+                  // ),
+                ],
+              ),
+            ),
+          ),
           spacingBox,
           Expanded(
             flex: 1,
@@ -218,7 +244,7 @@ class _ChattingScreenState extends State<ChattingScreen> {
                           padding: EdgeInsets.zero,
                           onPressed: () {
                             showActionSheet(context, Get.put(ImageController()),
-                                l.photoLibrary, l.addAFile, false);
+                                l.photoLibrary, l.addAFile, false, false);
                           },
                           child: const Icon(
                             CupertinoIcons.add,
@@ -321,7 +347,9 @@ class _ChattingScreenState extends State<ChattingScreen> {
                                   context,
                                   Get.put(ImageController()),
                                   l.photoLibrary,
-                                  l.addAFile, false);
+                                  l.addAFile,
+                                  false,
+                                  false);
                             },
                             child: const Icon(
                               CupertinoIcons.camera,

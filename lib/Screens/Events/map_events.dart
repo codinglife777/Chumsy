@@ -10,6 +10,7 @@ import '../../Constants/spacing.dart';
 import '../../Functions/mapevent_bottom_sheet.dart';
 import '../../Widgets/Community/custom_event_card.dart';
 import '../../Widgets/My_Events/saved_bottom_sheet.dart';
+import '../../Widgets/custom_appbar.dart';
 import '../Filter_screens/filter_home.dart';
 
 class MapEventsScreen extends StatefulWidget {
@@ -43,28 +44,20 @@ class _MapEventsScreenState extends State<MapEventsScreen> {
         children: [
           Column(
             children: [
-              topAppBarSpacing,
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  CupertinoButton(
-                    child: const Icon(
-                      CupertinoIcons.back,
-                      color: blackColor,
+              CustomAppBar(
+                title: l.events,
+                isBack: true,
+                suffix: Padding(
+                  padding: const EdgeInsets.only(right: 0),
+                  child: CupertinoButton(
+                    child: const SizedBox(
+                      height: 22,
                     ),
-                    onPressed: () => Get.back(),
-                  ),
-                  Text(
-                    l.events,
-                    style: subHeadingStyle,
-                  ),
-                  CupertinoButton(
-                    child: const Text(""),
                     onPressed: () {},
                   ),
-                ],
+                ),
               ),
-              const Divider(),
+              spacingBox,
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -134,10 +127,10 @@ class _MapEventsScreenState extends State<MapEventsScreen> {
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(
-                  horizontal: 30,
+                  horizontal: 0,
                 ),
                 child: SizedBox(
-                  height: screenHeight / 1.5,
+                  height: screenHeight / 1.459,
                   child: ListView(
                     padding: EdgeInsets.all(0),
                     shrinkWrap: true,

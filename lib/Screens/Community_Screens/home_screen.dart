@@ -2,6 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:chumsy_app/Constants/colors.dart';
 import 'package:chumsy_app/Constants/sizes.dart';
 import 'package:chumsy_app/Screens/Community_Screens/mng_bottom_bar.dart';
+import 'package:chumsy_app/Widgets/custom_appbar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -41,57 +42,30 @@ class _CommunityScreenState extends State<CommunityScreen> {
         children: [
           Column(
             children: [
-              topAppBarSpacing,
-              spacingBox,
-              Container(
-                // flex: 0,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    SizedBox(
-                      height: 30,
-                      child: CupertinoButton(
-                        onPressed: () {},
-                        padding: const EdgeInsets.all(0),
-                        child: const Text(
-                          "",
-                          style: TextStyle(
-                            color: blackColor,
-                            fontSize: 12,
-                          ),
-                        ),
-                      ),
+              CustomAppBar(
+                title: l.community,
+                isBack: false,
+                suffix: Padding(
+                  padding: const EdgeInsets.only(right: 0),
+                  child: CupertinoButton(
+                    onPressed: () {
+                      showActionSheet(context, imageController, l.takeAPhoto,
+                          l.photoLibrary, true, false);
+                    },
+                    child: const ImageIcon(
+                      AssetImage('assets/extras/camera.png'),
+                      size: 22,
                     ),
-                    Text(
-                      l.community,
-                      style: subHeadingStyle,
-                    ),
-                    SizedBox(
-                        height: 20,
-                        child: CupertinoButton(
-                          padding: const EdgeInsets.all(0),
-                          child: Image.asset(
-                            "assets/extras/camera.png",
-                            width: 22,
-                          ),
-                          onPressed: () {
-                            showActionSheet(context, imageController,
-                                l.takeAPhoto, l.photoLibrary, true);
-                          },
-                        )),
-                  ],
+                  ),
                 ),
               ),
-              const Divider(),
-              const SizedBox(
-                height: 18,
-              ),
+              spacingBox,
               topButtons(context),
               const SizedBox(
                 height: 29,
               ),
               Container(
-                height: screenHeight - (active == 1 ? 370 : 301),
+                height: screenHeight - (active == 1 ? 370 : 276),
                 padding: const EdgeInsets.symmetric(
                   horizontal: 30,
                 ),

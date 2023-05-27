@@ -79,7 +79,7 @@ class EventAppBar2 extends StatelessWidget {
   Widget build(BuildContext context) {
     return SimpleShadow(
       offset: const Offset(0, 2),
-      opacity: 0.1,
+      opacity: 0.2,
       child: Container(
         color: whiteColor,
         child: Column(

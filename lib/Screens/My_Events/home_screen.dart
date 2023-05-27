@@ -11,6 +11,7 @@ import '../../Constants/spacing.dart';
 import '../../Functions/update_event.dart';
 import '../../Widgets/My_Events/event_card.dart';
 import '../../Widgets/My_Events/event_card2.dart';
+import '../../Widgets/custom_appbar.dart';
 
 class MyEventHome extends StatefulWidget {
   const MyEventHome({
@@ -41,19 +42,19 @@ class _MyEventHomeState extends State<MyEventHome> {
         children: [
           Column(
             children: [
-              topAppBarSpacing,
-              spacingBox,
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    l.myEvents,
-                    style: subHeadingStyle,
+              CustomAppBar(
+                title: l.myEvents,
+                isBack: false,
+                suffix: Padding(
+                  padding: const EdgeInsets.only(right: 0),
+                  child: CupertinoButton(
+                    child: const SizedBox(
+                      height: 22,
+                    ),
+                    onPressed: () {},
                   ),
-                ],
+                ),
               ),
-              const Divider(),
-              spacingBox,
               spacingBox,
               topButtons(context),
               spacingBox,

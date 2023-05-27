@@ -31,28 +31,31 @@ class _ScatteredGridState extends State<ScatteredGrid> {
   List<Widget> calculateWidgets() {
     List<Widget> tempState = [];
     for (int i = 0; i < widget.topicList.length; i++) {
-      tempState.add(
-        Container(
+      tempState.add(GestureDetector(
+        onTap: () {
+          widget.onSelect(widget.topicList[i]["topic"]);
+        },
+        child: Container(
           height: 36,
-          padding: const EdgeInsets.only(left: 5, right: 5),
+          padding: const EdgeInsets.only(left: 9, right: 9, top: 6),
           decoration: Styles.greyButton(
               borderColor: widget.elementBorderColor ?? Colors.white,
               backgroundColor:
                   widget.elementBackgroundColor ?? const Color(0xff282828)),
-          child: TextButton(
-            onPressed: () {
-              widget.onSelect(widget.topicList[i]["topic"]);
-            },
-            child: Text(
-              widget.topicList[i]["topic"]!,
-              style: Styles.greyButtonText(
-                  fontWeight: FontWeight.w600,
-                  fontSize: 14,
-                  color: widget.elementTextColor ?? Colors.white),
-            ),
+          // child: TextButton(
+          //   onPressed: () {
+          //     widget.onSelect(widget.topicList[i]["topic"]);
+          //   },
+          child: Text(
+            widget.topicList[i]["topic"]!,
+            style: Styles.greyButtonText(
+                fontWeight: FontWeight.w600,
+                fontSize: 14,
+                color: widget.elementTextColor ?? Colors.white),
           ),
         ),
-      );
+        // ),
+      ));
     }
     return tempState;
   }

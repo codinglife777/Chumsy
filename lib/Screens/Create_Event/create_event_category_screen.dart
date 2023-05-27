@@ -26,7 +26,8 @@ class CreateEventCategory extends StatefulWidget {
   State<CreateEventCategory> createState() => _CreateEventCategoryState();
 }
 
-class _CreateEventCategoryState extends State<CreateEventCategory> with WidgetsBindingObserver {
+class _CreateEventCategoryState extends State<CreateEventCategory>
+    with WidgetsBindingObserver {
   String selected = "Sport";
   int dataCount = 0;
 
@@ -37,11 +38,9 @@ class _CreateEventCategoryState extends State<CreateEventCategory> with WidgetsB
       ValueNotifier([]);
   final ValueNotifier<bool> _keyboardVisible = ValueNotifier(false);
   final FocusNode _searchNode = FocusNode();
-  List<Map<String, String>> topicList = [
-  ];
+  List<Map<String, String>> topicList = [];
 
-  List<Map<String, String>> lifeStyleTopics = [
-  ];
+  List<Map<String, String>> lifeStyleTopics = [];
 
   List<Map<String, String>> controlList = [];
 
@@ -49,8 +48,10 @@ class _CreateEventCategoryState extends State<CreateEventCategory> with WidgetsB
   didChangeDependencies() {
     WidgetsBinding.instance.addObserver(this);
     try {
-      List<dynamic> dataSports = jsonDecode(AppLocalizations.of(context)!.sports);
-      List<dynamic> dataLifeStyles = jsonDecode(AppLocalizations.of(context)!.lifeStyles);
+      List<dynamic> dataSports =
+          jsonDecode(AppLocalizations.of(context)!.sports);
+      List<dynamic> dataLifeStyles =
+          jsonDecode(AppLocalizations.of(context)!.lifeStyles);
       List<Map<String, String>> sports = dataSports.map((e) {
         return {"topic": e as String};
       }).toList();
@@ -65,13 +66,13 @@ class _CreateEventCategoryState extends State<CreateEventCategory> with WidgetsB
     } catch (e) {
       if (kDebugMode) {
         print(e);
-      } 
+      }
     }
 
     super.didChangeDependencies();
   }
 
- @override
+  @override
   void initState() {
     super.initState();
     controlList = topicList;
@@ -130,20 +131,24 @@ class _CreateEventCategoryState extends State<CreateEventCategory> with WidgetsB
     List<Widget> tempWidgets = [];
 
     for (int i = 0; i < _selectedTopics.value.length; i++) {
-      tempWidgets.add(Container(
-        height: 40,
-        padding: const EdgeInsets.only(left: 5, right: 5),
-        decoration: Styles.greyButton(
-          backgroundColor: Colors.white,
-          borderColor: const Color(0xff282828),
-        ),
-        child: TextButton(
-          onPressed: () {
-            onRemove(_selectedTopics.value[i]);
-          },
-          child: Text(
-            "${_selectedTopics.value[i]['topic']}  X",
-            style: Styles.greyButtonText(fontWeight: FontWeight.bold),
+      tempWidgets.add(GestureDetector(
+        onTap: () {
+          onRemove(_selectedTopics.value[i]);
+        },
+        child: Container(
+          height: 40,
+          padding: const EdgeInsets.only(left: 5, right: 5),
+          decoration: Styles.greyButton(
+            backgroundColor: const Color(0xff282828),
+            borderColor: Colors.white,
+          ),
+          child: TextButton(
+            onPressed: () {},
+            child: Text(
+              "${_selectedTopics.value[i]['topic']}  X",
+              style: Styles.greyButtonText(
+                  fontSize: 15, fontWeight: FontWeight.w600, color: whiteColor),
+            ),
           ),
         ),
       ));
@@ -181,11 +186,10 @@ class _CreateEventCategoryState extends State<CreateEventCategory> with WidgetsB
     });
   }
 
-   final ImageController imageController = Get.put(ImageController());
+  final ImageController imageController = Get.put(ImageController());
 
   @override
   Widget build(BuildContext context) {
-
     AppLocalizations l = AppLocalizations.of(context)!;
 
     return CupertinoPageScaffold(
@@ -207,7 +211,6 @@ class _CreateEventCategoryState extends State<CreateEventCategory> with WidgetsB
                           spacingBox,
                           ThreeStateSwitch(cbState: cbState),
                           spacingBox,
-                          spacingBox,
                           _nameIt.value
                               ? const SizedBox()
                               : ValueListenableBuilder(
@@ -219,12 +222,11 @@ class _CreateEventCategoryState extends State<CreateEventCategory> with WidgetsB
                                       width: screenWidth,
                                       constraints:
                                           const BoxConstraints(maxHeight: 104),
-                                      margin: EdgeInsets.only(
+                                      margin: const EdgeInsets.only(
                                           left: 0,
                                           right: 0,
-                                          top: _selectedTopics.value.isNotEmpty
-                                              ? 21
-                                              : 0),
+                                          top: 0,
+                                          bottom: 10),
                                       child: SingleChildScrollView(
                                         child: Wrap(
                                           runAlignment: WrapAlignment.start,
@@ -360,30 +362,34 @@ class _CreateEventCategoryState extends State<CreateEventCategory> with WidgetsB
                                           GestureDetector(
                                             onTap: () {
                                               showActionSheet(
-                                              context,
-                                              imageController,
-                                              AppLocalizations.of(context)!.photoLibrary,
-                                              AppLocalizations.of(context)!.takeAPhoto, false);
+                                                  context,
+                                                  imageController,
+                                                  AppLocalizations.of(context)!
+                                                      .photoLibrary,
+                                                  AppLocalizations.of(context)!
+                                                      .takeAPhoto,
+                                                  false,
+                                                  false);
                                             },
                                             child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: [
-                                              const Icon(
-                                                CupertinoIcons.add_circled,
-                                                color: blackColor,
-                                                size: 36,
-                                              ),
-                                              horizontalSpacingBox,
-                                              Text(
-                                               l.changeAPicture,
-                                                style:
-                                                    regularStyleBold.copyWith(
-                                                        fontWeight:
-                                                            FontWeight.w600),
-                                              ),
-                                            ],
-                                          ),
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                const Icon(
+                                                  CupertinoIcons.add_circled,
+                                                  color: blackColor,
+                                                  size: 36,
+                                                ),
+                                                horizontalSpacingBox,
+                                                Text(
+                                                  l.changeAPicture,
+                                                  style:
+                                                      regularStyleBold.copyWith(
+                                                          fontWeight:
+                                                              FontWeight.w600),
+                                                ),
+                                              ],
+                                            ),
                                           )
                                         ],
                                       ),
@@ -456,4 +462,3 @@ class _CreateEventCategoryState extends State<CreateEventCategory> with WidgetsB
     );
   }
 }
-

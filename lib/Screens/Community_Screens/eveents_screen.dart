@@ -8,6 +8,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../Constants/spacing.dart';
 import '../../Widgets/Community/custom_event_card.dart';
+import '../../Widgets/custom_appbar.dart';
 
 class ProfileEventsScreen extends StatefulWidget {
   const ProfileEventsScreen({
@@ -33,29 +34,19 @@ class _ProfileEventsScreenState extends State<ProfileEventsScreen> {
         children: [
           Column(
             children: [
-              topAppBarSpacing,
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  CupertinoButton(
-                    child: const Icon(
-                      CupertinoIcons.back,
-                      color: blackColor,
+              CustomAppBar(
+                title: l.events,
+                isBack: true,
+                suffix: Padding(
+                  padding: const EdgeInsets.only(right: 0),
+                  child: CupertinoButton(
+                    child: const SizedBox(
+                      height: 22,
                     ),
-                    onPressed: () => Get.back(),
-                  ),
-                  Text(
-                    l.events,
-                    style: subHeadingStyle,
-                  ),
-                  CupertinoButton(
-                    child: const Text(""),
                     onPressed: () {},
                   ),
-                ],
+                ),
               ),
-              const Divider(),
-              spacingBox,
               spacingBox,
               topButtons(context),
               const SizedBox(
@@ -63,12 +54,13 @@ class _ProfileEventsScreenState extends State<ProfileEventsScreen> {
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(
-                  horizontal: 30,
+                  horizontal: 0,
                 ),
                 child: SizedBox(
                   height: screenHeight / 1.4,
                   child: ListView(
                     shrinkWrap: true,
+                    padding: const EdgeInsets.all(0),
                     children: active == 0
                         ? [
                             const CustomEventCard(

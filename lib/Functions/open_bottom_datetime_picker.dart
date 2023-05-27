@@ -80,121 +80,113 @@ void openTimePicker(BuildContext context) {
 }
 
 void openDatePicker(BuildContext context) {
-  final months = [
-    AppLocalizations.of(context)!.january,
-    AppLocalizations.of(context)!.february,
-    AppLocalizations.of(context)!.march,
-    AppLocalizations.of(context)!.april,
-    AppLocalizations.of(context)!.may,
-    AppLocalizations.of(context)!.june,
-    AppLocalizations.of(context)!.july,
-    AppLocalizations.of(context)!.august,
-    AppLocalizations.of(context)!.september,
-    AppLocalizations.of(context)!.october,
-    AppLocalizations.of(context)!.novemeber,
-    AppLocalizations.of(context)!.december,
-  ];
-
   showCupertinoModalPopup<void>(
     context: context,
     builder: (BuildContext context) => Theme(
       data: ThemeData.light(),
       child: SlidingUpPanel(
-        color: whiteColor,
-        backdropEnabled: true,
-        minHeight: 250,
-        panel: Column(
-          children: [
-            Container(
-              decoration: const BoxDecoration(
-                color: Color(0xfff7f7f7),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  TextButton(
-                    onPressed: () {
-                      Get.back();
-                    },
-                    child: Text(
-                      AppLocalizations.of(context)!.done,
-                      style: const TextStyle(color: Colors.black, fontSize: 16),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Stack(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 20,
-                  ),
-                  child: SizedBox(
-                      height: 250,
-                      child: CustomCupertinoDatePicker(
-                        itemExtent: 50,
-                        months: months,
-                        backgroundColor: whiteColor,
-                        minDate: DateTime(DateTime.now().year - 16),
-                        maxDate: DateTime(DateTime.now().year + 100),
-                        selectedDate: DateTime.now(),
-                        selectionOverlay: const SizedBox(
-                          width: double.infinity,
-                          height: 50,
-                          // decoration: const BoxDecoration(
-                          //   border: Border.symmetric(
-                          //     horizontal: BorderSide(
-                          //         color: Colors.grey, width: 1),
-                          //   ),
-                          // ),
-                        ),
-                        selectedStyle: const TextStyle(
-                          color: Colors.black,
-                          // fontWeight: FontWeight.w600,
-                          fontSize: 22,
-                        ),
-                        unselectedStyle: const TextStyle(
-                          color: Colors.black,
-                          fontSize: 22,
-                        ),
-                        disabledStyle: TextStyle(
-                          color: Colors.grey[400],
-                          fontSize: 18,
-                        ),
-                        onSelectedItemChanged: (date) => {},
-                      )
-                      // child: CupertinoDatePicker(
-                      //   minuteInterval: 1,
-                      //   use24hFormat: true,
-                      //   dateOrder: DatePickerDateOrder.dmy,
-                      //   mode: CupertinoDatePickerMode.date,
-                      //   initialDateTime: DateTime.now(),
-                      //   onDateTimeChanged: (val) {},
-                      // ),
-                      ),
+          color: whiteColor,
+          backdropEnabled: true,
+          minHeight: 250,
+          panel: const DatePickerWidget()),
+    ),
+  );
+}
+
+class DatePickerWidget extends StatefulWidget {
+  const DatePickerWidget({super.key});
+
+  @override
+  State<StatefulWidget> createState() => _DatePickerWidgetState();
+}
+
+class _DatePickerWidgetState extends State<DatePickerWidget> {
+  @override
+  Widget build(BuildContext context) {
+    final months = [
+      AppLocalizations.of(context)!.january,
+      AppLocalizations.of(context)!.february,
+      AppLocalizations.of(context)!.march,
+      AppLocalizations.of(context)!.april,
+      AppLocalizations.of(context)!.may,
+      AppLocalizations.of(context)!.june,
+      AppLocalizations.of(context)!.july,
+      AppLocalizations.of(context)!.august,
+      AppLocalizations.of(context)!.september,
+      AppLocalizations.of(context)!.october,
+      AppLocalizations.of(context)!.novemeber,
+      AppLocalizations.of(context)!.december,
+    ];
+
+    DateTime _date = DateTime.now();
+    // TODO: implement build
+    return Column(
+      children: [
+        Container(
+          decoration: const BoxDecoration(
+            color: Color(0xfff7f7f7),
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              TextButton(
+                onPressed: () {
+                  Get.back();
+                },
+                child: Text(
+                  AppLocalizations.of(context)!.done,
+                  style: const TextStyle(color: Colors.black, fontSize: 16),
                 ),
-                // IgnorePointer(
-                //   ignoring: true,
-                //   child: Container(
-                //     height: 250,
-                //     width: screenWidth,
-                //     decoration: BoxDecoration(
-                //       border: Border.symmetric(
-                //         horizontal: BorderSide(
-                //           color: blackColor.withOpacity(0.8),
-                //           width: 60,
-                //         ),
-                //       ),
-                //     ),
-                //   ),
-                // ),
-              ],
+              ),
+            ],
+          ),
+        ),
+        Stack(
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 20,
+              ),
+              child: SizedBox(
+                  height: 250,
+                  child: CustomCupertinoDatePicker(
+                    itemExtent: 50,
+                    months: months,
+                    backgroundColor: whiteColor,
+                    minDate: DateTime.now().add(const Duration(seconds: -5)),
+                    maxDate: DateTime(DateTime.now().year + 100),
+                    selectedDate: _date,
+                    selectionOverlay: const SizedBox(
+                      width: double.infinity,
+                      height: 50,
+                    ),
+                    selectedStyle: const TextStyle(
+                      color: Colors.black,
+                      // fontWeight: FontWeight.w600,
+                      fontSize: 22,
+                    ),
+                    unselectedStyle: const TextStyle(
+                      color: Colors.black,
+                      fontSize: 22,
+                    ),
+                    disabledStyle: TextStyle(
+                      color: Colors.grey[400],
+                      fontSize: 18,
+                    ),
+                    onSelectedItemChanged: (date) {
+                      if (date.compareTo(DateTime.now()) < 0) {
+                        print("OKOK");
+                        setState(() {
+                          _date = DateTime.now();
+                        });
+                      }
+                    },
+                  )),
             ),
           ],
         ),
-      ),
-    ),
-  );
+      ],
+    );
+  }
 }

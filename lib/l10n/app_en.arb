@@ -54,7 +54,7 @@
     "areYouAMaster": "Are you a Master?",
     "areYouMasterComment": "* Would you like to be able to host events as a trainer / lecturer?",
     "qualifications": "Qualifications",
-    "becauseYouAreAMaster" : "Because you are a Master, please let us know what categories you specialise?",
+    "becauseYouAreAMaster" : "Because you are a Master, please let us know what categories you specialise",
     "search": "Search",
     "searchAnEvent": "Search an event...",
     "map":"Map",
@@ -222,7 +222,11 @@
      "youCanDownload":"You can download and save the photo in gallery",
      "sort": "Sort",
      "disciplineAlphabetic": "Discipline alphabetic",
-     "startingTime":"Starting time"
+     "startingTime":"Starting time",
+     "heyChumsyPleaseBeInformedThatTheCreationOfAChumsy":"Hey Chumsy! Please be informed that the creation of a Chumsy account is only possible for Users 16 years old and older.",
+     "resetPassword": "To reset your password please enter your e-mail address used at sign-up",
+     "submit":"SUBMIT",
+     "resetPasswordLinkSent":"An email with reset password link has been sent"
 
     
 

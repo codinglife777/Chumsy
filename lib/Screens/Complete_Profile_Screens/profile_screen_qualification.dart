@@ -24,8 +24,8 @@ class CreateProfileQualification extends StatefulWidget {
       _CreateProfileQualificationState();
 }
 
-class _CreateProfileQualificationState
-    extends State<CreateProfileQualification> with WidgetsBindingObserver {
+class _CreateProfileQualificationState extends State<CreateProfileQualification>
+    with WidgetsBindingObserver {
   String selected = "Sports";
   final TextEditingController searchCont = TextEditingController();
 
@@ -49,8 +49,10 @@ class _CreateProfileQualificationState
     WidgetsBinding.instance.addObserver(this);
     l = AppLocalizations.of(context)!;
     try {
-      List<dynamic> dataSports = jsonDecode(AppLocalizations.of(context)!.sports);
-      List<dynamic> dataLifeStyles = jsonDecode(AppLocalizations.of(context)!.lifeStyles);
+      List<dynamic> dataSports =
+          jsonDecode(AppLocalizations.of(context)!.sports);
+      List<dynamic> dataLifeStyles =
+          jsonDecode(AppLocalizations.of(context)!.lifeStyles);
       List<Map<String, String>> sports = dataSports.map((e) {
         return {"topic": e as String};
       }).toList();
@@ -65,7 +67,7 @@ class _CreateProfileQualificationState
     } catch (e) {
       if (kDebugMode) {
         print(e);
-      } 
+      }
     }
 
     super.didChangeDependencies();
@@ -131,21 +133,26 @@ class _CreateProfileQualificationState
     List<Widget> tempWidgets = [];
 
     for (int i = 0; i < _selectedTopics.value.length; i++) {
-      tempWidgets.add(Container(
-        height: 40,
-        padding: const EdgeInsets.only(left: 5, right: 5),
-        decoration: Styles.greyButton(
-          backgroundColor: Colors.white,
-          borderColor: Colors.transparent,
-        ),
-        child: TextButton(
-          onPressed: () {
-            onRemove(_selectedTopics.value[i]);
-          },
+      tempWidgets.add(GestureDetector(
+        onTap: () {
+          onRemove(_selectedTopics.value[i]);
+        },
+        child: Container(
+          height: 36,
+          padding: const EdgeInsets.only(left: 9, right: 9, top: 5),
+          decoration: Styles.greyButton(
+            backgroundColor: Colors.white,
+            borderColor: Colors.transparent,
+          ),
+          // child: TextButton(
+          //   onPressed: () {
+          //     onRemove(_selectedTopics.value[i]);
+          //   },
           child: Text(
             "${_selectedTopics.value[i]['topic']}  X",
             style: Styles.greyButtonText(fontWeight: FontWeight.bold),
           ),
+          // ),
         ),
       ));
     }
@@ -168,36 +175,12 @@ class _CreateProfileQualificationState
   @override
   Widget build(BuildContext context) {
     return Theme(
-      // data: const CupertinoThemeData(
-      //   brightness: Brightness.dark,
-      //   scaffoldBackgroundColor: blackColor,
-      //   barBackgroundColor: blackColor,
-      // ),
       data: ThemeData.dark(
         useMaterial3: true,
       ).copyWith(
         scaffoldBackgroundColor: blackColor,
       ),
       child: Scaffold(
-        // navigationBar: CupertinoNavigationBar(
-        //   leading: CupertinoButton(
-        //     padding: EdgeInsets.zero,
-        //     child: const Icon(
-        //       CupertinoIcons.back,
-        //       color: whiteColor,
-        //       size: 30,
-        //     ),
-        //     onPressed: () => Get.back(),
-        //   ),
-        //   middle: const Text(
-        //     "Qualifications",
-        //     style: TextStyle(
-        //       color: whiteColor,
-        //       fontWeight: FontWeight.w500,
-        //       fontSize: 18,
-        //     ),
-        //   ),
-        // ),
         appBar: AppBar(
           backgroundColor: blackColor,
           toolbarHeight: 64.5,
@@ -326,80 +309,6 @@ class _CreateProfileQualificationState
                       )
                     ],
                   ),
-                  // Container(
-                  //   alignment: Alignment.centerLeft,
-                  //   margin: EdgeInsets.only(
-                  //     left: screenWidth < 390 ? 57 : 64,
-                  //     right: screenWidth < 390 ? 57 : 64,
-                  //   ),
-                  //   height: 51,
-                  //   width: screenWidth - (screenWidth < 390 ? 57 * 2 : 64 * 2),
-                  //   decoration: const BoxDecoration(
-                  //     color: Colors.white,
-                  //     borderRadius: BorderRadius.all(Radius.circular(100)),
-                  //   ),
-                  //   child: Stack(
-                  //     children: [
-                  //       ValueListenableBuilder(
-                  //         valueListenable: _sport,
-                  //         builder: (BuildContext context, bool value,
-                  //             Widget? child) {
-                  //           return AnimatedContainer(
-                  //             duration: const Duration(milliseconds: 300),
-                  //             height: 47,
-                  //             width: 129,
-                  //             margin: EdgeInsets.only(
-                  //                 left: value
-                  //                     ? 2
-                  //                     : (screenWidth < 390 ? 57 * 2 : 64 * 2) +
-                  //                         4),
-                  //             decoration: Styles.gredientButtonContainer(
-                  //                 borderColor: Colors.transparent),
-                  //           );
-                  //         },
-                  //       ),
-                  //       Row(
-                  //         crossAxisAlignment: CrossAxisAlignment.center,
-                  //         mainAxisAlignment: MainAxisAlignment.center,
-                  //         children: [
-                  //           GestureDetector(
-                  //             onTap: () {
-                  //               _sport.value = true;
-                  //               onSearch(_search.text);
-                  //             },
-                  //             child: Container(
-                  //               color: Colors.transparent,
-                  //               alignment: Alignment.center,
-                  //               width: (screenWidth < 390 ? 57 * 2 : 64 * 2),
-                  //               height: 45,
-                  //               child: Text(
-                  //                 AppLocalizations.of(context)!.sport,
-                  //                 style: Styles.greyButtonText(
-                  //                     fontWeight: FontWeight.bold),
-                  //               ),
-                  //             ),
-                  //           ),
-                  //           GestureDetector(
-                  //             onTap: () {
-                  //               _sport.value = false;
-                  //               onSearch(_search.text);
-                  //             },
-                  //             child: Container(
-                  //               color: Colors.transparent,
-                  //               alignment: Alignment.center,
-                  //               width: (screenWidth < 390 ? 57 * 2 : 64 * 2),
-                  //               height: 45,
-                  //               child: Text(
-                  //                   AppLocalizations.of(context)!.lifeStyle,
-                  //                   style: Styles.greyButtonText(
-                  //                       fontWeight: FontWeight.bold)),
-                  //             ),
-                  //           ),
-                  //         ],
-                  //       )
-                  //     ],
-                  //   ),
-                  // ),
                   ValueListenableBuilder(
                     valueListenable: _selectedTopics,
                     builder: (BuildContext context,
@@ -414,8 +323,8 @@ class _CreateProfileQualificationState
                         child: SingleChildScrollView(
                           child: Wrap(
                             runAlignment: WrapAlignment.start,
-                            spacing: 13,
-                            runSpacing: 13,
+                            spacing: 10,
+                            runSpacing: 8,
                             children: generateSelected(),
                           ),
                         ),

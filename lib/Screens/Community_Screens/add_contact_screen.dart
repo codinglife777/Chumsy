@@ -8,6 +8,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../Constants/spacing.dart';
 import '../../Widgets/Extra Widgets/gradient_widget.dart';
+import '../../Widgets/custom_appbar.dart';
 
 class AddContactScreen extends StatefulWidget {
   const AddContactScreen({
@@ -33,30 +34,19 @@ class _AddContactScreenState extends State<AddContactScreen> {
         children: [
           Column(
             children: [
-              topAppBarSpacing,
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  CupertinoButton(
-                    onPressed: () => Get.back(),
-                    child: const Icon(
-                      CupertinoIcons.back,
-                      color: blackColor,
-                    ),
-                  ),
-                  Text(
-                    l.findFriends,
-                    style: subHeadingStyle,
-                  ),
-                  CupertinoButton(
+              CustomAppBar(
+                title: l.findFriends,
+                isBack: true,
+                suffix: Padding(
+                  padding: const EdgeInsets.only(right: 0),
+                  child: CupertinoButton(
                     child: const Text(
                       "",
                     ),
-                    onPressed: () => Get.back(),
+                    onPressed: () {},
                   ),
-                ],
+                ),
               ),
-              const Divider(),
               spacingBox,
               // spacingBox,
               topButtons(context),

@@ -40,7 +40,7 @@ class _HelpCenterReportState extends State<HelpCenterReport> {
                         children: [
                           spacingBoxExtended,
                           Text(
-                           l.runIntoAnIssue,
+                            l.runIntoAnIssue,
                             style: regularStyle,
                           ),
                           const SizedBox(
@@ -65,7 +65,7 @@ class _HelpCenterReportState extends State<HelpCenterReport> {
                                 20,
                               ),
                               color: textColor.withOpacity(
-                                0.13,
+                                0.05,
                               ),
                             ),
                           ),

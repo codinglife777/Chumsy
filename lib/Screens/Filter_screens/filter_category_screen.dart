@@ -30,7 +30,8 @@ class FilterCategory extends StatefulWidget {
   State<FilterCategory> createState() => _FilterCategoryState();
 }
 
-class _FilterCategoryState extends State<FilterCategory> with WidgetsBindingObserver {
+class _FilterCategoryState extends State<FilterCategory>
+    with WidgetsBindingObserver {
   String selected = "Sport";
   int dataCount = 0;
 
@@ -51,8 +52,10 @@ class _FilterCategoryState extends State<FilterCategory> with WidgetsBindingObse
   didChangeDependencies() {
     WidgetsBinding.instance.addObserver(this);
     try {
-      List<dynamic> dataSports = jsonDecode(AppLocalizations.of(context)!.sports);
-      List<dynamic> dataLifeStyles = jsonDecode(AppLocalizations.of(context)!.lifeStyles);
+      List<dynamic> dataSports =
+          jsonDecode(AppLocalizations.of(context)!.sports);
+      List<dynamic> dataLifeStyles =
+          jsonDecode(AppLocalizations.of(context)!.lifeStyles);
       List<Map<String, String>> sports = dataSports.map((e) {
         return {"topic": e as String};
       }).toList();
@@ -67,7 +70,7 @@ class _FilterCategoryState extends State<FilterCategory> with WidgetsBindingObse
     } catch (e) {
       if (kDebugMode) {
         print(e);
-      } 
+      }
     }
 
     super.didChangeDependencies();
@@ -132,20 +135,24 @@ class _FilterCategoryState extends State<FilterCategory> with WidgetsBindingObse
     List<Widget> tempWidgets = [];
 
     for (int i = 0; i < _selectedTopics.value.length; i++) {
-      tempWidgets.add(Container(
-        height: 40,
-        padding: const EdgeInsets.only(left: 5, right: 5),
-        decoration: Styles.greyButton(
-          backgroundColor: Colors.white,
-          borderColor: const Color(0xff282828),
-        ),
-        child: TextButton(
-          onPressed: () {
-            onRemove(_selectedTopics.value[i]);
-          },
-          child: Text(
-            "${_selectedTopics.value[i]['topic']}  X",
-            style: Styles.greyButtonText(fontWeight: FontWeight.bold),
+      tempWidgets.add(GestureDetector(
+        onTap: () {
+          onRemove(_selectedTopics.value[i]);
+        },
+        child: Container(
+          height: 40,
+          padding: const EdgeInsets.only(left: 5, right: 5),
+          decoration: Styles.greyButton(
+            backgroundColor: const Color(0xff282828),
+            borderColor: Colors.white,
+          ),
+          child: TextButton(
+            onPressed: () {},
+            child: Text(
+              "${_selectedTopics.value[i]['topic']}  X",
+              style: Styles.greyButtonText(
+                  fontSize: 15, fontWeight: FontWeight.w600, color: whiteColor),
+            ),
           ),
         ),
       ));
@@ -187,7 +194,6 @@ class _FilterCategoryState extends State<FilterCategory> with WidgetsBindingObse
 
   @override
   Widget build(BuildContext context) {
-
     AppLocalizations l = AppLocalizations.of(context)!;
 
     return CupertinoPageScaffold(
@@ -208,7 +214,7 @@ class _FilterCategoryState extends State<FilterCategory> with WidgetsBindingObse
                         children: [
                           spacingBox,
                           ThreeStateSwitch(cbState: cbState),
-                          spacingBox,
+                          // spacingBox,
                           spacingBox,
                           _nameIt.value
                               ? const SizedBox()
@@ -225,13 +231,14 @@ class _FilterCategoryState extends State<FilterCategory> with WidgetsBindingObse
                                           left: 0,
                                           right: 0,
                                           top: _selectedTopics.value.isNotEmpty
-                                              ? 21
-                                              : 0),
+                                              ? 5
+                                              : 0,
+                                          bottom: 10),
                                       child: SingleChildScrollView(
                                         child: Wrap(
                                           runAlignment: WrapAlignment.start,
-                                          spacing: 13,
-                                          runSpacing: 13,
+                                          spacing: 8,
+                                          runSpacing: 8,
                                           children: generateSelected(),
                                         ),
                                       ),
@@ -243,7 +250,7 @@ class _FilterCategoryState extends State<FilterCategory> with WidgetsBindingObse
                               : Container(
                                   decoration: BoxDecoration(
                                     color: textColor.withOpacity(
-                                      0.13,
+                                      0.06,
                                     ),
                                     borderRadius: BorderRadius.circular(
                                       100,
@@ -273,15 +280,15 @@ class _FilterCategoryState extends State<FilterCategory> with WidgetsBindingObse
                                             onSearch(_search.text);
                                           },
                                           padding: const EdgeInsets.symmetric(
-                                            horizontal: 5,
-                                            vertical: 7,
+                                            horizontal: 1,
+                                            vertical: 6,
                                           ),
                                           placeholder:
                                               AppLocalizations.of(context)!
                                                   .search,
                                           placeholderStyle: const TextStyle(
                                               color: greyIconColor,
-                                              fontSize: 16),
+                                              fontSize: 17),
                                           decoration: const BoxDecoration(
                                             borderRadius: BorderRadius.all(
                                               Radius.circular(
@@ -358,36 +365,39 @@ class _FilterCategoryState extends State<FilterCategory> with WidgetsBindingObse
                                               width: screenWidth / 1.5,
                                             ),
                                           ),
-                                          spacingBox,
-                                          GestureDetector(
-                                            onTap: () {
-                                              showActionSheet(
-                                              context,
-                                              imageController,
-                                              AppLocalizations.of(context)!.photoLibrary,
-                                              AppLocalizations.of(context)!.takeAPhoto, false);
-                                            },
-                                            child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: [
-                                              const Icon(
-                                                CupertinoIcons.add_circled,
-                                                color: blackColor,
-                                                size: 36,
-                                              ),
-                                              horizontalSpacingBox,
-                                              Text(
-                                               l.changeAPicture,
-                                                style:
-                                                    regularStyleBold.copyWith(
-                                                        fontWeight:
-                                                            FontWeight.w600),
-                                              ),
-                                            ],
-                                          ),
-                                          )
-                                          
+                                          // spacingBox,
+                                          // GestureDetector(
+                                          //   onTap: () {
+                                          //     showActionSheet(
+                                          //         context,
+                                          //         imageController,
+                                          //         AppLocalizations.of(context)!
+                                          //             .photoLibrary,
+                                          //         AppLocalizations.of(context)!
+                                          //             .takeAPhoto,
+                                          //         false,
+                                          //         false);
+                                          //   },
+                                          //   child: Row(
+                                          //     mainAxisAlignment:
+                                          //         MainAxisAlignment.center,
+                                          //     children: [
+                                          //       const Icon(
+                                          //         CupertinoIcons.add_circled,
+                                          //         color: blackColor,
+                                          //         size: 36,
+                                          //       ),
+                                          //       horizontalSpacingBox,
+                                          //       Text(
+                                          //         l.changeAPicture,
+                                          //         style:
+                                          //             regularStyleBold.copyWith(
+                                          //                 fontWeight:
+                                          //                     FontWeight.w600),
+                                          //       ),
+                                          //     ],
+                                          //   ),
+                                          // )
                                         ],
                                       ),
                                     ],

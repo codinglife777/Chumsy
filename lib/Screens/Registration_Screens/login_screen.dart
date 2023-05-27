@@ -2,6 +2,7 @@ import 'package:chumsy_app/Functions/show_alert.dart';
 import 'package:chumsy_app/Constants/colors.dart';
 import 'package:chumsy_app/Constants/sizes.dart';
 import 'package:chumsy_app/Constants/spacing.dart';
+import 'package:chumsy_app/Screens/Registration_Screens/forgot_password.dart';
 import 'package:chumsy_app/Screens/landing_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -55,7 +56,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.fromLTRB(48, screenHeight / 6, 48, 0),
+              padding: EdgeInsets.fromLTRB(48, screenHeight / 5.5, 48, 0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -65,7 +66,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     width: 151,
                     child: SvgPicture.asset("assets/logo/logo.svg"),
                   ),
-                  const SizedBox(height: 60,),
+                  const SizedBox(
+                    height: 60,
+                  ),
                   SizedBox(
                     height: 51,
                     child: Padding(
@@ -168,7 +171,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     height: 21,
                   ),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.to(() => const ForgotScreen());
+                    },
                     child: Text(
                       AppLocalizations.of(context)!.forgotPassword,
                       style: const TextStyle(
@@ -202,16 +207,25 @@ class _LoginScreenState extends State<LoginScreen> {
                         children: [
                           CupertinoButton(
                             onPressed: () => openDialog(context, "Google.com"),
-                            child: SvgPicture.asset("assets/login/google.svg", width: 40,),
+                            child: SvgPicture.asset(
+                              "assets/login/google.svg",
+                              width: 40,
+                            ),
                           ),
                           CupertinoButton(
                             onPressed: () =>
                                 openDialog(context, "Facebook.com"),
-                            child: SvgPicture.asset("assets/login/facebook.svg", width: 40,),
+                            child: SvgPicture.asset(
+                              "assets/login/facebook.svg",
+                              width: 40,
+                            ),
                           ),
                           CupertinoButton(
                             onPressed: () => openDialog(context, "Apple.com"),
-                            child: SvgPicture.asset("assets/login/apple_black.svg", width: 40,),
+                            child: SvgPicture.asset(
+                              "assets/login/apple_black.svg",
+                              width: 40,
+                            ),
                           ),
                         ],
                       ),

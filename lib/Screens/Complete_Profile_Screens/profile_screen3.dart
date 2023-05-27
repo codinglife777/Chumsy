@@ -92,7 +92,7 @@ class _CreateProfile3State extends State<CreateProfile3> {
                     ),
                   ),
                   Container(
-                    width: MediaQuery.of(context).size.width / 3 * 2,
+                    width: screenWidth / 4,
                     height: 4,
                     decoration: const BoxDecoration(
                       color: neonColor2,
@@ -164,7 +164,9 @@ class _CreateProfile3State extends State<CreateProfile3> {
                                 context,
                                 imageController,
                                 AppLocalizations.of(context)!.photoLibrary,
-                                AppLocalizations.of(context)!.takeAPhoto, false);
+                                AppLocalizations.of(context)!.takeAPhoto,
+                                false,
+                                true);
                           },
                           child: Container(
                             height: 51,
@@ -214,7 +216,9 @@ class _CreateProfile3State extends State<CreateProfile3> {
                                 context,
                                 imageController,
                                 AppLocalizations.of(context)!.photoLibrary,
-                                AppLocalizations.of(context)!.takeAPhoto, false);
+                                AppLocalizations.of(context)!.takeAPhoto,
+                                false,
+                                true);
                           }
                         },
                       ),

@@ -9,6 +9,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../Widgets/Extra Widgets/custom_datepicker.dart';
 import '../../Widgets/Extra Widgets/gradient_widget.dart';
+import '../../Widgets/chumsyerrordialog.dart';
 
 class CreateProfile extends StatefulWidget {
   const CreateProfile({super.key});
@@ -18,6 +19,17 @@ class CreateProfile extends StatefulWidget {
 }
 
 class _CreateProfileState extends State<CreateProfile> {
+  DateTime age = DateTime.now();
+
+  Future<void> _dialogBuilder(BuildContext context, String errorMessage) {
+    return showDialog<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return ChumsyErrorDialog(errorMessage: errorMessage);
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final months = [
@@ -80,7 +92,7 @@ class _CreateProfileState extends State<CreateProfile> {
                     ),
                   ),
                   Container(
-                    width: screenWidth / 6,
+                    width: screenWidth / 12,
                     height: 4,
                     decoration: const BoxDecoration(
                       color: neonColor2,
@@ -140,9 +152,9 @@ class _CreateProfileState extends State<CreateProfile> {
                                   // )
                                   child: CustomCupertinoDatePicker(
                                     itemExtent: 50,
-                                    minDate: DateTime(DateTime.now().year - 16),
-                                    maxDate:
-                                        DateTime(DateTime.now().year + 100),
+                                    minDate:
+                                        DateTime(DateTime.now().year - 100),
+                                    maxDate: DateTime(DateTime.now().year + 16),
                                     months: months,
                                     selectedDate: DateTime.now(),
                                     selectionOverlay: const SizedBox(
@@ -168,7 +180,11 @@ class _CreateProfileState extends State<CreateProfile> {
                                       color: Colors.grey[400],
                                       fontSize: 18,
                                     ),
-                                    onSelectedItemChanged: (date) => {},
+                                    onSelectedItemChanged: (date) {
+                                      setState(() {
+                                        age = date;
+                                      });
+                                    },
                                   )),
                             ),
                           ),
@@ -263,6 +279,14 @@ class _CreateProfileState extends State<CreateProfile> {
                           ],
                         ),
                         onTapFunction: () {
+                          //check age
+                          if (DateTime.now().year - age.year < 16) {
+                            _dialogBuilder(
+                                context,
+                                AppLocalizations.of(context)!
+                                    .heyChumsyPleaseBeInformedThatTheCreationOfAChumsy);
+                            return;
+                          }
                           Get.to(() => const CreateProfile2());
                         },
                       ),

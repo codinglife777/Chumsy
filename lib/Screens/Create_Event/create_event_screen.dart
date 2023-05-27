@@ -293,7 +293,7 @@ class _CreateEventState extends State<CreateEvent> {
                                             )),
                                       ),
                                     const SizedBox(
-                                      height: 18,
+                                      height: 10,
                                     ),
                                     Column(
                                       crossAxisAlignment:
@@ -325,6 +325,9 @@ class _CreateEventState extends State<CreateEvent> {
                                             ),
                                           ),
                                         ),
+                                        const SizedBox(
+                                          height: 30,
+                                        )
                                       ],
                                     ),
                                   ],
@@ -355,11 +358,12 @@ class _CreateEventState extends State<CreateEvent> {
                       ),
                     ),
                   ),
+                  const SizedBox(height: 40),
                   Padding(
                     padding: const EdgeInsets.only(
-                      bottom: 66,
-                      left: 40,
-                      right: 40,
+                      bottom: 10,
+                      left: 30,
+                      right: 30,
                     ),
                     child: CustomGradientButtonWidget(
                       buttonWidget: Row(
