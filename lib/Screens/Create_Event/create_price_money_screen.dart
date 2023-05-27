@@ -8,6 +8,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../Constants/colors.dart';
 import '../../Constants/spacing.dart';
 import '../../Widgets/Create_Event/app_bar.dart';
+import '../../Widgets/decimal_text_input_formatter.dart';
 
 class CreateEventPriceMoney extends StatefulWidget {
   const CreateEventPriceMoney({super.key});
@@ -49,10 +50,10 @@ class _CreateEventPriceMoneyState extends State<CreateEventPriceMoney> {
                         controller: _ammountController,
                         keyboardType: TextInputType.number,
                         placeholder: '0,00',
-                        placeholderStyle:
-                            const TextStyle(color: Colors.black),
+                        placeholderStyle: const TextStyle(color: Colors.black),
                         style: headingStyle24,
                         textAlign: TextAlign.right,
+                        inputFormatters: [DecimalTextInputFormatter()],
                         decoration: const BoxDecoration(
                           color: whiteColor,
                         ),

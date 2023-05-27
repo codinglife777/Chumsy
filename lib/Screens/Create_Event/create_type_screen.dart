@@ -95,9 +95,8 @@ class LevelTile extends StatefulWidget {
   State<LevelTile> createState() => _LevelTileState();
 }
 
-bool _selected = false;
-
 class _LevelTileState extends State<LevelTile> {
+  bool _selected = false;
   @override
   Widget build(BuildContext context) {
     return CupertinoButton(
