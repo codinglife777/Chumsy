@@ -242,9 +242,10 @@ class _CreateEventCategoryState extends State<CreateEventCategory>
                               ? const SizedBox()
                               : Container(
                                   decoration: BoxDecoration(
-                                    color: textColor.withOpacity(
-                                      0.13,
-                                    ),
+                                    // color: textColor.withOpacity(
+                                    //   0.13,
+                                    // ),
+                                    color: const Color(0xffeeeef0),
                                     borderRadius: BorderRadius.circular(
                                       100,
                                     ),

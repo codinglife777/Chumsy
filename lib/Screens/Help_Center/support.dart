@@ -64,9 +64,10 @@ class _HelpCenterSupportState extends State<HelpCenterSupport> {
                               borderRadius: BorderRadius.circular(
                                 20,
                               ),
-                              color: textColor.withOpacity(
-                                0.05,
-                              ),
+                              // color: textColor.withOpacity(
+                              //   0.05,
+                              // ),
+                              color: const Color(0xffeeeef0),
                             ),
                           ),
                           spacingBox,

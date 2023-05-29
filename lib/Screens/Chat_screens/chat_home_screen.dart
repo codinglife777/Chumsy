@@ -57,9 +57,10 @@ class _ChatScreenState extends State<ChatScreen> {
                   Container(
                     height: 35,
                     decoration: BoxDecoration(
-                      color: textColor.withOpacity(
-                        0.13,
-                      ),
+                      // color: textColor.withOpacity(
+                      //   0.07,
+                      // ),
+                      color: const Color(0xffeeeef0),
                       borderRadius: BorderRadius.circular(
                         100,
                       ),
@@ -86,7 +87,7 @@ class _ChatScreenState extends State<ChatScreen> {
                             placeholderStyle: regularStyleBold.copyWith(
                                 color: const Color(0xff888888),
                                 fontWeight: FontWeight.w500,
-                                fontSize: 17),
+                                fontSize: 18),
                             decoration: const BoxDecoration(
                               borderRadius: BorderRadius.all(
                                 Radius.elliptical(3, 3),

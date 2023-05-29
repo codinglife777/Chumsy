@@ -320,9 +320,10 @@ class _CreateEventState extends State<CreateEvent> {
                                             borderRadius: BorderRadius.circular(
                                               20,
                                             ),
-                                            color: textColor.withOpacity(
-                                              0.1,
-                                            ),
+                                            // color: textColor.withOpacity(
+                                            //   0.1,
+                                            // ),
+                                            color: const Color(0xffeeeef0),
                                           ),
                                         ),
                                         const SizedBox(

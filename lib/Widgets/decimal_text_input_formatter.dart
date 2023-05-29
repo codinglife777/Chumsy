@@ -4,9 +4,11 @@ class DecimalTextInputFormatter extends TextInputFormatter {
   @override
   TextEditingValue formatEditUpdate(
       TextEditingValue oldValue, TextEditingValue newValue) {
-    String unformattedText = newValue.text.replaceAll('0,', '');
+    String unformattedText = newValue.text;
+    if (unformattedText[0] == '0')
+      unformattedText = unformattedText.replaceAll('0,', '');
     unformattedText = unformattedText.replaceAll(RegExp(r'\D'), '');
-    unformattedText = unformattedText.replaceAll('000', '');
+    // unformattedText = unformattedText.replaceAll('000', '');
     if (unformattedText.length == 1) {
       unformattedText = "00$unformattedText";
     } else if (unformattedText.length == 2) {

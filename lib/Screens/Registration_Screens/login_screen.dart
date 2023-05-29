@@ -3,6 +3,7 @@ import 'package:chumsy_app/Constants/colors.dart';
 import 'package:chumsy_app/Constants/sizes.dart';
 import 'package:chumsy_app/Constants/spacing.dart';
 import 'package:chumsy_app/Screens/Registration_Screens/forgot_password.dart';
+import 'package:chumsy_app/Screens/Registration_Screens/signup_screen.dart';
 import 'package:chumsy_app/Screens/landing_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -237,7 +238,7 @@ class _LoginScreenState extends State<LoginScreen> {
             Positioned(
               top: 50,
               child: CupertinoButton(
-                onPressed: () => Get.back(),
+                onPressed: () => Get.off(() => const SignupScreen()),
                 child: const Icon(
                   CupertinoIcons.back,
                   size: 30,
