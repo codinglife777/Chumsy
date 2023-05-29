@@ -59,11 +59,12 @@ class _CreateProfileQualificationState extends State<CreateProfileQualification>
       List<Map<String, String>> lifeStyles = dataLifeStyles.map((e) {
         return {"topic": e as String};
       }).toList();
-      setState(() {
-        topicList = sports;
-        lifeStyleTopics = lifeStyles;
-        controlList = _sport.value ? topicList : lifeStyleTopics;
-      });
+      // setState(() {
+      topicList = sports;
+      lifeStyleTopics = lifeStyles;
+      controlList = _sport.value ? topicList : lifeStyleTopics;
+      // });
+      onSearch(_search.text);
     } catch (e) {
       if (kDebugMode) {
         print(e);
@@ -174,6 +175,8 @@ class _CreateProfileQualificationState extends State<CreateProfileQualification>
 
   @override
   Widget build(BuildContext context) {
+    print(_search.text);
+    print(controlList);
     return Theme(
       data: ThemeData.dark(
         useMaterial3: true,
@@ -363,7 +366,7 @@ class _CreateProfileQualificationState extends State<CreateProfileQualification>
                             focusNode: _searchNode,
                             controller: _search,
                             onChanged: (value) {
-                              onSearch(_search.text);
+                              onSearch(value);
                             },
                             decoration: InputDecoration(
                                 hintText: AppLocalizations.of(context)!.search,
