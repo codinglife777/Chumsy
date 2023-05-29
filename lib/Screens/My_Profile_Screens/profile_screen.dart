@@ -52,23 +52,33 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       backgroundColor: whiteColor,
                       radius: 55,
                       child: Stack(
-                        children: const [
-                          CircleAvatar(
+                        children: [
+                          const CircleAvatar(
                             foregroundImage:
                                 AssetImage("assets/register/avatar@2x.png"),
                             radius: 53,
                           ),
-                          Align(
-                            alignment: Alignment.bottomRight,
-                            child: CircleAvatar(
-                              backgroundColor: whiteColor,
-                              radius: 16,
-                              child: CircleAvatar(
-                                radius: 14,
-                                backgroundColor: blackColor,
-                                child: Icon(
-                                  CupertinoIcons.pencil,
-                                  color: whiteColor,
+                          GestureDetector(
+                            behavior: HitTestBehavior.translucent,
+                            onTap: () {
+                              Get.to(
+                                () => const EditHomePage(),
+                              );
+                            },
+                            child: Align(
+                              alignment: Alignment.bottomRight,
+                              child: Container(
+                                child: CircleAvatar(
+                                  backgroundColor: whiteColor,
+                                  radius: 16,
+                                  child: CircleAvatar(
+                                    radius: 14,
+                                    backgroundColor: blackColor,
+                                    child: Icon(
+                                      CupertinoIcons.pencil,
+                                      color: whiteColor,
+                                    ),
+                                  ),
                                 ),
                               ),
                             ),

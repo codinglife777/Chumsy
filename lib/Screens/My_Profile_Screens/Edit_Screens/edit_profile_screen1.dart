@@ -62,7 +62,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
           Expanded(
               child: SingleChildScrollView(
             child: Container(
-              height: screenHeight,
+              // height: screenHeight,
               color: whiteColor,
               constraints: BoxConstraints(
                   minWidth: widget.constraints.maxWidth,
@@ -135,58 +135,51 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                     ),
                                   ),
                                   HorizontalSlidableButton(
-                                            width: 60,
-                                            height: 32,
-                                            buttonWidth: 34,
-                                            color: Colors.white,
-                                            initialPosition: needMaster
-                                                ? SlidableButtonPosition.end
-                                                : SlidableButtonPosition.start,
-                                            // buttonColor: Theme.of(context).primaryColor,
-                                            dismissible: false,
-                                            label: Container(
-                                              margin: const EdgeInsets.all(4),
-                                              constraints:
-                                                  const BoxConstraints.expand(),
-                                              decoration: BoxDecoration(
-                                                  color: Colors.white,
-                                                  border: Border.all(
-                                                      color: Colors.black,
-                                                      width: 2),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          25)),
-                                            ),
-                                            child: Container(
-                                              padding: const EdgeInsets.all(2),
-                                              decoration: BoxDecoration(
-                                                  border: Border.all(
-                                                      color: Colors.black,
-                                                      width: 2),
-                                                  borderRadius:
-                                                      BorderRadius.circular(24),
-                                                  gradient: needMaster
-                                                      ? Styles.primaryGradient()
-                                                      : const LinearGradient(
-                                                          colors: [
-                                                              Colors.white,
-                                                              Colors.white
-                                                            ])),
-                                            ),
-                                            onChanged: (position) {
-                                              setState(() {
-                                                if (position ==
-                                                    SlidableButtonPosition
-                                                        .end) {
-                                                  setState(
-                                                      () => needMaster = true);
-                                                } else {
-                                                  setState(
-                                                      () => needMaster = false);
-                                                }
-                                              });
-                                            },
-                                          )
+                                    width: 60,
+                                    height: 32,
+                                    buttonWidth: 34,
+                                    color: Colors.white,
+                                    initialPosition: needMaster
+                                        ? SlidableButtonPosition.end
+                                        : SlidableButtonPosition.start,
+                                    // buttonColor: Theme.of(context).primaryColor,
+                                    dismissible: false,
+                                    label: Container(
+                                      margin: const EdgeInsets.all(4),
+                                      constraints:
+                                          const BoxConstraints.expand(),
+                                      decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          border: Border.all(
+                                              color: Colors.black, width: 2),
+                                          borderRadius:
+                                              BorderRadius.circular(25)),
+                                    ),
+                                    child: Container(
+                                      padding: const EdgeInsets.all(2),
+                                      decoration: BoxDecoration(
+                                          border: Border.all(
+                                              color: Colors.black, width: 2),
+                                          borderRadius:
+                                              BorderRadius.circular(24),
+                                          gradient: needMaster
+                                              ? Styles.primaryGradient()
+                                              : const LinearGradient(colors: [
+                                                  Colors.white,
+                                                  Colors.white
+                                                ])),
+                                    ),
+                                    onChanged: (position) {
+                                      setState(() {
+                                        if (position ==
+                                            SlidableButtonPosition.end) {
+                                          setState(() => needMaster = true);
+                                        } else {
+                                          setState(() => needMaster = false);
+                                        }
+                                      });
+                                    },
+                                  )
                                   // CustomSwitch(
                                   //   value: needMaster,
                                   //   isDarkBtn: false,
@@ -201,9 +194,9 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                   // ),
                                 ],
                               ),
-                              const SizedBox(
-                                height: 89,
-                              ),
+                              // const SizedBox(
+                              //   height: 30,
+                              // ),
                             ],
                           ),
                         )),

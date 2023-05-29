@@ -31,6 +31,8 @@ int active = 0;
 class _CommunityScreenState extends State<CommunityScreen> {
   final ImageController imageController = Get.put(ImageController());
 
+  void onImageChanged() {}
+
   @override
   Widget build(BuildContext context) {
     AppLocalizations l = AppLocalizations.of(context)!;
@@ -49,8 +51,9 @@ class _CommunityScreenState extends State<CommunityScreen> {
                   padding: const EdgeInsets.only(right: 0),
                   child: CupertinoButton(
                     onPressed: () {
-                      showActionSheet(context, imageController, l.takeAPhoto,
-                          l.photoLibrary, true, false);
+                      showActionSheet(context, imageController, l.photoLibrary,
+                          l.takeAPhoto, true, false,
+                          cb: onImageChanged);
                     },
                     child: const ImageIcon(
                       AssetImage('assets/extras/camera.png'),
