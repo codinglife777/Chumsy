@@ -77,6 +77,7 @@
     "gender": "Gender",
     "age": "Age",
     "addDescription":"Add description",
+    "addText":"Add text",
     "thisEventWillBe": "This event will be... ",
     "advanced": "Advanced",
     "free": "Free",

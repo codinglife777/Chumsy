@@ -15,6 +15,7 @@ import '../../Widgets/Community/feed_card.dart';
 import '../../Widgets/Community/frient_tile_widget.dart';
 import '../../Widgets/Extra Widgets/gradient_widget.dart';
 import 'add_contact_screen.dart';
+import 'share_community.dart';
 
 class CommunityScreen extends StatefulWidget {
   const CommunityScreen({
@@ -31,7 +32,13 @@ int active = 0;
 class _CommunityScreenState extends State<CommunityScreen> {
   final ImageController imageController = Get.put(ImageController());
 
-  void onImageChanged() {}
+  void onImageChanged() {
+    if (imageController.image.value.path != "") {
+      Get.to(() => ShareCommunity(
+            bgImg: imageController.image.value,
+          ));
+    }
+  }
 
   @override
   Widget build(BuildContext context) {

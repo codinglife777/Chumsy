@@ -16,6 +16,7 @@ import 'event_going_on_screen.dart';
 
 Future<void> runningEventBottomSheet(BuildContext context) {
   AppLocalizations l = AppLocalizations.of(context)!;
+  bool panelClosed = false;
   return showCupertinoModalPopup<void>(
     context: context,
     builder: (BuildContext context) => SlidingUpPanel(
@@ -35,6 +36,12 @@ Future<void> runningEventBottomSheet(BuildContext context) {
       ),
       minHeight: 600,
       maxHeight: screenHeight / 1.2,
+      onPanelClosed: () {
+        if (!panelClosed) {
+          panelClosed = true;
+          Get.back();
+        }
+      },
       panel: Column(
         children: [
           Row(
@@ -42,15 +49,6 @@ Future<void> runningEventBottomSheet(BuildContext context) {
             mainAxisSize: MainAxisSize.max,
             children: [
               GestureDetector(
-                onTap: () {
-                  Get.back();
-                },
-                onPanDown: (details) {
-                  Get.back();
-                },
-                onTapDown: (details) {
-                  Get.back();
-                },
                 child: Container(
                   margin: const EdgeInsets.only(
                     top: 10,

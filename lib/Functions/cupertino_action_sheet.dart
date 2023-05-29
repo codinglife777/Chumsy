@@ -138,8 +138,8 @@ void showActionSheet(BuildContext context, ImageController imageController,
                 return;
               }
               imageController.changeImage(true);
-              cb();
               Get.back();
+              cb();
             },
             child: Text(firstText),
           ),
@@ -168,8 +168,8 @@ void showActionSheet(BuildContext context, ImageController imageController,
                 print(imgFile.path);
               }
               imageController.changeImage(true);
-              cb();
               Get.back();
+              cb();
             },
             child: Text(secondText),
           ),
