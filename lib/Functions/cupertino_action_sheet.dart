@@ -89,14 +89,11 @@ void showChangeLanguageAction(BuildContext context) {
   );
 }
 
-void showActionSheet(
-  BuildContext context,
-  ImageController imageController,
-  String firstText,
-  String secondText,
-  bool isFirstPhoto,
-  bool checkFace,
-) {
+dynamic defaultFunc() {}
+
+void showActionSheet(BuildContext context, ImageController imageController,
+    String firstText, String secondText, bool isFirstPhoto, bool checkFace,
+    {VoidCallback cb = defaultFunc}) {
   showCupertinoModalPopup<void>(
     context: context,
     builder: (BuildContext context) => Theme(
@@ -141,6 +138,7 @@ void showActionSheet(
                 return;
               }
               imageController.changeImage(true);
+              cb();
               Get.back();
             },
             child: Text(firstText),
@@ -148,26 +146,29 @@ void showActionSheet(
           CupertinoActionSheetAction(
             isDefaultAction: true,
             onPressed: () async {
-              // final ImagePicker picker = ImagePicker();
-              // final pickedFile =
-              //     await picker.pickImage(source: ImageSource.camera);
-              // File imgFile = File(pickedFile!.path);
+              final ImagePicker picker = ImagePicker();
+              final pickedFile =
+                  await picker.pickImage(source: ImageSource.camera);
+              File imgFile = File(pickedFile!.path);
 
-              // // bool face = await hasFace(imgFile.path);
-              // // Get.put(ImageController()).setNoFace(!face);
-              // // if (!face) {
-              // //   Get.back();
-              // //   _dialogBuilder(
-              // //       context, "Photo you have selected should have a face");
-              // //   // ignore: use_build_context_synchronously
-              // //   return;
-              // // }
+              if (checkFace) {
+                bool face = await hasFace(imgFile.path);
+                Get.put(ImageController()).setNoFace(!face);
+                if (!face) {
+                  Get.back();
+                  _dialogBuilder(
+                      context, "Photo you have selected should have a face");
+                  // ignore: use_build_context_synchronously
+                  return;
+                }
+              }
 
-              // Get.put(ImageController()).setImage(imgFile.path);
-              // if (kDebugMode) {
-              //   print(imgFile.path);
-              // }
+              Get.put(ImageController()).setImage(imgFile.path);
+              if (kDebugMode) {
+                print(imgFile.path);
+              }
               imageController.changeImage(true);
+              cb();
               Get.back();
             },
             child: Text(secondText),

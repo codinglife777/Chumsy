@@ -186,6 +186,10 @@ class _CreateEventCategoryState extends State<CreateEventCategory>
     });
   }
 
+  void onImageChanged() {
+    setState(() {});
+  }
+
   final ImageController imageController = Get.put(ImageController());
 
   @override
@@ -354,10 +358,20 @@ class _CreateEventCategoryState extends State<CreateEventCategory>
                                             borderRadius:
                                                 const BorderRadius.all(
                                                     Radius.circular(24)),
-                                            child: Image.asset(
-                                              "assets/extras/millo-lin-IbngTBpNuMA-unsplash.jpg",
-                                              width: screenWidth / 1.5,
-                                            ),
+                                            child: imageController
+                                                        .showImage.value &&
+                                                    imageController
+                                                            .image.value.path !=
+                                                        ""
+                                                ? Image.file(
+                                                    imageController.image.value,
+                                                    width: screenWidth / 1.5,
+                                                    height: screenHeight / 3.6,
+                                                  )
+                                                : Image.asset(
+                                                    "assets/extras/millo-lin-IbngTBpNuMA-unsplash.jpg",
+                                                    width: screenWidth / 1.5,
+                                                  ),
                                           ),
                                           spacingBox,
                                           GestureDetector(
@@ -370,7 +384,8 @@ class _CreateEventCategoryState extends State<CreateEventCategory>
                                                   AppLocalizations.of(context)!
                                                       .takeAPhoto,
                                                   false,
-                                                  false);
+                                                  false,
+                                                  cb: onImageChanged);
                                             },
                                             child: Row(
                                               mainAxisAlignment:
