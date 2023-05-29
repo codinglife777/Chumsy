@@ -13,6 +13,7 @@ import '../../Functions/show_tosts.dart';
 import '../../Functions/terms.dart';
 import '../../Widgets/chumsyerrordialog.dart';
 import 'mobile_screen.dart';
+import 'onboarding_screen.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({Key? key}) : super(key: key);
@@ -273,17 +274,26 @@ class _SignupScreenState extends State<SignupScreen> {
                         children: [
                           CupertinoButton(
                             onPressed: () => openDialog(context, "Google.com"),
-                            child: SvgPicture.asset("assets/login/google.svg", width: 40,),
+                            child: SvgPicture.asset(
+                              "assets/login/google.svg",
+                              width: 40,
+                            ),
                           ),
                           CupertinoButton(
                             onPressed: () =>
                                 openDialog(context, "Facebook.com"),
-                            child: SvgPicture.asset("assets/login/facebook.svg", width: 40,),
+                            child: SvgPicture.asset(
+                              "assets/login/facebook.svg",
+                              width: 40,
+                            ),
                           ),
                           CupertinoButton(
                             onPressed: () => openDialog(context, "Apple.com"),
-                            child: SvgPicture.asset("assets/login/apple_black.svg", width: 40,),
-                            
+                            child: SvgPicture.asset(
+                              "assets/login/apple_black.svg",
+                              width: 40,
+                            ),
+
                             // Image.asset(
                             //     "assets/login/apple_black@3x.png",
                             //     width: 40,
@@ -299,7 +309,7 @@ class _SignupScreenState extends State<SignupScreen> {
             Positioned(
               top: 50,
               child: CupertinoButton(
-                onPressed: () => Get.back(),
+                onPressed: () => Get.off(() => const OnBoardingScreen()),
                 child: const Icon(
                   CupertinoIcons.back,
                   size: 35,
