@@ -92,7 +92,7 @@ class _CreateProfileState extends State<CreateProfile> {
                     ),
                   ),
                   Container(
-                    width: screenWidth / 12,
+                    width: MediaQuery.of(context).size.width / 5,
                     height: 4,
                     decoration: const BoxDecoration(
                       color: neonColor2,

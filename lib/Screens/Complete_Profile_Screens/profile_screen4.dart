@@ -91,7 +91,7 @@ class _CreateProfile4State extends State<CreateProfile4> {
                   ),
                 ),
                 Container(
-                  width: screenWidth / 3,
+                  width: screenWidth / 5 * 4,
                   height: 4,
                   decoration: const BoxDecoration(
                     color: neonColor2,
