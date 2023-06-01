@@ -112,10 +112,16 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              buildRow(l.name, "Emily", () {}),
-                              buildRow(l.surname, "Benneth", () {}),
-                              buildRow(
-                                  l.email, "Alexpawluczuk@gmail.com", () {}),
+                              // buildRow(l.name, "Emily", () {}),
+                              BuildEditRow(title: l.name, defaultValue: "Emily"
+                              , onChanged: (value){}),
+                              BuildEditRow(title: l.surname, defaultValue: "Benneth"
+                              , onChanged: (value){}),
+                              BuildEditRow(title: l.email, defaultValue: "Alexpawluczuk@gmail.com"
+                              , onChanged: (value){}),
+                              // buildRow(l.surname, "Benneth", () {}),
+                              // buildRow(
+                              //     l.email, "Alexpawluczuk@gmail.com", () {}),
                               buildRow(l.phoneNumber, "+48501666030", () {}),
                               buildRow(l.dateOfBirth, "21 June 1991", () {}),
                               buildRow(l.gender, "Female", () {}),
