@@ -1,6 +1,7 @@
 import 'package:chumsy_app/Constants/colors.dart';
 import 'package:chumsy_app/Screens/Registration_Screens/splash_screen.dart';
 import 'package:chumsy_app/Widgets/Extra%20Widgets/dismiss_keyboard.dart';
+import 'package:country_picker/country_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -32,6 +33,7 @@ class MyApp extends StatelessWidget {
                 locale: provider.locale,
                 localizationsDelegates: const [
                   AppLocalizations.delegate,
+                  CountryLocalizations.delegate,
                   GlobalMaterialLocalizations.delegate,
                   GlobalWidgetsLocalizations.delegate,
                   GlobalCupertinoLocalizations.delegate,

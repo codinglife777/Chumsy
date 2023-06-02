@@ -1,10 +1,12 @@
 import 'package:chumsy_app/Constants/colors.dart';
 import 'package:chumsy_app/Screens/My_Profile_Screens/edit_home_page.dart';
+import 'package:chumsy_app/Screens/landing_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import '../../Controllers/bnb_controller.dart';
 import '../../Functions/build_profile_settings_row.dart';
 import '../../Constants/sizes.dart';
 import '../../Constants/spacing.dart';
@@ -20,6 +22,9 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+
+  final BNBController _bnbCont = Get.put(BNBController());
+  
   @override
   Widget build(BuildContext context) {
     AppLocalizations l = AppLocalizations.of(context)!;
@@ -122,7 +127,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     buildProfileSettingsRow(l.events,
-                        () => Get.to(() => const ProfileEventsScreen())),
+                        () {
+                          _bnbCont.changeIndex(3);
+                          Get.to(()=>const LandingPage());
+                        }),
                     const SizedBox(
                       height: 30,
                     ),

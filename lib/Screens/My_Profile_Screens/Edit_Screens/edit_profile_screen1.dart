@@ -11,6 +11,7 @@ import '../../../Constants/sizes.dart';
 import '../../../Styles/styles.dart';
 import '../../../Widgets/Extra Widgets/gradient_widget.dart';
 import '../../../Widgets/Extra Widgets/custom_switch.dart';
+import 'package:country_picker/country_picker.dart';
 
 class EditProfileScreen extends StatefulWidget {
   const EditProfileScreen({super.key, required this.constraints});
@@ -22,6 +23,7 @@ class EditProfileScreen extends StatefulWidget {
 
 class _EditProfileScreenState extends State<EditProfileScreen> {
   bool needMaster = true;
+  
   @override
   Widget build(BuildContext context) {
     AppLocalizations l = AppLocalizations.of(context)!;
@@ -122,7 +124,35 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                               // buildRow(l.surname, "Benneth", () {}),
                               // buildRow(
                               //     l.email, "Alexpawluczuk@gmail.com", () {}),
-                              buildRow(l.phoneNumber, "+48501666030", () {}),
+                              buildRow(l.phoneNumber, "+48501666030", () {
+                                showCountryPicker(
+                                  context: context,
+                                  countryListTheme: CountryListThemeData(
+                                    flagSize: 25,
+                                    backgroundColor: Colors.white,
+                                    textStyle: TextStyle(fontSize: 16, color: Colors.blueGrey),
+                                    bottomSheetHeight: 500, // Optional. Country list modal height
+                                    //Optional. Sets the border radius for the bottomsheet.
+                                      borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(20.0),
+                                      topRight: Radius.circular(20.0),
+                                    ),
+                                    //Optional. Styles the search field.
+                                    inputDecoration: InputDecoration(
+                                      labelText: 'Search',
+                                      hintText: 'Start typing to search',
+                                      prefixIcon: const Icon(Icons.search),
+                                      border: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: const Color(0xFF8C98A8).withOpacity(0.2),
+                                        ),
+                                        borderRadius: BorderRadius.circular(10)
+                                      ),
+                                    ),
+                                  ),
+                                  onSelect: (Country country) => print('Select country: ${country.displayName}'),
+                                );
+                              }),
                               buildRow(l.dateOfBirth, "21 June 1991", () {}),
                               buildRow(l.gender, "Female", () {}),
                               buildRow(l.location, "Poland, Warsaw", () {}),
