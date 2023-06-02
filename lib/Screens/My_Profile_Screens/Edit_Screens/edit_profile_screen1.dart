@@ -13,6 +13,9 @@ import '../../../Widgets/Extra Widgets/gradient_widget.dart';
 import '../../../Widgets/Extra Widgets/custom_switch.dart';
 import 'package:country_picker/country_picker.dart';
 
+import '../../Complete_Profile_Screens/profile_screen_qualification.dart';
+import 'edit_gender.dart';
+
 class EditProfileScreen extends StatefulWidget {
   const EditProfileScreen({super.key, required this.constraints});
   final BoxConstraints constraints;
@@ -23,7 +26,8 @@ class EditProfileScreen extends StatefulWidget {
 
 class _EditProfileScreenState extends State<EditProfileScreen> {
   bool needMaster = true;
-  
+  String gender = "Female";
+  String dialCode = '+48';
   @override
   Widget build(BuildContext context) {
     AppLocalizations l = AppLocalizations.of(context)!;
@@ -124,7 +128,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                               // buildRow(l.surname, "Benneth", () {}),
                               // buildRow(
                               //     l.email, "Alexpawluczuk@gmail.com", () {}),
-                              buildRow(l.phoneNumber, "+48501666030", () {
+                              BuildPhoneEditRow(title: l.phoneNumber, dialCode: dialCode, defaultValue: "501666030", onChanged: () {
                                 showCountryPicker(
                                   context: context,
                                   countryListTheme: CountryListThemeData(
@@ -150,11 +154,17 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                       ),
                                     ),
                                   ),
-                                  onSelect: (Country country) => print('Select country: ${country.displayName}'),
+                                  onSelect: (Country country) => setState(() {
+                                    dialCode = '+${country.phoneCode}';
+                                  }),
                                 );
                               }),
                               buildRow(l.dateOfBirth, "21 June 1991", () {}),
-                              buildRow(l.gender, "Female", () {}),
+                              buildRow(l.gender, gender, () => Get.to(() => EditProfileGender(btnText: l.save, onChanged: (value){
+                                setState(() {
+                                  gender = value;
+                                });
+                              }))),
                               buildRow(l.location, "Poland, Warsaw", () {}),
                               const SizedBox(
                                 height: 12,
@@ -210,6 +220,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                         if (position ==
                                             SlidableButtonPosition.end) {
                                           setState(() => needMaster = true);
+                                          Get.to(() => const CreateProfileQualification());
                                         } else {
                                           setState(() => needMaster = false);
                                         }

@@ -159,3 +159,108 @@ GestureDetector buildRow(String leftText, String rightText, VoidCallback cb,
     ));
     }
   }
+
+   class BuildPhoneEditRow extends StatefulWidget {
+    final String title;
+    final String dialCode;
+    final String defaultValue;
+    final VoidCallback onChanged;
+
+    const BuildPhoneEditRow(
+        {Key? key,
+        required this.title,
+        required this.defaultValue,
+        required this.onChanged, required this.dialCode})
+        : super(key: key);
+
+    @override
+    // ignore: library_private_types_in_public_api
+    _BuildPhoneEditRowState createState() => _BuildPhoneEditRowState();
+  }
+
+  class _BuildPhoneEditRowState extends State<BuildPhoneEditRow>
+      with SingleTickerProviderStateMixin {
+
+    final TextEditingController txtCtrl = TextEditingController();
+
+    @override
+    void initState() {
+      super.initState();
+    }
+
+
+    @override
+    Widget build(BuildContext context) {
+      txtCtrl.text = widget.defaultValue;
+      return Container(
+      width: screenWidth,
+       child: Padding(
+      padding: const EdgeInsets.symmetric(
+        vertical: 12,
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                widget.title,
+                style: regularStyleBold.copyWith(
+                  fontWeight: FontWeight.bold,
+                ),
+              )
+            ],
+          ),
+          CupertinoButton(
+            padding: EdgeInsets.zero,
+            onPressed: (){},
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                GestureDetector(
+                  onTap: (){
+                    widget.onChanged();
+                  },
+                child: Padding(padding: EdgeInsets.only(bottom: 3), child: Text(widget.dialCode,style: const TextStyle(
+                            fontSize: 16,
+                            color: blackColor,
+                          )),)
+                ,),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.18, 
+                child: CupertinoTextField(
+                controller: txtCtrl,
+                textAlign: TextAlign.end,
+                style: const TextStyle(
+                            fontSize: 16,
+                            color: blackColor,
+                          ),
+                onChanged: (value) {
+                  // widget.onChanged(value);
+                },
+                padding: EdgeInsets.symmetric(horizontal: 0, vertical: 3),
+                // padding: const EdgeInsets.symmetric(
+                //   horizontal: 5,
+                //   vertical: 7,
+                // ),
+                decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(
+                      100,
+                    ),
+                  ),
+                ),
+              ),),
+                const Icon(
+                  CupertinoIcons.right_chevron,
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    ));
+    }
+  }

@@ -1,8 +1,10 @@
 import 'package:chumsy_app/Constants/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../Constants/sizes.dart';
+import '../Screens/Community_Screens/mng_bottom_bar.dart';
 
 Widget buildProfileSettingsRow(String leftText, VoidCallback vcb) {
   return GestureDetector(
@@ -33,7 +35,16 @@ Widget buildProfileSettingsRow(String leftText, VoidCallback vcb) {
 }
 
 Widget buildProfileFriendRow(String title, String subTitlle, String image) {
-  return Padding(
+  return GestureDetector(onTap: (){
+    Get.to(
+          () => ViewFriendPage(
+            dp: image,
+            location: "Warsaw, Poland",
+            nameAndAge: "$title, 26",
+            isProfile: true,
+          ),
+        );
+  }, child: Padding(
     padding: const EdgeInsets.symmetric(
       vertical: 10,
       horizontal: 40,
@@ -75,5 +86,5 @@ Widget buildProfileFriendRow(String title, String subTitlle, String image) {
         ],
       ),
     ),
-  );
+  ));
 }

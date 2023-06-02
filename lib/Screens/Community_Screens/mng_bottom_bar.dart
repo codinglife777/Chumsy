@@ -17,19 +17,21 @@ class ViewFriendPage extends StatefulWidget {
       {Key? key,
       required this.dp,
       required this.nameAndAge,
-      required this.location})
+      required this.location,
+      this.isProfile})
       : super(key: key);
   final String dp, nameAndAge, location;
+  final bool? isProfile;
   @override
   State<ViewFriendPage> createState() => _ViewFriendPageState();
 }
 
 class _ViewFriendPageState extends State<ViewFriendPage> {
   final BNBController _bnbCont = Get.put(BNBController());
-
   @override
   Widget build(BuildContext context) {
     AppLocalizations l = AppLocalizations.of(context)!;
+    bool profilePage = widget.isProfile ?? false;
     return Obx(
       () => CupertinoTabScaffold(
         backgroundColor: whiteColor,
@@ -57,7 +59,7 @@ class _ViewFriendPageState extends State<ViewFriendPage> {
                     Center(
                       child: Text(l.chats),
                     ),
-                    ViewFriendProfile(
+                    profilePage ? Text(l.community) : ViewFriendProfile(
                       dp: widget.dp,
                       location: widget.location,
                       nameAndAge: widget.nameAndAge,
@@ -65,6 +67,11 @@ class _ViewFriendPageState extends State<ViewFriendPage> {
                     Center(
                       child: Text(l.myEvents),
                     ),
+                    profilePage ? ViewFriendProfile(
+                      dp: widget.dp,
+                      location: widget.location,
+                      nameAndAge: widget.nameAndAge,
+                    ):
                     ProfileScreen(
                       constraints: constraints,
                     ),
