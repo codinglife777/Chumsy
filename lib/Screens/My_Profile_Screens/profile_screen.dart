@@ -9,6 +9,7 @@ import '../../Functions/build_profile_settings_row.dart';
 import '../../Constants/sizes.dart';
 import '../../Constants/spacing.dart';
 import '../Community_Screens/eveents_screen.dart';
+import 'Edit_Screens/my_posts.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key, required this.constraints});
@@ -29,24 +30,30 @@ class _ProfileScreenState extends State<ProfileScreen> {
         children: [
           Column(
             children: [
-              Container(
-                height: MediaQuery.of(context).size.height * 0.25,
-                decoration: const BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                    colors: [
-                      neonColor,
-                      blueColor,
-                    ],
+              Stack(
+                children: [
+                  Container(
+                    height: MediaQuery.of(context).size.height * 0.25,
+                    decoration: const BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                        colors: [
+                          neonColor,
+                          blueColor,
+                        ],
+                      ),
+                    ),
+                    // child: FractionalTranslation(
+                    //   translation: const Offset(
+                    //     0.0,
+                    //     0.25,
+                    //   ),
+                      // child: ,
+                    // ),
                   ),
-                ),
-                child: FractionalTranslation(
-                  translation: const Offset(
-                    0.0,
-                    0.25,
-                  ),
-                  child: Align(
+                  Container(
+                    margin: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.25 - 55) ,
                     alignment: Alignment.bottomCenter,
                     child: CircleAvatar(
                       backgroundColor: whiteColor,
@@ -59,7 +66,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             radius: 53,
                           ),
                           GestureDetector(
-                            behavior: HitTestBehavior.translucent,
+                            behavior: HitTestBehavior.opaque,
                             onTap: () {
                               Get.to(
                                 () => const EditHomePage(),
@@ -86,12 +93,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         ],
                       ),
                     ),
-                  ),
-                ),
+                  )
+                ],
               ),
-              const SizedBox(
-                height: 63,
-              ),
+              
+              // const SizedBox(
+              //   height: 63,
+              // ),
               const Text(
                 'Emily Benneth, 26',
                 style: headingStyle24,
@@ -118,7 +126,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     const SizedBox(
                       height: 30,
                     ),
-                    buildProfileSettingsRow(l.posts, () {}),
+                    buildProfileSettingsRow(l.posts, () => Get.to(() => const MyPosts())),
                     const SizedBox(
                       height: 23,
                     ),

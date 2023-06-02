@@ -6,6 +6,7 @@ import '../../Constants/sizes.dart';
 
 Widget buildProfileSettingsRow(String leftText, VoidCallback vcb) {
   return GestureDetector(
+    behavior: HitTestBehavior.opaque,
     onTap: vcb,
     child: Padding(
       padding: const EdgeInsets.symmetric(
