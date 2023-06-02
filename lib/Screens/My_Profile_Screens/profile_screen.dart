@@ -11,6 +11,8 @@ import '../../Functions/build_profile_settings_row.dart';
 import '../../Constants/sizes.dart';
 import '../../Constants/spacing.dart';
 import '../Community_Screens/eveents_screen.dart';
+import 'Edit_Screens/edit_profile_screen1.dart';
+import 'Edit_Screens/inside_edit_home_page.dart';
 import 'Edit_Screens/my_posts.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -74,13 +76,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             behavior: HitTestBehavior.opaque,
                             onTap: () {
                               Get.to(
-                                () => const EditHomePage(),
+                                () => const InsideEditHomePage(),
                               );
                             },
-                            child: Align(
+                            child: const Align(
                               alignment: Alignment.bottomRight,
-                              child: Container(
-                                child: CircleAvatar(
+                              child: CircleAvatar(
                                   backgroundColor: whiteColor,
                                   radius: 16,
                                   child: CircleAvatar(
@@ -91,7 +92,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                       color: whiteColor,
                                     ),
                                   ),
-                                ),
                               ),
                             ),
                           ),
