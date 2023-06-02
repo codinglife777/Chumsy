@@ -52,7 +52,8 @@ class MyApp extends StatelessWidget {
                     whiteColor,
                     whiteColor,
                     true),
-                home: const LandingPage(),
+                // home: const LandingPage(),
+                home: const SplashScreen(),
               ),
             );
           });
