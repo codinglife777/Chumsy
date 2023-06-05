@@ -32,6 +32,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   Widget build(BuildContext context) {
     AppLocalizations l = AppLocalizations.of(context)!;
     return Container(
+      color: whiteColor,
       padding: const EdgeInsets.only(
         top: 50,
       ),
