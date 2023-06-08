@@ -227,7 +227,8 @@
      "heyChumsyPleaseBeInformedThatTheCreationOfAChumsy":"Hey Chumsy! Please be informed that the creation of a Chumsy account is only possible for Users 16 years old and older.",
      "resetPassword": "To reset your password please enter your e-mail address used at sign-up",
      "submit":"SUBMIT",
-     "resetPasswordLinkSent":"An email with reset password link has been sent"
+     "resetPasswordLinkSent":"An email with reset password link has been sent",
+     "users":"Users"
 
     
 

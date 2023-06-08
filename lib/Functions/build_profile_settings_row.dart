@@ -35,15 +35,17 @@ Widget buildProfileSettingsRow(String leftText, VoidCallback vcb) {
 }
 
 Widget buildProfileFriendRow(String title, String subTitlle, String image) {
-  return GestureDetector(onTap: (){
-    Get.to(
-          () => ViewFriendPage(
-            dp: image,
-            location: "Warsaw, Poland",
-            nameAndAge: "$title, 26",
-            isProfile: true,
-          ),
-        );
+  return GestureDetector(
+    behavior: HitTestBehavior.opaque,
+    onTap: (){
+      Get.to(
+            () => ViewFriendPage(
+              dp: image,
+              location: "Warsaw, Poland",
+              nameAndAge: "$title, 26",
+              isProfile: true,
+            ),
+          );
   }, child: Padding(
     padding: const EdgeInsets.symmetric(
       vertical: 10,

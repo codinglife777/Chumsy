@@ -1,46 +1,37 @@
 import 'package:chumsy_app/Widgets/custom_appbar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 import '../../Constants/colors.dart';
 import '../../Constants/sizes.dart';
 import '../../Constants/spacing.dart';
-import 'chat_add_user.dart';
 import 'custom_chat_time.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class ChatScreen extends StatefulWidget {
-  const ChatScreen({super.key, required this.constraints});
-  final BoxConstraints constraints;
+class AddUser extends StatefulWidget {
+  const AddUser({super.key});
   @override
-  State<ChatScreen> createState() => _ChatScreenState();
+  State<AddUser> createState() => _AddUserState();
 }
 
-class _ChatScreenState extends State<ChatScreen> {
+class _AddUserState extends State<AddUser> {
   @override
   Widget build(BuildContext context) {
     AppLocalizations l = AppLocalizations.of(context)!;
     return Container(
       // height: screenHeight,
       // width: screenWidth,
-      constraints: widget.constraints,
       color: whiteColor,
       child: Column(
         children: [
           CustomAppBar(
-            title: l.chat,
-            isBack: false,
+            title: l.users,
+            isBack: true,
             suffix: Padding(
               padding: const EdgeInsets.only(right: 0),
               child: CupertinoButton(
-                onPressed: () {
-                  Get.to(()=> const AddUser());
-                },
-                child: const ImageIcon(
-                  AssetImage('assets/extras/user_add.png'),
-                  size: 22,
-                ),
+                onPressed: () {},
+                child: const SizedBox(height: 22,),
               ),
             ),
           ),
@@ -111,8 +102,7 @@ class _ChatScreenState extends State<ChatScreen> {
                     // flex: 0,
                     // child: SizedBox(
                     //   height: screenHeight,
-                    constraints: BoxConstraints(
-                        maxHeight: widget.constraints.maxHeight - 149),
+                    height: screenHeight - 160,
                     child: ListView(
                       shrinkWrap: true,
                       padding: EdgeInsets.all(0),
