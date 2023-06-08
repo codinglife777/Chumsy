@@ -5,8 +5,13 @@ class DecimalTextInputFormatter extends TextInputFormatter {
   TextEditingValue formatEditUpdate(
       TextEditingValue oldValue, TextEditingValue newValue) {
     String unformattedText = newValue.text;
-    if (unformattedText[0] == '0')
+    //case of backspace
+    if (unformattedText[unformattedText.length - 1] == 'z') {
+      unformattedText = unformattedText.substring(0, unformattedText.length - 3);
+    }
+    if (unformattedText[0] == '0') {
       unformattedText = unformattedText.replaceAll('0,', '');
+    }
     unformattedText = unformattedText.replaceAll(RegExp(r'\D'), '');
     // unformattedText = unformattedText.replaceAll('000', '');
     if (unformattedText.length == 1) {
@@ -50,7 +55,7 @@ class DecimalTextInputFormatter extends TextInputFormatter {
       lstLeft += newLeft[i];
     }
 
-    formattedText = "$lstLeft,$strRight";
+    formattedText = "$lstLeft,$strRight zł";
 
     return TextEditingValue(
       text: formattedText,

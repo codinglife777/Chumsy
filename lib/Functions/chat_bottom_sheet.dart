@@ -23,7 +23,7 @@ Future<void> showChatBottomSheet(BuildContext context, bool isCommunity) {
           30,
         ),
       ),
-      minHeight: isCommunity ? screenHeight / 4 : screenHeight / 2.5,
+      minHeight: isCommunity ? screenHeight / 4.5 : screenHeight / 2.5,
       onPanelClosed: () {
         if (!isPanelClosed) {
           isPanelClosed = true;
@@ -122,27 +122,7 @@ Future<void> showChatBottomSheet(BuildContext context, bool isCommunity) {
                   ),
                 ),
                 isCommunity
-                    ? CupertinoListTile(
-                        padding: const EdgeInsets.symmetric(
-                          vertical: 10,
-                        ),
-                        onTap: () => Get.back(),
-                        leading:
-                            Image.asset("assets/extras/icons/download.png"),
-                        leadingSize: 28,
-                        title: Text(
-                          l.downloadPhoto,
-                          style: regularStyleBold.copyWith(
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        subtitle: AutoSizeText(
-                          l.youCanDownload,
-                          style: smallStyle,
-                          maxLines: 1,
-                          softWrap: true,
-                        ),
-                      )
+                    ? const SizedBox()
                     : CupertinoListTile(
                         padding: const EdgeInsets.symmetric(
                           vertical: 10,

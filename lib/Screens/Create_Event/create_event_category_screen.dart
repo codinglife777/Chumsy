@@ -376,7 +376,7 @@ class _CreateEventCategoryState extends State<CreateEventCategory>
                                           spacingBox,
                                           GestureDetector(
                                             onTap: () {
-                                              showActionSheet(
+                                              showActionSheetForChange(
                                                   context,
                                                   imageController,
                                                   AppLocalizations.of(context)!

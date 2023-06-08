@@ -304,104 +304,37 @@ class _FilterCategoryState extends State<FilterCategory>
                                 ),
                           spacingBox,
                           Container(
+                            alignment: Alignment.centerLeft,
                             constraints: BoxConstraints(
                               maxHeight: screenHeight / 1.6,
                             ),
                             child: _nameIt.value
-                                ? Column(
-                                    children: [
+                                ? 
                                       Column(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
+                                            mainAxisAlignment: MainAxisAlignment.start,
                                         children: [
-                                          Text(
-                                            AppLocalizations.of(context)!
-                                                .nameTheEvent,
-                                            style: smallStyleBold,
-                                          ),
-                                          spacingBox,
-                                          CupertinoTextField(
-                                            onChanged: (value) {
-                                              setState(() {
-                                                dataCount = value.length;
-                                              });
-                                            },
-                                            padding: const EdgeInsets.symmetric(
-                                              horizontal: 15,
-                                              vertical: 15,
+                                          Container(
+                                            height: 36,
+                                            padding: const EdgeInsets.only(left: 9, right: 9, top: 6),
+                                            decoration: Styles.greyButton(
+                                                borderColor: blackColor,
+                                                backgroundColor:
+                                                    whiteColor),
+                                            // child: TextButton(
+                                            //   onPressed: () {
+                                            //     widget.onSelect(widget.topicList[i]["topic"]);
+                                            //   },
+                                            child: Text(
+                                              ' All ',
+                                              style: Styles.greyButtonText(
+                                                  fontWeight: FontWeight.w600,
+                                                  fontSize: 15,
+                                                  color: blackColor),
                                             ),
-                                            placeholder:
-                                                AppLocalizations.of(context)!
-                                                    .chooseTheName,
-                                            placeholderStyle: smallStyle,
-                                            maxLength: 24,
-                                            decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(
-                                                20,
-                                              ),
-                                              color: textColor.withOpacity(
-                                                0.1,
-                                              ),
-                                            ),
-                                          ),
-                                          spacingBox,
-                                          Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.end,
-                                            children: [
-                                              Text(
-                                                "$dataCount/ 24",
-                                                style: smallStyle,
-                                              ),
-                                            ],
-                                          ),
-                                          spacingBox,
-                                          ClipRRect(
-                                            borderRadius:
-                                                const BorderRadius.all(
-                                                    Radius.circular(24)),
-                                            child: Image.asset(
-                                              "assets/extras/millo-lin-IbngTBpNuMA-unsplash.jpg",
-                                              width: screenWidth / 1.5,
-                                            ),
-                                          ),
-                                          // spacingBox,
-                                          // GestureDetector(
-                                          //   onTap: () {
-                                          //     showActionSheet(
-                                          //         context,
-                                          //         imageController,
-                                          //         AppLocalizations.of(context)!
-                                          //             .photoLibrary,
-                                          //         AppLocalizations.of(context)!
-                                          //             .takeAPhoto,
-                                          //         false,
-                                          //         false);
-                                          //   },
-                                          //   child: Row(
-                                          //     mainAxisAlignment:
-                                          //         MainAxisAlignment.center,
-                                          //     children: [
-                                          //       const Icon(
-                                          //         CupertinoIcons.add_circled,
-                                          //         color: blackColor,
-                                          //         size: 36,
-                                          //       ),
-                                          //       horizontalSpacingBox,
-                                          //       Text(
-                                          //         l.changeAPicture,
-                                          //         style:
-                                          //             regularStyleBold.copyWith(
-                                          //                 fontWeight:
-                                          //                     FontWeight.w600),
-                                          //       ),
-                                          //     ],
-                                          //   ),
-                                          // )
+                                          )
                                         ],
-                                      ),
-                                    ],
                                   )
                                 : SizedBox(
                                     height: 500,

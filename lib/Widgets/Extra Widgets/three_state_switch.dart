@@ -13,6 +13,7 @@ class ThreeStateSwitch extends StatefulWidget {
   const ThreeStateSwitch({super.key, required this.cbState});
 
   final ThreeStateCallback cbState;
+
   @override
   State<ThreeStateSwitch> createState() => _ThreeStateSwitchState();
 }
@@ -20,6 +21,7 @@ class ThreeStateSwitch extends StatefulWidget {
 class _ThreeStateSwitchState extends State<ThreeStateSwitch> {
   double _containerPosition = 0.0;
   SwitchState _currentSwitchState = SwitchState.state1;
+
   @override
   Widget build(BuildContext context) {
     AppLocalizations l = AppLocalizations.of(context)!;
@@ -44,10 +46,10 @@ class _ThreeStateSwitchState extends State<ThreeStateSwitch> {
             _currentSwitchState = SwitchState.state1;
           } else if (_containerPosition <
               indicatorWidth + indicatorWidth / 3 * 2) {
-            _containerPosition = containerWidth / 3;
+            _containerPosition = containerWidth / 3 - 4;
             _currentSwitchState = SwitchState.state2;
           } else {
-            _containerPosition = containerWidth / 3 * 2;
+            _containerPosition = containerWidth / 3 * 2 - 1;
             _currentSwitchState = SwitchState.state3;
           }
         });
@@ -68,7 +70,7 @@ class _ThreeStateSwitchState extends State<ThreeStateSwitch> {
               duration: const Duration(milliseconds: 200),
               left: _containerPosition,
               child: Container(
-                width: (MediaQuery.of(context).size!.width - 40) / 3,
+                width: (MediaQuery.of(context).size.width - 40) / 3,
                 height: 47,
                 decoration: BoxDecoration(
                   gradient: Styles.primaryGradient(),
@@ -79,6 +81,16 @@ class _ThreeStateSwitchState extends State<ThreeStateSwitch> {
             Row(
               children: [
                 Expanded(
+                  child: GestureDetector(
+                    behavior: HitTestBehavior.opaque,
+                  onTap: (){
+                    setState(() {
+                        _containerPosition = 0.0;
+                        _currentSwitchState = SwitchState.state1;
+                    });
+
+                    widget.cbState(_currentSwitchState);
+                  },
                   child: Container(
                     alignment: Alignment.center,
                     child: Text(l.sport,
@@ -87,9 +99,20 @@ class _ThreeStateSwitchState extends State<ThreeStateSwitch> {
                               ? blackColor
                               : whiteColor,
                         )),
-                  ),
+                  ))
+                  ,
                 ),
                 Expanded(
+                  child: GestureDetector(
+                    behavior: HitTestBehavior.opaque,
+                  onTap: (){
+                    setState(() {
+                        _containerPosition = containerWidth / 3 - 4;
+                        _currentSwitchState = SwitchState.state2;
+                    });
+
+                    widget.cbState(_currentSwitchState);
+                  },
                   child: Container(
                     alignment: Alignment.center,
                     child: Text(l.lifeStyle,
@@ -98,9 +121,19 @@ class _ThreeStateSwitchState extends State<ThreeStateSwitch> {
                               ? blackColor
                               : whiteColor,
                         )),
-                  ),
+                  )),
                 ),
                 Expanded(
+                  child: GestureDetector(
+                    behavior: HitTestBehavior.opaque,
+                  onTap: (){
+                    setState(() {
+                        _containerPosition = containerWidth / 3 * 2 - 1;
+                        _currentSwitchState = SwitchState.state3;
+                    });
+
+                    widget.cbState(_currentSwitchState);
+                  },
                   child: Container(
                     alignment: Alignment.center,
                     child: Text(l.nameIt,
@@ -109,7 +142,7 @@ class _ThreeStateSwitchState extends State<ThreeStateSwitch> {
                               ? blackColor
                               : whiteColor,
                         )),
-                  ),
+                  )),
                 ),
               ],
             ),

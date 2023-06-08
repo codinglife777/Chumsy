@@ -168,11 +168,17 @@ class _LevelTileState extends State<LevelTile> {
               ),
             ),
             if (widget.selected)
-              const Icon(
-                CupertinoIcons.check_mark,
-                size: 18,
+              Text(
+              String.fromCharCode(CupertinoIcons.check_mark.codePoint),
+              style: TextStyle(
+                inherit: false,
                 color: blackColor,
+                fontSize: 18.0,
+                fontWeight: FontWeight.bold,
+                fontFamily: CupertinoIcons.check_mark.fontFamily,
+                package: CupertinoIcons.check_mark.fontPackage,
               ),
+            )
           ],
         ),
       ),

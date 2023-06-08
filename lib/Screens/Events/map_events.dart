@@ -139,7 +139,7 @@ class _MapEventsScreenState extends State<MapEventsScreen> {
                             CustomEventCard(
                               nameAndAge: "Max, 26",
                               activity: "Running",
-                              dateText: "April 12 | lh",
+                              dateText: "April 12 | 19 hr 1 min",
                               time: "9:20 AM",
                               location: "4246.00km",
                               imageLocation: "assets/extras/event_image1.png",
@@ -149,7 +149,7 @@ class _MapEventsScreenState extends State<MapEventsScreen> {
                             CustomEventCard(
                               nameAndAge: "Emily, 30",
                               activity: "Swimming",
-                              dateText: "May 3 | rh",
+                              dateText: "May 3 | 11 hr 1 min",
                               location: "7963.00km",
                               time: "2:30 PM",
                               imageLocation: "assets/extras/event_image3.jpg",
@@ -159,7 +159,7 @@ class _MapEventsScreenState extends State<MapEventsScreen> {
                             CustomEventCard(
                               nameAndAge: "Alex, 23",
                               activity: "Tennis",
-                              dateText: "June 8 | lh",
+                              dateText: "June 8 | 08 hr 1 min",
                               location: "8218.00km",
                               time: "5:00 PM",
                               imageLocation: "assets/extras/bottomBack1.png",
@@ -169,7 +169,7 @@ class _MapEventsScreenState extends State<MapEventsScreen> {
                             CustomEventCard(
                               nameAndAge: "Sophia, 28",
                               activity: "Yoga",
-                              dateText: "July 15 | rh",
+                              dateText: "July 15 | 11 hr 1 min",
                               location: "9529.00km",
                               time: "8:15 AM",
                               imageLocation: "assets/extras/event_image2.png",
@@ -180,7 +180,7 @@ class _MapEventsScreenState extends State<MapEventsScreen> {
                             const CustomEventCard(
                               nameAndAge: "Emily, 30",
                               activity: "Swimming",
-                              dateText: "May 3 | rh",
+                              dateText: "May 3 | 11 hr 1 min",
                               time: "2:30 PM",
                               imageLocation: "assets/extras/event_image3.jpg",
                             ),
@@ -188,7 +188,7 @@ class _MapEventsScreenState extends State<MapEventsScreen> {
                             const CustomEventCard(
                               nameAndAge: "Alex, 23",
                               activity: "Tennis",
-                              dateText: "June 8 | lh",
+                              dateText: "June 8 | 11 hr 1 min",
                               time: "5:00 PM",
                               imageLocation: "assets/extras/bottomBack1.png",
                             ),
@@ -204,7 +204,7 @@ class _MapEventsScreenState extends State<MapEventsScreen> {
                             const CustomEventCard(
                               nameAndAge: "Sophia, 28",
                               activity: "Yoga",
-                              dateText: "July 15 | rh",
+                              dateText: "July 15 | 11 hr 1 min",
                               time: "8:15 AM",
                               imageLocation: "assets/extras/event_image2.png",
                             ),

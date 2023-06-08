@@ -178,3 +178,91 @@ void showActionSheet(BuildContext context, ImageController imageController,
     ),
   );
 }
+void showActionSheetForChange(BuildContext context, ImageController imageController,
+    String firstText, String secondText, bool isFirstPhoto, bool checkFace,
+    {VoidCallback cb = defaultFunc}) {
+  showCupertinoModalPopup<void>(
+    context: context,
+    builder: (BuildContext context) => Theme(
+      data: ThemeData.light(),
+      child: CupertinoActionSheet(
+        cancelButton: CupertinoActionSheetAction(
+          isDefaultAction: true,
+          onPressed: () {
+            Get.back();
+          },
+          child: Text(AppLocalizations.of(context)!.cancelC, style: TextStyle(fontWeight: FontWeight.bold),),
+        ),
+        actions: [
+          CupertinoActionSheetAction(
+            isDefaultAction: true,
+            onPressed: () async {
+              final ImagePicker picker = ImagePicker();
+              final pickedFile =
+                  await picker.pickImage(source: ImageSource.camera);
+              File imgFile = File(pickedFile!.path);
+
+              if (checkFace) {
+                bool face = await hasFace(imgFile.path);
+                Get.put(ImageController()).setNoFace(!face);
+                if (!face) {
+                  Get.back();
+                  _dialogBuilder(
+                      context, "Photo you have selected should have a face");
+                  // ignore: use_build_context_synchronously
+                  return;
+                }
+              }
+
+              Get.put(ImageController()).setImage(imgFile.path);
+              if (kDebugMode) {
+                print(imgFile.path);
+              }
+              imageController.changeImage(true);
+              Get.back();
+              cb();
+            },
+            child: Text(secondText, style: const TextStyle(fontWeight: FontWeight.w500),),
+          ),
+          CupertinoActionSheetAction(
+            isDefaultAction: true,
+            onPressed: () async {
+              FilePickerResult? result = await FilePicker.platform
+                  .pickFiles(type: FileType.image, allowMultiple: false);
+              if (result != null) {
+                String file = result.files.single.path!;
+                if (checkFace) {
+                  bool face = await hasFace(file);
+                  Get.put(ImageController()).setNoFace(!face);
+                  if (!face) {
+                    Get.back();
+                    // ignore: use_build_context_synchronously
+                    // if (kDebugMode) {
+                    //   print("No face");
+                    // }
+                    _dialogBuilder(context,
+                        AppLocalizations.of(context)!.photo_have_a_face);
+                    return;
+                  }
+                }
+
+                Get.put(ImageController()).setImage(file);
+                if (kDebugMode) {
+                  print(file);
+                }
+              } else {
+                Get.back();
+                return;
+              }
+              imageController.changeImage(true);
+              Get.back();
+              cb();
+            },
+            child: Text(firstText, style: const TextStyle(fontWeight: FontWeight.w500)),
+          ),
+          
+        ],
+      ),
+    ),
+  );
+}

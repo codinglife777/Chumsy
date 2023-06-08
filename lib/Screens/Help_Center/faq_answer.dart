@@ -1,4 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:chumsy_app/constants/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -23,17 +24,21 @@ class _HelpCenterFaqAnsState extends State<HelpCenterFaqAns> {
   Widget build(BuildContext context) {
     AppLocalizations l = AppLocalizations.of(context)!;
     return CupertinoPageScaffold(
+      backgroundColor: whiteColor,
       child: Stack(
         children: [
-          Padding(
+          Container(
+            color: whiteColor,
             padding: const EdgeInsets.symmetric(
               horizontal: 30,
             ),
             child: SingleChildScrollView(
+              padding: EdgeInsets.all(0),
               child: Column(
                 children: [
                   topSpacingBox,
-                  SizedBox(
+                  Container(
+                    color: whiteColor,
                     height: screenHeight / 1.5,
                     child: SingleChildScrollView(
                       child: Column(
@@ -67,9 +72,10 @@ class _HelpCenterFaqAnsState extends State<HelpCenterFaqAns> {
                       ),
                     ],
                   ),
-                  Padding(
+                  Container(
+                    color: whiteColor,
                     padding: const EdgeInsets.symmetric(
-                      vertical: 10,
+                      vertical: 20,
                       horizontal: 40,
                     ),
                     child: CustomGradientButtonWidget(

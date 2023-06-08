@@ -38,8 +38,8 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
     final double screenHeight = MediaQuery.of(context).size.height;
     return CupertinoPageScaffold(
       child: Center(
-        child: Padding(
-          padding: EdgeInsets.only(
+        child: Container(
+          margin: EdgeInsets.only(
             top: activatedPage == 2 ? 0 : 80,
           ),
           child: Column(
@@ -84,17 +84,19 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                               alignment: Alignment.bottomCenter,
                             ),
                           ),
-                          child: Text(
+                          child: Container(
+                            padding: EdgeInsets.only(top: 16),
+                            child: Text(
                             swipItems[1].title,
                             textAlign: TextAlign.left,
                             style: const TextStyle(
                                 fontSize: 22, fontWeight: FontWeight.bold),
-                          ),
+                          ),) ,
                         ),
                       ),
                       Container(
                         padding: const EdgeInsets.only(
-                          top: 101,
+                          top: 96,
                           left: 57,
                         ),
                         decoration: BoxDecoration(

@@ -29,68 +29,72 @@ class _CreateEventPriceMoneyState extends State<CreateEventPriceMoney> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    AppLocalizations l = AppLocalizations.of(context)!;
-    return CupertinoPageScaffold(
-      child: Stack(
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 20,
+Widget build(BuildContext context) {
+  AppLocalizations l = AppLocalizations.of(context)!;
+  return CupertinoPageScaffold(
+    child: Stack(
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              
+              children: [
+                topSpacingBox,
+                const SizedBox(height: 30),
+                Container(
+                  height: screenHeight / 2.3,
+                  padding: const EdgeInsets.only(top: 160, left: 80, right: 80),
+                  alignment: Alignment.center,
+                  // width: 160,
+                  // child: Center(
+                    child: CupertinoTextField(
+                      controller: _ammountController,
+                      keyboardType: TextInputType.number,
+                      placeholder: '0,00',
+                      placeholderStyle: const TextStyle(color: Colors.black),
+                      style: headingStyle24,
+                      textAlign: TextAlign.center,
+                      inputFormatters: [DecimalTextInputFormatter()],
+                      decoration: const BoxDecoration(
+                        color: whiteColor,
+                      ),
+                      // suffix: const Text(
+                      //   "zł",
+                      //   style: headingStyle24,
+                      // ),
+                    ),
+                  // ),
+                ),
+              ],
             ),
-            child: SingleChildScrollView(
-              child: Column(
+          ),
+        ),
+        EventAppBar2(
+          title: l.price,
+        ),
+        Align(
+          alignment: Alignment.bottomCenter,
+          child: Padding(
+            padding: const EdgeInsets.all(40),
+            child: CustomGradientButtonWidget(
+              buttonWidget: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  topSpacingBox,
-                  SizedBox(
-                    height: screenHeight / 1.6,
-                    width: 200,
-                    child: Center(
-                      child: CupertinoTextField(
-                        controller: _ammountController,
-                        keyboardType: TextInputType.number,
-                        placeholder: '0,00',
-                        placeholderStyle: const TextStyle(color: Colors.black),
-                        style: headingStyle24,
-                        textAlign: TextAlign.right,
-                        inputFormatters: [DecimalTextInputFormatter()],
-                        decoration: const BoxDecoration(
-                          color: whiteColor,
-                        ),
-                        suffix: const Text(
-                          "zł",
-                          style: headingStyle24,
-                        ),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 40,
-                      horizontal: 40,
-                    ),
-                    child: CustomGradientButtonWidget(
-                      buttonWidget: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            l.save,
-                            style: regularStyleBold,
-                          ),
-                        ],
-                      ),
-                      onTapFunction: () => Get.back(),
-                    ),
+                  Text(
+                    l.save,
+                    style: regularStyleBold,
                   ),
                 ],
               ),
+              onTapFunction: () => Get.back(),
             ),
           ),
-          EventAppBar2(
-            title: l.price,
-          ),
-        ],
-      ),
-    );
-  }
+        ),
+      ],
+    ),
+  );
+}
+
 }

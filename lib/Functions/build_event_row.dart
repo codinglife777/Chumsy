@@ -229,7 +229,7 @@ GestureDetector buildRow(String leftText, String rightText, VoidCallback cb,
                           )),)
                 ,),
                 SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.18, 
+                  width: MediaQuery.of(context).size.width * 0.24, 
                 child: CupertinoTextField(
                 controller: txtCtrl,
                 textAlign: TextAlign.end,

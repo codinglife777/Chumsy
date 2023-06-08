@@ -87,7 +87,7 @@ class _CreateEventTimeState extends State<CreateEventTime> {
                           buildRow(
                               l.begining, AppLocalizations.of(context)!.choose,
                               () {
-                            openDatePicker(context);
+                            openTimePicker(context);
                           }),
                           buildRow(
                               l.duration,
