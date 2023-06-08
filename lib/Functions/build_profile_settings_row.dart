@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 
 import '../../Constants/sizes.dart';
 import '../Screens/Community_Screens/mng_bottom_bar.dart';
+import '../Screens/Community_Screens/view_friend1.dart';
 
 Widget buildProfileSettingsRow(String leftText, VoidCallback vcb) {
   return GestureDetector(
@@ -39,11 +40,10 @@ Widget buildProfileFriendRow(String title, String subTitlle, String image) {
     behavior: HitTestBehavior.opaque,
     onTap: (){
       Get.to(
-            () => ViewFriendPage(
+            () => ViewFriendProfile1(
               dp: image,
               location: "Warsaw, Poland",
               nameAndAge: "$title, 26",
-              isProfile: true,
             ),
           );
   }, child: Padding(
