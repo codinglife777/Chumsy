@@ -27,6 +27,7 @@ import '../../Widgets/Extra Widgets/google_map.dart';
 import '../Create_Event/create_price_screen.dart';
 import '../Create_Event/create_with_whom_screen.dart';
 import 'filter_category_screen.dart';
+import 'filter_price.dart';
 import 'filter_time_screen.dart';
 
 class FilterHome extends StatefulWidget {
@@ -145,7 +146,7 @@ class _FilterHomeState extends State<FilterHome> {
                             ),
                           buildRow(AppLocalizations.of(context)!.price,
                               AppLocalizations.of(context)!.choose, () {
-                            Get.to(() => const CreateEventPrice());
+                            Get.to(() => const FilterPrice());
                           }),
                           isAdvanced
                               ? Column(

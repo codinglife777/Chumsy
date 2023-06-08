@@ -8,6 +8,7 @@ import '../../Constants/sizes.dart';
 import '../../Constants/spacing.dart';
 import '../../Widgets/Create_Event/app_bar.dart';
 import '../../Widgets/Extra Widgets/gradient_widget.dart';
+import 'mng_bottom_nav.dart';
 
 class HelpCenterFaqAns extends StatefulWidget {
   const HelpCenterFaqAns({
@@ -90,7 +91,7 @@ class _HelpCenterFaqAnsState extends State<HelpCenterFaqAns> {
                           ),
                         ],
                       ),
-                      onTapFunction: () => Get.back(),
+                      onTapFunction: () => Get.to(() => const MngSupportPage()),
                     ),
                   ),
                 ],
