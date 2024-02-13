@@ -1,6 +1,7 @@
 # chumsy_app_app
 
 A new Flutter project.
+Flutter project with beautiful UI.
 
 ## Getting Started
 
